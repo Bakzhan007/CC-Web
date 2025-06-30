@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import officeImg from '../assets/image/1.jpg';
 import {
   ChevronDown,
   Heart,
@@ -31,12 +32,12 @@ const offices: Office[] = [
     price: 55656000,
     originalPrice: 185520000,
     reserved: false,
-    project: 'Aktau Riviera',
+    project: 'ЖК Ilan Towers',
     building: '2 - ЧО',
     floor: 1,
     entrance: 1,
     quarter: '4 кв. 2023',
-    image: '../assets/image/1.jpg',
+    image: officeImg,
     tags: ['Комфорт+', 'Акции'],
   },
   {
@@ -44,12 +45,12 @@ const offices: Office[] = [
     area: 103.53,
     price: null,
     reserved: true,
-    project: 'Aktau Riviera',
+    project: 'ЖК Caspian Coast',
     building: '2 - ЧО',
     floor: 1,
     entrance: 1,
     quarter: '4 кв. 2023',
-    image: '../assets/image/1.jpg',
+    image: officeImg,
     tags: [],
   },
   {
@@ -58,12 +59,12 @@ const offices: Office[] = [
     price: 21399000,
     originalPrice: 71330000,
     reserved: false,
-    project: 'Aktau Riviera - Апартаменты',
+    project: 'ЖК Taras',
     building: '1 - 1',
     floor: 3,
     entrance: 3,
     quarter: '3 кв. 2022',
-    image: '../assets/image/1.jpg',
+    image: officeImg,
     tags: ['Комфорт', 'Акции'],
   },
   // …add more
@@ -95,8 +96,8 @@ export default function PropertiesPage() {
               className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
             >
               <option>Все города Казахстана</option>
-              <option>Aktau Riviera</option>
-              <option>Атырау Marina</option>
+              <option>Актау</option>
+              <option>ЖанаОзен</option>
             </select>
 
             <select
@@ -104,8 +105,9 @@ export default function PropertiesPage() {
               onChange={e => setProject(e.target.value)}
               className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
             >
-              <option>Aktau Riviera</option>
-              <option>Aktau Harbour</option>
+              <option>ЖК Ilan Towers</option>
+              <option>ЖК Caspian Coast</option>
+              <option>ЖК Taras</option>
             </select>
 
             <select
@@ -116,16 +118,6 @@ export default function PropertiesPage() {
               <option value="">Цена</option>
               <option value="asc">По возрастанию</option>
               <option value="desc">По убыванию</option>
-            </select>
-
-            <select
-              value={timeOrder}
-              onChange={e => setTimeOrder(e.target.value)}
-              className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
-            >
-              <option value="">Время сдачи</option>
-              <option value="soon">Сначала ближайшие</option>
-              <option value="late">Сначала поздние</option>
             </select>
 
             <button
