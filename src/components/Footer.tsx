@@ -18,8 +18,8 @@ const Footer = () => {
     { name: t.servicesTitle + ' ' + t.servicesSubtitle, href: '#services' },
     { name: t.projectsTitle + ' ' + t.projectsSubtitle, href: '#projects' },
     { name: t.contact, href: '#contact' },
-    { name: t.footerLinks.careers, href: '#' },
-    { name: t.footerLinks.news, href: '#' }
+    { name: t.footerLinks.careers, href: '/career' },
+    { name: t.footerLinks.news, href: '/news' }
   ];
 
   const socialLinks = [

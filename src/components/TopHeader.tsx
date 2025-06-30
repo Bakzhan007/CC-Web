@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LanguageSwitcher from './LanguageSwitcher'
-import Header from './Header';
-import Footer from './Footer';
-
 
 export interface TopHeaderProps {
   /** Показывать шапку или скрыть */
@@ -15,7 +12,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
 
   const links = [
     { label: 'Real estate agencies', to: '/agencies' },
-    { label: 'News', href: 'Agencies.tsx' },
+    { label: 'News', to: '/news' },
     { label: 'Career', href: '#' },
     { label: 'Stock', href: '#' },
     { label: 'ABC', href: '#' },

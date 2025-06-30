@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Briefcase, ExternalLink, Calendar } from 'lucide-react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 interface Agency {
   id: number;
   name: string;

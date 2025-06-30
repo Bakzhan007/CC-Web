@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChevronRight, Award, Users, Building2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
