@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LanguageSwitcher from './LanguageSwitcher'
+import Header from './Header';
+import Footer from './Footer';
 
 
 export interface TopHeaderProps {

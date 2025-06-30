@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Building2, Briefcase, ExternalLink, Calendar } from 'lucide-react';
-
+import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Briefcase, ExternalLink, Calendar } from 'lucide-react';
 interface Agency {
   id: number;
   name: string;
@@ -169,6 +168,11 @@ export default function Agencies() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
   const filteredAgencies = agencies.filter(agency => {
     const matchesSearch = agency.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          agency.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -314,8 +318,8 @@ export default function Agencies() {
               "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
             ].map((image, index) => (
               <div key={index} className="group relative overflow-hidden rounded-xl aspect-square">
-                <img 
-                  src={image} 
+                <img
+                  src={image}
                   alt={`Agency workspace ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
@@ -323,6 +327,56 @@ export default function Agencies() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+            {/* Leave a Request Section */}
+      <div className="bg-blue-900 text-white py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">Leave a Request</h2>
+          <form
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log({ name, email, phone, message });
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Name"
+              className="px-4 py-3 rounded-lg w-full text-gray-900"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="px-4 py-3 rounded-lg w-full text-gray-900"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Phone"
+              className="px-4 py-3 rounded-lg w-full text-gray-900 sm:col-span-2"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <textarea
+              rows={4}
+              placeholder="Message"
+              className="px-4 py-3 rounded-lg w-full text-gray-900 sm:col-span-2 resize-none"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            ></textarea>
+            <button
+              type="submit"
+              className="sm:col-span-2 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-medium transition-colors"
+            >
+              Send Request
+            </button>
+          </form>
         </div>
       </div>
     </div>
