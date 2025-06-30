@@ -1,4 +1,3 @@
-import React from 'react';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 

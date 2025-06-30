@@ -1,6 +1,7 @@
 import React from 'react'
 import LanguageSwitcher from './LanguageSwitcher'
 
+
 export interface TopHeaderProps {
   /** Показывать шапку или скрыть */
   visible?: boolean
@@ -10,8 +11,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
   if (!visible) return null
 
   const links = [
-    { label: 'Real estate agencies', href: '#' },
-    { label: 'News', href: '#' },
+    { label: 'Real estate agencies', href: '' },
+    { label: 'News', href: 'Agencies.tsx' },
     { label: 'Career', href: '#' },
     { label: 'Stock', href: '#' },
     { label: 'ABC', href: '#' },

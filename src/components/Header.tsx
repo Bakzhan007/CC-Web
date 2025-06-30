@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import TopHeader from './TopHeader';
 // два варианта логотипа: светлый и тёмный
 import logoLight from '../assets/image/logo-light-hor.png';
 import logoDark  from '../assets/image/logo-dark-hor.png';
-import TopHeader from './TopHeader';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
+  
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -16,34 +19,35 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home',     href: '#home' },
-    { name: 'About',    href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact',  href: '#contact' },
+    { name: t.home,     href: '#home' },
+    { name: t.about,    href: '#about' },
+    { name: t.services, href: '#services' },
+    { name: t.projects, href: '#projects' },
+    { name: t.contact,  href: '#contact' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <TopHeader visible={!isScrolled} />
       <div
-        className={`transition-all duration-300 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg': 'bg-transparent'
+        className={`transition-colors duration-300 backdrop-blur-md ${
+          isScrolled
+            ? 'bg-white/95 shadow-md border-b border-slate-200'
+            : 'bg-slate-900/60'
         }`}
       >
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between h-20">
+          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Логотип переключается */}
             <div className="logo">
               <img
                 src={isScrolled ? logoDark : logoLight}
                 alt="CaspianCoast Logo"
-                className="h-16 w-auto object-contain transition-all duration-300"
-              />
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"              />
             </div>
 
             {/* Десктопная навигация */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               {navItems.map(item => (
                 <a
                   key={item.name}
@@ -55,10 +59,10 @@ const Header: React.FC = () => {
                   {item.name}
                 </a>
               ))}
-
+            
               <a
                 href="tel:+77006363631"
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`hidden lg:flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                   isScrolled
                     ? 'text-slate-700 hover:bg-slate-100'
                     : 'text-white/90 hover:bg-white/10'
@@ -84,7 +88,11 @@ const Header: React.FC = () => {
 
           {/* Мобильная навигация */}
           {isMenuOpen && (
-            <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200">
+            <div
+            className={`md:hidden backdrop-blur-md border-t border-slate-200 ${
+              isScrolled ? 'bg-white/95' : 'bg-slate-900/90'
+            }`}
+            >
               <div className="py-4 space-y-2">
                 {navItems.map(item => (
                   <a

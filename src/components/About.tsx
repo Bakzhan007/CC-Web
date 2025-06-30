@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckCircle, Target, Zap, Shield } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
