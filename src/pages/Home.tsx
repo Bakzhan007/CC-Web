@@ -11,11 +11,13 @@ function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Projects />
-      <Contact />
+      <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
+        <Hero />
+        <About />
+        <Services />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

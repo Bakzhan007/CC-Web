@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Briefcase, ExternalLink, Calendar } from 'lucide-react';
+import Header from './Header';
+import Footer from './Footer';
 interface Agency {
   id: number;
   name: string;
@@ -186,6 +188,9 @@ export default function Agencies() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <Header />
+    <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
+
       {/* Hero Section with Background Image */}
       <div className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -329,56 +334,67 @@ export default function Agencies() {
           </div>
         </div>
       </div>
-            {/* Leave a Request Section */}
-      <div className="bg-blue-900 text-white py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">Leave a Request</h2>
-          <form
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              console.log({ name, email, phone, message });
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Name"
-              className="px-4 py-3 rounded-lg w-full text-gray-900"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="px-4 py-3 rounded-lg w-full text-gray-900"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="tel"
-              placeholder="Phone"
-              className="px-4 py-3 rounded-lg w-full text-gray-900 sm:col-span-2"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            <textarea
-              rows={4}
-              placeholder="Message"
-              className="px-4 py-3 rounded-lg w-full text-gray-900 sm:col-span-2 resize-none"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <button
-              type="submit"
-              className="sm:col-span-2 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-medium transition-colors"
+      {/* Leave a Request Section */}
+      <div className="relative py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')"
+          }}
+        ></div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">Leave a Request</h2>
+            <form
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log({ name, email, phone, message });
+              }}
             >
-              Send Request
-            </button>
-          </form>
+                            <input
+                type="text"
+                placeholder="Name"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="tel"
+                placeholder="Phone"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:col-span-2"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <textarea
+                rows={4}
+                placeholder="Message"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none sm:col-span-2"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+              <button
+                type="submit"
+                className="sm:col-span-2 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold text-white transition-colors"
+              >
+                Send Request
+              </button>
+            </form>
+          </div>
         </div>
       </div>
+    <Footer />
+    </main>
     </div>
   );
 }
