@@ -1,69 +1,384 @@
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useState } from 'react';
+import { 
+  ChevronRight, 
+  MapPin, 
+  Clock, 
+  Users, 
+  Award, 
+  Heart, 
+  Zap, 
+  Globe, 
+  Shield, 
+  Coffee,
+  Briefcase,
+  GraduationCap,
+  Plane,
+  CheckCircle,
+  ArrowRight,
+  Mail,
+  Phone,
+  Star
+} from 'lucide-react';
 
-const Career: React.FC = () => {
+const Career = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const jobCategories = ['All', 'Engineering', 'Design', 'Marketing', 'Sales', 'Operations'];
+  
   const jobs = [
-    { title: 'Project Manager', location: 'Astana', type: 'Full-time' },
-    { title: 'Architect', location: 'Almaty', type: 'Full-time' },
-    { title: 'Civil Engineer', location: 'Atyrau', type: 'Contract' }
+    {
+      title: 'Senior Software Engineer',
+      category: 'Engineering',
+      location: 'New York, NY',
+      type: 'Full-time',
+      description: 'Join our engineering team to build scalable solutions that impact millions of users worldwide.',
+      requirements: ['5+ years experience', 'React/TypeScript', 'Node.js', 'Cloud platforms']
+    },
+    {
+      title: 'UX/UI Designer',
+      category: 'Design',
+      location: 'San Francisco, CA',
+      type: 'Full-time',
+      description: 'Create beautiful and intuitive user experiences that delight our customers.',
+      requirements: ['3+ years experience', 'Figma/Sketch', 'Design systems', 'User research']
+    },
+    {
+      title: 'Product Marketing Manager',
+      category: 'Marketing',
+      location: 'Remote',
+      type: 'Full-time',
+      description: 'Drive product marketing strategy and go-to-market initiatives for our growing platform.',
+      requirements: ['4+ years experience', 'B2B marketing', 'Analytics', 'Content strategy']
+    },
+    {
+      title: 'Sales Development Representative',
+      category: 'Sales',
+      location: 'Chicago, IL',
+      type: 'Full-time',
+      description: 'Identify and qualify leads to help grow our customer base across key markets.',
+      requirements: ['2+ years experience', 'CRM systems', 'Lead generation', 'Communication skills']
+    },
+    {
+      title: 'DevOps Engineer',
+      category: 'Engineering',
+      location: 'Austin, TX',
+      type: 'Full-time',
+      description: 'Build and maintain our cloud infrastructure to ensure reliability and scalability.',
+      requirements: ['4+ years experience', 'AWS/Azure', 'Kubernetes', 'CI/CD pipelines']
+    },
+    {
+      title: 'Operations Coordinator',
+      category: 'Operations',
+      location: 'Boston, MA',
+      type: 'Full-time',
+      description: 'Streamline operations and processes to support our rapidly growing team.',
+      requirements: ['2+ years experience', 'Project management', 'Process improvement', 'Data analysis']
+    }
   ];
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px] flex-1">
-        {/* Hero */}
-        <section className="relative h-64 sm:h-80 lg:h-96 flex items-center justify-center overflow-hidden">
-          <img
-            src="https://images.pexels.com/photos/2098628/pexels-photo-2098628.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Career at CaspianCoast"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-900/60" />
-          <h1 className="relative z-10 text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center px-4">
-            Careers at CaspianCoast
-          </h1>
-        </section>
+  const testimonials = [
+    {
+      name: 'Sarah Chen',
+      role: 'Senior Software Engineer',
+      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400',
+      quote: 'The collaborative culture here is incredible. Every day brings new challenges and opportunities to grow.',
+      rating: 5
+    },
+    {
+      name: 'Marcus Johnson',
+      role: 'Product Designer',
+      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400',
+      quote: 'I\'ve never worked somewhere that values innovation and creativity as much as this company does.',
+      rating: 5
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Marketing Manager',
+      image: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400',
+      quote: 'The work-life balance and professional development opportunities are exceptional.',
+      rating: 5
+    }
+  ];
 
-        {/* Jobs */}
-        <section className="py-16 bg-slate-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Current Openings</h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {jobs.map((job, index) => (
-                <div key={index} className="bg-white rounded-xl shadow p-6 flex flex-col">
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">{job.title}</h3>
-                  <p className="text-slate-600 mb-1">{job.location}</p>
-                  <p className="text-slate-500 mb-4">{job.type}</p>
-                  <button className="mt-auto bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
-                    Apply Now
-                  </button>
+  const benefits = [
+    { icon: Heart, title: 'Health & Wellness', description: 'Comprehensive health, dental, and vision coverage for you and your family' },
+    { icon: GraduationCap, title: 'Learning & Development', description: '$3,000 annual learning budget and access to premium courses' },
+    { icon: Plane, title: 'Flexible PTO', description: 'Unlimited PTO policy with encouraged minimum 3 weeks annually' },
+    { icon: Coffee, title: 'Remote-First', description: 'Work from anywhere with quarterly team gatherings' },
+    { icon: Award, title: 'Equity Package', description: 'Competitive equity compensation for all full-time employees' },
+    { icon: Shield, title: 'Financial Security', description: '401(k) matching and life insurance benefits' }
+  ];
+
+  const values = [
+    { icon: Users, title: 'Collaboration', description: 'We achieve more together than alone' },
+    { icon: Zap, title: 'Innovation', description: 'We embrace change and push boundaries' },
+    { icon: Globe, title: 'Global Impact', description: 'We build products that matter worldwide' },
+    { icon: CheckCircle, title: 'Excellence', description: 'We deliver quality in everything we do' }
+  ];
+
+  const filteredJobs = selectedCategory === 'All' 
+    ? jobs 
+    : jobs.filter(job => job.category === selectedCategory);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  React.useEffect(() => {
+    const interval = setInterval(nextTestimonial, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-600 text-white">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
+          <div className="max-w-4xl">
+            <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+              Shape the Future
+              <span className="block text-cyan-300">With Us</span>
+            </h1>
+            <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
+              Join a team of innovators, dreamers, and builders who are creating technology 
+              that transforms industries and improves lives around the world.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
+                View Open Positions
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10">
+                Learn Our Culture
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Values */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Values</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              These principles guide everything we do and shape the culture we're building together.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div className="bg-gradient-to-br from-blue-500 to-cyan-500 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <value.icon className="h-8 w-8 text-white" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Why Work With Us</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We believe in taking care of our team members with comprehensive benefits and growth opportunities.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 group">
+                <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <benefit.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Employee Testimonials */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">What Our Team Says</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Hear directly from our team members about their experiences working with us.
+            </p>
+          </div>
+          <div className="relative max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12">
+              <div className="flex items-center mb-6">
+                <img 
+                  src={testimonials[currentTestimonial].image} 
+                  alt={testimonials[currentTestimonial].name}
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="text-xl font-semibold text-gray-900">{testimonials[currentTestimonial].name}</h4>
+                  <p className="text-gray-600">{testimonials[currentTestimonial].role}</p>
+                </div>
+                <div className="ml-auto flex">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-2xl text-gray-800 italic leading-relaxed">
+                "{testimonials[currentTestimonial].quote}"
+              </blockquote>
+            </div>
+            <div className="flex justify-center mt-8 space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA */}
-        <section className="py-16 bg-blue-600 text-white text-center">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Can't find a suitable position?</h2>
-            <p className="mb-6">
-              Send your resume to
-              <a href="mailto:hr@caspiancoast.com" className="underline ml-1">hr@caspiancoast.com</a>
-              .
+      {/* Job Openings */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Open Positions</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Find your next career opportunity and join our growing team of innovators.
             </p>
-            <a
-              href="mailto:hr@caspiancoast.com"
-              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold"
-            >
-              Send Resume
-            </a>
           </div>
-        </section>
-      </main>
-      <Footer />
+          
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center mb-12 gap-2">
+            {jobCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Job Listings */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {filteredJobs.map((job, index) => (
+              <div key={index} className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-blue-300 group">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      {job.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                      <span className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        {job.location}
+                      </span>
+                      <span className="flex items-center">
+                        <Clock className="h-4 w-4 mr-1" />
+                        {job.type}
+                      </span>
+                      <span className="flex items-center">
+                        <Briefcase className="h-4 w-4 mr-1" />
+                        {job.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">{job.description}</p>
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">Requirements:</h4>
+                  <ul className="space-y-2">
+                    {job.requirements.map((req, reqIndex) => (
+                      <li key={reqIndex} className="flex items-center text-sm text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                        {req}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group-hover:shadow-lg">
+                  Apply Now
+                  <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Application Process */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Hiring Process</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We've designed a transparent and efficient process to help you showcase your best self.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: '01', title: 'Application', description: 'Submit your application and portfolio online' },
+              { step: '02', title: 'Initial Screen', description: 'Brief call with our talent team to learn more about you' },
+              { step: '03', title: 'Technical Interview', description: 'Deep dive into your skills and experience with the hiring manager' },
+              { step: '04', title: 'Final Round', description: 'Meet the team and discuss how you\'ll contribute to our mission' }
+            ].map((process, index) => (
+              <div key={index} className="text-center group">
+                <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
+                  {process.step}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{process.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-900 to-cyan-600 rounded-3xl p-12 lg:p-16 text-white">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Join Us?</h2>
+              <p className="text-xl mb-8 text-blue-100 leading-relaxed">
+                Don't see a perfect match? We're always looking for talented individuals. 
+                Send us your resume and let's start a conversation.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                  <Mail className="mr-2 h-5 w-5" />
+                  careers@company.com
+                </button>
+                <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10 flex items-center justify-center">
+                  <Phone className="mr-2 h-5 w-5" />
+                  +1 (555) 123-4567
+                </button>
+              </div>
+              <p className="text-blue-200 text-sm">
+                Equal opportunity employer committed to diversity and inclusion
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

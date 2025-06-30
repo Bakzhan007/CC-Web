@@ -13,13 +13,13 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
   const links = [
     { label: 'Real estate agencies', to: '/agencies' },
     { label: 'News', to: '/news' },
-    { label: 'Career', href: '#' },
+    { label: 'Career', href: '/career' },
     { label: 'Stock', href: '#' },
     { label: 'ABC', href: '#' },
   ]
 
   return (
-    <div className="bg-gray-900 text-gray-300 text-sm shadow-sm">
+    <div className="bg-[#f7f7f7] text-[#324154] text-sm shadow-sm">
       <div className="container mx-auto flex h-12 items-center justify-between px-6">
         {/* Навигация */}
         <nav className="flex space-x-8">

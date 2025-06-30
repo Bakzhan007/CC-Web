@@ -11,12 +11,10 @@ function App() {
     <LanguageProvider>
       <Router>
         <Routes>
-           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/agencies" element={<Agencies />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/career" element={<Career />} />
-          </Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/agencies" element={<Agencies />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/career" element={<Career />} />
         </Routes>
       </Router>
     </LanguageProvider>

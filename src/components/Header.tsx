@@ -30,7 +30,7 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       <TopHeader visible={!isScrolled} />
       <div
-        className={`transition-colors duration-300 backdrop-blur-md ${
+        className={`transition-colors duration-300 bg-[#f7f7f7] ${
           isScrolled
             ? 'bg-white/95 shadow-md border-b border-slate-200'
             : 'bg-slate-900/60'
