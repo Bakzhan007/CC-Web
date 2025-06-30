@@ -18,7 +18,6 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
     { label: 'Real estate agencies', to: '/agencies', icon: Building2 },
     { label: 'Career', href: '/career', icon: Briefcase },
     { label: 'commerce', to: '/commerce', icon: Percent },
-    { label: 'Properties', to: '/properties', icon: List },
     { label: 'ABC', href: '#', icon: Book },
   ]
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import TopHeader from './TopHeader'
 // два варианта логотипа: светлый и тёмный
-import logoDark  from '../assets/image/logo-dark-hor.png';
+import logoDark  from '../assets/logo/logo-dark-hor.png';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   const navItems = [
     { name: t.home,     to: '/' },
     { name: 'Sale', to: '#about' },
-    { name: 'Partner', to: '#services' },
+    { name: 'For Partner', to: '#services' },
     { name: t.projects, to: '#projects' },
     { name: 'CC Guide', to: '#contact' },  
   ]

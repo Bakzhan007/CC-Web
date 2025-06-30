@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Heart, List, Grid } from 'lucide-react';
 
-import bannerImage from '../assets/image/commercial-banner.jpg';
+import bannerImage from '../assets/image/commercial-banner.jpg';  
 
 interface Office {
   id: number;
@@ -94,30 +94,51 @@ export default function commerce() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      {/* Hero banner */}
 
-      <div className="relative w-full h-96 mt-[-1px]"> 
-        <img
-          src={bannerImage}
-          alt="Коммерческая недвижимость"
-          className="object-cover w-full h-full rounded-b-3xl"
-        />
-        <div className="absolute inset-0 flex items-center">
-          <div className="bg-white p-8 rounded-3xl max-w-md ml-6 shadow-lg">
-            <h1 className="text-2xl font-bold mb-4">
-              Коммерческая недвижимость — вложение с быстрой окупаемостью
-            </h1>
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-              Получить консультацию
-            </button>
-          </div>
+        {/* Hero banner */}
+        <div
+        className="
+            max-w-7xl mx-auto        /* constrain & center */
+            px-6 lg:px-8              /* horizontal padding */
+            mt-[104px] sm:mt-[112px] lg:mt-[128px]  /* under header */
+            pb-4                      /* bottom padding before next section */
+        "
+        >
+        <div
+            className="
+            relative w-full overflow-hidden rounded-3xl
+            h-[150px] sm:h-[300px] md:h-[400px] lg:h-[600px] xl:h-[700px]
+            "
+        >
+            <img
+            src={bannerImage}
+            alt="Коммерческая недвижимость"
+            className="object-cover w-full h-full"
+            />
+
+            {/* overlay container bottom-aligned */}
+            <div className="absolute inset-0 flex items-end justify-start p-6">
+            {/* new card design */}
+            <div className="bg-gradient-to-r from-white/90 via-white/70 to-white/50 backdrop-blur-md p-6 rounded-2xl shadow-lg max-w-md">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                Коммерческая недвижимость
+                </h1>
+                <p className="text-gray-700 mb-4">
+                Лучшие офисные помещения в ключевых городах Казахстана
+                </p>
+                <button className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                Получить консультацию
+                </button>
+            </div>
+            </div>
         </div>
-      </div>
+        </div>
 
-      <main className="flex-1 pt-[104px] sm:pt-[112px] lg:pt-[128px]">
+
+      <main className="flex-1">
         {/* Filter Bar */}
-        <div className="bg-white px-6 lg:px-8 py-4 rounded-2xl shadow space-y-4">
-          <div className="flex flex-wrap gap-3 items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="bg-white py-4 rounded-2xl shadow flex flex-wrap gap-3 items-center">
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
