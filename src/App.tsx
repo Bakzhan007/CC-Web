@@ -1,25 +1,18 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import Agencies from './components/Agencies';
 
 function App() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen">
-        <Header />
-        <Hero />
-        <About />
-        <Services />
-        <Projects />
-        <Contact />
-        <Footer />
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/agencies" element={<Agencies />} />
+        </Routes>
+      </Router>
     </LanguageProvider>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import LanguageSwitcher from './LanguageSwitcher'
 
 
@@ -11,7 +12,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
   if (!visible) return null
 
   const links = [
-    { label: 'Real estate agencies', href: '' },
+    { label: 'Real estate agencies', to: '/agencies' },
     { label: 'News', href: 'Agencies.tsx' },
     { label: 'Career', href: '#' },
     { label: 'Stock', href: '#' },
@@ -24,15 +25,25 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
         {/* Навигация */}
         <nav className="flex space-x-8">
           {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="relative font-medium uppercase tracking-wider transition-colors hover:text-white"
-            >
-              {/* эффект подчёркивания */}
-              <span className="pb-1">{link.label}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-            </a>
+            link.to ? (
+              <Link
+                key={link.label}
+                to={link.to}
+                className="relative font-medium uppercase tracking-wider transition-colors hover:text-white"
+              >
+                <span className="pb-1">{link.label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="relative font-medium uppercase tracking-wider transition-colors hover:text-white"
+              >
+                <span className="pb-1">{link.label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+              </a>
+            )
           ))}
         </nav>
 
