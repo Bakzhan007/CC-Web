@@ -5,6 +5,7 @@ import Agencies from './pages/Agencies';
 import News from './pages/News';
 import Career from './pages/Career';
 import Commerce from './pages/Commerce';
+import Sale from './pages/Sale';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/career" element={<Career />} />
           <Route path="/commerce" element={<Commerce />} />
+          <Route path="/sale" element={<Sale />} />
         </Routes>
       </Router>
     </LanguageProvider>

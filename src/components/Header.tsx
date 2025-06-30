@@ -21,7 +21,7 @@ const Header: React.FC = () => {
   // Обновляем путь для кнопки Home на роутер
   const navItems = [
     { name: t.home,     to: '/' },
-    { name: 'Sale', to: '#about' },
+    { name: 'Sale', to: '/sale' },
     { name: 'For Partner', to: '#services' },
     { name: t.projects, to: '#projects' },
     { name: 'CC Guide', to: '#contact' },  
