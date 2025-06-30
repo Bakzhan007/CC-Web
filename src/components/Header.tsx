@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
-import TopHeader from './TopHeader'
+import TopHeader, { topHeaderLinks } from './TopHeader'
 // два варианта логотипа: светлый и тёмный
 import logoDark  from '../assets/logo/logo-dark-hor.png';
 
@@ -33,8 +33,8 @@ const Header: React.FC = () => {
       <div
         className={`transition-colors duration-300 ${
           isScrolled
-            ? 'bg-white/95 shadow-md border-b border-slate-200'
-            : 'bg-gradient-to-r from-white via-blue-100 to-blue-300 backdrop-blur-md'
+            ? 'bg-white shadow-sm border-b border-slate-200'
+            : 'bg-white/80 backdrop-blur-md border-b border-slate-200'
         }`}
       >
         <div className="container mx-auto px-4">
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.to}
-                  className={`group relative font-medium transition-colors ${
+                  className={`group relative transition-colors ${
                     isScrolled
                       ? 'text-slate-700 hover:text-blue-600'
                       : 'text-slate-700 hover:text-blue-600'
@@ -67,8 +67,7 @@ const Header: React.FC = () => {
             
               <a
                 href="tel:+77006363631"
-               className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-md transition-colors"
-              >
+                className="hidden lg:flex items-center space-x-2 px-3 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition-colors"              >
                 <Phone size={16} />
                 <span className="text-sm">+7 (700) 636-36-31</span>
               </a>
@@ -119,6 +118,32 @@ const Header: React.FC = () => {
                     <Mail size={16} />
                     <span>info@caspiancoast.com</span>
                   </a>
+                </div>
+                
+                <div className="px-4 py-2 border-t border-slate-200 mt-4 space-y-1">
+                  {topHeaderLinks.map((link) => (
+                    link.to ? (
+                      <Link
+                        key={link.label}
+                        to={link.to}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
+                      >
+                        <link.icon size={16} />
+                        <span>{link.label}</span>
+                      </Link>
+                    ) : (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
+                      >
+                        <link.icon size={16} />
+                        <span>{link.label}</span>
+                      </a>
+                    )
+                  ))}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Building2, Newspaper, Briefcase, Percent, Book, List } from 'lucide-react'
+import { Building2, Newspaper, Briefcase, Percent, Book } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
 import TelegramIcon from './icons/TelegramIcons'
@@ -10,23 +10,25 @@ export interface TopHeaderProps {
   visible?: boolean
 }
 
+export const topHeaderLinks = [
+  { label: 'News', to: '/news', icon: Newspaper },
+  { label: 'Real estate agencies', to: '/agencies', icon: Building2 },
+  { label: 'Career', href: '/career', icon: Briefcase },
+  { label: 'commerce', to: '/commerce', icon: Percent },
+  { label: 'ABC', href: '#', icon: Book },
+]
+
 const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
+    const [mobileOpen, setMobileOpen] = useState(false)
+
   if (!visible) return null
 
-  const links = [
-    { label: 'News', to: '/news', icon: Newspaper },
-    { label: 'Real estate agencies', to: '/agencies', icon: Building2 },
-    { label: 'Career', href: '/career', icon: Briefcase },
-    { label: 'commerce', to: '/commerce', icon: Percent },
-    { label: 'ABC', href: '#', icon: Book },
-  ]
-
   return (
-    <div className="bg-gradient-to-r from-white via-blue-100 to-blue-300 text-[#324154] text-sm shadow">
-      <div className="container mx-auto flex h-12 items-center justify-between px-6">
+    <div className="hidden md:block bg-white text-slate-700 text-sm border-b">
+      <div className="container mx-auto flex h-10 items-center justify-between px-6">
         {/* Навигация */}
-        <nav className="flex space-x-8">
-          {links.map((link) => (
+        <nav className="hidden md:flex space-x-8">
+          {topHeaderLinks.map((link) => (
             link.to ? (
               <Link
                 key={link.label}
@@ -49,8 +51,16 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
           ))}
         </nav>
 
+        {/* Кнопка мобильного меню */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-white/40 text-[#324154]"
+          aria-label="Toggle top menu"
+        >
+        </button>
+
         {/* Селектор языка и мессенджеры */}
-        <div className="flex items-center space-x-3 text-white">
+        <div className="flex items-center space-x-3 text-slate-500">
             <a href="#" aria-label="WhatsApp" className="hover:opacity-80">
               <WhatsappIcon className="w-5 h-5" />
             </a>
