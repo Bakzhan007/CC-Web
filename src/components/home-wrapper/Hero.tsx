@@ -1,4 +1,5 @@
 import { ChevronRight, Award, Users, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Hero = () => {
@@ -30,13 +31,18 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
-              <span>{t.startProject}</span>
+            <Link
+              to="#contact"
+              className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+            >              <span>{t.startProject}</span>
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 backdrop-blur-sm hover:bg-white/10">
+            </Link>
+            <Link
+              to="#projects"
+              className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 backdrop-blur-sm hover:bg-white/10"
+            >
               {t.viewWork}
-            </button>
+            </Link>
           </div>
 
           {/* Stats */}

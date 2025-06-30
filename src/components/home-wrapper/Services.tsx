@@ -1,6 +1,5 @@
-import React from 'react';
 import { Building2, Home, Wrench, Paintbrush, TreePine, Zap } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Services = () => {
   const { t } = useLanguage();

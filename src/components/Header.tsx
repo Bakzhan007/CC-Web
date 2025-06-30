@@ -18,12 +18,13 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Обновляем путь для кнопки Home на роутер
   const navItems = [
-    { name: t.home, to: '#home' },
-    { name: t.about, to: '#about' },
-    { name: t.services, to: '#services' },
+    { name: t.home,     to: '/' },
+    { name: 'Sale', to: '#about' },
+    { name: 'Partner', to: '#services' },
     { name: t.projects, to: '#projects' },
-    { name: t.contact, to: '#contact' },
+    { name: 'CC Guide', to: '#contact' },  
   ]
 
   return (
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
            {/* Логотип переключается и ведёт на главную страницу */}
             <Link to="/" className="logo">
               <img
-                src={isScrolled ? logoDark : logoDark}
+                src={logoDark}
                 alt="CaspianCoast Logo"
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
               />
@@ -66,7 +67,8 @@ const Header: React.FC = () => {
             
               <a
                 href="tel:+77006363631"
-               className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-md transition-colors"              >
+               className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-md transition-colors"
+              >
                 <Phone size={16} />
                 <span className="text-sm">+7 (700) 636-36-31</span>
               </a>
