@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Building2, Newspaper, Briefcase, Percent, Book } from 'lucide-react'
+import { Building2, Newspaper, Briefcase, Percent, Book, List } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
 import TelegramIcon from './icons/TelegramIcons'
@@ -18,6 +18,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
     { label: 'Real estate agencies', to: '/agencies', icon: Building2 },
     { label: 'Career', href: '/career', icon: Briefcase },
     { label: 'commerce', to: '/commerce', icon: Percent },
+    { label: 'Properties', to: '/properties', icon: List },
     { label: 'ABC', href: '#', icon: Book },
   ]
 

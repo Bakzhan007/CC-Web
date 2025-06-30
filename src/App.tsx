@@ -6,8 +6,6 @@ import News from './pages/News';
 import Career from './pages/Career';
 import Commerce from './pages/Commerce';
 
-
-
 function App() {
   return (
     <LanguageProvider>
