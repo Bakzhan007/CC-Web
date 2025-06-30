@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import TopHeader from './TopHeader'
 // два варианта логотипа: светлый и тёмный
-import logoLight from '../assets/image/logo-light-hor.png';
 import logoDark  from '../assets/image/logo-dark-hor.png';
 
 const Header: React.FC = () => {
@@ -39,13 +38,14 @@ const Header: React.FC = () => {
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-            {/* Логотип переключается */}
-            <div className="logo">
+           {/* Логотип переключается и ведёт на главную страницу */}
+            <Link to="/" className="logo">
               <img
                 src={isScrolled ? logoDark : logoDark}
                 alt="CaspianCoast Logo"
-                className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"              />
-            </div>
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+              />
+            </Link>
 
             {/* Десктопная навигация */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">

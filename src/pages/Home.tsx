@@ -1,10 +1,9 @@
-import React from 'react';
 import Header from '../components/Header';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Services from '../components/Services';
-import Projects from '../components/Projects';
-import Contact from '../components/Contact';
+import Hero from '../components/home-wrapper/Hero';
+import About from '../components/home-wrapper/About';
+import Services from '../components/home-wrapper/Services';
+import Projects from '../components/home-wrapper/Projects';
+import Contact from '../components/home-wrapper/Contact';
 import Footer from '../components/Footer';
 
 function Home() {

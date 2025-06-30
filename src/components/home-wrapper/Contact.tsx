@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Contact = () => {
   const { t } = useLanguage();

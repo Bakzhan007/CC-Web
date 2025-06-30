@@ -1,5 +1,5 @@
 import { ChevronRight, Award, Users, Building2 } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Hero = () => {
   const { t } = useLanguage();

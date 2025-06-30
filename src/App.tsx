@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Home from './pages/Home';
 import Agencies from './pages/Agencies';
-import News from './pages/news';
+import News from './pages/News';
 import Career from './pages/Career';
 
 

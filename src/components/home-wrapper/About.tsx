@@ -1,5 +1,5 @@
 import { CheckCircle, Target, Zap, Shield } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const About = () => {
   const { t } = useLanguage();
