@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import TopHeader, { topHeaderLinks } from './TopHeader'
 // два варианта логотипа: светлый и тёмный
@@ -13,6 +13,7 @@ const Header: React.FC = () => {
   const { t } = useLanguage()
   const navigate = useNavigate()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const location = useLocation()
 
   // Закрытие dropdown при клике вне
   useEffect(() => {
@@ -25,12 +26,14 @@ const Header: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Изменение фона шапки при скролле
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Сброс dropdown при закрытии мобильного меню
   useEffect(() => {
     if (!isMenuOpen) setOpenDropdown(null)
   }, [isMenuOpen])
@@ -49,6 +52,14 @@ const Header: React.FC = () => {
       ],
     },
   ]
+
+  const handleNavigate = (path: string) => {
+    if (location.pathname !== path) {
+      navigate(path)
+    }
+    setIsMenuOpen(false)
+    setOpenDropdown(null)
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -76,14 +87,12 @@ const Header: React.FC = () => {
                   <div key={item.name} className="relative">
                     <button
                       onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center space-x-1 text-slate-700 hover:text-blue-600 focus:outline-none"
+                      className="flex items-center space-x-1 text-slate-700 hover:text-blue-600"
                     >
                       <span>{item.name}</span>
                       <ChevronDown
                         size={14}
-                        className={`transition-transform ${
-                          openDropdown === item.name ? 'rotate-180' : ''
-                        }`}
+                        className={`transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`}  
                       />
                     </button>
                     {openDropdown === item.name && (
@@ -105,7 +114,7 @@ const Header: React.FC = () => {
                 ) : (
                   <Link
                     key={item.name}
-                    to={item.to!}
+                    to={item.to}
                     className="relative group text-slate-700 hover:text-blue-600"
                   >
                     <span>{item.name}</span>
@@ -113,7 +122,6 @@ const Header: React.FC = () => {
                   </Link>
                 )
               )}
-
               <a
                 href="tel:+77006363631"
                 className="hidden lg:flex items-center space-x-2 px-3 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition-colors"
@@ -140,51 +148,40 @@ const Header: React.FC = () => {
                   item.subItems ? (
                     <div key={item.name}>
                       <button
-                        onClick={() =>
-                          setOpenDropdown(openDropdown === item.name ? null : item.name)
-                        }
+                        onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
                         className="flex w-full items-center justify-between px-4 py-2 font-medium text-slate-700"
                       >
                         <span>{item.name}</span>
                         <ChevronDown
                           size={16}
-                          className={`transition-transform ${
-                            openDropdown === item.name ? 'rotate-180' : ''
-                          }`}
+                          className={`transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`}
                         />
                       </button>
                       {openDropdown === item.name && (
                         <div className="space-y-1">
                           {item.subItems.map(sub => (
-                            <Link
+                            <button
                               key={sub.name}
-                              to={sub.to}
-                              onClick={() => {
-                                setIsMenuOpen(false)
-                                setOpenDropdown(null)
-                              }}
+                              onClick={() => handleNavigate(sub.to)}
                               className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
                             >
                               {sub.name}
-                            </Link>
+                            </button>
                           ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <Link
+                    <button
                       key={item.name}
-                      to={item.to!}
-                      onClick={() => {
-                        setIsMenuOpen(false)
-                        setOpenDropdown(null)
-                      }}
+                      onClick={() => handleNavigate(item.to)}
                       className="block px-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
                     >
                       {item.name}
-                    </Link>
+                    </button>
                   )
                 )}
+
                 <div className="px-4 py-2 border-t border-slate-200 mt-4">
                   <a
                     href="tel:+77006363631"
@@ -201,29 +198,23 @@ const Header: React.FC = () => {
                     <span>info@caspiancoast.com</span>
                   </a>
                 </div>
+
                 <div className="px-4 py-2 border-t border-slate-200 mt-4 space-y-1">
                   {topHeaderLinks(t).map(link =>
                     link.to ? (
-                      <Link
+                      <button
                         key={link.label}
-                        to={link.to}
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          setOpenDropdown(null)
-                        }}
+                        onClick={() => handleNavigate(link.to!)}
                         className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
                       >
                         <link.icon size={16} />
                         <span>{link.label}</span>
-                      </Link>
+                      </button>
                     ) : (
                       <a
                         key={link.label}
                         href={link.href}
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          setOpenDropdown(null)
-                        }}
+                        onClick={() => setIsMenuOpen(false)}
                         className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
                       >
                         <span>{link.label}</span>
