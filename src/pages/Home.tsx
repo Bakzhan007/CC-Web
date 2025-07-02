@@ -2,8 +2,8 @@ import Header from '../components/Header';
 import Hero from '../components/home-wrapper/Hero';
 import About from '../components/home-wrapper/About';
 import Services from '../components/home-wrapper/Services';
-import Projects from '../components/home-wrapper/Projects';
-import Contact from '../components/home-wrapper/Contact';
+import Values from '../components/home-wrapper/Values';
+import Stats from '../components/home-wrapper/Stats';import Contact from '../components/home-wrapper/Contact';
 import Footer from '../components/Footer';
 
 function Home() {
@@ -14,7 +14,8 @@ function Home() {
         <Hero />
         <About />
         <Services />
-        <Projects />
+        <Values />
+        <Stats />        
         <Contact />
       </main>
       <Footer />
