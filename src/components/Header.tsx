@@ -160,13 +160,16 @@ const Header: React.FC = () => {
                       {openDropdown === item.name && (
                         <div className="space-y-1">
                           {item.subItems.map(sub => (
-                            <button
+                            <Link
                               key={sub.name}
-                              onClick={() => handleNavigate(sub.to)}
-                              className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
+                              to={sub.to}
+                              onClick={() => {
+                                setIsMenuOpen(false)
+                                setOpenDropdown(null)
+                              }}                              className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
                             >
                               {sub.name}
-                            </button>
+                            </Link>
                           ))}
                         </div>
                       )}
