@@ -1,4 +1,4 @@
-import { ChevronRight, Award, Users, Building2 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -44,38 +44,6 @@ const Hero = () => {
               {t.viewWork}
             </Link>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mb-3 backdrop-blur-sm">
-                <Building2 size={32} className="text-blue-400" />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">150+</div>
-              <div className="text-slate-300">{t.projectsCompleted}</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mb-3 backdrop-blur-sm">
-                <Users size={32} className="text-blue-400" />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">25</div>
-              <div className="text-slate-300">{t.yearsExperience}</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mb-3 backdrop-blur-sm">
-                <Award size={32} className="text-blue-400" />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">50+</div>
-              <div className="text-slate-300">{t.awardsWon}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
