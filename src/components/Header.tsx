@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     { name: t.home, to: '/' },
     { name: 'Sale', to: '/sale' },
     { name: 'For Partner', to: '/partner' },
-    { name: t.projects, to: '#projects' },
+    { name: t.projects, to: '/projects' },
     { name: 'CC Guide', to: '#contact' },
   ]
 
