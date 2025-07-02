@@ -13,6 +13,9 @@ export interface Translation {
   topCareer: string;
   topCommerce: string;
   topAbc: string;
+  guideSalesOffice: string;
+  guideFaq: string;
+  guideAfterPurchase: string;
   
   // Hero Section
   heroTitle: string;
@@ -170,6 +173,10 @@ export const translations: Record<string, Translation> = {
     topCareer: 'Career',
     topCommerce: 'commerce',
     topAbc: 'ABC',
+    guideSalesOffice: 'Sales Office',
+    guideFaq: 'FAQ',
+    guideAfterPurchase: 'What to do after purchase',
+
     
     // Hero Section
     heroTitle: 'Building Dreams,',
@@ -326,7 +333,10 @@ export const translations: Record<string, Translation> = {
     topCareer: 'Карьера',
     topCommerce: 'Коммерция',
     topAbc: 'ABC',
-    
+    guideSalesOffice: 'Отдел продаж',
+    guideFaq: 'FAQ',
+    guideAfterPurchase: 'Что делать после покупки',
+
     // Hero Section
     heroTitle: 'Строим мечты,',
     heroSubtitle: 'Создаем наследие',
@@ -482,6 +492,9 @@ export const translations: Record<string, Translation> = {
     topCareer: 'Мансап',
     topCommerce: 'Сауда',
     topAbc: 'ABC',
+    guideSalesOffice: 'Сату бөлімі',
+    guideFaq: 'Жиі қойылатын сұрақтар',
+    guideAfterPurchase: 'Сатып алғаннан кейін не істеу керек',
     
     // Hero Section
     heroTitle: 'Арман құрамыз,',
