@@ -1,5 +1,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin as LinkedIn, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom'
+import logoLight  from '../assets/logo/logo-light-hor.png';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -36,10 +38,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">CC</span>
-              </div>
-              <h3 className="text-2xl font-bold">CaspianCoast</h3>
+              <Link to="/" className="logo">
+                <img
+                  src={logoLight}
+                  alt="CaspianCoast Logo"
+                  className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+                />
+            </Link>
             </div>
             <p className="text-slate-300 mb-6 leading-relaxed">
               {t.footerDescription}
@@ -47,7 +52,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-blue-400" />
-                <span className="text-slate-300">+1 (234) 567-890</span>
+                <span className="text-slate-300">+7 (700) 636-36-31</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-blue-400" />

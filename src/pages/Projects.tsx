@@ -18,81 +18,42 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Caspian Business Center',
-      category: 'commercial',
+      title: 'ЖК Ilan Towers',
+      category: 'residential',
       location: 'Downtown District',
-      year: '2023',
+      year: '2025',
       image:
         'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800',
       description:
         'A modern 15-story office complex featuring sustainable design and state-of-the-art facilities.',
       area: '45,000 sq ft',
-      status: 'completed'
+      status: 'inProgress'
     },
     {
       id: 2,
-      title: 'Seaside Luxury Residences',
+      title: 'ЖК Taras',
       category: 'residential',
       location: 'Coastal Avenue',
-      year: '2023',
+      year: '2025',
       image:
         'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
       description:
         'Premium residential development with panoramic sea views and luxury amenities.',
       area: '120 Units',
-      status: 'completed'
+      status: 'inProgress'
     },
     {
       id: 3,
-      title: 'Industrial Park Phase I',
-      category: 'industrial',
+      title: 'ЖК Caspian Coast',
+      category: 'residential',
       location: 'East Industrial Zone',
-      year: '2024',
+      year: '2025',
       image:
         'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
       description:
         'State-of-the-art manufacturing facility with advanced logistics infrastructure.',
       area: '75,000 sq ft',
-      status: 'inProgress'
-    },
-    {
-      id: 4,
-      title: 'Heritage Mall Renovation',
-      category: 'commercial',
-      location: 'City Center',
-      year: '2024',
-      image:
-        'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description:
-        'Complete modernization of historic shopping center with contemporary retail spaces.',
-      area: '200,000 sq ft',
-      status: 'inProgress'
-    },
-    {
-      id: 5,
-      title: 'Garden Villas Community',
-      category: 'residential',
-      location: 'Suburban Hills',
-      year: '2022',
-      image:
-        'https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description:
-        'Eco-friendly residential community with integrated green spaces and smart home technology.',
-      area: '80 Villas',
       status: 'completed'
-    },
-    {
-      id: 6,
-      title: 'Tech Hub Office Complex',
-      category: 'commercial',
-      location: 'Innovation District',
-      year: '2024',
-      image:
-        'https://images.pexels.com/photos/443383/pexels-photo-443383.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description:
-        'Modern workspace designed for technology companies with flexible office layouts.',
-      area: '60,000 sq ft',
-      status: 'planning'
     }
   ];
 

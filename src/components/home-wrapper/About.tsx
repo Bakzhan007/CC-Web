@@ -1,4 +1,7 @@
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Link } from 'react-router-dom'
+import home1  from '../../assets/image/home1.jpg';
+
 
 const About = () => {
   const { t } = useLanguage();
@@ -32,16 +35,18 @@ const About = () => {
 
           {/* Image */}
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl
+                            h-[300px] sm:h-[400px] md:h-[400px] lg:h-[400px]">
               <img
-                src="https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Construction team at work"
-                className="w-full h-96 object-cover"
+                src={home1}
+                alt="CaspianCoast — наши достижения"
+                className="w-full h-full object-cover transition-all duration-300"
               />
+              {/* градиент-оверлей сверху */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
             </div>
-
           </div>
+
         </div>
       </div>
     </section>

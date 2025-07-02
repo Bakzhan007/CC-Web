@@ -8,7 +8,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: t.phone,
-      details: ['+1 (234) 567-890', '+1 (234) 567-891'],
+      details: ['+7 (700) 636-36-31', '+1 (234) 567-891'],
       action: 'tel:+1234567890'
     },
     {
