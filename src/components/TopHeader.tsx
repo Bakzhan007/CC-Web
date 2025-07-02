@@ -4,22 +4,25 @@ import { Building2, Newspaper, Briefcase, Percent, Book } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
 import TelegramIcon from './icons/TelegramIcons'
+import { useLanguage } from '../contexts/LanguageContext'
+import { Translation } from '../utils/translations'
 
 export interface TopHeaderProps {
   /** Показывать шапку или скрыть */
   visible?: boolean
 }
 
-export const topHeaderLinks = [
-  { label: 'News', to: '/news', icon: Newspaper },
-  { label: 'Real estate agencies', to: '/agencies', icon: Building2 },
-  { label: 'Career', href: '/career', icon: Briefcase },
-  { label: 'commerce', to: '/commerce', icon: Percent },
-  { label: 'ABC', href: '#', icon: Book },
+export const topHeaderLinks = (t: Translation) => [
+  { label: t.topNews, to: '/news', icon: Newspaper },
+  { label: t.topAgencies, to: '/agencies', icon: Building2 },
+  { label: t.topCareer, href: '/career', icon: Briefcase },
+  { label: t.topCommerce, to: '/commerce', icon: Percent },
+  { label: t.topAbc, href: '#', icon: Book },
 ]
 
 const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
     const [mobileOpen, setMobileOpen] = useState(false)
+    const { t } = useLanguage()
 
   if (!visible) return null
 
@@ -28,7 +31,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
       <div className="container mx-auto flex h-10 items-center justify-between px-6">
         {/* Навигация */}
         <nav className="hidden md:flex space-x-8">
-          {topHeaderLinks.map((link) => (
+          {topHeaderLinks(t).map((link) => (
             link.to ? (
               <Link
                 key={link.label}

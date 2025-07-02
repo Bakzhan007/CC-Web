@@ -5,6 +5,14 @@ export interface Translation {
   services: string;
   projects: string;
   contact: string;
+  sale: string;
+  forPartner: string;
+  ccGuide: string;
+  topNews: string;
+  topAgencies: string;
+  topCareer: string;
+  topCommerce: string;
+  topAbc: string;
   
   // Hero Section
   heroTitle: string;
@@ -154,6 +162,14 @@ export const translations: Record<string, Translation> = {
     services: 'Services',
     projects: 'Projects',
     contact: 'Contact',
+    sale: 'Sale',
+    forPartner: 'For Partner',
+    ccGuide: 'CC Guide',
+    topNews: 'News',
+    topAgencies: 'Real estate agencies',
+    topCareer: 'Career',
+    topCommerce: 'commerce',
+    topAbc: 'ABC',
     
     // Hero Section
     heroTitle: 'Building Dreams,',
@@ -302,6 +318,14 @@ export const translations: Record<string, Translation> = {
     services: 'Услуги',
     projects: 'Проекты',
     contact: 'Контакты',
+    sale: 'Продажа',
+    forPartner: 'Партнерам',
+    ccGuide: 'CC Гид',
+    topNews: 'Новости',
+    topAgencies: 'Агентства недвижимости',
+    topCareer: 'Карьера',
+    topCommerce: 'Коммерция',
+    topAbc: 'ABC',
     
     // Hero Section
     heroTitle: 'Строим мечты,',
@@ -450,6 +474,14 @@ export const translations: Record<string, Translation> = {
     services: 'Қызметтер',
     projects: 'Жобалар',
     contact: 'Байланыс',
+    sale: 'Сатылым',
+    forPartner: 'Серіктестерге',
+    ccGuide: 'CC Гид',
+    topNews: 'Жаңалықтар',
+    topAgencies: 'Жылжымайтын мүлік агенттіктері',
+    topCareer: 'Мансап',
+    topCommerce: 'Сауда',
+    topAbc: 'ABC',
     
     // Hero Section
     heroTitle: 'Арман құрамыз,',

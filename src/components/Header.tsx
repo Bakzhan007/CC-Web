@@ -21,8 +21,8 @@ const Header: React.FC = () => {
   // Обновляем путь для кнопки Home на роутер
   const navItems = [
     { name: t.home, to: '/' },
-    { name: 'Sale', to: '/sale' },
-    { name: 'For Partner', to: '/partner' },
+    { name: t.sale, to: '/sale' },
+    { name: t.forPartner, to: '/partner' },
     { name: t.projects, to: '/projects' },
     { name: 'CC Guide', to: '#contact' },
   ]
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
                 </div>
                 
                 <div className="px-4 py-2 border-t border-slate-200 mt-4 space-y-1">
-                  {topHeaderLinks.map((link) => (
+                  {topHeaderLinks(t).map((link) => (
                     link.to ? (
                       <Link
                         key={link.label}
