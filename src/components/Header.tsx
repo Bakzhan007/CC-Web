@@ -20,11 +20,11 @@ const Header: React.FC = () => {
 
   // Обновляем путь для кнопки Home на роутер
   const navItems = [
-    { name: t.home,     to: '/' },
+    { name: t.home, to: '/' },
     { name: 'Sale', to: '/sale' },
-    { name: 'For Partner', to: '#services' },
+    { name: 'For Partner', to: '/partner' },
     { name: t.projects, to: '#projects' },
-    { name: 'CC Guide', to: '#contact' },  
+    { name: 'CC Guide', to: '#contact' },
   ]
 
   return (
