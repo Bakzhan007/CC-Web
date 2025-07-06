@@ -93,6 +93,18 @@ export interface Translation {
       features: string[];
     };
   };
+
+  whyChooseUsTitle: string;
+  whyChooseUsSubtitle?: string;
+  whyChooseUsList: {
+    quality: { title: string; description: string };
+    accuracy: { title: string; description: string };
+    mobility: { title: string; description: string };
+    experience: { title: string; description: string };
+    development: { title: string; description: string };
+    innovation: { title: string; description: string };
+  };
+
   readyToStart: string;
   readyToStartDescription: string;
   getFreeConsultation: string;
@@ -143,6 +155,8 @@ export interface Translation {
   };
   message: string;
   messagePlaceholder: string;
+
+  contactUs: string;
   
   // Footer
   footerDescription: string;
@@ -254,10 +268,38 @@ export const translations: Record<string, Translation> = {
         description: 'Eco-friendly construction practices and green building solutions for a sustainable future.',
         features: ['LEED Certification', 'Solar Integration', 'Energy Efficiency', 'Sustainable Materials']
       },
-      management: {
-        title: 'Project Management',
-        description: 'End-to-end project management ensuring timely delivery and budget compliance.',
-        features: ['Timeline Management', 'Quality Control', 'Budget Oversight', 'Permit Handling']
+    management: {
+      title: 'Project Management',
+      description: 'End-to-end project management ensuring timely delivery and budget compliance.',
+      features: ['Timeline Management', 'Quality Control', 'Budget Oversight', 'Permit Handling']
+    }
+  },
+    whyChooseUsTitle: 'Why Choose Us',
+    whyChooseUsSubtitle: 'Benefits of working with our team',
+    whyChooseUsList: {
+      quality: {
+        title: 'Quality & Guarantee',
+        description: 'We deliver reliable results backed by our professional warranty.'
+      },
+      accuracy: {
+        title: 'Precision & Efficiency',
+        description: 'Projects are completed on time with meticulous attention to detail.'
+      },
+      mobility: {
+        title: 'Mobility & Readiness',
+        description: 'Our crews can quickly mobilize to meet your needs wherever you are.'
+      },
+      experience: {
+        title: 'Extensive Experience',
+        description: 'Years of expertise allow us to tackle projects of any complexity.'
+      },
+      development: {
+        title: 'Continual Development',
+        description: 'We constantly evolve by adopting new methods and technologies.'
+      },
+      innovation: {
+        title: 'Bold Innovation',
+        description: 'We embrace creative solutions that move the industry forward.'
       }
     },
     readyToStart: 'Ready to Start Your Project?',
@@ -309,7 +351,9 @@ export const translations: Record<string, Translation> = {
     },
     message: 'Message',
     messagePlaceholder: 'Tell us about your project...',
-    
+
+    contactUs: 'Contact Us',
+  
     // Footer
     footerDescription: 'Building the future along the Caspian Coast with excellence, innovation, and sustainable practices for over 25 years.',
     ourServices: 'Our Services',
@@ -424,6 +468,34 @@ export const translations: Record<string, Translation> = {
         features: ['Управление временем', 'Контроль качества', 'Надзор за бюджетом', 'Обработка разрешений']
       }
     },
+    whyChooseUsTitle: 'Почему выбирают нас',
+    whyChooseUsSubtitle: 'Наши преимущества',
+    whyChooseUsList: {
+      quality: {
+        title: 'Качество и гарантия',
+        description: 'Мы гарантируем надежный результат и высокие стандарты выполнения работ.'
+      },
+      accuracy: {
+        title: 'Точность и оперативность',
+        description: 'Выполняем проекты точно в срок, соблюдая все требования.'
+      },
+      mobility: {
+        title: 'Мобильность и готовность',
+        description: 'Быстро реагируем и выезжаем на объект при необходимости.'
+      },
+      experience: {
+        title: 'Огромный опыт работы',
+        description: 'Накопленные знания помогают успешно решать сложные задачи.'
+      },
+      development: {
+        title: 'Постоянное развитие',
+        description: 'Мы внедряем современные технологии и улучшаем процессы.'
+      },
+      innovation: {
+        title: 'Смелость и новаторство',
+        description: 'Используем креативные идеи и нестандартные решения.'
+      }
+    },
     readyToStart: 'Готовы начать свой проект?',
     readyToStartDescription: 'Давайте обсудим, как мы можем воплотить ваше строительное видение в жизнь с нашим опытом и преданностью.',
     getFreeConsultation: 'Получить бесплатную консультацию',
@@ -473,6 +545,8 @@ export const translations: Record<string, Translation> = {
     },
     message: 'Сообщение',
     messagePlaceholder: 'Расскажите нам о вашем проекте...',
+
+    contactUs: 'Связаться с нами',
     
     // Footer
     footerDescription: 'Строим будущее на побережье Каспийского моря с совершенством, инновациями и устойчивыми практиками уже более 25 лет.',
@@ -588,6 +662,34 @@ export const translations: Record<string, Translation> = {
         features: ['Уақыт басқаруы', 'Сапа бақылауы', 'Бюджет қадағалауы', 'Рұқсат беру']
       }
     },
+        whyChooseUsTitle: 'Неліктен бізді таңдайды',
+    whyChooseUsSubtitle: 'Біздің артықшылықтарымыз',
+    whyChooseUsList: {
+      quality: {
+        title: 'Сапа және кепілдік',
+        description: 'Жобаларды жоғары стандарттарда орындап, нәтижесіне кепілдік береміз.'
+      },
+      accuracy: {
+        title: 'Дәлдік пен жеделдік',
+        description: 'Барлық талаптарды сақтай отырып, жұмыстарды уақытында аяқтаймыз.'
+      },
+      mobility: {
+        title: 'Мобильдік және дайындық',
+        description: 'Қажет жерде тез арада жұмысқа кірісуге әрдайым дайынбыз.'
+      },
+      experience: {
+        title: 'Үлкен тәжірибе',
+        description: 'Жинақталған білім күрделі жобаларды да сәтті жүзеге асыруға мүмкіндік береді.'
+      },
+      development: {
+        title: 'Үздіксіз даму',
+        description: 'Жаңа әдістер мен технологияларды тұрақты енгіземіз.'
+      },
+      innovation: {
+        title: 'Жаңашылдық',
+        description: 'Салада алға жылжуға мүмкіндік беретін креативті шешімдерді қолданамыз.'
+      }
+    },
     readyToStart: 'Жобаңызды бастауға дайынсыз ба?',
     readyToStartDescription: 'Біздің тәжірибе мен адалдығымызбен сіздің құрылыс көріністеріңізді қалай өмірге келтіруге болатынын талқылайық.',
     getFreeConsultation: 'Тегін кеңес алу',
@@ -637,6 +739,8 @@ export const translations: Record<string, Translation> = {
     },
     message: 'Хабарлама',
     messagePlaceholder: 'Жобаңыз туралы айтыңыз...',
+
+    contactUs: 'Бізбен байланысу',
     
     // Footer
     footerDescription: 'Каспий жағалауында 25 жылдан астам уақыт бойы кереметтілік, инновация және тұрақты тәжірибелермен болашақты құрамыз.',
