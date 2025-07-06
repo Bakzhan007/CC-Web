@@ -195,10 +195,10 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Awards Won',
     
     // About Section
-    aboutTitle: '25 Years of',
-    aboutSubtitle: 'Excellence',
-    aboutDescription1: 'CaspianCoast has been at the forefront of construction and development along the Caspian region, transforming architectural visions into reality with unmatched craftsmanship and innovation.',
-    aboutDescription2: 'From luxury residential complexes to commercial landmarks, we bring together traditional building expertise with cutting-edge sustainable practices to create structures that stand the test of time.',
+    aboutTitle: 'Briefly',
+    aboutSubtitle: 'about as',
+    aboutDescription1: 'Caspian Coast LLP was founded in 2017 with the purpose of providing high-quality construction services in the sphere of civil and industrial construction. Over the years of its activities, the company as successfuly implemented a lot of projects, including residential complexes, office building, as well ass infrastructure and industrial facilities.',
+    aboutDescription2: 'Caspian Coast has carried out a range of key infrastructure projects on the Caspian Sea coast and throughout the Mangystau region: constructing a production facility in Aktau, a 100 000-bird poultry farm in Bayandy, installing water and gas networks for agricultural and administrative sites, delivering engineering services to residential districts, establishing an auto service center with car wash and parking, developing a recreation base, and completing numerous other works across the region.',
     ourAchievements: 'Our Achievements',
     achievements: {
       iso: 'ISO 9001:2015 Certified Quality Management',

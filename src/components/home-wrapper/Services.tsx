@@ -1,103 +1,87 @@
-import { Building2, Home, Wrench, Paintbrush, TreePine, Zap } from 'lucide-react';
+import { Shield, Target, Truck, Users, RefreshCw, Zap } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-const Services = () => {
+const WhyChooseUs = () => {
   const { t } = useLanguage();
 
-  const services = [
+  const reasons = [
     {
-      icon: Building2,
-      title: t.servicesList.commercial.title,
-      description: t.servicesList.commercial.description,
-      features: t.servicesList.commercial.features
+      icon: Shield,
+      title: t.whyChooseUsList.quality.title,        // «Качество и гарантия»
+      description: t.whyChooseUsList.quality.description
     },
     {
-      icon: Home,
-      title: t.servicesList.residential.title,
-      description: t.servicesList.residential.description,
-      features: t.servicesList.residential.features
+      icon: Target,
+      title: t.whyChooseUsList.accuracy.title,       // «Точность и оперативность»
+      description: t.whyChooseUsList.accuracy.description
     },
     {
-      icon: Wrench,
-      title: t.servicesList.renovation.title,
-      description: t.servicesList.renovation.description,
-      features: t.servicesList.renovation.features
+      icon: Truck,
+      title: t.whyChooseUsList.mobility.title,       // «Мобильность и готовность»
+      description: t.whyChooseUsList.mobility.description
     },
     {
-      icon: Paintbrush,
-      title: t.servicesList.design.title,
-      description: t.servicesList.design.description,
-      features: t.servicesList.design.features
+      icon: Users,
+      title: t.whyChooseUsList.experience.title,     // «Огромный опыт работы»
+      description: t.whyChooseUsList.experience.description
     },
     {
-      icon: TreePine,
-      title: t.servicesList.sustainable.title,
-      description: t.servicesList.sustainable.description,
-      features: t.servicesList.sustainable.features
+      icon: RefreshCw,
+      title: t.whyChooseUsList.development.title,    // «Постоянное развитие»
+      description: t.whyChooseUsList.development.description
     },
     {
       icon: Zap,
-      title: t.servicesList.management.title,
-      description: t.servicesList.management.description,
-      features: t.servicesList.management.features
+      title: t.whyChooseUsList.innovation.title,     // «Смелость и новаторство»
+      description: t.whyChooseUsList.innovation.description
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="why-choose-us" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            {t.servicesTitle}
-            <span className="text-blue-600"> {t.servicesSubtitle}</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            {t.whyChooseUsTitle /* «Почему выбирают нас» */}
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            {t.servicesDescription}
-          </p>
+          {t.whyChooseUsSubtitle && (
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              {t.whyChooseUsSubtitle}
+            </p>
+          )}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="group bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-slate-200">
-              <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-                <service.icon size={28} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
-              </div>
-              
-              <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                {service.title}
-              </h3>
-              
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-slate-600">
-                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+          {reasons.map((reason, idx) => {
+            const NumberLabel = String(idx + 1).padStart(2, '0');
+            const Icon = reason.icon;
+            return (
+              <div
+                key={idx}
+                className="group bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-slate-200"
+              >
+                <div className="flex items-center mb-4">
+                  <span className="text-5xl font-bold text-blue-600 mr-3">
+                    {NumberLabel}
+                  </span>
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                    <Icon size={28} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">{t.readyToStart}</h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              {t.readyToStartDescription}
-            </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg">
-              {t.getFreeConsultation}
-            </button>
-          </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {reason.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {reason.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
 
-export default Services;
+export default WhyChooseUs;
