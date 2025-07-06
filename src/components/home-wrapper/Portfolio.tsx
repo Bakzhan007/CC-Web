@@ -1,30 +1,19 @@
 import React from 'react';
-
-const stats = [
-  { value: '500 000 м²', label: 'построенной площади' },
-  { value: '8 лет', label: 'успешной работы на рынке' },
-  { value: '50+', label: 'завершённых проектов' },
-  { value: '80+', label: 'квалифицированных сотрудников' },
-];
-
-const features = [
-  'Применение инновационных строительных технологий и материалов',
-  'Строгое соблюдение сроков и стандартов качества на всех этапах реализации проектов',
-  'Экологически устойчивый подход и использование безопасных материалов',
-  'Комплексный сервис: от проектирования и согласования до сдачи объекта «под ключ»',
-];
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Portfolio() {
+  const { t } = useLanguage();
+  const stats = t.portfolioStats;
+  const features = t.portfolioFeatures;
   return (
     <section id="portfolio" className="bg-gray-50 py-16">
       {/* Заголовок */}
       <div className="container mx-auto px-4 text-center max-w-3xl">
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-          О Нас
+          {t.portfolioTitle}
         </h2>
         <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-          ТОО «Caspian Coast» — надёжный партнёр в сфере гражданского и промышленного
-          строительства, предлагающий комплексный подход «под ключ»
+          {t.portfolioDescription}
         </p>
       </div>
 

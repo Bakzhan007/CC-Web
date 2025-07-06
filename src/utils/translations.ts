@@ -56,6 +56,12 @@ export interface Translation {
     };
   };
   years: string;
+
+  // Portfolio Section
+  portfolioTitle: string;
+  portfolioDescription: string;
+  portfolioStats: { value: string; label: string }[];
+  portfolioFeatures: string[];
   
   // Services Section
   servicesTitle: string;
@@ -237,6 +243,21 @@ export const translations: Record<string, Translation> = {
       }
     },
     years: 'Years',
+
+    portfolioTitle: 'About Us',
+    portfolioDescription: 'Caspian Coast LLP is a reliable partner in civil and industrial construction providing turnkey solutions.',
+    portfolioStats: [
+      { value: '500,000 m²', label: 'of completed area' },
+      { value: '8 years', label: 'of successful work' },
+      { value: '50+', label: 'finished projects' },
+      { value: '80+', label: 'qualified employees' }
+    ],
+    portfolioFeatures: [
+      'Use of innovative construction technologies and materials',
+      'Strict adherence to deadlines and quality standards at every stage',
+      'Environmentally sustainable approach and safe materials',
+      'Comprehensive service from design and permitting to turnkey delivery'
+    ],
     
     // Services Section
     servicesTitle: 'Our',
@@ -431,6 +452,21 @@ export const translations: Record<string, Translation> = {
       }
     },
     years: 'Лет',
+
+    portfolioTitle: 'О Нас',
+    portfolioDescription: 'ТОО «Caspian Coast» — надёжный партнёр в сфере гражданского и промышленного строительства, предлагающий комплексный подход «под ключ».',
+    portfolioStats: [
+      { value: '500 000 м²', label: 'построенной площади' },
+      { value: '8 лет', label: 'успешной работы на рынке' },
+      { value: '50+', label: 'завершённых проектов' },
+      { value: '80+', label: 'квалифицированных сотрудников' }
+    ],
+    portfolioFeatures: [
+      'Применение инновационных строительных технологий и материалов',
+      'Строгое соблюдение сроков и стандартов качества на всех этапах реализации проектов',
+      'Экологически устойчивый подход и использование безопасных материалов',
+      'Комплексный сервис: от проектирования и согласования до сдачи объекта «под ключ»'
+    ],
     
     // Services Section
     servicesTitle: 'Наши',
@@ -625,6 +661,21 @@ export const translations: Record<string, Translation> = {
       }
     },
     years: 'Жыл',
+
+    portfolioTitle: 'Біз туралы',
+    portfolioDescription: '"Caspian Coast" ЖШС — азаматтық және өнеркәсіптік құрылыс саласындағы сенімді серіктес, жобаларды толық "кілт тапсыру" форматында жүзеге асырады.',
+    portfolioStats: [
+      { value: '500 000 м²', label: 'салынған аумақ' },
+      { value: '8 жыл', label: 'табысқа толы жұмыс' },
+      { value: '50+', label: 'аяқталған жоба' },
+      { value: '80+', label: 'білікті қызметкер' }
+    ],
+    portfolioFeatures: [
+      'Құрылыс технологиялары мен материалдарының инновациялық қолданылуы',
+      'Жобалардың барлық кезеңінде мерзімдер мен сапа стандарттарын қатаң сақтау',
+      'Экологиялық тұрақты тәсіл және қауіпсіз материалдарды пайдалану',
+      'Жобалаудан бастап нысанды тапсыруға дейінгі кешенді қызмет'
+    ],
     
     // Services Section
     servicesTitle: 'Біздің',
