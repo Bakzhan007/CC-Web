@@ -8,6 +8,7 @@ import Commerce from './pages/Commerce';
 import Sale from './pages/Sale';
 import Partner from './pages/Partner';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import SalesOffice from './pages/SalesOffice';
 import Faq from './pages/Faq';
 import AfterPurchase from './pages/AfterPurchase';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/partner" element={<Partner />} />
           <Route path="/sale" element={<Sale />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/sales-office" element={<SalesOffice />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/after-purchase" element={<AfterPurchase />} />

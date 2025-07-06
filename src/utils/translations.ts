@@ -96,6 +96,12 @@ export interface Translation {
   readyToStart: string;
   readyToStartDescription: string;
   getFreeConsultation: string;
+
+
+  // Video Section
+  videoTitle: string;
+  videoSubtitle: string;
+  videoDescription: string;
   
   // Projects Section
   projectsTitle: string;
@@ -257,6 +263,11 @@ export const translations: Record<string, Translation> = {
     readyToStart: 'Ready to Start Your Project?',
     readyToStartDescription: "Let's discuss how we can bring your construction vision to life with our expertise and dedication.",
     getFreeConsultation: 'Get Free Consultation',
+
+    // Video Section
+    videoTitle: 'Watch Our',
+    videoSubtitle: 'Introduction',
+    videoDescription: 'Take a quick tour of our company and discover how we build lasting value for our clients.',
     
     // Projects Section
     projectsTitle: 'Featured',
@@ -416,6 +427,11 @@ export const translations: Record<string, Translation> = {
     readyToStart: 'Готовы начать свой проект?',
     readyToStartDescription: 'Давайте обсудим, как мы можем воплотить ваше строительное видение в жизнь с нашим опытом и преданностью.',
     getFreeConsultation: 'Получить бесплатную консультацию',
+
+        // Video Section
+    videoTitle: 'Смотрите наше',
+    videoSubtitle: 'видео',
+    videoDescription: 'Краткий обзор нашей компании и нашего подхода к строительству.',
     
     // Projects Section
     projectsTitle: 'Избранные',
@@ -575,6 +591,11 @@ export const translations: Record<string, Translation> = {
     readyToStart: 'Жобаңызды бастауға дайынсыз ба?',
     readyToStartDescription: 'Біздің тәжірибе мен адалдығымызбен сіздің құрылыс көріністеріңізді қалай өмірге келтіруге болатынын талқылайық.',
     getFreeConsultation: 'Тегін кеңес алу',
+
+    // Video Section
+    videoTitle: 'Біздің',
+    videoSubtitle: 'бейнебаянымыз',
+    videoDescription: 'Компаниямыз туралы қысқаша бейнероликті қарап шығыңыз.',
     
     // Projects Section
     projectsTitle: 'Таңдаулы',

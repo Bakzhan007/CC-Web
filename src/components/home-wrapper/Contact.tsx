@@ -20,7 +20,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: t.address,
-      details: ['123 Coastal Avenue', 'Caspian City, CC 12345'],
+      details: ['Business Center Nesibek-Nur, 16 - 22/1',],
       action: '#'
     },
     {

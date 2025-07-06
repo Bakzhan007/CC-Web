@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
+import career from '../assets/image/career1.jpg'
 import { 
   ChevronRight, 
   MapPin, 
@@ -140,25 +142,32 @@ const Career = () => {
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-600 text-white">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-              Shape the Future
-              <span className="block text-cyan-300">With Us</span>
-            </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
-              Join a team of innovators, dreamers, and builders who are creating technology 
-              that transforms industries and improves lives around the world.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
-                View Open Positions
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10">
-                Learn Our Culture
-              </button>
-            </div>
+          <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={career}
+            alt="Our partner agencies at work"
+            className="absolute inset-0 w-full h-full object-cover opacity-10"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
+          <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+            Shape the Future
+            <span className="block text-cyan-300">With Us</span>
+          </h1>
+          <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
+            Join a team of innovators, dreamers, and builders who are creating technology 
+            that transforms industries and improves lives around the world.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
+              View Open Positions
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10">
+              Learn Our Culture
+            </button>
           </div>
+        </div>
         </div>
       </section>
 

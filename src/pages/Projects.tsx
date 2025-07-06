@@ -3,6 +3,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';      // ← import Link
+import imgTaras from '../assets/image/taras.jpg'
+import imgIlan from '../assets/image/ilan_tower.jpeg'
+
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -22,8 +26,7 @@ const Projects = () => {
       category: 'residential',
       location: 'Downtown District',
       year: '2025',
-      image:
-        'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: imgIlan,
       description:
         'A modern 15-story office complex featuring sustainable design and state-of-the-art facilities.',
       area: '45,000 sq ft',
@@ -35,8 +38,7 @@ const Projects = () => {
       category: 'residential',
       location: 'Coastal Avenue',
       year: '2025',
-      image:
-        'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: imgTaras,
       description:
         'Premium residential development with panoramic sea views and luxury amenities.',
       area: '120 Units',
@@ -49,7 +51,7 @@ const Projects = () => {
       location: 'East Industrial Zone',
       year: '2025',
       image:
-        'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://storage.googleapis.com/bd-kz-01/buildings-v2/1280x960/8129.jpg',
       description:
         'State-of-the-art manufacturing facility with advanced logistics infrastructure.',
       area: '75,000 sq ft',
@@ -154,10 +156,15 @@ const Projects = () => {
                     </div>
                     <div className="flex items-center justify-between text-sm border-t pt-4">
                       <span className="font-medium text-slate-700">{project.area}</span>
-                      <button className="text-blue-600 hover:text-blue-700 flex items-center space-x-1">
+                      {/* Replace button with Link: */}
+                      <Link
+                        to={`/projects/${project.id}`}
+                        state={{ project }}
+                        className="text-blue-600 hover:text-blue-700 flex items-center space-x-1"
+                      >
                         <span>{t.learnMore}</span>
                         <ArrowRight size={14} />
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
