@@ -83,10 +83,10 @@ const Career = () => {
 
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'Senior Software Engineer',
+      name: 'Altynbek',
+      role: 'Economycs',
       image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400',
-      quote: 'The collaborative culture here is incredible. Every day brings new challenges and opportunities to grow.',
+      quote: 'Working at Caspian Coast means knowing every structure we build—from pipelines to housing estates—serves our people and economy. The team’s camaraderie and shared pride in safety standards make every day rewarding.',
       rating: 5
     },
     {
@@ -106,19 +106,19 @@ const Career = () => {
   ];
 
   const benefits = [
-    { icon: Heart, title: 'Health & Wellness', description: 'Comprehensive health, dental, and vision coverage for you and your family' },
-    { icon: GraduationCap, title: 'Learning & Development', description: '$3,000 annual learning budget and access to premium courses' },
-    { icon: Plane, title: 'Flexible PTO', description: 'Unlimited PTO policy with encouraged minimum 3 weeks annually' },
-    { icon: Coffee, title: 'Remote-First', description: 'Work from anywhere with quarterly team gatherings' },
-    { icon: Award, title: 'Equity Package', description: 'Competitive equity compensation for all full-time employees' },
+    { icon: Heart, title: 'Competitive Compensation', description: 'Market-leading salaries and project-completion bonuses.' },
+    { icon: GraduationCap, title: 'Health & Social Benefits', description: 'Comprehensive medical coverage, social insurance and annual wellness stipend.' },
+    { icon: Plane, title: 'Professional Growth', description: 'On-site training, Kazakhstan-wide project rotations, and support for certifications (e.g., PMP, ISO).' },
+    { icon: Coffee, title: 'Stable, Impactful Projects', description: 'Work on major civil, commercial and industrial developments that shape the region’s future.' },
+    { icon: Award, title: 'Strong Community', description: 'Join a tight-knit team committed to safety, quality and local economic growth.' },
     { icon: Shield, title: 'Financial Security', description: '401(k) matching and life insurance benefits' }
   ];
 
   const values = [
-    { icon: Users, title: 'Collaboration', description: 'We achieve more together than alone' },
-    { icon: Zap, title: 'Innovation', description: 'We embrace change and push boundaries' },
-    { icon: Globe, title: 'Global Impact', description: 'We build products that matter worldwide' },
-    { icon: CheckCircle, title: 'Excellence', description: 'We deliver quality in everything we do' }
+    { icon: Users, title: 'Safety First', description: 'We protect our team and communities above all else.' },
+    { icon: Zap, title: 'Quality Craftsmanship', description: 'We take pride in precision, durability and attention to detail.' },
+    { icon: Globe, title: 'Sustainability	 Impact', description: 'We minimize impact on the environment in every build.' },
+    { icon: CheckCircle, title: 'Teamwork', description: 'We achieve more by collaborating across disciplines.' }
   ];
 
   const filteredJobs = selectedCategory === 'All' 
@@ -151,20 +151,16 @@ const Career = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-            Shape the Future
+              Build Tomorrow’s Kazakhstan with Us
             <span className="block text-cyan-300">With Us</span>
           </h1>
           <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
-            Join a team of innovators, dreamers, and builders who are creating technology 
-            that transforms industries and improves lives around the world.
+              Join Caspian Coast’s team of engineers, craftsmen and project managers delivering critical infrastructure and landmark developments along the Caspian Sea.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
               View Open Positions
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10">
-              Learn Our Culture
             </button>
           </div>
         </div>
@@ -177,7 +173,7 @@ const Career = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Values</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These principles guide everything we do and shape the culture we're building together.
+              These are the guiding principles that shape every project and decision at Caspian Coast.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -200,7 +196,7 @@ const Career = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Why Work With Us</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We believe in taking care of our team members with comprehensive benefits and growth opportunities.
+              At Caspian Coast, we invest in our people so they can excel on every project.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -343,15 +339,15 @@ const Career = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Hiring Process</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've designed a transparent and efficient process to help you showcase your best self.
+              A transparent, four-step path to joining our construction family:
             </p>
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: '01', title: 'Application', description: 'Submit your application and portfolio online' },
-              { step: '02', title: 'Initial Screen', description: 'Brief call with our talent team to learn more about you' },
-              { step: '03', title: 'Technical Interview', description: 'Deep dive into your skills and experience with the hiring manager' },
-              { step: '04', title: 'Final Round', description: 'Meet the team and discuss how you\'ll contribute to our mission' }
+              { step: '01', title: 'Application & CV Review', description: 'Submit your resume and portfolio of completed projects.' },
+              { step: '02', title: 'Introductory Call', description: 'A 20-minute chat to discuss your background and our needs.' },
+              { step: '03', title: 'Technical Assessment', description: 'A role-specific exercise or on-site site-visit walkthrough.' },
+              { step: '04', title: 'Final Interview & Offer', description: 'Meet with department heads and review benefits, then join the team.' }
             ].map((process, index) => (
               <div key={index} className="text-center group">
                 <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
