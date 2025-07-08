@@ -239,8 +239,10 @@ export const translations: Record<string, Translation> = {
     // About Section
     aboutTitle: 'Briefly',
     aboutSubtitle: 'about as',
-    aboutDescription1: 'Caspian Coast LLP was founded in 2017 with the purpose of providing high-quality construction services in the sphere of civil and industrial construction. Over the years of its activities, the company as successfuly implemented a lot of projects, including residential complexes, office building, as well ass infrastructure and industrial facilities.',
-    aboutDescription2: 'Caspian Coast has carried out a range of key infrastructure projects on the Caspian Sea coast and throughout the Mangystau region: constructing a production facility in Aktau, a 100 000-bird poultry farm in Bayandy, installing water and gas networks for agricultural and administrative sites, delivering engineering services to residential districts, establishing an auto service center with car wash and parking, developing a recreation base, and completing numerous other works across the region.',
+    aboutDescription1:
+      'Caspian Coast LLP was founded in 2017 with the purpose of providing high-quality construction services in the sphere of civil and industrial construction. Over the years of its activities, the company has successfully implemented many projects, including residential complexes, office buildings, as well as infrastructure and industrial facilities.',
+    aboutDescription2:
+      'Caspian Coast has carried out a range of key infrastructure projects on the Caspian Sea coast and throughout the Mangystau region: constructing a production facility in Aktau, a 100,000-bird poultry farm in Bayandy, installing water and gas networks for agricultural and administrative sites, delivering engineering services to residential districts, establishing an auto service center with a car wash and parking, developing a recreation base, and completing numerous other works across the region.',
     ourAchievements: 'Our Achievements',
     achievements: {
       iso: 'ISO 9001:2015 Certified Quality Management',
@@ -398,7 +400,7 @@ export const translations: Record<string, Translation> = {
     contactUs: 'Contact Us',
   
     // Footer
-    footerDescription: 'Building the future along the Caspian Coast with excellence, innovation, and sustainable practices for over 25 years.',
+    footerDescription: 'Building the future along the Caspian Coast with excellence, innovation, and sustainable practices for over 8 years.',
     ourServices: 'Our Services',
     quickLinks: 'Quick Links',
     stayUpdated: 'Stay Updated',
@@ -470,10 +472,12 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Наград получено',
     
     // About Section
-    aboutTitle: '25 лет',
-    aboutSubtitle: 'Совершенства',
-    aboutDescription1: 'CaspianCoast находится в авангарде строительства и развития в Каспийском регионе, превращая архитектурные видения в реальность с непревзойденным мастерством и инновациями.',
-    aboutDescription2: 'От роскошных жилых комплексов до коммерческих достопримечательностей, мы объединяем традиционный строительный опыт с передовыми устойчивыми практиками для создания структур, выдерживающих испытание временем.',
+    aboutTitle: 'Кратко',
+    aboutSubtitle: 'о нас',
+    aboutDescription1:
+      'ТОО «Caspian Coast» было основано в 2017 году с целью предоставления высококачественных услуг в сфере гражданского и промышленного строительства. За годы работы компания успешно реализовала множество проектов, включая жилые комплексы, офисные здания, а также инфраструктурные и промышленные объекты.',
+    aboutDescription2:
+      '«Caspian Coast» выполнила ряд ключевых инфраструктурных проектов на побережье Каспийского моря и по всему Мангистаускому региону: построила производственный комплекс в Актау, птицефабрику на 100 000 голов в Баянды, проложила водо- и газовые сети для сельскохозяйственных и административных объектов, оказала инжиниринговые услуги жилым районам, создала автосервисный центр с мойкой и парковкой, развила базу отдыха и завершила множество других работ по всему региону.',
     ourAchievements: 'Наши достижения',
     achievements: {
       iso: 'Сертификат ISO 9001:2015 по управлению качеством',
@@ -631,7 +635,7 @@ export const translations: Record<string, Translation> = {
     contactUs: 'Связаться с нами',
     
     // Footer
-    footerDescription: 'Строим будущее на побережье Каспийского моря с совершенством, инновациями и устойчивыми практиками уже более 25 лет.',
+    footerDescription: 'Строим будущее на побережье Каспийского моря с совершенством, инновациями и устойчивыми практиками уже более 8 лет.',
     ourServices: 'Наши услуги',
     quickLinks: 'Быстрые ссылки',
     stayUpdated: 'Будьте в курсе',
@@ -703,10 +707,12 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Алынған марапаттар',
     
     // About Section
-    aboutTitle: '25 жыл',
-    aboutSubtitle: 'Кереметтілік',
-    aboutDescription1: 'CaspianCoast Каспий аймағындағы құрылыс пен дамудың алдыңғы қатарында болып, сәулеттік көріністерді теңдесі жоқ шеберлік пен инновациялармен шындыққа айналдырады.',
-    aboutDescription2: 'Люкс тұрғын үй кешендерінен коммерциялық белгілерге дейін, біз дәстүрлі құрылыс тәжірибесін уақыт сынағынан өтетін құрылымдар жасау үшін озық тұрақты тәжірибелермен біріктіреміз.',
+    aboutTitle: 'Қысқаша',
+    aboutSubtitle: 'Біз туралы',
+    aboutDescription1:
+      '«Caspian Coast» ЖШС 2017 жылы азаматтық және өнеркәсіптік құрылыс саласында жоғары сапалы қызмет көрсету мақсатында құрылды. Компания өз қызметі барысында тұрғын үй кешендері, кеңсе ғимараттары, сондай-ақ инфрақұрылымдық және өнеркәсіптік нысандарды қоса алғанда көптеген жобаларды сәтті іске асырды.',
+    aboutDescription2:
+      '«Caspian Coast» компаниясы Каспий теңізі жағалауында және Маңғыстау өңірі бойынша бірқатар маңызды инфрақұрылымдық жобаларды жүзеге асырды: Ақтауда өндірістік кешен салды, Баяндыда 100 000 бас құс фабрикасын тұрғызды, ауыл шаруашылығы және әкімшілік нысандар үшін су және газ желілерін тартты, тұрғын аудандарға инженерлік қызметтер көрсетті, автожуу мен тұрақы бар автосервис орталығын ашты, демалыс базасын дамытты және өңір бойынша тағы да көптеген жұмыстарды аяқтады.',
     ourAchievements: 'Біздің жетістіктеріміз',
     achievements: {
       iso: 'ISO 9001:2015 сапа менеджменті сертификаты',
@@ -864,7 +870,7 @@ export const translations: Record<string, Translation> = {
     contactUs: 'Бізбен байланысу',
     
     // Footer
-    footerDescription: 'Каспий жағалауында 25 жылдан астам уақыт бойы кереметтілік, инновация және тұрақты тәжірибелермен болашақты құрамыз.',
+    footerDescription: 'Каспий жағалауында 8 жылдан астам уақыт бойы кереметтілік, инновация және тұрақты тәжірибелермен болашақты құрамыз.',
     ourServices: 'Біздің қызметтер',
     quickLinks: 'Жылдам сілтемелер',
     stayUpdated: 'Жаңалықтарды қадағалаңыз',

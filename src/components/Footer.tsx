@@ -56,11 +56,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-blue-400" />
-                <span className="text-slate-300">info@caspiancoast.com</span>
+                <span className="text-slate-300">caspiancoast@list.ru</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-blue-400" />
-                <span className="text-slate-300">123 Coastal Avenue, CC 12345</span>
+                <span className="text-slate-300">Business Center Nesibek-Nur, 16 - 22/1</span>
               </div>
             </div>
           </div>

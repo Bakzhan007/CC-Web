@@ -3,8 +3,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 const Stats = () => {
   const { t } = useLanguage();
   const stats = [
-    { label: t.projectsCompleted, value: '250+' },
-    { label: t.yearsExperience, value: '25+' },
+    { label: t.projectsCompleted, value: '50+' },
+    { label: t.yearsExperience, value: '8+' },
     { label: t.awardsWon, value: '15' }
   ];
 
