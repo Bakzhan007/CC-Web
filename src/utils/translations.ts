@@ -181,6 +181,28 @@ export interface Translation {
     sitemap: string;
   };
   allRightsReserved: string;
+
+  // Agencies Page
+  agenciesHeroTitle1: string;
+  agenciesHeroTitle2: string;
+  agenciesHeroDescription: string;
+  agenciesStatPartners: string;
+  agenciesStatRating: string;
+  agenciesStatProjects: string;
+  agenciesSearchPlaceholder: string;
+  agenciesFilters: string;
+  agenciesShowing: string;
+  agenciesWord: string;
+  agenciesFeaturedPartners: string;
+  agenciesAllAgencies: string;
+  agenciesGalleryTitle: string;
+  agenciesGalleryDescription: string;
+  agenciesLeaveRequest: string;
+  name: string;
+  sendRequest: string;
+  viewProfile: string;
+  visitWebsite: string;
+  featured: string;
 }
 
 export const translations: Record<string, Translation> = {
@@ -391,7 +413,31 @@ export const translations: Record<string, Translation> = {
       terms: 'Terms of Service',
       sitemap: 'Sitemap'
     },
-    allRightsReserved: '© 2024 CaspianCoast Construction. All rights reserved.'
+    allRightsReserved: '© 2024 CaspianCoast Construction. All rights reserved.',
+
+    // Agencies Page
+    agenciesHeroTitle1: 'Official Partner',
+    agenciesHeroTitle2: 'Agencies',
+    agenciesHeroDescription:
+      'Discover our verified network of professional agencies delivering exceptional results across digital marketing, creative design, and technology solutions.',
+    agenciesStatPartners: '150+ Verified Partners',
+    agenciesStatRating: '4.8 Average Rating',
+    agenciesStatProjects: '10,000+ Projects Completed',
+    agenciesSearchPlaceholder: 'Search agencies, specialties, or locations...',
+    agenciesFilters: 'Filters',
+    agenciesShowing: 'Showing',
+    agenciesWord: 'agencies',
+    agenciesFeaturedPartners: 'Featured Partners',
+    agenciesAllAgencies: 'All Agencies',
+    agenciesGalleryTitle: 'Our Partners in Action',
+    agenciesGalleryDescription:
+      'See the creative workspaces and professional environments of our partner agencies',
+    agenciesLeaveRequest: 'Leave a Request',
+    name: 'Name',
+    sendRequest: 'Send Request',
+    viewProfile: 'View Profile',
+    visitWebsite: 'Visit Website',
+    featured: 'Featured'
   },
   
   ru: {
@@ -600,7 +646,31 @@ export const translations: Record<string, Translation> = {
       terms: 'Условия обслуживания',
       sitemap: 'Карта сайта'
     },
-    allRightsReserved: '© 2024 CaspianCoast Construction. Все права защищены.'
+        allRightsReserved: '© 2024 CaspianCoast Construction. Все права защищены.',
+
+    // Agencies Page
+    agenciesHeroTitle1: 'Официальные партнеры',
+    agenciesHeroTitle2: 'Агентства',
+    agenciesHeroDescription:
+      'Откройте для себя нашу проверенную сеть профессиональных агентств, обеспечивающих выдающиеся результаты в цифровом маркетинге, креативном дизайне и технологических решениях.',
+    agenciesStatPartners: '150+ проверенных партнёров',
+    agenciesStatRating: 'Средний рейтинг 4.8',
+    agenciesStatProjects: '10 000+ завершённых проектов',
+    agenciesSearchPlaceholder: 'Поиск агентств, специализаций или местоположений...',
+    agenciesFilters: 'Фильтры',
+    agenciesShowing: 'Показано',
+    agenciesWord: 'агентств',
+    agenciesFeaturedPartners: 'Лучшие партнёры',
+    agenciesAllAgencies: 'Все агентства',
+    agenciesGalleryTitle: 'Наши партнёры в работе',
+    agenciesGalleryDescription:
+      'Посмотрите творческие рабочие пространства и профессиональные помещения наших партнёрских агентств',
+    agenciesLeaveRequest: 'Оставить заявку',
+    name: 'Имя',
+    sendRequest: 'Отправить заявку',
+    viewProfile: 'Смотреть профиль',
+    visitWebsite: 'Перейти на сайт',
+    featured: 'Лучшее'
   },
   
   kz: {
@@ -809,7 +879,32 @@ export const translations: Record<string, Translation> = {
       terms: 'Қызмет көрсету шарттары',
       sitemap: 'Сайт картасы'
     },
-    allRightsReserved: '© 2024 CaspianCoast Construction. Барлық құқықтар қорғалған.'
+    
+    allRightsReserved: '© 2024 CaspianCoast Construction. Барлық құқықтар қорғалған.',
+
+    // Agencies Page
+    agenciesHeroTitle1: 'Ресми серіктес',
+    agenciesHeroTitle2: 'Агенттіктер',
+    agenciesHeroDescription:
+      'Цифрлық маркетинг, креативті дизайн және технологиялық шешімдер салаларында жоғары нәтижелерге қол жеткізетін тексерілген кәсіби агенттіктер желісін танысыңыз.',
+    agenciesStatPartners: '150+ тексерілген серіктестер',
+    agenciesStatRating: 'Орташа рейтинг 4.8',
+    agenciesStatProjects: '10 000+ аяқталған жобалар',
+    agenciesSearchPlaceholder: 'Агенттіктерді, мамандандыруды немесе орналасуын іздеу...',
+    agenciesFilters: 'Фильтрлер',
+    agenciesShowing: 'Көрсетілді',
+    agenciesWord: 'агенттік',
+    agenciesFeaturedPartners: 'Ұсынылған серіктестер',
+    agenciesAllAgencies: 'Барлық агенттіктер',
+    agenciesGalleryTitle: 'Әрекеттегі серіктестеріміз',
+    agenciesGalleryDescription:
+      'Серіктес агенттіктердің шығармашылық кеңселері мен кәсіби орталарын көріңіз',
+    agenciesLeaveRequest: 'Өтінім қалдыру',
+    name: 'Аты',
+    sendRequest: 'Өтінімді жіберу',
+    viewProfile: 'Профильді қарау',
+    visitWebsite: 'Веб-сайтқа өту',
+    featured: 'Ерекше'
   }
 };
 

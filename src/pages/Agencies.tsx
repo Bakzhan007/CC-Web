@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Briefcase, ExternalLink, Calendar } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -184,6 +185,7 @@ const agencies: Agency[] = [
 const categories = ["All", "Digital Marketing", "Creative Design", "Technology"];
 
 export default function Agencies() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
@@ -224,24 +226,24 @@ export default function Agencies() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Official Partner
-              <span className="block text-blue-300">Agencies</span>
+              {t.agenciesHeroTitle1}
+              <span className="block text-blue-300">{t.agenciesHeroTitle2}</span>
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Discover our verified network of professional agencies delivering exceptional results across digital marketing, creative design, and technology solutions.
+              {t.agenciesHeroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-blue-200">
                 <Award className="w-5 h-5" />
-                <span>150+ Verified Partners</span>
+                <span>{t.agenciesStatPartners}</span>
               </div>
               <div className="flex items-center gap-2 text-blue-200">
                 <Star className="w-5 h-5" />
-                <span>4.8 Average Rating</span>
+                <span>{t.agenciesStatRating}</span>
               </div>
               <div className="flex items-center gap-2 text-blue-200">
                 <Users className="w-5 h-5" />
-                <span>10,000+ Projects Completed</span>
+                <span>{t.agenciesStatProjects}</span>
               </div>
             </div>
           </div>
@@ -257,7 +259,7 @@ export default function Agencies() {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search agencies, specialties, or locations..."
+                placeholder={t.agenciesSearchPlaceholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder-gray-400"
@@ -284,7 +286,7 @@ export default function Agencies() {
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors duration-200"
               >
                 <Filter className="w-5 h-5" />
-                <span className="hidden sm:inline">Filters</span>
+                <span className="hidden sm:inline">{t.agenciesFilters}</span>
               </button>
             </div>
           </div>
@@ -294,8 +296,9 @@ export default function Agencies() {
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <p className="text-gray-600 text-lg">
-          Showing <span className="font-semibold text-blue-600">{filteredAgencies.length}</span> agencies
-        </p>
+          {t.agenciesShowing}{' '}
+          <span className="font-semibold text-blue-600">{filteredAgencies.length}</span>{' '}
+          {t.agenciesWord}        </p>
       </div>
 
       {/* Featured Agencies */}
@@ -303,7 +306,7 @@ export default function Agencies() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="flex items-center gap-3 mb-8">
             <Award className="w-6 h-6 text-yellow-500" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Partners</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t.agenciesFeaturedPartners}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredAgencies.map(agency => (
@@ -315,7 +318,7 @@ export default function Agencies() {
 
       {/* All Agencies - New Compact List Design */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">All Agencies</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">{t.agenciesAllAgencies}</h2>
         <div className="space-y-4">
           {regularAgencies.map(agency => (
             <CompactAgencyCard key={agency.id} agency={agency} />
@@ -327,9 +330,9 @@ export default function Agencies() {
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Partners in Action</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{t.agenciesGalleryTitle}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the creative workspaces and professional environments of our partner agencies
+              {t.agenciesGalleryDescription}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -360,7 +363,7 @@ export default function Agencies() {
         ></div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 text-slate-900">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">Leave a Request</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">{t.agenciesLeaveRequest}</h2>
             <form
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
               onSubmit={(e) => {
@@ -368,9 +371,9 @@ export default function Agencies() {
                 console.log({ name, email, phone, message });
               }}
             >
-                            <input
+              <input
                 type="text"
-                placeholder="Name"
+                placeholder={t.name}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -378,7 +381,7 @@ export default function Agencies() {
               />
               <input
                 type="email"
-                placeholder="Email"
+                placeholder={t.email}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -386,14 +389,14 @@ export default function Agencies() {
               />
               <input
                 type="tel"
-                placeholder="Phone"
+                placeholder={t.phone}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:col-span-2"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
               <textarea
                 rows={4}
-                placeholder="Message"
+                placeholder={t.message}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none sm:col-span-2"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -402,7 +405,7 @@ export default function Agencies() {
                 type="submit"
                 className="sm:col-span-2 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold text-white transition-colors"
               >
-                Send Request
+                {t.sendRequest}
               </button>
             </form>
           </div>
@@ -415,6 +418,7 @@ export default function Agencies() {
 }
 
 function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean }) {
+  const { t } = useLanguage();
   return (
     <div className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${featured ? 'ring-2 ring-yellow-400' : ''}`}>
       {/* Cover Image */}
@@ -429,7 +433,7 @@ function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean })
         {featured && (
           <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-2">
             <Award className="w-4 h-4" />
-            <span>Featured</span>
+            <span>{t.featured}</span>
           </div>
         )}
 
@@ -526,7 +530,7 @@ function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean })
         {/* Action Buttons */}
         <div className="flex gap-3">
           <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 group">
-            <span>View Profile</span>
+            <span>{t.viewProfile}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </button>
           <a 
@@ -544,6 +548,7 @@ function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean })
 }
 
 function CompactAgencyCard({ agency }: { agency: Agency }) {
+  const { t } = useLanguage();
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
       <div className="flex flex-col lg:flex-row">
@@ -674,7 +679,7 @@ function CompactAgencyCard({ agency }: { agency: Agency }) {
               {/* Action Buttons */}
               <div className="flex flex-col gap-2">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 group text-sm">
-                  <span>View Profile</span>
+                  <span>{t.viewProfile}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
                 <a 
@@ -684,7 +689,7 @@ function CompactAgencyCard({ agency }: { agency: Agency }) {
                   className="w-full flex items-center justify-center gap-2 p-2 border border-gray-300 hover:border-blue-600 text-gray-600 hover:text-blue-600 rounded-lg transition-colors duration-200 text-sm"
                 >
                   <Globe className="w-4 h-4" />
-                  <span>Visit Website</span>
+                  <span>{t.visitWebsite}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>

@@ -1,5 +1,12 @@
-import { useState } from 'react';
-import Header from '../components/Header';import Footer from '../components/Footer';
+import { useState, useEffect } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+import partner1 from '../assets/image/partner1.jpg';
+import partner2 from '../assets/image/partner2.jpg';
+import partner3 from '../assets/image/partner3.jpg';
+import partner4 from '../assets/image/partner4.jpg';
+
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,22 +20,22 @@ import {
 
 const conditions = [
   {
-    img: 'https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&w=1200',
+    img: partner1,
     title: 'Кто может стать партнером',
     text: 'Мы ищем партнеров в сфере бытовых услуг: дезинфекция, клининг, дизайн интерьера, изготовление мебели и другие направления.',
   },
   {
-    img: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    img: partner3,
     title: 'Открыты к сотрудничеству',
     text: 'Мы открыты к любым коммерческим предложениям, маркетинговым инициативам и другим форматам сотрудничества.',
   },
   {
-    img: 'https://images.pexels.com/photos/3184320/pexels-photo-3184320.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    img: partner2,
     title: 'Только проверенные партнеры',
     text: 'Мы работаем с надежными и качественными поставщиками услуг, чтобы пользователи получали лучший сервис.',
   },
   {
-    img: 'https://images.pexels.com/photos/4503700/pexels-photo-4503700.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    img: partner4,
     title: 'Гарантия качества',
     text: 'Каждый партнер проходит строгую проверку и обучение стандартам BIG App.',
   },
@@ -53,8 +60,7 @@ const benefits = [
   {
     icon: CheckCircle,
     title: 'Высокие стандарты',
-    description:
-      'Мы поддерживаем передовые стандарты качества и прозрачные условия сотрудничества.'
+    description: 'Мы поддерживаем передовые стандарты качества и прозрачные условия сотрудничества.'
   },
   {
     icon: ClipboardList,
@@ -70,9 +76,19 @@ const benefits = [
 
 export default function Partner() {
   const [page, setPage] = useState(0);
-  const visibleCount = 3;
-  const totalPages = Math.ceil(conditions.length / visibleCount);
+  const [visibleCount, setVisibleCount] = useState(window.innerWidth < 640 ? 1 : 3);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const count = window.innerWidth < 640 ? 1 : 3;
+      setVisibleCount(count);
+      setPage(0);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(conditions.length / visibleCount);
 
   const prev = () => setPage((p) => Math.max(p - 1, 0));
   const next = () => setPage((p) => Math.min(p + 1, totalPages - 1));
@@ -99,7 +115,11 @@ export default function Partner() {
                   }}
                 >
                   {conditions.map((c, i) => (
-                    <div key={i} className="min-w-[calc(100%/3)] px-2">
+                    <div
+                      key={i}
+                      className="px-2"
+                      style={{ flex: `0 0 ${100 / visibleCount}%` }}
+                    >
                       <div className="bg-slate-50 rounded-2xl p-6 flex flex-col shadow-sm min-h-[350px]">
                         <img
                           src={c.img}
@@ -161,7 +181,7 @@ export default function Partner() {
             <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 text-center mb-8">
               Преимущества сотрудничества
             </h2>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {benefits.map((b, i) => (
                 <div
                   key={i}
