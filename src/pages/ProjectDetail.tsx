@@ -1,15 +1,43 @@
+import { FC } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const ProjectDetail = () => {
-  const { id } = useParams();
+// Define the shape of a project feature
+type Feature = {
+  title: string;
+  detail: string;
+  icon: FC<React.SVGProps<SVGSVGElement>>;
+};
+
+// Define the expected state shape passed via location.state
+type ProjectDetailState = {
+  project: {
+    image: string;
+    title: string;
+    subtitle?: string;
+    description: string;
+    features?: Feature[];
+    location: string;
+    year: string;
+    area: string;
+    status: string;
+  };
+};
+
+const ProjectDetail: FC = () => {
+  const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const project = location.state?.project;
+  const state = location.state as ProjectDetailState | undefined;
+  const project = state?.project;
 
   if (!project) {
-    return <p className="pt-20 text-center text-lg text-gray-500">Project #{id} not found.</p>;
+    return (
+      <p className="pt-20 text-center text-lg text-gray-500">
+        Project #{id} not found.
+      </p>
+    );
   }
 
   return (
@@ -54,7 +82,7 @@ const ProjectDetail = () => {
 
           {project.features && (
             <div className="grid sm:grid-cols-2 gap-6">
-              {project.features.map((feat) => (
+              {project.features.map((feat: Feature) => (
                 <div key={feat.title} className="flex items-start">
                   <div className="flex-shrink-0">
                     <feat.icon className="w-6 h-6 text-blue-600" />
