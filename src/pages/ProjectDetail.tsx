@@ -23,6 +23,10 @@ type ProjectDetailState = {
     year: string;
     area: string;
     status: string;
+    developer?: string;
+    architect?: string;
+    price?: string;
+    gallery?: string[];
   };
 };
 
@@ -39,6 +43,20 @@ const ProjectDetail: FC = () => {
       </p>
     );
   }
+
+  // Safe to use project here
+  const gallery =
+    project.gallery && project.gallery.length > 0
+      ? project.gallery
+      : [
+          project.image,
+          'https://images.pexels.com/photos/5071175/pexels-photo-5071175.jpeg?auto=compress&cs=tinysrgb&w=800',
+          'https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=800',
+        ];
+
+  const developer = project.developer ?? 'Caspian Coast Development';
+  const architect = project.architect ?? 'Modern Architecture Studio';
+  const price = project.price ?? 'Upon request';
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -63,7 +81,7 @@ const ProjectDetail: FC = () => {
               {project.title}
             </h1>
             <p className="text-lg md:text-xl opacity-90">
-              {project.subtitle || project.description.slice(0, 100) + '...'}
+              {project.subtitle || `${project.description.slice(0, 100)}...`}
             </p>
           </motion.div>
         </div>
@@ -95,6 +113,20 @@ const ProjectDetail: FC = () => {
               ))}
             </div>
           )}
+
+          <div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Gallery</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {gallery.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         <motion.aside
@@ -121,6 +153,18 @@ const ProjectDetail: FC = () => {
               <span>Status:</span>
               <span className="capitalize">{project.status}</span>
             </div>
+            <div className="flex justify-between text-gray-700">
+              <span>Developer:</span>
+              <span>{developer}</span>
+            </div>
+            <div className="flex justify-between text-gray-700">
+              <span>Architect:</span>
+              <span>{architect}</span>
+            </div>
+            <div className="flex justify-between text-gray-700">
+              <span>Price:</span>
+              <span>{price}</span>
+            </div>
           </div>
 
           <button
@@ -130,7 +174,19 @@ const ProjectDetail: FC = () => {
             Back to Top
           </button>
         </motion.aside>
+
       </main>
+
+      <section className="bg-blue-600 text-white text-center py-12">
+        <h2 className="text-2xl font-semibold mb-2">Interested in this project?</h2>
+        <p className="mb-6">Contact our sales team for more information and pricing details.</p>
+        <a
+          href="mailto:info@caspian.kz"
+          className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium"
+        >
+          Email Us
+        </a>
+      </section>
 
       <Footer />
     </div>

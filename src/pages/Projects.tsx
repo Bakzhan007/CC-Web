@@ -170,12 +170,6 @@ const Projects = () => {
                 </div>
               ))}
             </div>
-
-            <div className="text-center mt-12">
-              <button className="bg-slate-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-slate-800 transition">
-                {t.loadMore}
-              </button>
-            </div>
           </div>
         </section>
       </main>

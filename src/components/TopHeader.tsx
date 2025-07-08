@@ -17,7 +17,6 @@ export const topHeaderLinks = (t: Translation) => [
   { label: t.topAgencies, to: '/agencies', icon: Building2 },
   { label: t.topCareer, href: '/career', icon: Briefcase },
   { label: t.topCommerce, to: '/commerce', icon: Percent },
-  { label: t.topAbc, href: '#', icon: Book },
 ]
 
 const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
