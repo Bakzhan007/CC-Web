@@ -8,14 +8,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: t.phone,
-      details: ['+7 (700) 636-36-31', '+1 (234) 567-891'],
-      action: 'tel:+1234567890'
+      details: ['+7 (700) 636-36-31'],
+      action: 'tel:+77006363631'
     },
     {
       icon: Mail,
       title: t.email,
-      details: ['info@caspiancoast.com', 'projects@caspiancoast.com'],
-      action: 'mailto:info@caspiancoast.com'
+      details: ['caspiancoast@list.ru'],
+      action: 'mailto:caspiancoast@list.ru'
     },
     {
       icon: MapPin,
@@ -26,7 +26,7 @@ const Contact = () => {
     {
       icon: Clock,
       title: t.businessHours,
-      details: ['Mon-Fri: 8:00 AM - 6:00 PM', 'Sat: 9:00 AM - 4:00 PM'],
+      details: ['Mon-Fri: 9:00 AM - 6:00 PM'],
       action: '#'
     }
   ];
@@ -127,7 +127,7 @@ const Contact = () => {
                 <input
                   type="tel"
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="+1 (234) 567-890"
+                  placeholder="+7 (707) 0123-45-67"
                 />
               </div>
 
