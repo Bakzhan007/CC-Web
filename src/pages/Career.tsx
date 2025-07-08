@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
 
 import career from '../assets/image/career1.jpg'
 import { 
@@ -25,60 +27,38 @@ import {
 } from 'lucide-react';
 
 const Career = () => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  const jobCategories = ['All', 'Engineering', 'Design', 'Marketing', 'Sales', 'Operations'];
+  const jobCategories = ['All', 'Accountant', 'Sales', 'Economist'];
   
   const jobs = [
     {
-      title: 'Senior Software Engineer',
-      category: 'Engineering',
-      location: 'New York, NY',
+      title: 'Chief accountant',
+      category: 'Accountant',
+      location: 'Aktau',
       type: 'Full-time',
       description: 'Join our engineering team to build scalable solutions that impact millions of users worldwide.',
       requirements: ['5+ years experience', 'React/TypeScript', 'Node.js', 'Cloud platforms']
     },
     {
-      title: 'UX/UI Designer',
-      category: 'Design',
-      location: 'San Francisco, CA',
+      title: 'Sales specialist',
+      category: 'Sales',
+      location: 'Aktau',
       type: 'Full-time',
       description: 'Create beautiful and intuitive user experiences that delight our customers.',
       requirements: ['3+ years experience', 'Figma/Sketch', 'Design systems', 'User research']
     },
     {
-      title: 'Product Marketing Manager',
-      category: 'Marketing',
-      location: 'Remote',
+      title: 'Economist',
+      category: 'Economist',
+      location: 'Aktau',
       type: 'Full-time',
-      description: 'Drive product marketing strategy and go-to-market initiatives for our growing platform.',
-      requirements: ['4+ years experience', 'B2B marketing', 'Analytics', 'Content strategy']
+      description: 'We invite an experienced economist to develop and control the financial and economic direction of our construction projects. The vacancy includes:',
+      requirements: ['Higher economic or financial education', 'Experience in a similar position from 5 years', 'Confident proficiency in 1C: Enterprise 8 and MS Excel', 'Skills in financial planning, budgeting and building financial models', 'Experience in working with estimate documentation and cost calculations', 'Knowledge of project performance evaluation methods (NPV, IRR)', 'Experience in investment analytics and preparation of presentations for investors']
     },
-    {
-      title: 'Sales Development Representative',
-      category: 'Sales',
-      location: 'Chicago, IL',
-      type: 'Full-time',
-      description: 'Identify and qualify leads to help grow our customer base across key markets.',
-      requirements: ['2+ years experience', 'CRM systems', 'Lead generation', 'Communication skills']
-    },
-    {
-      title: 'DevOps Engineer',
-      category: 'Engineering',
-      location: 'Austin, TX',
-      type: 'Full-time',
-      description: 'Build and maintain our cloud infrastructure to ensure reliability and scalability.',
-      requirements: ['4+ years experience', 'AWS/Azure', 'Kubernetes', 'CI/CD pipelines']
-    },
-    {
-      title: 'Operations Coordinator',
-      category: 'Operations',
-      location: 'Boston, MA',
-      type: 'Full-time',
-      description: 'Streamline operations and processes to support our rapidly growing team.',
-      requirements: ['2+ years experience', 'Project management', 'Process improvement', 'Data analysis']
-    }
+    
   ];
 
   const testimonials = [
@@ -105,21 +85,19 @@ const Career = () => {
     }
   ];
 
-  const benefits = [
-    { icon: Heart, title: 'Competitive Compensation', description: 'Market-leading salaries and project-completion bonuses.' },
-    { icon: GraduationCap, title: 'Health & Social Benefits', description: 'Comprehensive medical coverage, social insurance and annual wellness stipend.' },
-    { icon: Plane, title: 'Professional Growth', description: 'On-site training, Kazakhstan-wide project rotations, and support for certifications (e.g., PMP, ISO).' },
-    { icon: Coffee, title: 'Stable, Impactful Projects', description: 'Work on major civil, commercial and industrial developments that shape the region’s future.' },
-    { icon: Award, title: 'Strong Community', description: 'Join a tight-knit team committed to safety, quality and local economic growth.' },
-    { icon: Shield, title: 'Financial Security', description: '401(k) matching and life insurance benefits' }
-  ];
+  const benefitIcons = [Heart, GraduationCap, Plane, Coffee, Award, Shield];
+  const benefits = t.careerBenefitsList.map((b, idx) => ({
+    icon: benefitIcons[idx],
+    title: b.title,
+    description: b.description
+  }));
 
-  const values = [
-    { icon: Users, title: 'Safety First', description: 'We protect our team and communities above all else.' },
-    { icon: Zap, title: 'Quality Craftsmanship', description: 'We take pride in precision, durability and attention to detail.' },
-    { icon: Globe, title: 'Sustainability	 Impact', description: 'We minimize impact on the environment in every build.' },
-    { icon: CheckCircle, title: 'Teamwork', description: 'We achieve more by collaborating across disciplines.' }
-  ];
+  const valueIcons = [Users, Zap, Globe, CheckCircle];
+  const values = t.careerValuesList.map((v, idx) => ({
+    icon: valueIcons[idx],
+    title: v.title,
+    description: v.description
+  }));
 
   const filteredJobs = selectedCategory === 'All' 
     ? jobs 
@@ -151,15 +129,15 @@ const Career = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-              Build Tomorrow’s Kazakhstan with Us
-            <span className="block text-cyan-300">With Us</span>
+              {t.careerHeroTitle}
+            <span className="block text-cyan-300">{t.careerHeroSubtitle}</span>
           </h1>
           <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
-              Join Caspian Coast’s team of engineers, craftsmen and project managers delivering critical infrastructure and landmark developments along the Caspian Sea.
+              {t.careerHeroDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
-              View Open Positions
+              {t.careerHeroButton}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -171,9 +149,9 @@ const Career = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Values</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.careerValuesTitle}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These are the guiding principles that shape every project and decision at Caspian Coast.
+              {t.careerValuesDescription}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -194,9 +172,9 @@ const Career = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Why Work With Us</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.careerBenefitsTitle}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              At Caspian Coast, we invest in our people so they can excel on every project.
+              {t.careerBenefitsDescription}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -217,9 +195,9 @@ const Career = () => {
       <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">What Our Team Says</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.careerTeamSaysTitle}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear directly from our team members about their experiences working with us.
+              {t.careerTeamSaysDescription}
             </p>
           </div>
           <div className="relative max-w-4xl mx-auto">
@@ -263,9 +241,9 @@ const Career = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Open Positions</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.careerOpenPositionsTitle}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find your next career opportunity and join our growing team of innovators.
+              {t.careerOpenPositionsDescription}
             </p>
           </div>
           
@@ -313,7 +291,7 @@ const Career = () => {
                 </div>
                 <p className="text-gray-700 mb-6 leading-relaxed">{job.description}</p>
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-3">Requirements:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">{t.careerRequirementTitle}</h4>
                   <ul className="space-y-2">
                     {job.requirements.map((req, reqIndex) => (
                       <li key={reqIndex} className="flex items-center text-sm text-gray-600">
@@ -324,7 +302,7 @@ const Career = () => {
                   </ul>
                 </div>
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group-hover:shadow-lg">
-                  Apply Now
+                  {t.careerApplyButton}
                   <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -337,18 +315,11 @@ const Career = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Hiring Process</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A transparent, four-step path to joining our construction family:
-            </p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.careerProcessTitle}</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">{t.careerProcessDescription}</p>
           </div>
           <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Application & CV Review', description: 'Submit your resume and portfolio of completed projects.' },
-              { step: '02', title: 'Introductory Call', description: 'A 20-minute chat to discuss your background and our needs.' },
-              { step: '03', title: 'Technical Assessment', description: 'A role-specific exercise or on-site site-visit walkthrough.' },
-              { step: '04', title: 'Final Interview & Offer', description: 'Meet with department heads and review benefits, then join the team.' }
-            ].map((process, index) => (
+            {t.careerProcessSteps.map((process, index) => (
               <div key={index} className="text-center group">
                 <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
                   {process.step}
@@ -366,10 +337,9 @@ const Career = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-blue-900 to-cyan-600 rounded-3xl p-12 lg:p-16 text-white">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Join Us?</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">{t.careerReadyTitle}</h2>
               <p className="text-xl mb-8 text-blue-100 leading-relaxed">
-                Don't see a perfect match? We're always looking for talented individuals. 
-                Send us your resume and let's start a conversation.
+                {t.careerReadyDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
@@ -382,7 +352,7 @@ const Career = () => {
                 </button>
               </div>
               <p className="text-blue-200 text-sm">
-                Equal opportunity employer committed to diversity and inclusion
+                {t.careerEqualOpportunity}
               </p>
             </div>
           </div>

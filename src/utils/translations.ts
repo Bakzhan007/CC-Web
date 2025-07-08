@@ -203,6 +203,31 @@ export interface Translation {
   viewProfile: string;
   visitWebsite: string;
   featured: string;
+
+
+  // Career Page
+  careerHeroTitle: string;
+  careerHeroSubtitle: string;
+  careerHeroDescription: string;
+  careerHeroButton: string;
+  careerValuesTitle: string;
+  careerValuesDescription: string;
+  careerBenefitsTitle: string;
+  careerBenefitsDescription: string;
+  careerTeamSaysTitle: string;
+  careerTeamSaysDescription: string;
+  careerOpenPositionsTitle: string;
+  careerOpenPositionsDescription: string;
+  careerRequirementTitle: string;
+  careerApplyButton: string;
+  careerProcessTitle: string;
+  careerProcessDescription: string;
+  careerReadyTitle: string;
+  careerReadyDescription: string;
+  careerEqualOpportunity: string;
+  careerValuesList: { title: string; description: string }[];
+  careerBenefitsList: { title: string; description: string }[];
+  careerProcessSteps: { step: string; title: string; description: string }[];
 }
 
 export const translations: Record<string, Translation> = {
@@ -439,7 +464,55 @@ export const translations: Record<string, Translation> = {
     sendRequest: 'Send Request',
     viewProfile: 'View Profile',
     visitWebsite: 'Visit Website',
-    featured: 'Featured'
+    featured: 'Featured',
+
+    // Career Page
+    careerHeroTitle: 'Build Tomorrow\u2019s Kazakhstan',
+    careerHeroSubtitle: 'With Us',
+    careerHeroDescription:
+      'Join Caspian Coast\u2019s team of engineers, craftsmen and project managers delivering critical infrastructure and landmark developments along the Caspian Sea.',
+    careerHeroButton: 'View Open Positions',
+    careerValuesTitle: 'Our Values',
+    careerValuesDescription:
+      'These are the guiding principles that shape every project and decision at Caspian Coast.',
+    careerBenefitsTitle: 'Why Work With Us',
+    careerBenefitsDescription:
+      'At Caspian Coast, we invest in our people so they can excel on every project.',
+    careerTeamSaysTitle: 'What Our Team Says',
+    careerTeamSaysDescription:
+      'Hear directly from our team members about their experiences working with us.',
+    careerOpenPositionsTitle: 'Open Positions',
+    careerOpenPositionsDescription:
+      'Find your next career opportunity and join our growing team of innovators.',
+    careerRequirementTitle: 'Requirements:',
+    careerApplyButton: 'Apply Now',
+    careerProcessTitle: 'Our Hiring Process',
+    careerProcessDescription:
+      'A transparent, four-step path to joining our construction family:',
+    careerReadyTitle: 'Ready to Join Us?',
+    careerReadyDescription:
+      "Don't see a perfect match? We're always looking for talented individuals. Send us your resume and let's start a conversation.",
+    careerEqualOpportunity: 'Equal opportunity employer committed to diversity and inclusion',
+    careerValuesList: [
+      { title: 'Safety First', description: 'We protect our team and communities above all else.' },
+      { title: 'Quality Craftsmanship', description: 'We take pride in precision, durability and attention to detail.' },
+      { title: 'Sustainability Impact', description: 'We minimize impact on the environment in every build.' },
+      { title: 'Teamwork', description: 'We achieve more by collaborating across disciplines.' }
+    ],
+    careerBenefitsList: [
+      { title: 'Competitive Compensation', description: 'Market-leading salaries and project-completion bonuses.' },
+      { title: 'Health & Social Benefits', description: 'Comprehensive medical coverage, social insurance and annual wellness stipend.' },
+      { title: 'Professional Growth', description: 'On-site training, Kazakhstan-wide project rotations, and support for certifications (e.g., PMP, ISO).' },
+      { title: 'Stable, Impactful Projects', description: 'Work on major civil, commercial and industrial developments that shape the region\u2019s future.' },
+      { title: 'Strong Community', description: 'Join a tight-knit team committed to safety, quality and local economic growth.' },
+      { title: 'Financial Security', description: '401(k) matching and life insurance benefits' }
+    ],
+    careerProcessSteps: [
+      { step: '01', title: 'Application & CV Review', description: 'Submit your resume and portfolio of completed projects.' },
+      { step: '02', title: 'Introductory Call', description: 'A 20-minute chat to discuss your background and our needs.' },
+      { step: '03', title: 'Technical Assessment', description: 'A role-specific exercise or on-site site-visit walkthrough.' },
+      { step: '04', title: 'Final Interview & Offer', description: 'Meet with department heads and review benefits, then join the team.' }
+    ]  
   },
   
   ru: {
@@ -674,7 +747,55 @@ export const translations: Record<string, Translation> = {
     sendRequest: 'Отправить заявку',
     viewProfile: 'Смотреть профиль',
     visitWebsite: 'Перейти на сайт',
-    featured: 'Лучшее'
+    featured: 'Лучшее',
+
+    // Career Page
+    careerHeroTitle: 'Стройте Казахстан завтрашнего дня',
+    careerHeroSubtitle: 'с нами',
+    careerHeroDescription:
+      'Присоединяйтесь к команде Caspian Coast – инженерам, строителям и менеджерам проектов, реализующим важные инфраструктурные и знаковые объекты на Каспии.',
+    careerHeroButton: 'Список вакансий',
+    careerValuesTitle: 'Наши ценности',
+    careerValuesDescription:
+      'Эти принципы направляют каждый проект и решение в Caspian Coast.',
+    careerBenefitsTitle: 'Почему работать с нами',
+    careerBenefitsDescription:
+      'В Caspian Coast мы инвестируем в людей, чтобы они могли добиваться успеха в каждом проекте.',
+    careerTeamSaysTitle: 'Что говорит наша команда',
+    careerTeamSaysDescription:
+      'Послушайте отзывы наших сотрудников о работе у нас.',
+    careerOpenPositionsTitle: 'Открытые вакансии',
+    careerOpenPositionsDescription:
+      'Найдите свою карьерную возможность и присоединитесь к нашей команде новаторов.',
+    careerRequirementTitle: 'Требования:',
+    careerApplyButton: 'Откликнуться',
+    careerProcessTitle: 'Наш процесс найма',
+    careerProcessDescription:
+      'Прозрачный путь из четырёх шагов к присоединению к нашей строительной семье:',
+    careerReadyTitle: 'Готовы присоединиться?',
+    careerReadyDescription:
+      'Не нашли подходящую вакансию? Мы всегда ищем талантливых специалистов. Присылайте резюме и обсудим возможности.',
+    careerEqualOpportunity: 'Мы равны для всех и поддерживаем разнообразие и инклюзию',
+    careerValuesList: [
+      { title: 'Безопасность превыше всего', description: 'Мы защищаем нашу команду и сообщества прежде всего.' },
+      { title: 'Качественное мастерство', description: 'Мы гордимся точностью, долговечностью и вниманием к деталям.' },
+      { title: 'Экологичность', description: 'Мы минимизируем воздействие на окружающую среду при каждом строительстве.' },
+      { title: 'Командная работа', description: 'Мы добиваемся большего, сотрудничая между различными направлениями.' }
+    ],
+    careerBenefitsList: [
+      { title: 'Конкурентная оплата труда', description: 'Лидирующие на рынке зарплаты и бонусы за завершение проектов.' },
+      { title: 'Социальный пакет и здоровье', description: 'Полное медицинское страхование, социальные гарантии и ежегодная поддержка здоровья.' },
+      { title: 'Профессиональный рост', description: 'Обучение на объектах, ротации по Казахстану и поддержка сертификаций (например, PMP, ISO).' },
+      { title: 'Стабильные и значимые проекты', description: 'Работа над крупными гражданскими, коммерческими и промышленными объектами, формирующими будущее региона.' },
+      { title: 'Сильное сообщество', description: 'Сплоченная команда, нацеленная на безопасность, качество и развитие местной экономики.' },
+      { title: 'Финансовая безопасность', description: 'Совместное накопление на пенсию и страхование жизни.' }
+    ],
+    careerProcessSteps: [
+      { step: '01', title: 'Заявка и рассмотрение резюме', description: 'Отправьте ваше резюме и портфолио выполненных проектов.' },
+      { step: '02', title: 'Вводный звонок', description: '20‑минутная беседа о вашем опыте и наших потребностях.' },
+      { step: '03', title: 'Техническая оценка', description: 'Задание по специальности или выездной осмотр объекта.' },
+      { step: '04', title: 'Финальное собеседование и предложение', description: 'Встреча с руководителями подразделений и обсуждение условий, после чего присоединяйтесь к команде.' }
+    ]  
   },
   
   kz: {
@@ -910,7 +1031,55 @@ export const translations: Record<string, Translation> = {
     sendRequest: 'Өтінімді жіберу',
     viewProfile: 'Профильді қарау',
     visitWebsite: 'Веб-сайтқа өту',
-    featured: 'Ерекше'
+    featured: 'Ерекше',
+
+    // Career Page
+    careerHeroTitle: 'Ертеңгі Қазақстанды құр',
+    careerHeroSubtitle: 'бізбен бірге',
+    careerHeroDescription:
+      'Каспий жағалауында маңызды инфрақұрылым мен ірі жобаларды жүзеге асыратын Caspian Coast инженерлері, мамандары және жоба менеджерлерінің командасына қосылыңыз.',
+    careerHeroButton: 'Бос орындарды қарау',
+    careerValuesTitle: 'Біздің құндылықтар',
+    careerValuesDescription:
+      'Caspian Coast-тың әр жобасы мен шешімін айқындайтын қағидалар.',
+    careerBenefitsTitle: 'Неліктен бізбен жұмыс істеу керек',
+    careerBenefitsDescription:
+      'Caspian Coast компаниясында біз қызметкерлерді дамытуға инвестиция құямыз.',
+    careerTeamSaysTitle: 'Команда пікірлері',
+    careerTeamSaysDescription:
+      'Біздің команда мүшелерінің жұмыс тәжірибесімен танысыңыз.',
+    careerOpenPositionsTitle: 'Ашық вакансиялар',
+    careerOpenPositionsDescription:
+      'Келесі мансап мүмкіндігіңізді тауып, жаңашыл командамызға қосылыңыз.',
+    careerRequirementTitle: 'Талаптар:',
+    careerApplyButton: 'Өтініш беру',
+    careerProcessTitle: 'Жалдау процесі',
+    careerProcessDescription:
+      'Құрылыс отбасына қосылудың төрт қадамды айқын жолы:',
+    careerReadyTitle: 'Бізге қосылуға дайынсыз ба?',
+    careerReadyDescription:
+      'Сіздің біліміңізге дәл келетін жұмыс болмаса да, біз әрқашан дарынды адамдарды іздейміз. Резюмеңізді жіберіңіз, әңгімелесуді бастайық.',
+    careerEqualOpportunity: 'Әртүрлілік пен инклюзияға негізделген тең мүмкіндіктер жұмыс берушісі',
+    careerValuesList: [
+      { title: 'Қауіпсіздік', description: 'Біз командамыз бен қоғамды барлығынан жоғары қоямыз.' },
+      { title: 'Сапалы шеберлік', description: 'Біз дәлдік пен ұқыпты детальдарға мән береміз.' },
+      { title: 'Тұрақты даму', description: 'Әрбір құрылыста қоршаған ортаға әсерді азайтамыз.' },
+      { title: 'Командалық жұмыс', description: 'Әртүрлі салаларда бірлесіп көбірек жетістікке жетеміз.' }
+    ],
+    careerBenefitsList: [
+      { title: 'Бәсекелі жалақы', description: 'Нарықтағы жоғары жалақы мен жобаны аяқтағаны үшін бонустар.' },
+      { title: 'Әлеуметтік және медициналық пакет', description: 'Толық медициналық сақтандыру, әлеуметтік төлемдер және жыл сайынғы денсаулыққа көмек.' },
+      { title: 'Кәсіби өсу', description: 'Кәсіпішілік оқыту, Қазақстан бойынша жобалық ауысымдар және сертификаттауға қолдау (мысалы, PMP, ISO).' },
+      { title: 'Тұрақты маңызды жобалар', description: 'Өңірдің болашағын айқындайтын азаматтық, коммерциялық және өнеркәсіптік ірі жобаларда жұмыс.' },
+      { title: 'Мықты ұжым', description: 'Қауіпсіздік, сапа және жергілікті экономикалық өсуді мақсат тұтқан ұйымшыл команда.' },
+      { title: 'Қаржылық тұрақтылық', description: 'Зейнетақы жарналарына үлес қосу және өмірді сақтандыру.' }
+    ],
+    careerProcessSteps: [
+      { step: '01', title: 'Өтініш пен түйіндемені қарау', description: 'Түйіндемеңізді және орындалған жобалар портфолиосын жіберіңіз.' },
+      { step: '02', title: 'Танысу қоңырауы', description: '20 минуттық әңгіме, тәжірибеңіз бен біздің қажеттіліктерімізді талқылау.' },
+      { step: '03', title: 'Техникалық тапсырма', description: 'Мамандыққа байланысты тапсырма немесе объектіге бару.' },
+      { step: '04', title: 'Қорытынды сұхбат және ұсыныс', description: 'Бөлім басшыларымен кездесу, шарттарды талқылау және командаға қосылу.' }
+    ]  
   }
 };
 
