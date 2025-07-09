@@ -116,32 +116,29 @@ const Career = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="flex-1 pt-[104px] sm:pt-[112px] lg:pt-[128px]">
-        {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-600 text-white">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={career}
-            alt="Our partner agencies at work"
-            className="absolute inset-0 w-full h-full object-cover opacity-10"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-50 via-white to-orange-50">
+        <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-4xl lg:text-6xl font-extrabold text-gray-900 mb-6">
               {t.careerHeroTitle}
-            <span className="block text-cyan-300">{t.careerHeroSubtitle}</span>
-          </h1>
-          <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
+              <span className="block text-blue-600">{t.careerHeroSubtitle}</span>
+            </h1>
+            <p className="text-lg lg:text-xl text-gray-700 mb-8">
               {t.careerHeroDescription}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
+            </p>
+            <button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center group">
               {t.careerHeroButton}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
-        </div>
+            <div className="hidden md:block">
+            <img
+              src={career}
+              alt="Our partner agencies at work"
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
@@ -265,19 +262,17 @@ const Career = () => {
           </div>
 
           {/* Job Listings */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
             {filteredJobs.map((job, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-blue-300 group">
-                <div className="flex justify-between items-start mb-4">
+              <div
+                key={index}
+                className="p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition">
+                <div className="md:flex md:items-center md:justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                       {job.title}
                     </h3>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                      <span className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        {job.location}
-                      </span>
                       <span className="flex items-center">
                         <Clock className="h-4 w-4 mr-1" />
                         {job.type}
@@ -286,25 +281,30 @@ const Career = () => {
                         <Briefcase className="h-4 w-4 mr-1" />
                         {job.category}
                       </span>
+                      <span className="flex items-center">
+                        <Clock className="h-4 w-4 mr-1" />
+                        {job.type}
+                      </span>
                     </div>
                   </div>
+
+                  <button className="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white py-2 px-5 rounded flex items-center group">
+                    {t.careerApplyButton}
+                    <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">{job.description}</p>
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-3">{t.careerRequirementTitle}</h4>
-                  <ul className="space-y-2">
+                <p className="mt-4 text-gray-700">{job.description}</p>
+                <div className="mt-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">{t.careerRequirementTitle}</h4>
+                  <ul className="space-y-1 text-sm text-gray-600">
                     {job.requirements.map((req, reqIndex) => (
-                      <li key={reqIndex} className="flex items-center text-sm text-gray-600">
+                      <li key={reqIndex} className="flex items-center">
                         <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                         {req}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group-hover:shadow-lg">
-                  {t.careerApplyButton}
-                  <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </button>
               </div>
             ))}
           </div>
