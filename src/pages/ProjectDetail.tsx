@@ -1,194 +1,229 @@
-import { FC } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from 'react';
 
-// Define the shape of a project feature
-type Feature = {
-  title: string;
-  detail: string;
-  icon: FC<React.SVGProps<SVGSVGElement>>;
-};
-
-// Define the expected state shape passed via location.state
-type ProjectDetailState = {
+interface ProjectDetailProps {
   project: {
+    id: number;
+    name: string;
     image: string;
-    title: string;
-    subtitle?: string;
-    description: string;
-    features?: Feature[];
-    location: string;
-    year: string;
-    area: string;
+    district: string;
     status: string;
-    developer?: string;
-    architect?: string;
-    price?: string;
-    gallery?: string[];
+    floors: string;
+    apartments: string;
+    type: string;
+    deadline: string;
+    priceRange: string;
+    description?: string;
   };
-};
+  onBack: () => void;
+}
 
-const ProjectDetail: FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const location = useLocation();
-  const state = location.state as ProjectDetailState | undefined;
-  const project = state?.project;
-
-  if (!project) {
-    return (
-      <p className="pt-20 text-center text-lg text-gray-500">
-        Project #{id} not found.
-      </p>
-    );
-  }
-
-  // Safe to use project here
-  const gallery =
-    project.gallery && project.gallery.length > 0
-      ? project.gallery
-      : [
-          project.image,
-          'https://images.pexels.com/photos/5071175/pexels-photo-5071175.jpeg?auto=compress&cs=tinysrgb&w=800',
-          'https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=800',
-        ];
-
-  const developer = project.developer ?? 'Caspian Coast Development';
-  const architect = project.architect ?? 'Modern Architecture Studio';
-  const price = project.price ?? 'Upon request';
-
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] lg:h-[80vh]">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
-        <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-white max-w-2xl"
+    <div className="min-h-screen bg-white">
+      {/* Шапка детальной страницы */}
+      <div className="bg-blue-600 text-white p-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <button 
+            onClick={onBack}
+            className="flex items-center space-x-2 hover:bg-blue-700 px-3 py-2 rounded transition-colors"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4">
-              {project.title}
-            </h1>
-            <p className="text-lg md:text-xl opacity-90">
-              {project.subtitle || `${project.description.slice(0, 100)}...`}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Details Section */}
-      <main className="container mx-auto px-6 py-16 grid lg:grid-cols-3 gap-12">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="lg:col-span-2 space-y-6"
-        >
-          <h2 className="text-2xl font-semibold text-gray-800">About the Project</h2>
-          <p className="text-gray-700 leading-relaxed">{project.description}</p>
-
-          {project.features && (
-            <div className="grid sm:grid-cols-2 gap-6">
-              {project.features.map((feat: Feature) => (
-                <div key={feat.title} className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <feat.icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-lg font-medium text-gray-800">{feat.title}</h3>
-                    <p className="text-gray-600 text-sm">{feat.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Gallery</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {gallery.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt={`Gallery ${i + 1}`}
-                  className="w-full h-40 object-cover rounded-lg"
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.aside
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white shadow-lg rounded-xl p-6 space-y-4"
-        >
-          <div className="space-y-2">
-            <h4 className="text-lg font-medium text-gray-800">Project Details</h4>
-            <div className="flex justify-between text-gray-700">
-              <span>Location:</span>
-              <span>{project.location}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Year:</span>
-              <span>{project.year}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Area:</span>
-              <span>{project.area}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Status:</span>
-              <span className="capitalize">{project.status}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Developer:</span>
-              <span>{developer}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Architect:</span>
-              <span>{architect}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Price:</span>
-              <span>{price}</span>
-            </div>
-          </div>
-
-          <button
-            className="w-full py-3 text-center font-semibold rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            Back to Top
+            <span>←</span>
+            <span>Назад к каталогу</span>
           </button>
-        </motion.aside>
+          <h1 className="text-2xl font-bold">{project.name}</h1>
+          <div></div>
+        </div>
+      </div>
 
-      </main>
+      {/* Контент детальной страницы */}
+      <div className="max-w-7xl mx-auto p-6">
+        {/* Основная информация */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Изображение */}
+          <div className="space-y-4">
+            <img 
+              src={project.image} 
+              alt={project.name}
+              className="w-full h-96 object-cover rounded-lg shadow-lg"
+            />
+            {/* Галерея (заглушка) */}
+            <div className="grid grid-cols-4 gap-2">
+              {[1,2,3,4].map(i => (
+                <div key={i} className="w-full h-20 bg-gray-200 rounded hover:bg-gray-300 transition-colors cursor-pointer"></div>
+              ))}
+            </div>
+          </div>
 
-      <section className="bg-blue-600 text-white text-center py-12">
-        <h2 className="text-2xl font-semibold mb-2">Interested in this project?</h2>
-        <p className="mb-6">Contact our sales team for more information and pricing details.</p>
-        <a
-          href="mailto:info@caspian.kz"
-          className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium"
-        >
-          Email Us
-        </a>
-      </section>
+          {/* Детальная информация */}
+          <div className="space-y-6">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-green-800 mb-2">Основная информация</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div><span className="font-medium">Район:</span> {project.district}</div>
+                <div><span className="font-medium">Статус:</span> {project.status}</div>
+                <div><span className="font-medium">Этажность:</span> {project.floors}</div>
+                <div><span className="font-medium">Квартир:</span> {project.apartments}</div>
+                <div><span className="font-medium">Тип:</span> {project.type}</div>
+                <div><span className="font-medium">Срок сдачи:</span> {project.deadline}</div>
+              </div>
+            </div>
 
-      <Footer />
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-blue-800 mb-2">Ценовой диапазон</h3>
+              <div className="text-2xl font-bold text-blue-600">{project.priceRange}</div>
+            </div>
+
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-yellow-800 mb-2">Особенности</h3>
+              <ul className="space-y-1 text-sm">
+                <li>• Закрытая территория</li>
+                <li>• Детские площадки</li>
+                <li>• Парковка</li>
+                <li>• Лифт</li>
+                <li>• Консьерж</li>
+                <li>• Видеонаблюдение</li>
+                <li>• Зоны отдыха</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Описание */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">Описание проекта</h2>
+          <p className="text-gray-600 leading-relaxed">
+            {project.description || 
+              `${project.name} - это современный жилой комплекс, расположенный в престижном районе ${project.district}. 
+              Проект предлагает комфортное проживание с развитой инфраструктурой и высоким уровнем безопасности. 
+              Квартиры отличаются продуманной планировкой и качественной отделкой. Комплекс включает в себя 
+              все необходимое для комфортной жизни: детские площадки, зоны отдыха, парковочные места и многое другое.`
+            }
+          </p>
+        </div>
+
+        {/* Планировки */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">Планировки квартир</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {['1-комнатная', '2-комнатная', '3-комнатная'].map((type, index) => (
+              <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                <h3 className="font-medium mb-2">{type}</h3>
+                <div className="w-full h-32 bg-gray-200 rounded mb-2 flex items-center justify-center">
+                  <span className="text-gray-500 text-sm">План квартиры</span>
+                </div>
+                <p className="text-sm text-gray-600">Площадь: {40 + index * 20}-{60 + index * 20} м²</p>
+                <p className="text-sm font-medium text-blue-600">от {(25 + index * 10)} млн ₸</p>
+                <button className="mt-2 text-blue-600 text-sm hover:underline">
+                  Подробнее
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Инфраструктура */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">Инфраструктура</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'Школы', icon: '🏫' },
+              { name: 'Детские сады', icon: '🏛️' },
+              { name: 'Магазины', icon: '🛒' },
+              { name: 'Медицина', icon: '🏥' },
+              { name: 'Парки', icon: '🌳' },
+              { name: 'Спорт', icon: '⚽' },
+              { name: 'Транспорт', icon: '🚌' },
+              { name: 'Кафе/Рестораны', icon: '🍽️' }
+            ].map((item, index) => (
+              <div key={index} className="text-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                <div className="w-12 h-12 bg-blue-100 rounded-full mx-auto mb-2 flex items-center justify-center text-2xl">
+                  {item.icon}
+                </div>
+                <p className="text-sm">{item.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Локация */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">Расположение</h2>
+          <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-4xl mb-2">📍</div>
+              <span className="text-gray-500">Карта района {project.district}</span>
+            </div>
+          </div>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div className="text-center p-2 bg-gray-50 rounded">
+              <div className="font-medium">До центра</div>
+              <div className="text-gray-600">15 мин</div>
+            </div>
+            <div className="text-center p-2 bg-gray-50 rounded">
+              <div className="font-medium">Метро</div>
+              <div className="text-gray-600">5 мин</div>
+            </div>
+            <div className="text-center p-2 bg-gray-50 rounded">
+              <div className="font-medium">Школа</div>
+              <div className="text-gray-600">3 мин</div>
+            </div>
+            <div className="text-center p-2 bg-gray-50 rounded">
+              <div className="font-medium">Парк</div>
+              <div className="text-gray-600">2 мин</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Застройщик */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">О застройщике</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-medium mb-2">BI Group</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Надежная строительная компания с многолетним опытом работы на рынке недвижимости. 
+                Специализируется на строительстве качественного жилья в престижных районах города.
+              </p>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div><span className="font-medium">Год основания:</span> 2010</div>
+              <div><span className="font-medium">Построенных проектов:</span> 25+</div>
+              <div><span className="font-medium">Квартир сдано:</span> 10,000+</div>
+              <div><span className="font-medium">Рейтинг:</span> ⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Контакты */}
+        <div className="bg-blue-50 rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-4">Контакты отдела продаж</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div>
+              <p className="font-medium">Телефон:</p>
+              <p className="text-blue-600">+7 (727) 123-45-67</p>
+            </div>
+            <div>
+              <p className="font-medium">Email:</p>
+              <p className="text-blue-600">sales@bigroup.kz</p>
+            </div>
+            <div>
+              <p className="font-medium">Адрес офиса:</p>
+              <p className="text-gray-600">ул. Абая, 150</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+              Записаться на просмотр
+            </button>
+            <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+              WhatsApp
+            </button>
+            <button className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
+              Получить презентацию
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

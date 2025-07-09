@@ -1,25 +1,10 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Heart, List, Grid } from 'lucide-react';
 
-import bannerImage from '../assets/image/commercial-banner.jpg';  
-
-interface Office {
-  id: number;
-  city: string;
-  area: number;
-  price: number | null;
-  originalPrice?: number;
-  reserved: boolean;
-  project: string;
-  building: string;
-  floor: number;
-  entrance: number;
-  quarter: string;
-  image: string;
-  tags: string[];
-}
+import Hero from '../components/commerce-wrapper/Hero';
+import FilterBar from '../components/commerce-wrapper/FilterBar';
+import Listings, { Office } from '../components/commerce-wrapper/Listings';  
 
 const offices: Office[] = [
   {
@@ -34,7 +19,8 @@ const offices: Office[] = [
     floor: 1,
     entrance: 1,
     quarter: '4 кв. 2023',
-    image: 'https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&w=800',
+    image:
+      'https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&w=800',
     tags: ['Комфорт+', 'Акции'],
   },
   {
@@ -48,7 +34,8 @@ const offices: Office[] = [
     floor: 1,
     entrance: 1,
     quarter: '4 кв. 2023',
-    image: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image:
+      'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=800',
     tags: [],
   },
   {
@@ -63,12 +50,13 @@ const offices: Office[] = [
     floor: 3,
     entrance: 3,
     quarter: '3 кв. 2022',
-    image: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image:
+      'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800',
     tags: ['Комфорт', 'Акции'],
   },
 ];
 
-export default function commerce() {
+export default function Commerce() {
   const [city, setCity] = useState('Все города Казахстана');
   const [project, setProject] = useState('');
   const [showPromos, setShowPromos] = useState(true);
@@ -94,231 +82,24 @@ export default function commerce() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-
-        {/* Hero banner */}
-        <div
-        className="
-            max-w-7xl mx-auto        /* constrain & center */
-            px-6 lg:px-8              /* horizontal padding */
-            mt-[104px] sm:mt-[112px] lg:mt-[128px]  /* under header */
-            pb-4                      /* bottom padding before next section */
-        "
-        >
-        <div
-            className="
-            relative w-full overflow-hidden rounded-3xl
-            h-[150px] sm:h-[300px] md:h-[400px] lg:h-[600px] xl:h-[700px]
-            "
-        >
-            <img
-            src={bannerImage}
-            alt="Коммерческая недвижимость"
-            className="object-cover w-full h-full"
-            />
-
-            {/* overlay container bottom-aligned */}
-            <div className="absolute inset-0 flex items-end justify-start p-6">
-            {/* new card design */}
-            <div className="bg-gradient-to-r from-white/90 via-white/70 to-white/50 backdrop-blur-md p-6 rounded-2xl shadow-lg max-w-md">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                Коммерческая недвижимость
-                </h1>
-                <p className="text-gray-700 mb-4">
-                Лучшие офисные помещения в ключевых городах Казахстана
-                </p>
-                <button className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
-                Получить консультацию
-                </button>
-            </div>
-            </div>
-        </div>
-        </div>
-
-
+      <Hero />
       <main className="flex-1">
-        {/* Filter Bar */}
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="bg-white py-4 rounded-2xl shadow flex flex-wrap gap-3 items-center">
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
-            >
-              <option>Все города Казахстана</option>
-              <option>Актау</option>
-              <option>ЖанаОзен</option>
-            </select>
-
-            <select
-              value={project}
-              onChange={(e) => setProject(e.target.value)}
-              className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
-            >
-              <option value="">Все проекты</option>
-              <option>ЖК Ilan Towers</option>
-              <option>ЖК Caspian Coast</option>
-              <option>ЖК Taras</option>
-            </select>
-
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
-            >
-              <option value="">Без сортировки</option>
-              <option value="priceAsc">Цена ↑</option>
-              <option value="priceDesc">Цена ↓</option>
-              <option value="areaAsc">Площадь ↑</option>
-            </select>
-
-            <button
-              onClick={() => setShowPromos((p) => !p)}
-              className={`px-3 py-1 rounded-full text-sm border ${showPromos ? 'bg-green-100 border-green-300' : 'bg-white'}`}
-            >
-              Акции
-            </button>
-            <button
-              onClick={() => setHideReserved((r) => !r)}
-              className={`px-3 py-1 rounded-full text-sm border ${hideReserved ? 'bg-gray-200' : 'bg-white'}`}
-            >
-              Не показывать забронированные
-            </button>
-
-            <div className="ml-auto flex gap-3">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-100' : 'hover:bg-gray-100'}`}
-              >
-                <Grid size={16} />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded ${viewMode === 'list' ? 'bg-blue-100' : 'hover:bg-gray-100'}`}
-              >
-                <List size={16} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Listings */}
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          {viewMode === 'grid' ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {sortedOffices.map((o) => (
-                <div
-                  key={o.id}
-                  className="relative bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
-                >
-                  <img
-                    src={o.image}
-                    alt={`Office ${o.area} m²`}
-                    className="w-full h-48 object-cover"
-                  />
-                  {o.reserved && (
-                    <div className="absolute inset-0 bg-white/70 flex items-center justify-center text-lg font-semibold">
-                      Забронировано
-                    </div>
-                  )}
-                  <div className="p-4 space-y-2">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-lg font-medium">Офис {o.area} м²</h3>
-                      <Heart size={18} className="text-gray-400 hover:text-red-500 cursor-pointer" />
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                      {o.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-800"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      {o.price != null ? (
-                        <>
-                          <span className="text-green-600 font-bold text-lg">
-                            {o.price.toLocaleString()} ₸
-                          </span>
-                          {o.originalPrice && (
-                            <span className="text-gray-400 line-through text-sm">
-                              {o.originalPrice.toLocaleString()} ₸
-                            </span>
-                          )}
-                        </>
-                      ) : (
-                        <span className="text-gray-600 italic">Цена по запросу</span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      {o.project} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {sortedOffices.map((o) => (
-                <div
-                  key={o.id}
-                  className="relative flex bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
-                >
-                  <img
-                    src={o.image}
-                    alt={`Office ${o.area} m²`}
-                    className="w-48 h-48 object-cover flex-shrink-0"
-                  />
-                  {o.reserved && (
-                    <div className="absolute inset-0 bg-white/70 flex items-center justify-center text-lg font-semibold">
-                      Забронировано
-                    </div>
-                  )}
-                  <div className="p-4 flex flex-col justify-between flex-1">
-                    <div className="space-y-1">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-medium">Офис {o.area} м²</h3>
-                        <Heart size={18} className="text-gray-400 hover:text-red-500 cursor-pointer" />
-                      </div>
-                      <div className="flex gap-2 flex-wrap">
-                        {o.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-800"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-sm text-gray-500">
-                        {o.project} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      {o.price != null ? (
-                        <>
-                          <span className="text-green-600 font-bold text-lg">
-                            {o.price.toLocaleString()} ₸
-                          </span>
-                          {o.originalPrice && (
-                            <span className="text-gray-400 line-through text-sm">
-                              {o.originalPrice.toLocaleString()} ₸
-                            </span>
-                          )}
-                        </>
-                      ) : (
-                        <span className="text-gray-600 italic">Цена по запросу</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <FilterBar
+          city={city}
+          setCity={setCity}
+          project={project}
+          setProject={setProject}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          showPromos={showPromos}
+          setShowPromos={setShowPromos}
+          hideReserved={hideReserved}
+          setHideReserved={setHideReserved}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+        />
+        <Listings offices={sortedOffices} viewMode={viewMode} />
       </main>
-
       <Footer />
     </div>
   );

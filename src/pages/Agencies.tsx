@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Search, MapPin, Phone, Mail, Globe, Filter, Star, Users, Award, ArrowRight, Briefcase, ExternalLink, Calendar } from 'lucide-react';
 import Header from '../components/Header';
+import { Award } from "lucide-react";
 import Footer from '../components/Footer';
 
 import logoTstn from '../assets/logo/tstn.jpg';
@@ -10,7 +10,6 @@ import logoKcm from '../assets/logo/kcmkz.png';
 import logoLAluminstroi from '../assets/logo/ljuminstroj.jpg';
 import logoOpti from '../assets/logo/opti.jpg';
 
-import agenciesPartner from '../assets/image/agencies2.jpg'
 import agencies3 from '../assets/image/agencies3.jpg'
 import agencies4 from '../assets/image/agencies4.jpg'
 import agencies5 from '../assets/image/agencies5.jpg'
@@ -20,26 +19,12 @@ import agencies8 from '../assets/image/agencies8.jpg'
 import agencies9 from '../assets/image/agencies9.jpg'
 import agencies10 from '../assets/image/agencies10.jpg'
 
-
-interface Agency {
-  id: number;
-  name: string;
-  description: string;
-  category: string;
-  location: string;
-  phone: string;
-  email: string;
-  website: string;
-  logo: string;
-  coverImage: string;
-  galleryImages: string[];
-  rating: number;
-  employees: string;
-  established: string;
-  featured: boolean;
-  specialties: string[];
-  projects: number;
-}
+import Hero from "../components/agencies-wrapper/Hero";
+import SearchFilter from "../components/agencies-wrapper/SearchFilter";
+import AgencyCard from "../components/agencies-wrapper/AgencyCard";
+import CompactAgencyCard from "../components/agencies-wrapper/CompactAgencyCard";
+import Gallery from "../components/agencies-wrapper/Gallery";
+import { Agency } from "../components/agencies-wrapper/types";
 
 const agencies: Agency[] = [
   {
@@ -210,89 +195,16 @@ export default function Agencies() {
     <div className="min-h-screen flex flex-col bg-white">
     <Header />
     <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
-
-      {/* Hero Section with Background Image */}
-      <div className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={agenciesPartner}
-            alt="Our partner agencies at work"
-            className="absolute inset-0 w-full h-full object-cover opacity-10"
-          />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              {t.agenciesHeroTitle1}
-              <span className="block text-blue-300">{t.agenciesHeroTitle2}</span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              {t.agenciesHeroDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="flex items-center gap-2 text-blue-200">
-                <Award className="w-5 h-5" />
-                <span>{t.agenciesStatPartners}</span>
-              </div>
-              <div className="flex items-center gap-2 text-blue-200">
-                <Star className="w-5 h-5" />
-                <span>{t.agenciesStatRating}</span>
-              </div>
-              <div className="flex items-center gap-2 text-blue-200">
-                <Users className="w-5 h-5" />
-                <span>{t.agenciesStatProjects}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Search and Filter Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-2xl shadow-xl p-6 -mt-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-            {/* Search Bar */}
-            <div className="lg:col-span-6 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder={t.agenciesSearchPlaceholder}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder-gray-400"
-              />
-            </div>
-
-            {/* Category Filter */}
-            <div className="lg:col-span-4">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Filter Toggle */}
-            <div className="lg:col-span-2">
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors duration-200"
-              >
-                <Filter className="w-5 h-5" />
-                <span className="hidden sm:inline">{t.agenciesFilters}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        <Hero />
+        <SearchFilter
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          showFilters={showFilters}
+          setShowFilters={setShowFilters}
+          categories={categories}
+        />
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <p className="text-gray-600 text-lg">
@@ -326,285 +238,9 @@ export default function Agencies() {
         </div>
       </div>
 
-      {/* Photo Gallery Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{t.agenciesGalleryTitle}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t.agenciesGalleryDescription}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              agencies4, agencies6, agencies5, agencies3,
-              agencies8, agencies9, agencies7, agencies10
-            ].map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-xl aspect-square">
-                <img
-                  src={image}
-                  alt={`Agency workspace ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+        <Gallery images={[agencies4, agencies6, agencies5, agencies3, agencies8, agencies9, agencies7, agencies10]} />
     <Footer />
     </main>
     </div>
-  );
-}
-
-function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean }) {
-  const { t } = useLanguage();
-  return (
-    <div className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${featured ? 'ring-2 ring-yellow-400' : ''}`}>
-      {/* Cover Image */}
-      <div className="relative h-48 overflow-hidden">
-        <img 
-          src={agency.coverImage} 
-          alt={`${agency.name} office`}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        
-        {featured && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-2">
-            <Award className="w-4 h-4" />
-            <span>{t.featured}</span>
-          </div>
-        )}
-
-        {/* Logo overlay */}
-        <div className="absolute bottom-4 left-4">
-          <div className="w-12 h-12 rounded-lg overflow-hidden bg-white p-1 shadow-lg">
-            <img 
-              src={agency.logo} 
-              alt={`${agency.name} logo`}
-              className="w-full h-full object-cover rounded-md"
-            />
-          </div>
-        </div>
-      </div>
-      
-      <div className="p-6">
-        {/* Agency Header */}
-        <div className="mb-4">
-          <h3 className="font-bold text-xl text-gray-900 mb-2">{agency.name}</h3>
-          <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-            {agency.category}
-          </span>
-        </div>
-
-        {/* Rating and Stats */}
-        <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-            <span className="font-medium">{agency.rating}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Users className="w-4 h-4" />
-            <span>{agency.employees}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Briefcase className="w-4 h-4" />
-            <span>{agency.projects}+ projects</span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-600 mb-4 line-clamp-3">{agency.description}</p>
-
-        {/* Gallery Preview */}
-        <div className="mb-4">
-          <div className="flex gap-2 overflow-hidden">
-            {agency.galleryImages.slice(0, 3).map((image, index) => (
-              <div key={index} className="w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
-                <img 
-                  src={image} 
-                  alt={`${agency.name} work ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-200"
-                />
-              </div>
-            ))}
-            <div className="w-16 h-12 rounded-md bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-medium">
-              +{agency.galleryImages.length - 3}
-            </div>
-          </div>
-        </div>
-
-        {/* Specialties */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2">
-            {agency.specialties.slice(0, 3).map(specialty => (
-              <span key={specialty} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
-                {specialty}
-              </span>
-            ))}
-            {agency.specialties.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
-                +{agency.specialties.length - 3} more
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Contact Info */}
-        <div className="space-y-2 mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <MapPin className="w-4 h-4" />
-            <span>{agency.location}</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Phone className="w-4 h-4" />
-            <span>{agency.phone}</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Mail className="w-4 h-4" />
-            <span className="truncate">{agency.email}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CompactAgencyCard({ agency }: { agency: Agency }) {
-  const { t } = useLanguage();
-  return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left Side - Image and Logo */}
-        <div className="lg:w-80 h-48 lg:h-auto relative overflow-hidden flex-shrink-0">
-          <img 
-            src={agency.coverImage} 
-            alt={`${agency.name} office`}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-          <div className="absolute bottom-3 left-3">
-            <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-1 shadow-md">
-              <img 
-                src={agency.logo} 
-                alt={`${agency.name} logo`}
-                className="w-full h-full object-cover rounded-md"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side - Content */}
-        <div className="flex-1 p-6">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between h-full">
-            {/* Main Content */}
-            <div className="flex-1 lg:pr-6">
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                <div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-1">{agency.name}</h3>
-                  <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                    {agency.category}
-                  </span>
-                </div>
-                <div className="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="font-medium">{agency.rating}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>Est. {agency.established}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{agency.description}</p>
-
-              {/* Stats Row */}
-              <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-600">
-                <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4" />
-                  <span>{agency.employees} employees</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Briefcase className="w-4 h-4" />
-                  <span>{agency.projects}+ projects</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4" />
-                  <span>{agency.location}</span>
-                </div>
-              </div>
-
-              {/* Specialties */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-2">
-                  {agency.specialties.slice(0, 4).map(specialty => (
-                    <span key={specialty} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
-                      {specialty}
-                    </span>
-                  ))}
-                  {agency.specialties.length > 4 && (
-                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
-                      +{agency.specialties.length - 4} more
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Gallery Preview - Mobile/Tablet */}
-              <div className="lg:hidden mb-4">
-                <div className="flex gap-2">
-                  {agency.galleryImages.slice(0, 4).map((image, index) => (
-                    <div key={index} className="w-12 h-9 rounded-md overflow-hidden flex-shrink-0">
-                      <img 
-                        src={image} 
-                        alt={`${agency.name} work ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side Actions */}
-            <div className="lg:w-48 flex-shrink-0">
-              {/* Gallery Preview - Desktop */}
-              <div className="hidden lg:block mb-4">
-                <div className="grid grid-cols-2 gap-2">
-                  {agency.galleryImages.slice(0, 4).map((image, index) => (
-                    <div key={index} className="aspect-square rounded-md overflow-hidden">
-                      <img 
-                        src={image} 
-                        alt={`${agency.name} work ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-200"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-2 mb-4 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span className="truncate">{agency.phone}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <span className="truncate">{agency.email}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
   );
 }
