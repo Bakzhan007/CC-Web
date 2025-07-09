@@ -59,7 +59,7 @@ const ProjectDetail: FC = () => {
   const price = project.price ?? 'Upon request';
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
 
       {/* Hero Section */}

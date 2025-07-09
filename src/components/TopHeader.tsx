@@ -26,8 +26,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
   if (!visible) return null
 
   return (
-    <div className="hidden md:block bg-white text-slate-700 text-sm border-b">
-      <div className="container mx-auto flex h-10 items-center justify-between px-6">
+    <div className="hidden md:block bg-white text-slate-700 text-xs border-b shadow">
+      <div className="container mx-auto flex h-8 items-center justify-between px-6">
         {/* Навигация */}
         <nav className="hidden md:flex space-x-8">
           {topHeaderLinks(t).map((link) => (

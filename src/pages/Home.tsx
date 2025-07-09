@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 
 function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
         <Hero />

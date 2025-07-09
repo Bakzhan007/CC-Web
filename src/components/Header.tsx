@@ -62,12 +62,12 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 shadow">
       <TopHeader visible={!isScrolled} />
-      <div className={`transition-colors duration-300 ${
+      <div className={`transition-all duration-300 ${
         isScrolled
-          ? 'bg-white shadow-sm border-b border-slate-200'
-          : 'bg-white/80 backdrop-blur-md border-b border-slate-200'
+          ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200'
+          : 'bg-white/70 backdrop-blur-md border-b border-slate-200'
       }`}>
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                   <div key={item.name} className="relative">
                     <button
                       onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center space-x-1 text-slate-700 hover:text-blue-600"
+                      className="flex items-center space-x-1 text-sm text-slate-700 hover:text-blue-600"
                     >
                       <span>{item.name}</span>
                       <ChevronDown
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                             <Link
                               to={sub.to}
                               onClick={() => setOpenDropdown(null)}
-                              className="block px-4 py-2 text-slate-700 hover:bg-slate-100"
+                              className="relative group text-sm text-slate-700 hover:text-blue-600"
                             >
                               {sub.name}
                             </Link>
@@ -166,8 +166,8 @@ const Header: React.FC = () => {
                               onClick={() => {
                                 setIsMenuOpen(false)
                                 setOpenDropdown(null)
-                              }}                              className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
-                            >
+                              }}                              
+                              className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-sm text-slate-700 transition-colors"                            >
                               {sub.name}
                             </Link>
                           ))}
@@ -178,7 +178,7 @@ const Header: React.FC = () => {
                     <button
                       key={item.name}
                       onClick={() => handleNavigate(item.to)}
-                      className="block px-4 py-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
+                      className="block px-4 py-2 rounded-lg hover:bg-slate-100 text-sm text-slate-700 transition-colors"
                     >
                       {item.name}
                     </button>

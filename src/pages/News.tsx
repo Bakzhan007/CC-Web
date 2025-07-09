@@ -77,7 +77,7 @@ const News: React.FC = () => {
   const filtered = activeCategory === 'all' ? articles : articles.filter(a => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="flex-1 pt-[104px] sm:pt-[112px] lg:pt-[128px]">
         <section className="bg-slate-100 py-12">

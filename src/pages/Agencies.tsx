@@ -207,7 +207,7 @@ export default function Agencies() {
   const regularAgencies = filteredAgencies.filter(agency => !agency.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen flex flex-col bg-white">
     <Header />
     <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
 
