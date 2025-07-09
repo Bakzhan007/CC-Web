@@ -166,19 +166,18 @@ export interface Translation {
   
   // Footer
   footerDescription: string;
-  ourServices: string;
+  homePage: string;
   quickLinks: string;
   stayUpdated: string;
   newsletterDescription: string;
-  subscribe: string;
-  yourEmail: string;
   footerLinks: {
-    aboutUs: string;
-    careers: string;
+    sale: string;
+    forPartner: string;
+    projects: string;
     news: string;
-    privacy: string;
-    terms: string;
-    sitemap: string;
+    agencies: string;
+    career: string;
+    commerce: string
   };
   allRightsReserved: string;
 
@@ -426,21 +425,20 @@ export const translations: Record<string, Translation> = {
   
     // Footer
     footerDescription: 'Building the future along the Caspian Coast with excellence, innovation, and sustainable practices for over 8 years.',
-    ourServices: 'Our Services',
+    homePage: 'Our Services',
     quickLinks: 'Quick Links',
     stayUpdated: 'Stay Updated',
     newsletterDescription: 'Subscribe to our newsletter for the latest news and project updates.',
-    subscribe: 'Subscribe',
-    yourEmail: 'Your email',
     footerLinks: {
-      aboutUs: 'About Us',
-      careers: 'Careers',
-      news: 'News & Updates',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
-      sitemap: 'Sitemap'
+      sale: 'Sale',
+      forPartner: 'Partner',
+      projects: 'Projects',
+      news: 'News',
+      agencies: 'Agencies',
+      career: 'Career',
+      commerce: 'Commerce'
     },
-    allRightsReserved: '© 2024 CaspianCoast Construction. All rights reserved.',
+    allRightsReserved: '© 2025 CaspianCoast Construction. All rights reserved.',
 
     // Agencies Page
     agenciesHeroTitle1: 'Official Partner',
