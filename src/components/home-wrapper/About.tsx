@@ -6,13 +6,6 @@ import home2 from '../../assets/image/home1.jpg';  // ← your second image
 const About = () => {
   const { t } = useLanguage();
 
-  const achievements = [
-    { icon: '✅', label: t.achievements.iso },
-    { icon: '🌍', label: t.achievements.leed },
-    { icon: '🦺', label: t.achievements.safety },
-    { icon: '🏆', label: t.achievements.best },
-  ];
-
   return (
     <section id="about" className="relative py-20 bg-white overflow-hidden">
       {/* Decorative SVG tint */}
@@ -33,18 +26,6 @@ const About = () => {
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
               {t.aboutDescription1}
             </p>
-
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              {achievements.map((ach, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center bg-slate-50 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
-                >
-                  <span className="text-2xl mr-3">{ach.icon}</span>
-                  <span className="text-base font-medium text-gray-800">{ach.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="relative z-10">
@@ -56,32 +37,6 @@ const About = () => {
                 className="w-full h-[400px] object-cover"
               />
             </div>
-          </div>
-        </div>
-
-        {/* ── Second row: image2 on left, text on right ── */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative z-10">
-            <div className="absolute top-8 right-8 w-[90%] h-full bg-blue-50 rounded-3xl transform -rotate-2"></div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-              <img
-                src={home2}
-                alt="CaspianCoast — дополнительная фотография"
-                className="w-full h-[400px] object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="z-10">
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              {t.aboutDescription2}
-            </p>
-            <Link
-              to="/contact"
-              className="inline-block mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors"
-            >
-              {t.contactUs || 'Связаться с нами'}
-            </Link>
           </div>
         </div>
       </div>
