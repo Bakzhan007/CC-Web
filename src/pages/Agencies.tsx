@@ -352,65 +352,6 @@ export default function Agencies() {
           </div>
         </div>
       </div>
-      {/* Leave a Request Section */}
-      <div className="relative py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage:
-              "url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')"
-          }}
-        ></div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 text-slate-900">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">{t.agenciesLeaveRequest}</h2>
-            <form
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                console.log({ name, email, phone, message });
-              }}
-            >
-              <input
-                type="text"
-                placeholder={t.name}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                type="email"
-                placeholder={t.email}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <input
-                type="tel"
-                placeholder={t.phone}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:col-span-2"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              <textarea
-                rows={4}
-                placeholder={t.message}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none sm:col-span-2"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-              <button
-                type="submit"
-                className="sm:col-span-2 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold text-white transition-colors"
-              >
-                {t.sendRequest}
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
     <Footer />
     </main>
     </div>
@@ -525,22 +466,6 @@ function AgencyCard({ agency, featured }: { agency: Agency; featured: boolean })
             <Mail className="w-4 h-4" />
             <span className="truncate">{agency.email}</span>
           </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3">
-          <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 group">
-            <span>{t.viewProfile}</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
-          <a 
-            href={`https://${agency.website}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center p-2 border border-gray-300 hover:border-blue-600 text-gray-600 hover:text-blue-600 rounded-lg transition-colors duration-200"
-          >
-            <Globe className="w-5 h-5" />
-          </a>
         </div>
       </div>
     </div>
@@ -674,24 +599,6 @@ function CompactAgencyCard({ agency }: { agency: Agency }) {
                   <Mail className="w-4 h-4" />
                   <span className="truncate">{agency.email}</span>
                 </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col gap-2">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 group text-sm">
-                  <span>{t.viewProfile}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-                <a 
-                  href={`https://${agency.website}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 p-2 border border-gray-300 hover:border-blue-600 text-gray-600 hover:text-blue-600 rounded-lg transition-colors duration-200 text-sm"
-                >
-                  <Globe className="w-4 h-4" />
-                  <span>{t.visitWebsite}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
               </div>
             </div>
           </div>
