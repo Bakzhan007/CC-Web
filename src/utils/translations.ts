@@ -221,6 +221,27 @@ export interface Translation {
   careerValuesList: { title: string; description: string }[];
   careerBenefitsList: { title: string; description: string }[];
   careerProcessSteps: { step: string; title: string; description: string }[];
+
+    // Commerce Filter
+  filterAllCities: string;
+  filterCityAktau: string;
+  filterCityZhanaOzen: string;
+  filterAllProjects: string;
+  filterProjectIlanTowers: string;
+  filterProjectCaspianCoast: string;
+  filterProjectTaras: string;
+  filterSortNone: string;
+  filterSortPriceAsc: string;
+  filterSortPriceDesc: string;
+  filterSortAreaAsc: string;
+  filterPromos: string;
+  filterHideReserved: string;
+
+  // Sales Office
+  salesOfficeForBuyers: string;
+  salesOfficeOnlineCenter: string;
+  salesOfficeBuyProperty: string;
+  salesOfficeHeadOffice: string;
 }
 
 export const translations: Record<string, Translation> = {
@@ -498,7 +519,24 @@ export const translations: Record<string, Translation> = {
       { step: '02', title: 'Introductory Call', description: 'A 20-minute chat to discuss your background and our needs.' },
       { step: '03', title: 'Technical Assessment', description: 'A role-specific exercise or on-site site-visit walkthrough.' },
       { step: '04', title: 'Final Interview & Offer', description: 'Meet with department heads and review benefits, then join the team.' }
-    ]  
+    ],
+    filterAllCities: 'All cities of Kazakhstan',
+    filterCityAktau: 'Aktau',
+    filterCityZhanaOzen: 'ZhanaOzen',
+    filterAllProjects: 'All projects',
+    filterProjectIlanTowers: 'Ilan Towers',
+    filterProjectCaspianCoast: 'Caspian Coast',
+    filterProjectTaras: 'Taras',
+    filterSortNone: 'No sorting',
+    filterSortPriceAsc: 'Price ↑',
+    filterSortPriceDesc: 'Price ↓',
+    filterSortAreaAsc: 'Area ↑',
+    filterPromos: 'Promotions',
+    filterHideReserved: 'Hide reserved',
+    salesOfficeForBuyers: 'For buyers',
+    salesOfficeOnlineCenter: 'Online sales center',
+    salesOfficeBuyProperty: 'Purchase property',
+    salesOfficeHeadOffice: 'Head office'
   },
   
   ru: {
@@ -774,7 +812,24 @@ export const translations: Record<string, Translation> = {
       { step: '02', title: 'Вводный звонок', description: '20‑минутная беседа о вашем опыте и наших потребностях.' },
       { step: '03', title: 'Техническая оценка', description: 'Задание по специальности или выездной осмотр объекта.' },
       { step: '04', title: 'Финальное собеседование и предложение', description: 'Встреча с руководителями подразделений и обсуждение условий, после чего присоединяйтесь к команде.' }
-    ]  
+    ],
+    filterAllCities: 'Все города Казахстана',
+    filterCityAktau: 'Актау',
+    filterCityZhanaOzen: 'ЖанаОзен',
+    filterAllProjects: 'Все проекты',
+    filterProjectIlanTowers: 'ЖК Ilan Towers',
+    filterProjectCaspianCoast: 'ЖК Caspian Coast',
+    filterProjectTaras: 'ЖК Taras',
+    filterSortNone: 'Без сортировки',
+    filterSortPriceAsc: 'Цена ↑',
+    filterSortPriceDesc: 'Цена ↓',
+    filterSortAreaAsc: 'Площадь ↑',
+    filterPromos: 'Акции',
+    filterHideReserved: 'Не показывать забронированные',
+    salesOfficeForBuyers: 'Для покупателей',
+    salesOfficeOnlineCenter: 'Центр онлайн-продаж',
+    salesOfficeBuyProperty: 'Приобрести недвижимость',
+    salesOfficeHeadOffice: 'Головной офис'
   },
   
   kz: {
@@ -1050,7 +1105,24 @@ export const translations: Record<string, Translation> = {
       { step: '02', title: 'Танысу қоңырауы', description: '20 минуттық әңгіме, тәжірибеңіз бен біздің қажеттіліктерімізді талқылау.' },
       { step: '03', title: 'Техникалық тапсырма', description: 'Мамандыққа байланысты тапсырма немесе объектіге бару.' },
       { step: '04', title: 'Қорытынды сұхбат және ұсыныс', description: 'Бөлім басшыларымен кездесу, шарттарды талқылау және командаға қосылу.' }
-    ]  
+    ],
+    filterAllCities: 'Қазақстанның барлық қалалары',
+    filterCityAktau: 'Ақтау',
+    filterCityZhanaOzen: 'Жаңаөзен',
+    filterAllProjects: 'Барлық жобалар',
+    filterProjectIlanTowers: 'Ilan Towers',
+    filterProjectCaspianCoast: 'Caspian Coast',
+    filterProjectTaras: 'Taras',
+    filterSortNone: 'Сұрыптаусыз',
+    filterSortPriceAsc: 'Баға ↑',
+    filterSortPriceDesc: 'Баға ↓',
+    filterSortAreaAsc: 'Алаңы ↑',
+    filterPromos: 'Акциялар',
+    filterHideReserved: 'Брондалғандарды жасыру',
+    salesOfficeForBuyers: 'Сатып алушыларға',
+    salesOfficeOnlineCenter: 'Онлайн сату орталығы',
+    salesOfficeBuyProperty: 'Мүлік сатып алу',
+    salesOfficeHeadOffice: 'Бас кеңсе'
   }
 };
 

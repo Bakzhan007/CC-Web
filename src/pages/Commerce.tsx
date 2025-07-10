@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import Hero from '../components/commerce-wrapper/Hero';
 import FilterBar from '../components/commerce-wrapper/FilterBar';
@@ -57,7 +58,8 @@ const offices: Office[] = [
 ];
 
 export default function Commerce() {
-  const [city, setCity] = useState('Все города Казахстана');
+  const { t } = useLanguage();
+  const [city, setCity] = useState('all');
   const [project, setProject] = useState('');
   const [showPromos, setShowPromos] = useState(true);
   const [hideReserved, setHideReserved] = useState(false);
@@ -65,7 +67,7 @@ export default function Commerce() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const filteredOffices = offices
-    .filter((o) => city === 'Все города Казахстана' || o.city === city)
+    .filter((o) => city === 'all' || o.city === city)
     .filter((o) => (project ? o.project === project : true))
     .filter((o) => !(hideReserved && o.reserved))
     .filter((o) => (showPromos ? true : o.tags.length === 0));

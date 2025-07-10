@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Office {
   id: number;
@@ -40,17 +41,17 @@ const offices: Office[] = [
   },
 ];
 
-const buyerInfo = [
-  { icon: Phone, title: '360', subtitle: 'Центр онлайн-продаж' },
-  { icon: Mail, title: 'infosales@bi.group', subtitle: 'Приобрести недвижимость' },
-  {
-    icon: MapPin,
-    title: 'Головной офис',
-    subtitle: 'г. Астана, ул. Сыганак, 17M; г. Алматы, ул. Тимирязева, 26',
-  },
-];
-
 function SalesOffice() {
+  const { t } = useLanguage();
+  const buyerInfo = [
+    { icon: Phone, title: '360', subtitle: t.salesOfficeOnlineCenter },
+    { icon: Mail, title: 'infosales@bi.group', subtitle: t.salesOfficeBuyProperty },
+    {
+      icon: MapPin,
+      title: t.salesOfficeHeadOffice,
+      subtitle: 'г. Астана, ул. Сыганак, 17M; г. Алматы, ул. Тимирязева, 26',
+    },
+  ];
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -96,7 +97,7 @@ function SalesOffice() {
 
             {/* Right: информация для покупателей */}
             <div className="col-span-12 lg:col-span-3 space-y-6">
-              <h2 className="text-xl font-semibold text-slate-900">Для покупателей</h2>
+              <h2 className="text-xl font-semibold text-slate-900">{t.salesOfficeForBuyers}</h2>
               {buyerInfo.map((b, i) => (
                 <div
                   key={i}

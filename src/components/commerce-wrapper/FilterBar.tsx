@@ -1,4 +1,5 @@
 import { Grid, List } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 type ViewMode = 'grid' | 'list';
 
@@ -30,17 +31,18 @@ const FilterBar = ({
   setHideReserved,
   viewMode,
   setViewMode,
-}: FilterBarProps) => (
-  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+}: FilterBarProps) => {
+  const { t } = useLanguage();
+  return (  <div className="max-w-7xl mx-auto px-6 lg:px-8">
     <div className="bg-white py-4 rounded-2xl shadow flex flex-wrap gap-3 items-center">
       <select
         value={city}
         onChange={(e) => setCity(e.target.value)}
         className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
       >
-        <option>Все города Казахстана</option>
-        <option>Актау</option>
-        <option>ЖанаОзен</option>
+        <option value="all">{t.filterAllCities}</option>
+        <option value="Актау">{t.filterCityAktau}</option>
+        <option value="ЖанаОзен">{t.filterCityZhanaOzen}</option>
       </select>
 
       <select
@@ -48,10 +50,10 @@ const FilterBar = ({
         onChange={(e) => setProject(e.target.value)}
         className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
       >
-        <option value="">Все проекты</option>
-        <option>ЖК Ilan Towers</option>
-        <option>ЖК Caspian Coast</option>
-        <option>ЖК Taras</option>
+        <option value="">{t.filterAllProjects}</option>
+        <option value="ЖК Ilan Towers">{t.filterProjectIlanTowers}</option>
+        <option value="ЖК Caspian Coast">{t.filterProjectCaspianCoast}</option>
+        <option value="ЖК Taras">{t.filterProjectTaras}</option>
       </select>
 
       <select
@@ -59,23 +61,23 @@ const FilterBar = ({
         onChange={(e) => setSortBy(e.target.value)}
         className="px-3 py-2 border rounded-lg bg-white text-sm shadow-sm"
       >
-        <option value="">Без сортировки</option>
-        <option value="priceAsc">Цена ↑</option>
-        <option value="priceDesc">Цена ↓</option>
-        <option value="areaAsc">Площадь ↑</option>
+        <option value="">{t.filterSortNone}</option>
+        <option value="priceAsc">{t.filterSortPriceAsc}</option>
+        <option value="priceDesc">{t.filterSortPriceDesc}</option>
+        <option value="areaAsc">{t.filterSortAreaAsc}</option>
       </select>
 
       <button
         onClick={() => setShowPromos(!showPromos)}
         className={`px-3 py-1 rounded-full text-sm border ${showPromos ? 'bg-green-100 border-green-300' : 'bg-white'}`}
       >
-        Акции
+        {t.filterPromos}
       </button>
       <button
         onClick={() => setHideReserved(!hideReserved)}
         className={`px-3 py-1 rounded-full text-sm border ${hideReserved ? 'bg-gray-200' : 'bg-white'}`}
       >
-        Не показывать забронированные
+        {t.filterHideReserved}
       </button>
 
       <div className="ml-auto flex gap-3">
@@ -94,7 +96,7 @@ const FilterBar = ({
       </div>
     </div>
   </div>
-);
-
+  );
+};
 export default FilterBar;
 export type { ViewMode };
