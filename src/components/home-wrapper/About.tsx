@@ -1,7 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Link } from 'react-router-dom';
 import home1 from '../../assets/image/home1.jpg';
-import home2 from '../../assets/image/home1.jpg';  // ← your second image
 
 const About = () => {
   const { t } = useLanguage();

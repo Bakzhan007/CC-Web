@@ -33,12 +33,6 @@ export interface Translation {
   aboutDescription1: string;
   aboutDescription2: string;
   ourAchievements: string;
-  achievements: {
-    iso: string;
-    leed: string;
-    safety: string;
-    best: string;
-  };
   coreValues: string;
   coreValuesDescription: string;
   values: {
@@ -261,19 +255,13 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Awards Won',
     
     // About Section
-    aboutTitle: 'Briefly',
-    aboutSubtitle: 'about as',
+    aboutTitle: 'Our',
+    aboutSubtitle: 'Vision',
     aboutDescription1:
-      'Caspian Coast LLP was founded in 2017 with the purpose of providing high-quality construction services in the sphere of civil and industrial construction. Over the years of its activities, the company has successfully implemented many projects, including residential complexes, office buildings, as well as infrastructure and industrial facilities.',
+      'We strive to ensure that each of our projects contributes to improving the quality of life. Whether it is residential complexes, public buildings or infrastructure projects, we create not just construction projects, but spaces that make people is lives more comfortable, safer and more sustainable. We will continue to build our reputation on the principles of honesty, transparency and responsibility. Our goal is to become a company that is trusted by both clients and partners. We will demonstrate high standards of corporate culture and professionalism in every task',
     aboutDescription2:
-      'Caspian Coast has carried out a range of key infrastructure projects on the Caspian Sea coast and throughout the Mangystau region: constructing a production facility in Aktau, a 100,000-bird poultry farm in Bayandy, installing water and gas networks for agricultural and administrative sites, delivering engineering services to residential districts, establishing an auto service center with a car wash and parking, developing a recreation base, and completing numerous other works across the region.',
+      'We will continue to build our reputation on the principles of honesty, transparency and responsibility. Our goal is to become a company that is trusted by both clients and partners. We will demonstrate high standards of corporate culture and professionalism in every task',
     ourAchievements: 'Our Achievements',
-    achievements: {
-      iso: 'ISO 9001:2015 Certified Quality Management',
-      leed: 'LEED Green Building Certified',
-      safety: 'National Safety Excellence Award',
-      best: 'Best Construction Company 2023'
-    },
     coreValues: 'Our Core Values',
     coreValuesDescription: 'The principles that guide every project we undertake and every relationship we build.',
     values: {
@@ -425,7 +413,7 @@ export const translations: Record<string, Translation> = {
   
     // Footer
     footerDescription: 'Building the future along the Caspian Coast with excellence, innovation, and sustainable practices for over 8 years.',
-    homePage: 'Our Services',
+    homePage: 'Home page',
     quickLinks: 'Quick Links',
     stayUpdated: 'Stay Updated',
     newsletterDescription: 'Subscribe to our newsletter for the latest news and project updates.',
@@ -543,19 +531,13 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Наград получено',
     
     // About Section
-    aboutTitle: 'Кратко',
-    aboutSubtitle: 'о нас',
+    aboutTitle: 'Наше',
+    aboutSubtitle: 'Видение',
     aboutDescription1:
-      'ТОО «Caspian Coast» было основано в 2017 году с целью предоставления высококачественных услуг в сфере гражданского и промышленного строительства. За годы работы компания успешно реализовала множество проектов, включая жилые комплексы, офисные здания, а также инфраструктурные и промышленные объекты.',
+      'Мы стремиться к тому, чтобы каждый наш проект вносил вклад в улучшение качества жизни. Будь то жилые комплексы, общественные здания или инфраструктурные проекты — мы создаем не просто строительные объекты, а пространства, которые делают жизнь людей комфортнее, безопаснее и более устойчивой. Мы будем продолжать строить свою репутацию на принципах честности, прозрачности и ответственности. Наша цель — стать компанией, которой доверяют как клиенты, так и партнеры. Мы будем демонстрировать высокие стандарты корпоративной культуры и профессионализма в каждой задаче',
     aboutDescription2:
       '«Caspian Coast» выполнила ряд ключевых инфраструктурных проектов на побережье Каспийского моря и по всему Мангистаускому региону: построила производственный комплекс в Актау, птицефабрику на 100 000 голов в Баянды, проложила водо- и газовые сети для сельскохозяйственных и административных объектов, оказала инжиниринговые услуги жилым районам, создала автосервисный центр с мойкой и парковкой, развила базу отдыха и завершила множество других работ по всему региону.',
     ourAchievements: 'Наши достижения',
-    achievements: {
-      iso: 'Сертификат ISO 9001:2015 по управлению качеством',
-      leed: 'Сертификат LEED зеленого строительства',
-      safety: 'Национальная премия за безопасность',
-      best: 'Лучшая строительная компания 2023'
-    },
     coreValues: 'Наши основные ценности',
     coreValuesDescription: 'Принципы, которые направляют каждый проект и каждые отношения, которые мы строим.',
     values: {
@@ -706,22 +688,21 @@ export const translations: Record<string, Translation> = {
     contactUs: 'Связаться с нами',
     
     // Footer
-    footerDescription: 'Строим будущее на побережье Каспийского моря с совершенством, инновациями и устойчивыми практиками уже более 8 лет.',
-    ourServices: 'Наши услуги',
+    footerDescription: 'Более 8 лет мы создаём будущее на побережье Каспийского моря, опираясь на высокие стандарты, инновации и принципы устойчивого развития.',
+    homePage: 'Главная страница',
     quickLinks: 'Быстрые ссылки',
     stayUpdated: 'Будьте в курсе',
-    newsletterDescription: 'Подпишитесь на нашу рассылку для получения последних новостей и обновлений проектов.',
-    subscribe: 'Подписаться',
-    yourEmail: 'Ваш email',
+    newsletterDescription: 'Подпишитесь на нашу рассылку, чтобы получать последние новости и обновления проектов.',
     footerLinks: {
-      aboutUs: 'О нас',
-      careers: 'Карьера',
-      news: 'Новости и обновления',
-      privacy: 'Политика конфиденциальности',
-      terms: 'Условия обслуживания',
-      sitemap: 'Карта сайта'
+      sale: 'Продажа',
+      forPartner: 'Партнёрам',
+      projects: 'Проекты',
+      news: 'Новости',
+      agencies: 'Агентства',
+      career: 'Карьера',
+      commerce: 'Коммерция',
     },
-        allRightsReserved: '© 2024 CaspianCoast Construction. Все права защищены.',
+    allRightsReserved: '© 2025 CaspianCoast Construction. Все права защищены.',
 
     // Agencies Page
     agenciesHeroTitle1: 'Официальные партнеры',
@@ -826,19 +807,13 @@ export const translations: Record<string, Translation> = {
     awardsWon: 'Алынған марапаттар',
     
     // About Section
-    aboutTitle: 'Қысқаша',
-    aboutSubtitle: 'Біз туралы',
+    aboutTitle: 'Біздің',
+    aboutSubtitle: 'Көрініс',
     aboutDescription1:
-      '«Caspian Coast» ЖШС 2017 жылы азаматтық және өнеркәсіптік құрылыс саласында жоғары сапалы қызмет көрсету мақсатында құрылды. Компания өз қызметі барысында тұрғын үй кешендері, кеңсе ғимараттары, сондай-ақ инфрақұрылымдық және өнеркәсіптік нысандарды қоса алғанда көптеген жобаларды сәтті іске асырды.',
+    'Біз әрбір жобамыз өмір сапасын жақсартуға ықпал ететініне көз жеткізуге тырысамыз. Тұрғын үй кешендері, қоғамдық ғимараттар немесе инфрақұрылымдық жобалар болсын, біз тек құрылыс нысандарын ғана емес, адамдардың өмірін жайлы, қауіпсіз және тұрақты ететін кеңістіктерді жасаймыз. Біз өз беделімізді адалдық, ашықтық және жауапкершілік қағидаттары негізінде құруды жалғастырамыз. Біздің мақсатымыз – клиенттер де, серіктестер де сенетін компания болу. Біз әрбір тапсырмада корпоративтік мәдениет пен кәсібиліктің жоғары стандарттарын көрсететін боламыз',
     aboutDescription2:
       '«Caspian Coast» компаниясы Каспий теңізі жағалауында және Маңғыстау өңірі бойынша бірқатар маңызды инфрақұрылымдық жобаларды жүзеге асырды: Ақтауда өндірістік кешен салды, Баяндыда 100 000 бас құс фабрикасын тұрғызды, ауыл шаруашылығы және әкімшілік нысандар үшін су және газ желілерін тартты, тұрғын аудандарға инженерлік қызметтер көрсетті, автожуу мен тұрақы бар автосервис орталығын ашты, демалыс базасын дамытты және өңір бойынша тағы да көптеген жұмыстарды аяқтады.',
     ourAchievements: 'Біздің жетістіктеріміз',
-    achievements: {
-      iso: 'ISO 9001:2015 сапа менеджменті сертификаты',
-      leed: 'LEED жасыл құрылыс сертификаты',
-      safety: 'Ұлттық қауіпсіздік кереметтілігі сыйлығы',
-      best: '2023 жылғы ең үздік құрылыс компаниясы'
-    },
     coreValues: 'Біздің негізгі құндылықтарымыз',
     coreValuesDescription: 'Біз жүзеге асыратын әрбір жоба мен құратын әрбір қарым-қатынасты басқаратын принциптер.',
     values: {
@@ -989,23 +964,21 @@ export const translations: Record<string, Translation> = {
     contactUs: 'Бізбен байланысу',
     
     // Footer
-    footerDescription: 'Каспий жағалауында 8 жылдан астам уақыт бойы кереметтілік, инновация және тұрақты тәжірибелермен болашақты құрамыз.',
-    ourServices: 'Біздің қызметтер',
+    footerDescription: '8 жылдан астам уақыт бойы Каспий маңы жағалауында жоғары стандарттар, инновациялар және орнықты даму принциптері негізінде болашақты қалыптастырып келеміз.',
+    homePage: 'Басты бет',
     quickLinks: 'Жылдам сілтемелер',
-    stayUpdated: 'Жаңалықтарды қадағалаңыз',
-    newsletterDescription: 'Соңғы жаңалықтар мен жоба жаңартулары үшін біздің жаңалықтар таратуға жазылыңыз.',
-    subscribe: 'Жазылу',
-    yourEmail: 'Сіздің email',
+    stayUpdated: 'Жаңалықтардан хабардар болыңыз',
+    newsletterDescription: 'Біздің бюллетенге жазылып, соңғы жаңалықтар мен жоба жаңартуларынан хабардар болыңыз.',
     footerLinks: {
-      aboutUs: 'Біз туралы',
-      careers: 'Мансап',
-      news: 'Жаңалықтар және жаңартулар',
-      privacy: 'Құпиялылық саясаты',
-      terms: 'Қызмет көрсету шарттары',
-      sitemap: 'Сайт картасы'
+      sale: 'Сату',
+      forPartner: 'Серіктестерге',
+      projects: 'Жобалар',
+      news: 'Жаңалықтар',
+      agencies: 'Агенттіктер',
+      career: 'Карьера',
+      commerce: 'Коммерция',
     },
-    
-    allRightsReserved: '© 2024 CaspianCoast Construction. Барлық құқықтар қорғалған.',
+    allRightsReserved: '© 2025 CaspianCoast Construction. Барлық құқықтар қорғалған.',
 
     // Agencies Page
     agenciesHeroTitle1: 'Ресми серіктес',
