@@ -157,6 +157,30 @@ export interface Translation {
   messagePlaceholder: string;
 
   contactUs: string;
+
+    // Home Page
+  aboutImageAlt: string;
+  companyTitle: string;
+  companySubtitle: string;
+  companyDescription: string;
+  companyHistoryTitle: string;
+  companyHistoryP1: string;
+  companyHistoryP2: string;
+  companyHistoryPoints: string[];
+  companyAdvantagesTitle: string;
+  companyAdvantages: { title: string; description: string }[];
+  leadershipTitle1: string;
+  leadershipTitle2: string;
+  leadershipDescription: string;
+  leadershipSectionTitle: string;
+  leadershipStats: { value: string; label: string }[];
+  projectsHomeTitle1: string;
+  projectsHomeTitle2: string;
+  projectsHomeDescription: string;
+  projectsHomeResidential: string;
+  projectsHomeIndustrial: string;
+  projectsHomeMoreTitle: string;
+  projectsHomeMoreDescription: string;
   
   // Footer
   footerDescription: string;
@@ -533,6 +557,46 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Area ↑',
     filterPromos: 'Promotions',
     filterHideReserved: 'Hide reserved',
+        aboutImageAlt: 'CaspianCoast — our achievements',
+    companyTitle: 'About',
+    companySubtitle: 'Caspian Coast',
+    companyDescription:
+      'Caspian Coast LLP is a dynamic construction company specializing in high-quality civil and industrial development.',
+    companyHistoryTitle: 'Our History',
+    companyHistoryP1:
+      'Founded in 2017, the company has successfully implemented numerous projects including residential complexes, office buildings and industrial facilities.',
+    companyHistoryP2:
+      'We are proud of our reputation as a reliable partner able to work on projects of any scale, from housing estates to large industrial sites.',
+    companyHistoryPoints: [
+      'Use of innovative construction technologies',
+      'Strict adherence to deadlines and quality standards',
+      'Comprehensive approach from design to turnkey delivery',
+      'Compliance with environmental standards'
+    ],
+    companyAdvantagesTitle: 'Our Advantages',
+    companyAdvantages: [
+      { title: 'Own production facilities', description: 'Allow us to control material quality and reduce costs' },
+      { title: 'Qualified team', description: 'More than 80 experienced specialists with high expertise' },
+      { title: 'Certified quality', description: 'Compliance with international standards ISO 9001, 14001, 45001' }
+    ],
+    leadershipTitle1: 'Our',
+    leadershipTitle2: 'leadership team',
+    leadershipDescription: 'Experienced professionals ensuring the high quality and efficiency of all our projects.',
+    leadershipSectionTitle: 'Executive leadership',
+    leadershipStats: [
+      { value: '80+', label: 'Qualified employees' },
+      { value: '15+', label: 'Average years of experience' },
+      { value: '100%', label: 'Staff with relevant degrees' }
+    ],
+    projectsHomeTitle1: 'Our',
+    projectsHomeTitle2: 'projects on the Caspian coast',
+    projectsHomeDescription:
+      'Over the years we have implemented many developments in the Mangystau region, from residential complexes to major industrial facilities.',
+    projectsHomeResidential: 'Residential construction',
+    projectsHomeIndustrial: 'Industrial and infrastructure projects',
+    projectsHomeMoreTitle: 'And many other sites',
+    projectsHomeMoreDescription:
+      'Beyond the projects shown here, we have completed numerous other developments across Mangystau including gas pipelines, water networks, car washes and more.',
     salesOfficeForBuyers: 'For buyers',
     salesOfficeOnlineCenter: 'Online sales center',
     salesOfficeBuyProperty: 'Purchase property',
@@ -826,6 +890,47 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Площадь ↑',
     filterPromos: 'Акции',
     filterHideReserved: 'Не показывать забронированные',
+        aboutImageAlt: 'CaspianCoast — наши достижения',
+    companyTitle: 'О компании',
+    companySubtitle: 'Caspian Coast',
+    companyDescription:
+      'ТОО «Caspian Coast» — это динамично развивающаяся строительная компания, специализирующаяся на предоставлении высококачественных услуг в сфере гражданского и промышленного строительства.',
+    companyHistoryTitle: 'Наша история',
+    companyHistoryP1:
+      'Основанная в 2017 году, компания успешно реализовала множество проектов, включая жилые комплексы, офисные здания, а также инфраструктурные и промышленные объекты.',
+    companyHistoryP2:
+      'Мы гордимся репутацией надежного партнера, готового работать над проектами любого масштаба — от жилых комплексов до крупных промышленных объектов.',
+    companyHistoryPoints: [
+      'Применение инновационных строительных технологий',
+      'Строгое соблюдение сроков и стандартов качества',
+      'Комплексный подход: от проектирования до сдачи «под ключ»',
+      'Соблюдение экологических стандартов'
+    ],
+    companyAdvantagesTitle: 'Наши преимущества',
+    companyAdvantages: [
+      { title: 'Собственные производственные базы', description: 'Позволяют контролировать качество материалов и снижать затраты' },
+      { title: 'Квалифицированная команда', description: 'Более 80 опытных специалистов с высокой квалификацией' },
+      { title: 'Сертифицированное качество', description: 'Соответствие международным стандартам ISO 9001, 14001, 45001' }
+    ],
+    leadershipTitle1: 'Наша',
+    leadershipTitle2: 'команда руководителей',
+    leadershipDescription:
+      'Опытные профессионалы, которые обеспечивают высокое качество и эффективность всех наших проектов.',
+    leadershipSectionTitle: 'Высшее руководство',
+    leadershipStats: [
+      { value: '80+', label: 'Квалифицированных сотрудников' },
+      { value: '15+', label: 'Лет среднего опыта команды' },
+      { value: '100%', label: 'Сотрудников с профильным образованием' }
+    ],
+    projectsHomeTitle1: 'Наши',
+    projectsHomeTitle2: 'проекты на побережье Каспия',
+    projectsHomeDescription:
+      'За годы работы мы реализовали множество проектов в Мангистауской области, от жилых комплексов до крупных промышленных объектов.',
+    projectsHomeResidential: 'Жилищное строительство',
+    projectsHomeIndustrial: 'Промышленные и инфраструктурные проекты',
+    projectsHomeMoreTitle: 'И множество других объектов',
+    projectsHomeMoreDescription:
+      'Помимо представленных проектов, мы реализовали множество других объектов на территории Мангистауской области, включая газификацию, водопроводные сети, автомойки и другие инфраструктурные объекты.',
     salesOfficeForBuyers: 'Для покупателей',
     salesOfficeOnlineCenter: 'Центр онлайн-продаж',
     salesOfficeBuyProperty: 'Приобрести недвижимость',
@@ -1119,6 +1224,47 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Алаңы ↑',
     filterPromos: 'Акциялар',
     filterHideReserved: 'Брондалғандарды жасыру',
+        aboutImageAlt: 'CaspianCoast — жетістіктеріміз',
+    companyTitle: 'Компания туралы',
+    companySubtitle: 'Caspian Coast',
+    companyDescription:
+      '"Caspian Coast" ЖШС — азаматтық және өнеркәсіптік құрылыс саласындағы жоғары сапалы қызмет көрсететін қарқынды дамып келе жатқан компания.',
+    companyHistoryTitle: 'Біздің тарихымыз',
+    companyHistoryP1:
+      '2017 жылы құрылған компания тұрғын үй кешендері, кеңсе ғимараттары және өнеркәсіптік нысандарды қоса алғанда көптеген жобаларды сәтті жүзеге асырды.',
+    companyHistoryP2:
+      'Біз тұрғын үй кешендерінен бастап ірі өнеркәсіптік объектілерге дейін кез келген ауқымдағы жобаларды жүзеге асыратын сенімді серіктес ретіндегі беделімізді мақтан тұтамыз.',
+    companyHistoryPoints: [
+      'Инновациялық құрылыс технологияларын қолдану',
+      'Мерзімдер мен сапа стандарттарын қатаң сақтау',
+      'Жобалаудан бастап кілт тапсыруға дейінгі кешенді тәсіл',
+      'Экологиялық стандарттарды сақтау'
+    ],
+    companyAdvantagesTitle: 'Біздің артықшылықтарымыз',
+    companyAdvantages: [
+      { title: 'Өз өндірістік базаларымыз', description: 'Материал сапасын бақылап, шығындарды азайтуға мүмкіндік береді' },
+      { title: 'Білікті команда', description: '80-нен астам жоғары білікті маман' },
+      { title: 'Сертификатталған сапа', description: 'ISO 9001, 14001, 45001 халықаралық стандарттарына сәйкестік' }
+    ],
+    leadershipTitle1: 'Біздің',
+    leadershipTitle2: 'басшылық команда',
+    leadershipDescription:
+      'Барлық жобалардың жоғары сапасы мен тиімділігін қамтамасыз ететін тәжірибелі мамандар.',
+    leadershipSectionTitle: 'Жоғарғы басшылық',
+    leadershipStats: [
+      { value: '80+', label: 'Білікті қызметкер' },
+      { value: '15+', label: 'Команданың орташа тәжірибесі (жыл)' },
+      { value: '100%', label: 'Салаға бейінді білімді қызметкерлер' }
+    ],
+    projectsHomeTitle1: 'Біздің',
+    projectsHomeTitle2: 'Каспий жағалауындағы жобаларымыз',
+    projectsHomeDescription:
+      'Жылдар бойы біз Маңғыстау облысында тұрғын үй кешендерінен бастап ірі өнеркәсіптік нысандарға дейін көптеген жобаларды іске асырдық.',
+    projectsHomeResidential: 'Тұрғын үй құрылысы',
+    projectsHomeIndustrial: 'Өнеркәсіптік және инфрақұрылымдық жобалар',
+    projectsHomeMoreTitle: 'Тағы басқа көптеген нысандар',
+    projectsHomeMoreDescription:
+      'Бұл мысалдардан бөлек, біз Маңғыстау өңірінде газдандыру, су желілері, көлік жуу және басқа да инфрақұрылымдық жобаларды орындадық.',
     salesOfficeForBuyers: 'Сатып алушыларға',
     salesOfficeOnlineCenter: 'Онлайн сату орталығы',
     salesOfficeBuyProperty: 'Мүлік сатып алу',

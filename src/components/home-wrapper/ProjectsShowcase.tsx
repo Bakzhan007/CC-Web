@@ -63,12 +63,11 @@ const ProjectsShowcase = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Наши проекты
-            <span className="text-blue-600"> на побережье Каспия</span>
+            {t.projectsHomeTitle1}
+            <span className="text-blue-600"> {t.projectsHomeTitle2}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            За годы работы мы реализовали множество проектов в Мангистауской области, 
-            от жилых комплексов до крупных промышленных объектов.
+            {t.projectsHomeDescription}
           </p>
         </div>
 
@@ -76,7 +75,7 @@ const ProjectsShowcase = () => {
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
             <Building className="mr-3 text-blue-600" size={32} />
-            Жилищное строительство
+            {t.projectsHomeResidential}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {residentialProjects.map((project, index) => (
@@ -103,7 +102,7 @@ const ProjectsShowcase = () => {
         <div>
           <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
             <Factory className="mr-3 text-emerald-600" size={32} />
-            Промышленные и инфраструктурные проекты
+            {t.projectsHomeIndustrial}
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {industrialProjects.map((project, index) => (
@@ -133,12 +132,10 @@ const ProjectsShowcase = () => {
         <div className="text-center mt-12">
           <div className="bg-blue-50 rounded-xl p-8">
             <h4 className="text-xl font-semibold text-gray-900 mb-4">
-              И множество других объектов
+              {t.projectsHomeMoreTitle}
             </h4>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Помимо представленных проектов, мы реализовали множество других объектов 
-              на территории Мангистауской области, включая газификацию, водопроводные 
-              сети, автомойки и другие инфраструктурные объекты.
+              {t.projectsHomeMoreDescription}
             </p>
           </div>
         </div>

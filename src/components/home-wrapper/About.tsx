@@ -31,7 +31,7 @@ const About = () => {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img
                 src={home1}
-                alt="CaspianCoast — наши достижения"
+                alt={t.aboutImageAlt}
                 className="w-full h-[400px] object-cover"
               />
             </div>

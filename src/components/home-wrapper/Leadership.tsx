@@ -36,19 +36,18 @@ const Leadership = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Наша команда
-            <span className="text-blue-600"> руководителей</span>
+            {t.leadershipTitle1}
+            <span className="text-blue-600"> {t.leadershipTitle2}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Опытные профессионалы, которые обеспечивают высокое качество 
-            и эффективность всех наших проектов.
+            {t.leadershipDescription}
           </p>
         </div>
 
         {/* Leadership Team */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Высшее руководство
+            {t.leadershipSectionTitle}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {leadership.map((leader, index) => (
@@ -72,18 +71,15 @@ const Leadership = () => {
         {/* Team stats */}
         <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">80+</div>
-              <div className="text-gray-600">Квалифицированных сотрудников</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">15+</div>
-              <div className="text-gray-600">Лет среднего опыта команды</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">100%</div>
-              <div className="text-gray-600">Сотрудников с профильным образованием</div>
-            </div>
+              {t.leadershipStats.map((stat, idx) => {
+              const color = idx === 0 ? 'text-blue-600' : idx === 1 ? 'text-emerald-600' : 'text-purple-600';
+              return (
+                <div key={idx}>
+                  <div className={`text-4xl font-bold ${color} mb-2`}>{stat.value}</div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

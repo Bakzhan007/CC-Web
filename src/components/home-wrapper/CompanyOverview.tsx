@@ -4,30 +4,33 @@ import { Building2, Users, Award, Target } from 'lucide-react';
 const CompanyOverview = () => {
   const { t } = useLanguage();
 
+  const [area, years, projects, employees] = t.portfolioStats;
+
+
   const highlights = [
     {
       icon: Building2,
-      title: "500 000+ м²",
-      description: "Построенной площади",
-      color: "bg-blue-500"
+      title: area.value,
+      description: area.label,
+      color: 'bg-blue-500'
     },
     {
       icon: Users,
-      title: "80+",
-      description: "Квалифицированных сотрудников",
-      color: "bg-emerald-500"
+      title: employees.value,
+      description: employees.label,
+      color: 'bg-emerald-500'
     },
     {
       icon: Award,
-      title: "50+",
-      description: "Завершенных проектов",
-      color: "bg-purple-500"
+      title: projects.value,
+      description: projects.label,
+      color: 'bg-purple-500'
     },
     {
       icon: Target,
-      title: "8 лет",
-      description: "Успешной работы на рынке",
-      color: "bg-orange-500"
+      title: years.value,
+      description: years.label,
+      color: 'bg-orange-500'
     }
   ];
 
@@ -37,13 +40,11 @@ const CompanyOverview = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            О компании
-            <span className="text-blue-600"> Caspian Coast</span>
+            {t.companyTitle}
+            <span className="text-blue-600"> {t.companySubtitle}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            ТОО «Caspian Coast» — это динамично развивающаяся строительная компания, 
-            специализирующаяся на предоставлении высококачественных услуг в сфере 
-            гражданского и промышленного строительства.
+            {t.companyDescription}
           </p>
         </div>
 
@@ -52,36 +53,22 @@ const CompanyOverview = () => {
           <div>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Наша история
+                {t.companyHistoryTitle}
               </h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Основанная в 2017 году, компания за годы своей деятельности успешно 
-                реализовала множество проектов, включая жилые комплексы, офисные 
-                здания, а также инфраструктурные и промышленные объекты.
+                {t.companyHistoryP1}
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Мы гордимся своей репутацией надежного партнера, с которым можно 
-                работать над проектами любого масштаба — от жилых комплексов до 
-                крупных промышленных объектов.
+                {t.companyHistoryP2}
               </p>
               
               <div className="space-y-3">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Применение инновационных строительных технологий</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Строгое соблюдение сроков и стандартов качества</span>
-                </div>
-                <div className="lex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Комплексный подход: от проектирования до сдачи «под ключ»</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Соблюдение экологических стандартов</span>
-                </div>
+                {t.companyHistoryPoints.map((point, idx) => (
+                  <div key={idx} className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <span className="text-gray-700">{point}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -103,42 +90,23 @@ const CompanyOverview = () => {
         {/* Key advantages */}
         <div className="bg-white rounded-2xl p-8 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Наши преимущества
+            {t.companyAdvantagesTitle}
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building2 size={32} className="text-blue-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Собственные производственные базы
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Позволяют контролировать качество материалов и снижать затраты
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users size={32} className="text-emerald-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Квалифицированная команда
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Более 80 опытных специалистов с высокой квалификацией
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award size={32} className="text-purple-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Сертифицированное качество
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Соответствие международным стандартам ISO 9001, 14001, 45001
-              </p>
-            </div>
+            {t.companyAdvantages.map((adv, idx) => {
+              const Icon = idx === 0 ? Building2 : idx === 1 ? Users : Award;
+              const color = idx === 0 ? 'bg-blue-100' : idx === 1 ? 'bg-emerald-100' : 'bg-purple-100';
+              const iconColor = idx === 0 ? 'text-blue-600' : idx === 1 ? 'text-emerald-600' : 'text-purple-600';
+              return (
+                <div key={idx} className="text-center">
+                  <div className={`w-16 h-16 ${color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <Icon size={32} className={iconColor} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">{adv.title}</h4>
+                  <p className="text-gray-600 text-sm">{adv.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

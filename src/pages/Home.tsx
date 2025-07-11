@@ -16,7 +16,7 @@ function Home() {
       <Header />
       <main className="pt-[104px] sm:pt-[112px] lg:pt-[128px]">
         <Hero />
-        <CompanyOverview />\
+        <CompanyOverview />
         <Video />
         <Stats />
         <ProjectsShowcase />
