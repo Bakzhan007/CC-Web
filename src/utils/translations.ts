@@ -266,6 +266,15 @@ export interface Translation {
   salesOfficeOnlineCenter: string;
   salesOfficeBuyProperty: string;
   salesOfficeHeadOffice: string;
+
+    // Partner Page
+  partnerConditionsTitle: string;
+  partnerConditions: { title: string; text: string }[];
+  partnerBenefitsTitle: string;
+  partnerBenefits: { title: string; description: string }[];
+  partnerCtaTitle: string;
+  partnerCtaDescription: string;
+  partnerCtaButton: string;
 }
 
 export const translations: Record<string, Translation> = {
@@ -600,7 +609,61 @@ export const translations: Record<string, Translation> = {
     salesOfficeForBuyers: 'For buyers',
     salesOfficeOnlineCenter: 'Online sales center',
     salesOfficeBuyProperty: 'Purchase property',
-    salesOfficeHeadOffice: 'Head office'
+    salesOfficeHeadOffice: 'Head office',
+        // Partner Page
+    partnerConditionsTitle: 'Partnership Terms and Principles',
+    partnerConditions: [
+      {
+        title: 'Who Can Become a Partner',
+        text:
+          'We are looking for partners in domestic services: disinfection, cleaning, interior design, furniture manufacturing and other areas.'
+      },
+      {
+        title: 'Open for Cooperation',
+        text:
+          'We welcome any commercial proposals, marketing initiatives and other forms of collaboration.'
+      },
+      {
+        title: 'Verified Partners Only',
+        text:
+          'We work with reliable, high-quality service providers so users receive the best service.'
+      },
+      {
+        title: 'Quality Guarantee',
+        text: 'Each partner undergoes a strict screening and training to BIG App standards.'
+      }
+    ],
+    partnerBenefitsTitle: 'Benefits of Cooperation',
+    partnerBenefits: [
+      {
+        title: 'Access to Large Projects',
+        description: 'Receive orders for large-scale facilities across the country.'
+      },
+      {
+        title: 'Favorable Terms',
+        description: 'Transparent payment system and long-term cooperation.'
+      },
+      {
+        title: 'Training and Support',
+        description: 'We train on new standards and help implement best practices.'
+      },
+      {
+        title: 'High Standards',
+        description: 'We maintain advanced quality standards and transparent cooperation.'
+      },
+      {
+        title: 'Clear Processes',
+        description: 'Step-by-step onboarding, clear requirements and support at all stages.'
+      },
+      {
+        title: 'Reliable Partnership',
+        description: 'We value each partner and aim for mutual success.'
+      }
+    ],
+    partnerCtaTitle: 'Want to become a partner?',
+    partnerCtaDescription:
+      'Contact us by phone +7 (700) 636-36-31 or send an email to info@caspiancoast.com and we\'ll discuss cooperation details.',
+    partnerCtaButton: 'Write an Email'
   },
   
   ru: {
@@ -934,7 +997,62 @@ export const translations: Record<string, Translation> = {
     salesOfficeForBuyers: 'Для покупателей',
     salesOfficeOnlineCenter: 'Центр онлайн-продаж',
     salesOfficeBuyProperty: 'Приобрести недвижимость',
-    salesOfficeHeadOffice: 'Головной офис'
+    salesOfficeHeadOffice: 'Головной офис',
+
+    // Partner Page
+    partnerConditionsTitle: 'Условия и принципы партнерства',
+    partnerConditions: [
+      {
+        title: 'Кто может стать партнером',
+        text:
+          'Мы ищем партнеров в сфере бытовых услуг: дезинфекция, клининг, дизайн интерьера, изготовление мебели и другие направления.'
+      },
+      {
+        title: 'Открыты к сотрудничеству',
+        text:
+          'Мы открыты к любым коммерческим предложениям, маркетинговым инициативам и другим форматам сотрудничества.'
+      },
+      {
+        title: 'Только проверенные партнеры',
+        text:
+          'Мы работаем с надежными и качественными поставщиками услуг, чтобы пользователи получали лучший сервис.'
+      },
+      {
+        title: 'Гарантия качества',
+        text: 'Каждый партнер проходит строгую проверку и обучение стандартам BIG App.'
+      }
+    ],
+    partnerBenefitsTitle: 'Преимущества сотрудничества',
+    partnerBenefits: [
+      {
+        title: 'Доступ к крупным проектам',
+        description: 'Получайте заказы на масштабные объекты по всей стране.'
+      },
+      {
+        title: 'Выгодные условия',
+        description: 'Прозрачная система оплаты и долгосрочное сотрудничество.'
+      },
+      {
+        title: 'Обучение и поддержка',
+        description: 'Обучаем новым стандартам и помогаем внедрять лучшие практики.'
+      },
+      {
+        title: 'Высокие стандарты',
+        description: 'Мы поддерживаем передовые стандарты качества и прозрачные условия сотрудничества.'
+      },
+      {
+        title: 'Четкие процессы',
+        description: 'Пошаговое подключение, понятные требования и сопровождение на всех этапах.'
+      },
+      {
+        title: 'Надежное партнерство',
+        description: 'Мы ценим каждого партнера и нацелены на совместный успех.'
+      }
+    ],
+    partnerCtaTitle: 'Хотите стать партнером?',
+    partnerCtaDescription:
+      'Свяжитесь с нами по телефону +7 (700) 636-36-31 или отправьте письмо на info@caspiancoast.com, и мы обсудим детали сотрудничества.',
+    partnerCtaButton: 'Написать письмо'
   },
   
   kz: {
@@ -1268,7 +1386,62 @@ export const translations: Record<string, Translation> = {
     salesOfficeForBuyers: 'Сатып алушыларға',
     salesOfficeOnlineCenter: 'Онлайн сату орталығы',
     salesOfficeBuyProperty: 'Мүлік сатып алу',
-    salesOfficeHeadOffice: 'Бас кеңсе'
+    salesOfficeHeadOffice: 'Бас кеңсе',
+
+    // Partner Page
+    partnerConditionsTitle: 'Серіктестік шарттары мен қағидалары',
+    partnerConditions: [
+      {
+        title: 'Кім серіктес бола алады',
+        text:
+          'Біз тұрмыстық қызмет саласында серіктестер іздейміз: дезинфекция, клининг, интерьер дизайны, жиһаз өндіру және басқа бағыттар.'
+      },
+      {
+        title: 'Ынтымақтастыққа ашық',
+        text:
+          'Біз кез келген коммерциялық ұсыныстарға, маркетинг бастамаларына және ынтымақтастықтың басқа форматтарына ашықпыз.'
+      },
+      {
+        title: 'Тек тексерілген серіктестер',
+        text:
+          'Пайдаланушылар ең жақсы қызмет алуы үшін біз сенімді әрі сапалы қызмет көрсетушілермен жұмыс жасаймыз.'
+      },
+      {
+        title: 'Сапа кепілдігі',
+        text: 'Әрбір серіктес BIG App стандарттары бойынша қатаң тексеруден өтеді және оқытылады.'
+      }
+    ],
+    partnerBenefitsTitle: 'Ынтымақтастық артықшылықтары',
+    partnerBenefits: [
+      {
+        title: 'Ірі жобаларға қол жеткізу',
+        description: 'Ел бойынша ауқымды нысандарға тапсырыстар алыңыз.'
+      },
+      {
+        title: 'Тиімді шарттар',
+        description: 'Мөлдір төлем жүйесі және ұзақ мерзімді ынтымақтастық.'
+      },
+      {
+        title: 'Оқыту және қолдау',
+        description: 'Жаңа стандарттарға үйретіп, үздік тәжірибелерді енгізуге көмектесеміз.'
+      },
+      {
+        title: 'Жоғары стандарттар',
+        description: 'Біз сапаның озық стандарттарын және ашық шарттарды сақтаймыз.'
+      },
+      {
+        title: 'Айқын процестер',
+        description: 'Қадамдық қосылу, түсінікті талаптар және барлық кезеңдерде сүйемелдеу.'
+      },
+      {
+        title: 'Сенімді серіктестік',
+        description: 'Біз әр серіктесті бағалаймыз және ортақ табысқа ұмтыламыз.'
+      }
+    ],
+    partnerCtaTitle: 'Серіктес болғыңыз келе ме?',
+    partnerCtaDescription:
+      'Бізбен +7 (700) 636-36-31 телефоны арқылы хабарласыңыз немесе info@caspiancoast.com мекенжайына хат жіберіңіз, біз ынтымақтастықтың егжей-тегжейін талқылаймыз.',
+    partnerCtaButton: 'Хат жазу'
   }
 };
 

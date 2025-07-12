@@ -6,46 +6,28 @@ import {
   CheckCircle,
   ClipboardList
 } from 'lucide-react';
-
-const benefits = [
-  {
-    icon: Building2,
-    title: 'Доступ к крупным проектам',
-    description: 'Получайте заказы на масштабные объекты по всей стране.'
-  },
-  {
-    icon: DollarSign,
-    title: 'Выгодные условия',
-    description: 'Прозрачная система оплаты и долгосрочное сотрудничество.'
-  },
-  {
-    icon: GraduationCap,
-    title: 'Обучение и поддержка',
-    description: 'Обучаем новым стандартам и помогаем внедрять лучшие практики.'
-  },
-  {
-    icon: CheckCircle,
-    title: 'Высокие стандарты',
-    description: 'Мы поддерживаем передовые стандарты качества и прозрачные условия сотрудничества.'
-  },
-  {
-    icon: ClipboardList,
-    title: 'Четкие процессы',
-    description: 'Пошаговое подключение, понятные требования и сопровождение на всех этапах.'
-  },
-  {
-    icon: Handshake,
-    title: 'Надежное партнерство',
-    description: 'Мы ценим каждого партнера и нацелены на совместный успех.'
-  }
-];
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Benefits() {
+  const { t } = useLanguage();
+  const icons = [
+    Building2,
+    DollarSign,
+    GraduationCap,
+    CheckCircle,
+    ClipboardList,
+    Handshake
+  ];
+  const benefits = t.partnerBenefits.map((b, idx) => ({
+    icon: icons[idx],
+    title: b.title,
+    description: b.description
+  }));
   return (
     <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 text-center mb-8">
-          Преимущества сотрудничества
+          {t.partnerBenefitsTitle}
         </h2>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (

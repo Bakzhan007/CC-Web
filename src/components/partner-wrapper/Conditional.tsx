@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import {
   ChevronLeft,
   ChevronRight
@@ -8,33 +9,14 @@ import partner2 from '../../assets/image/partner2.jpg';
 import partner3 from '../../assets/image/partner3.jpg';
 import partner4 from '../../assets/image/partner4.jpg';
 
-const conditions = [
-  {
-    img: partner1,
-    title: 'Кто может стать партнером',
-    text:
-      'Мы ищем партнеров в сфере бытовых услуг: дезинфекция, клининг, дизайн интерьера, изготовление мебели и другие направления.'
-  },
-  {
-    img: partner3,
-    title: 'Открыты к сотрудничеству',
-    text:
-      'Мы открыты к любым коммерческим предложениям, маркетинговым инициативам и другим форматам сотрудничества.'
-  },
-  {
-    img: partner2,
-    title: 'Только проверенные партнеры',
-    text:
-      'Мы работаем с надежными и качественными поставщиками услуг, чтобы пользователи получали лучший сервис.'
-  },
-  {
-    img: partner4,
-    title: 'Гарантия качества',
-    text: 'Каждый партнер проходит строгую проверку и обучение стандартам BIG App.'
-  }
-];
-
 export default function Conditions() {
+  const { t } = useLanguage();
+  const images = [partner1, partner3, partner2, partner4];
+  const conditions = t.partnerConditions.map((c, idx) => ({
+    img: images[idx],
+    title: c.title,
+    text: c.text
+  }));
   const [page, setPage] = useState(0);
   const [visibleCount, setVisibleCount] = useState(
     window.innerWidth < 640 ? 1 : 3
@@ -58,7 +40,7 @@ export default function Conditions() {
     <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-8 text-center">
-          Условия и принципы партнерства
+          {t.partnerConditionsTitle}
         </h2>
         <div className="relative">
           <div className="overflow-hidden">
