@@ -274,6 +274,8 @@ export interface Translation {
   salesOfficeOnlineCenter: string;
   salesOfficeBuyProperty: string;
   salesOfficeHeadOffice: string;
+  salesOfficeDepartment: string;
+  salesOfficeMonFri: string;
 
     // Partner Page
   partnerConditionsTitle: string;
@@ -628,6 +630,9 @@ export const translations: Record<string, Translation> = {
     salesOfficeOnlineCenter: 'Online sales center',
     salesOfficeBuyProperty: 'Purchase property',
     salesOfficeHeadOffice: 'Head office',
+    salesOfficeDepartment: 'Sales department',
+    salesOfficeMonFri: 'Mon\u2013Fri',
+
         // Partner Page
     partnerConditionsTitle: 'Partnership Terms and Principles',
     partnerConditions: [
@@ -1026,6 +1031,8 @@ export const translations: Record<string, Translation> = {
     salesOfficeOnlineCenter: 'Центр онлайн-продаж',
     salesOfficeBuyProperty: 'Приобрести недвижимость',
     salesOfficeHeadOffice: 'Головной офис',
+    salesOfficeDepartment: 'Отдел продаж',
+    salesOfficeMonFri: 'Пн\u2013Пт',
 
     // Partner Page
     partnerConditionsTitle: 'Условия и принципы партнерства',
@@ -1423,6 +1430,8 @@ export const translations: Record<string, Translation> = {
     salesOfficeOnlineCenter: 'Онлайн сату орталығы',
     salesOfficeBuyProperty: 'Мүлік сатып алу',
     salesOfficeHeadOffice: 'Бас кеңсе',
+    salesOfficeDepartment: 'Сату бөлімі',
+    salesOfficeMonFri: 'Дс\u2013Жм',
 
     // Partner Page
     partnerConditionsTitle: 'Серіктестік шарттары мен қағидалары',

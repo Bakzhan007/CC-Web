@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -12,31 +12,34 @@ interface Office {
   coords: { lat: number; lng: number };
 }
 
-const offices: Office[] = [
-  {
-    id: 1,
-    title: 'Отдел продаж',
-    address: 'Nesibek-Nur 16mkr 22/1',
-    hours: [
-      { label: 'Пн–Пт', time: '9:00–18:00' },
-    ],
-    image: 'https://cachizer2.2gis.com/reviews-photos/27e63043-d9bb-4e2a-98db-00236b91a4cd.jpg',
-    coords: { lat: 51.16056, lng: 43.68520 },
-  },
-  {
-    id: 2,
-    title: 'Отдел продаж',
-    address: 'ЖК Beibitshilik 7mkr Zhanaozen',
-    hours: [
-      { label: 'Пн–Пт', time: '9:00-18:00' },
-    ],
-    image: 'https://krisha-photos.kcdn.online/07/3ca9649d57d2993d2acc311da0342e4d484419/photo-750x470.jpg',
-    coords: { lat: 51.17200, lng: 43.67000 },
-  },
-];
-
 function SalesOffice() {
   const { t } = useLanguage();
+  
+    const offices: Office[] = [
+    {
+      id: 1,
+      title: t.salesOfficeDepartment,
+      address: 'Nesibek-Nur 16mkr 22/1',
+      hours: [
+        { label: t.salesOfficeMonFri, time: '9:00–18:00' },
+      ],
+      image:
+        'https://cachizer2.2gis.com/reviews-photos/27e63043-d9bb-4e2a-98db-00236b91a4cd.jpg',
+      coords: { lat: 51.16056, lng: 43.6852 },
+    },
+    {
+      id: 2,
+      title: t.salesOfficeDepartment,
+      address: 'ЖК Beibitshilik 7mkr Zhanaozen',
+      hours: [
+        { label: t.salesOfficeMonFri, time: '9:00-18:00' },
+      ],
+      image:
+        'https://krisha-photos.kcdn.online/07/3ca9649d57d2993d2acc311da0342e4d484419/photo-750x470.jpg',
+      coords: { lat: 51.172, lng: 43.67 },
+    },
+  ];
+
   const buyerInfo = [
     { icon: Phone, title: '+7(700) 636-36-31', subtitle: t.salesOfficeOnlineCenter },
     { icon: Mail, title: 'caspiancoast@list.ru', subtitle: t.salesOfficeBuyProperty },
