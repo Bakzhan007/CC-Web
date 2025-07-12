@@ -12,6 +12,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import SalesOffice from './pages/SalesOffice';
 import Faq from './pages/Faq';
 import AfterPurchase from './pages/AfterPurchase';
+import Maintenance from './pages/Maintenance';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/sales-office" element={<SalesOffice />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/after-purchase" element={<AfterPurchase />} />
+          <Route path="/maintenance" element={<Maintenance />} />
         </Routes>
       </Router>
     </LanguageProvider>

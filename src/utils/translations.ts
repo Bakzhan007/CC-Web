@@ -261,6 +261,14 @@ export interface Translation {
   filterPromos: string;
   filterHideReserved: string;
 
+    // Commerce Page
+  commerceHeroTitle: string;
+  commerceHeroDescription: string;
+  commerceHeroButton: string;
+  commerceReserved: string;
+  commerceOfficeLabel: string;
+  commercePriceOnRequest: string;
+
   // Sales Office
   salesOfficeForBuyers: string;
   salesOfficeOnlineCenter: string;
@@ -566,6 +574,12 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Area ↑',
     filterPromos: 'Promotions',
     filterHideReserved: 'Hide reserved',
+    commerceHeroTitle: 'Commercial Real Estate',
+    commerceHeroDescription: 'Best office spaces in key cities of Kazakhstan',
+    commerceHeroButton: 'Get consultation',
+    commerceReserved: 'Reserved',
+    commerceOfficeLabel: 'Office',
+    commercePriceOnRequest: 'Price on request',
         aboutImageAlt: 'CaspianCoast — our achievements',
     companyTitle: 'About',
     companySubtitle: 'Caspian Coast',
@@ -953,6 +967,12 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Площадь ↑',
     filterPromos: 'Акции',
     filterHideReserved: 'Не показывать забронированные',
+    commerceHeroTitle: 'Коммерческая недвижимость',
+    commerceHeroDescription: 'Лучшие офисные помещения в ключевых городах Казахстана',
+    commerceHeroButton: 'Получить консультацию',
+    commerceReserved: 'Забронировано',
+    commerceOfficeLabel: 'Офис',
+    commercePriceOnRequest: 'Цена по запросу',
         aboutImageAlt: 'CaspianCoast — наши достижения',
     companyTitle: 'О компании',
     companySubtitle: 'Caspian Coast',
@@ -1342,6 +1362,12 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Алаңы ↑',
     filterPromos: 'Акциялар',
     filterHideReserved: 'Брондалғандарды жасыру',
+    commerceHeroTitle: 'Коммерциялық жылжымайтын мүлік',
+    commerceHeroDescription: 'Қазақстанның негізгі қалаларындағы үздік кеңсе кеңістіктері',
+    commerceHeroButton: 'Кеңес алу',
+    commerceReserved: 'Брондалған',
+    commerceOfficeLabel: 'Кеңсе',
+    commercePriceOnRequest: 'Баға сұрау бойынша',
         aboutImageAlt: 'CaspianCoast — жетістіктеріміз',
     companyTitle: 'Компания туралы',
     companySubtitle: 'Caspian Coast',
