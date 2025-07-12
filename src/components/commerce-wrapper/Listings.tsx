@@ -11,6 +11,7 @@ export interface Office {
   reserved: boolean;
   project: string;
   building: string;
+  block: string;
   floor: number;
   entrance: number;
   quarter: string;
@@ -35,11 +36,6 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             className="relative bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
             <img src={o.image} alt={`Office ${o.area} m²`} className="w-full h-48 object-cover" />
-            {o.reserved && (
-              <div className="absolute inset-0 bg-white/70 flex items-center justify-center text-lg font-semibold">
-                {t.commerceReserved}
-              </div>
-            )}
             <div className="p-4 space-y-2">
               <div className="flex justify-between items-start">
                 <h3 className="text-lg font-medium">{t.commerceOfficeLabel} {o.area} м²</h3>
@@ -65,7 +61,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
                 )}
               </div>
               <p className="text-sm text-gray-500">
-                {o.project} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
+                {o.project} · блок {o.block} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
               </p>
             </div>
           </div>
@@ -79,11 +75,6 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             className="relative flex bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
             <img src={o.image} alt={`Office ${o.area} m²`} className="w-48 h-48 object-cover flex-shrink-0" />
-            {o.reserved && (
-              <div className="absolute inset-0 bg-white/70 flex items-center justify-center text-lg font-semibold">
-                Забронировано
-              </div>
-            )}
             <div className="p-4 flex flex-col justify-between flex-1">
               <div className="space-y-1">
                 <div className="flex justify-between items-start">
@@ -98,8 +89,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
                   ))}
                 </div>
                 <p className="text-sm text-gray-500">
-                  {o.project} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
-                </p>
+                  {o.project} · блок {o.block} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}                </p>
               </div>
               <div className="flex items-baseline gap-2">
                 {o.price != null ? (

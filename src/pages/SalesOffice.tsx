@@ -16,27 +16,21 @@ const offices: Office[] = [
   {
     id: 1,
     title: 'Отдел продаж',
-    address: 'БЦ Viva Plaza, ул. Сыганак, 62/3',
+    address: 'Nesibek-Nur 16mkr 22/1',
     hours: [
-      { label: 'Пн–Пт', time: '9:00–21:00' },
-      { label: 'Сб–Вс', time: '10:00–18:00' },
-      { label: 'Касса Пн–Пт', time: '09:00–18:30' },
-      { label: 'Касса Сб–Вс', time: '10:00–16:30' },
+      { label: 'Пн–Пт', time: '9:00–18:00' },
     ],
-    image: 'https://images.pexels.com/photos/18584044/pexels-photo-18584044.jpeg',
+    image: 'https://cachizer2.2gis.com/reviews-photos/27e63043-d9bb-4e2a-98db-00236b91a4cd.jpg',
     coords: { lat: 51.16056, lng: 43.68520 },
   },
   {
     id: 2,
     title: 'Отдел продаж',
-    address: 'ЖК «Лазурный Квартал», ул. Сарайшық, 5Г',
+    address: 'ЖК Beibitshilik 7mkr Zhanaozen',
     hours: [
-      { label: 'Пн–Пт', time: '9:00–21:00' },
-      { label: 'Сб–Вс', time: '10:00–18:00' },
-      { label: 'Касса Пн–Пт', time: '09:00–18:30' },
-      { label: 'Касса Сб–Вс', time: '10:00–16:30' },
+      { label: 'Пн–Пт', time: '9:00-18:00' },
     ],
-    image: 'https://images.pexels.com/photos/37347/pexels-photo-37347.jpeg',
+    image: 'https://krisha-photos.kcdn.online/07/3ca9649d57d2993d2acc311da0342e4d484419/photo-750x470.jpg',
     coords: { lat: 51.17200, lng: 43.67000 },
   },
 ];
@@ -44,12 +38,12 @@ const offices: Office[] = [
 function SalesOffice() {
   const { t } = useLanguage();
   const buyerInfo = [
-    { icon: Phone, title: '360', subtitle: t.salesOfficeOnlineCenter },
-    { icon: Mail, title: 'infosales@bi.group', subtitle: t.salesOfficeBuyProperty },
+    { icon: Phone, title: '+7(700) 636-36-31', subtitle: t.salesOfficeOnlineCenter },
+    { icon: Mail, title: 'caspiancoast@list.ru', subtitle: t.salesOfficeBuyProperty },
     {
       icon: MapPin,
       title: t.salesOfficeHeadOffice,
-      subtitle: 'г. Астана, ул. Сыганак, 17M; г. Алматы, ул. Тимирязева, 26',
+      subtitle: 'г. Актау, Nesibek-Nur 16 22/1',
     },
   ];
   return (

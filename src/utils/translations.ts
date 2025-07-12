@@ -283,6 +283,10 @@ export interface Translation {
   partnerCtaTitle: string;
   partnerCtaDescription: string;
   partnerCtaButton: string;
+
+    // Maintenance Page
+  maintenanceTitle: string;
+  maintenanceMessage: string;
 }
 
 export const translations: Record<string, Translation> = {
@@ -677,8 +681,12 @@ export const translations: Record<string, Translation> = {
     partnerCtaTitle: 'Want to become a partner?',
     partnerCtaDescription:
       'Contact us by phone +7 (700) 636-36-31 or send an email to info@caspiancoast.com and we\'ll discuss cooperation details.',
-    partnerCtaButton: 'Write an Email'
+    partnerCtaButton: 'Write an Email',
+    maintenanceTitle: 'Site Under Maintenance',
+    maintenanceMessage: 'Technical work is in progress. Please check back later.'
   },
+
+  
   
   ru: {
     // Header
@@ -1072,8 +1080,10 @@ export const translations: Record<string, Translation> = {
     partnerCtaTitle: 'Хотите стать партнером?',
     partnerCtaDescription:
       'Свяжитесь с нами по телефону +7 (700) 636-36-31 или отправьте письмо на info@caspiancoast.com, и мы обсудим детали сотрудничества.',
-    partnerCtaButton: 'Написать письмо'
-  },
+    partnerCtaButton: 'Написать письмо',
+    maintenanceTitle: 'Сайт на техническом обслуживании',
+    maintenanceMessage: 'Ведутся технические работы. Пожалуйста, зайдите позже.'
+    },
   
   kz: {
     // Header
@@ -1467,8 +1477,10 @@ export const translations: Record<string, Translation> = {
     partnerCtaTitle: 'Серіктес болғыңыз келе ме?',
     partnerCtaDescription:
       'Бізбен +7 (700) 636-36-31 телефоны арқылы хабарласыңыз немесе info@caspiancoast.com мекенжайына хат жіберіңіз, біз ынтымақтастықтың егжей-тегжейін талқылаймыз.',
-    partnerCtaButton: 'Хат жазу'
-  }
+    partnerCtaButton: 'Хат жазу',
+    maintenanceTitle: 'Сайт жаңартылуда',
+    maintenanceMessage: 'Техникалық жұмыстар жүргізілуде. Кейінірек қайтып оралыңыз.'  }
+  
 };
 
 export const getTranslation = (language: string): Translation => {

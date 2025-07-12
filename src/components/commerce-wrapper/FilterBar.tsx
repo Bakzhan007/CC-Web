@@ -73,13 +73,6 @@ const FilterBar = ({
       >
         {t.filterPromos}
       </button>
-      <button
-        onClick={() => setHideReserved(!hideReserved)}
-        className={`px-3 py-1 rounded-full text-sm border ${hideReserved ? 'bg-gray-200' : 'bg-white'}`}
-      >
-        {t.filterHideReserved}
-      </button>
-
       <div className="ml-auto flex gap-3">
         <button
           onClick={() => setViewMode('grid')}
