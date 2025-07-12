@@ -2,39 +2,11 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
-const faqItems = [
-  {
-    question: 'What services do you offer?',
-    answer:
-      'We provide a full range of construction and development services along the Caspian coast.'
-  },
-  {
-    question: 'How can I start a project with CaspianCoast?',
-    answer:
-      'Get in touch through our contact form or call our sales office. Our team will guide you through the next steps.'
-  },
-  {
-    question: 'Do you work with residential and commercial clients?',
-    answer:
-      'Yes, our portfolio includes residential complexes, commercial centers and industrial facilities.'
-  },
-  {
-    question: 'Where are you located?',
-    answer: 'Our head office is located at 123 Coastal Avenue, CC 12345.'
-  },
-  {
-    question: 'Can I tour your completed projects?',
-    answer:
-      'Absolutely. Contact us to arrange a visit to one of our completed developments.'
-  },
-  {
-    question: 'How do I apply for a job?',
-    answer: 'Visit the career page to see open positions and submit your application.'
-  }
-]
+import { useLanguage } from '../contexts/LanguageContext'
 
 function Faq() {
+  const { t } = useLanguage()
+  const faqItems = t.faqItems
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggle = (index: number) => {
@@ -55,7 +27,7 @@ function Faq() {
             <div className="absolute inset-0 bg-slate-900/60" />
             <div className="absolute inset-0 flex items-center justify-center">
               <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
-                Frequently Asked Questions
+                {t.faqTitle}
               </h1>
             </div>
           </div>

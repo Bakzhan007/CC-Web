@@ -289,6 +289,9 @@ export interface Translation {
     // Maintenance Page
   maintenanceTitle: string;
   maintenanceMessage: string;
+    // FAQ Page
+  faqTitle: string;
+  faqItems: { question: string; answer: string }[];
 }
 
 export const translations: Record<string, Translation> = {
@@ -688,7 +691,39 @@ export const translations: Record<string, Translation> = {
       'Contact us by phone +7 (700) 636-36-31 or send an email to info@caspiancoast.com and we\'ll discuss cooperation details.',
     partnerCtaButton: 'Write an Email',
     maintenanceTitle: 'Site Under Maintenance',
-    maintenanceMessage: 'Technical work is in progress. Please check back later.'
+    maintenanceMessage: 'Technical work is in progress. Please check back later.',
+
+    faqTitle: 'Frequently Asked Questions',
+    faqItems: [
+      {
+        question: 'What services do you offer?',
+        answer:
+          'We provide a full range of construction and development services along the Caspian coast.'
+      },
+      {
+        question: 'How can I start a project with CaspianCoast?',
+        answer:
+          'Get in touch through our contact form or call our sales office. Our team will guide you through the next steps.'
+      },
+      {
+        question: 'Do you work with residential and commercial clients?',
+        answer:
+          'Yes, our portfolio includes residential complexes, commercial centers and industrial facilities.'
+      },
+      {
+        question: 'Where are you located?',
+        answer: 'Our head office is located at 123 Coastal Avenue, CC 12345.'
+      },
+      {
+        question: 'Can I tour your completed projects?',
+        answer:
+          'Absolutely. Contact us to arrange a visit to one of our completed developments.'
+      },
+      {
+        question: 'How do I apply for a job?',
+        answer: 'Visit the career page to see open positions and submit your application.'
+      }
+    ]
   },
 
   
@@ -1089,7 +1124,39 @@ export const translations: Record<string, Translation> = {
       'Свяжитесь с нами по телефону +7 (700) 636-36-31 или отправьте письмо на info@caspiancoast.com, и мы обсудим детали сотрудничества.',
     partnerCtaButton: 'Написать письмо',
     maintenanceTitle: 'Сайт на техническом обслуживании',
-    maintenanceMessage: 'Ведутся технические работы. Пожалуйста, зайдите позже.'
+    maintenanceMessage: 'Ведутся технические работы. Пожалуйста, зайдите позже.',
+
+    faqTitle: 'Часто задаваемые вопросы',
+    faqItems: [
+      {
+        question: 'Какие услуги вы предоставляете?',
+        answer:
+          'Мы предоставляем полный спектр строительных и девелоперских услуг вдоль Каспийского побережья.'
+      },
+      {
+        question: 'Как начать проект с CaspianCoast?',
+        answer:
+          'Свяжитесь с нами через форму обратной связи или позвоните в наш отдел продаж. Наша команда подскажет дальнейшие шаги.'
+      },
+      {
+        question: 'Вы работаете с частными и коммерческими клиентами?',
+        answer:
+          'Да, в нашем портфолио есть жилые комплексы, торговые центры и промышленные объекты.'
+      },
+      {
+        question: 'Где вы находитесь?',
+        answer: 'Наш головной офис находится по адресу: 123 Coastal Avenue, CC 12345.'
+      },
+      {
+        question: 'Можно ли посмотреть ваши завершенные проекты?',
+        answer:
+          'Конечно. Свяжитесь с нами, чтобы договориться о визите на один из завершенных объектов.'
+      },
+      {
+        question: 'Как подать заявку на работу?',
+        answer: 'Посетите страницу карьеры, чтобы увидеть открытые вакансии и отправить заявку.'
+      }
+    ]
     },
   
   kz: {
@@ -1488,7 +1555,40 @@ export const translations: Record<string, Translation> = {
       'Бізбен +7 (700) 636-36-31 телефоны арқылы хабарласыңыз немесе info@caspiancoast.com мекенжайына хат жіберіңіз, біз ынтымақтастықтың егжей-тегжейін талқылаймыз.',
     partnerCtaButton: 'Хат жазу',
     maintenanceTitle: 'Сайт жаңартылуда',
-    maintenanceMessage: 'Техникалық жұмыстар жүргізілуде. Кейінірек қайтып оралыңыз.'  }
+    maintenanceMessage: 'Техникалық жұмыстар жүргізілуде. Кейінірек қайтып оралыңыз.',
+    
+    faqTitle: 'Жиі қойылатын сұрақтар',
+    faqItems: [
+      {
+        question: 'Сіз қандай қызметтерді ұсынасыз?',
+        answer:
+          'Біз Каспий жағалауы бойынша құрылыс және девелопмент қызметтерінің толық спектрін ұсынамыз.'
+      },
+      {
+        question: 'CaspianCoast-пен жобаны қалай бастауға болады?',
+        answer:
+          'Бізбен байланыс формасы арқылы немесе сату бөліміне қоңырау шалыңыз. Біздің команда келесі қадамдарды айтады.'
+      },
+      {
+        question: 'Сіз тұрғын үй және коммерциялық клиенттермен жұмыс істейсіз бе?',
+        answer:
+          'Иә, біздің портфолиода тұрғын үй кешендері, сауда орталықтары және өнеркәсіптік нысандар бар.'
+      },
+      {
+        question: 'Сіз қай жерде орналасқансыз?',
+        answer: 'Біздің бас кеңсе 123 Coastal Avenue, CC 12345 мекенжайында орналасқан.'
+      },
+      {
+        question: 'Сіздің аяқталған жобаларыңызды көріп шығуға бола ма?',
+        answer:
+          'Әрине. Аяқталған жобалардың бірін көру үшін бізге хабарласыңыз.'
+      },
+      {
+        question: 'Жұмысқа қалай өтініш беруге болады?',
+        answer: 'Ашық бос орындарды көру және өтініш беру үшін мансап бетіне кіріңіз.'
+      }
+    ]
+  }
   
 };
 
