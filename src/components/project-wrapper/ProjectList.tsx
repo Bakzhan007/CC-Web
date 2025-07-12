@@ -19,38 +19,53 @@ export default function ProjectList() {
   const projects = [
     {
       id: 1,
-      title: 'ЖК Ilan Towers',
+      name: 'ЖК Ilan Towers',
       category: 'residential',
       location: 'Downtown District',
+      district: '15 мкр.',
       year: '2025',
       image: imgIlan,
-      description:
-        'A modern 15-story office complex featuring sustainable design and state-of-the-art facilities.',
-      area: '45,000 sq ft',
+      description: 'Современный жилой комплекс бизнес-класса с видом на море.',
+      area: '45,000 кв.м',
+      floors: '15 этажей',
+      blocks: '2',
+      type: 'Бизнес-класс',
+      deadline: '4 кв. 2025',
+      priceRange: 'от 30 млн ₸',
       status: 'inProgress'
     },
     {
       id: 2,
-      title: 'ЖК Taras',
+      name: 'ЖК Taras',
       category: 'residential',
       location: 'Coastal Avenue',
+      district: '17 мкр.',
       year: '2025',
       image: imgTaras,
-      description:
-        'Premium residential development with panoramic sea views and luxury amenities.',
-      area: '120 Units',
+      description: 'Комфортный жилой комплекс рядом с набережной.',
+      area: '120 квартир',
+      floors: '12 этажей',
+      blocks: '3',
+      type: 'Комфорт',
+      deadline: '2 кв. 2024',
+      priceRange: 'от 25 млн ₸',
       status: 'inProgress'
     },
     {
       id: 3,
-      title: 'ЖК Caspian Coast',
+      name: 'ЖК Caspian Coast',
       category: 'residential',
       location: 'East Industrial Zone',
-      year: '2025',
+      district: '3 мкр.',
+      year: '2024',      
       image: 'https://storage.googleapis.com/bd-kz-01/buildings-v2/1280x960/8129.jpg',
-      description:
-        'State-of-the-art manufacturing facility with advanced logistics infrastructure.',
-      area: '75,000 sq ft',
+      description: 'Жилой комплекс с развитой инфраструктурой.',
+      area: '75,000 кв.м',
+      floors: '9 этажей',
+      blocks: '2',
+      type: 'Эконом',
+      deadline: '3 кв. 2023',
+      priceRange: 'от 20 млн ₸',
       status: 'completed'
     }
   ];
@@ -101,7 +116,7 @@ export default function ProjectList() {
               <div className="relative">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={project.name}
                   className="w-full h-56 sm:h-64 object-cover"
                 />
                 <span
@@ -118,7 +133,7 @@ export default function ProjectList() {
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {project.title}
+                  {project.name}
                 </h3>
                 <p className="text-slate-600 mb-4 line-clamp-3">
                   {project.description}

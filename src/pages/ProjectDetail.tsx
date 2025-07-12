@@ -86,9 +86,9 @@ export default function ProjectDetail() {
 
       {/* Quick Facts */}
       <section className="container mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <FeatureCard title="Этажность" value="2–15 этажей" icon={<Building2 />} />
-        <FeatureCard title="Блоки" value="2 блока" icon={<Box />} />
-        <FeatureCard title="Класс проекта" value="Бизнес-класс" icon={<Users />} />
+        <FeatureCard title="Этажность" value={p.floors} icon={<Building2 />} />
+        <FeatureCard title="Блоки" value={p.blocks} icon={<Box />} />
+        <FeatureCard title="Класс проекта" value={p.type} icon={<Users />} />
         <FeatureCard title="Лифты" value="Высокоскоростные" icon={<Zap />} />
         <FeatureCard title="Паркинг" value="Подземный" icon={<Thermometer />} />
         <FeatureCard title="Срок сдачи" value={p.deadline} icon={<MapPin />} />
