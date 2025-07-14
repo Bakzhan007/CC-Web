@@ -10,7 +10,6 @@ const Footer = () => {
     t.servicesList.commercial.title,
     t.servicesList.residential.title,
     t.servicesList.renovation.title,
-    t.servicesList.design.title,
     t.servicesList.management.title,
     t.servicesList.sustainable.title,
   ];

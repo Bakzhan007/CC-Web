@@ -77,11 +77,6 @@ export interface Translation {
       description: string;
       features: string[];
     };
-    design: {
-      title: string;
-      description: string;
-      features: string[];
-    };
     sustainable: {
       title: string;
       description: string;
@@ -392,11 +387,6 @@ export const translations: Record<string, Translation> = {
         title: 'Renovation & Remodeling',
         description: 'Transform existing spaces with our comprehensive renovation and modernization services.',
         features: ['Interior Renovation', 'Exterior Upgrades', 'Structural Modifications', 'Historic Restoration']
-      },
-      design: {
-        title: 'Design & Architecture',
-        description: 'Complete architectural services from concept to construction with innovative design solutions.',
-        features: ['Architectural Design', '3D Visualization', 'Interior Design', 'Landscape Architecture']
       },
       sustainable: {
         title: 'Sustainable Building',
@@ -851,11 +841,6 @@ export const translations: Record<string, Translation> = {
         description: 'Преобразование существующих пространств с помощью наших комплексных услуг по реконструкции и модернизации.',
         features: ['Внутренняя реконструкция', 'Внешние улучшения', 'Структурные изменения', 'Историческая реставрация']
       },
-      design: {
-        title: 'Дизайн и архитектура',
-        description: 'Полные архитектурные услуги от концепции до строительства с инновационными дизайнерскими решениями.',
-        features: ['Архитектурный дизайн', '3D визуализация', 'Дизайн интерьера', 'Ландшафтная архитектура']
-      },
       sustainable: {
         title: 'Устойчивое строительство',
         description: 'Экологически чистые строительные практики и решения зеленого строительства для устойчивого будущего.',
@@ -1306,11 +1291,6 @@ export const translations: Record<string, Translation> = {
         title: 'Қайта құру және жөндеу',
         description: 'Біздің кешенді қайта құру және жаңғырту қызметтерімізбен қолданыстағы кеңістіктерді түрлендіру.',
         features: ['Ішкі қайта құру', 'Сыртқы жақсарту', 'Құрылымдық өзгерістер', 'Тарихи қалпына келтіру']
-      },
-      design: {
-        title: 'Дизайн және сәулет',
-        description: 'Инновациялық дизайн шешімдерімен тұжырымдамадан құрылысқа дейінгі толық сәулет қызметтері.',
-        features: ['Сәулеттік дизайн', '3D визуализация', 'Интерьер дизайны', 'Ландшафт сәулеті']
       },
       sustainable: {
         title: 'Тұрақты құрылыс',
