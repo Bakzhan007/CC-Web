@@ -9,7 +9,12 @@ import {
   Box,
   MapPin
 } from 'lucide-react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
+import gallery1 from '../assets/image/ilanTower1.jpg';
+import gallery2 from '../assets/image/home1.jpg';
+import gallery3 from '../assets/image/beibitshilik1.jpg';
 
 interface Project {
   id: number;
@@ -23,6 +28,8 @@ interface Project {
   deadline: string;
   priceRange: string;
   description?: string;
+  images?: string[];
+  videoUrl?: string;
 }
 
 const FeatureCard: React.FC<{ title: string; value: string; icon: React.ReactNode }> = ({ title, value, icon }) => (
@@ -47,28 +54,37 @@ export default function ProjectDetail() {
   const navigate = useNavigate();
   const state = location.state as { project?: Project } | undefined;
   const p = state?.project;
+  const galleryImages = p?.images ?? [gallery1, gallery2, gallery3];
+  // Use the YouTube embed URL with start time
+  const videoUrl = p?.videoUrl ??
+    'https://www.youtube.com/embed/jzjwXM5ZoIA?si=faPu9jPw7MyKg-1R&start=3';
 
   if (!p) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
-        <p className="mb-4 text-gray-700">Проект не найден</p>
-        <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline">
-          ← Назад
-        </button>
+      <div className="min-h-screen flex flex-col bg-white">
+        <Header />
+        <main className="flex-1 flex flex-col items-center justify-center pt-[104px] sm:pt-[112px] lg:pt-[128px] p-6">
+          <p className="mb-4 text-gray-700">Проект не найден</p>
+          <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline">
+            ← Назад
+          </button>
+        </main>
+        <Footer />
       </div>
     );
   }
 
-  // Hero + CTA
   return (
-    <div className="bg-white">
-      <div
-        className="relative h-[60vh] bg-cover bg-center"
-        style={{ backgroundImage: `url(${p.image})` }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute bottom-8 left-6 text-white">
-          <h1 className="text-4xl lg:text-5xl font-bold">{p.name}</h1>
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
+      <main className="flex-1 pt-[104px] sm:pt-[112px] lg:pt-[128px]">
+        <div
+          className="relative h-[60vh] bg-cover bg-center"
+          style={{ backgroundImage: `url(${p.image})` }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute bottom-8 left-6 text-white">
+            <h1 className="text-4xl lg:text-5xl font-bold">{p.name}</h1>
           <p className="mt-2 text-lg">
             Премиум-жилой комплекс на первой береговой линии моря, {p.district}
           </p>
@@ -82,7 +98,7 @@ export default function ProjectDetail() {
         >
           ← Назад
         </button>
-      </div>
+    </div>
 
       {/* Quick Facts */}
       <section className="container mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -99,6 +115,35 @@ export default function ProjectDetail() {
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
           <div className="text-gray-500">Ценовой диапазон</div>
           <div className="mt-2 text-3xl font-bold text-blue-600">{p.priceRange}</div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="container mx-auto px-6 mb-12">
+        <h2 className="text-2xl lg:text-3xl font-semibold mb-6">Видео о проекте</h2>
+        <div className="aspect-video">
+          <iframe
+            className="w-full h-full rounded-xl shadow-xl"
+            src={videoUrl}
+            title="Project video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="container mx-auto px-6 py-12">
+        <h2 className="text-2xl lg:text-3xl font-semibold mb-6">Фотогалерея</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {galleryImages.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`${p.name} ${i + 1}`}
+              className="w-full h-40 object-cover rounded-lg shadow"
+            />
+          ))}
         </div>
       </section>
 
@@ -167,6 +212,12 @@ export default function ProjectDetail() {
           {p.description ??
             `“ILAN TOWER” расположен на первой береговой линии с шикарным обзором на Каспийское море в 15 микрорайоне города Актау. Застройщик — ТОО "Caspian Coast", с 2017 года известный качественными ЖК «Caspian Coast», «Taras», «Beibitshilik» и другими. Проект бизнес-класса сочетает престиж района, современную архитектуру и продуманный подход к планировкам и дизайну.`}
         </p>
+        <ul className="list-disc pl-5 space-y-2 text-gray-700 text-sm mt-4">
+          <li>Подземный паркинг на 100 машиномест</li>
+          <li>Система видеонаблюдения 24/7</li>
+          <li>Закрытый двор без машин и посторонних</li>
+          <li>Рядом расположены школа, магазины и набережная</li>
+        </ul>
       </section>
 
       {/* Contacts */}
@@ -180,6 +231,8 @@ export default function ProjectDetail() {
           </button>
         </div>
       </section>
+      </main>
+      <Footer />
     </div>
   );
 }
