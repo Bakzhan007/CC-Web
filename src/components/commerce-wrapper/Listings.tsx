@@ -10,11 +10,8 @@ export interface Office {
   originalPrice?: number;
   reserved: boolean;
   project: string;
-  building: string;
   block: string;
   floor: number;
-  entrance: number;
-  quarter: string;
   image: string;
   tags: string[];
 }
@@ -35,7 +32,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             key={o.id}
             className="relative bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
-            <img src={o.image} alt={`Office ${o.area} m²`} className="w-full h-48 object-cover" />
+            <img src={o.image} alt={`Office ${o.area} m²`} className="w-full h-60 md:h-64 object-cover" />
             <div className="p-4 space-y-2">
               <div className="flex justify-between items-start">
                 <h3 className="text-lg font-medium">{t.commerceOfficeLabel} {o.area} м²</h3>
@@ -51,7 +48,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
               <div className="flex items-baseline gap-2">
                 {o.price != null ? (
                   <>
-                    <span className="text-green-600 font-bold text-lg">{o.price.toLocaleString()} ₸</span>
+                    <span className="text-green-600 font-bold text-lg">От {o.price.toLocaleString()} ₸</span>
                     {o.originalPrice && (
                       <span className="text-gray-400 line-through text-sm">{o.originalPrice.toLocaleString()} ₸</span>
                     )}
@@ -61,7 +58,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
                 )}
               </div>
               <p className="text-sm text-gray-500">
-                {o.project} · блок {o.block} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}
+                {o.project} · блок {o.block} · {o.floor} этаж
               </p>
             </div>
           </div>
@@ -74,7 +71,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             key={o.id}
             className="relative flex bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
-            <img src={o.image} alt={`Office ${o.area} m²`} className="w-48 h-48 object-cover flex-shrink-0" />
+            <img src={o.image} alt={`Office ${o.area} m²`} className="w-60 md:w-64 h-60 md:h-64 object-cover flex-shrink-0" />
             <div className="p-4 flex flex-col justify-between flex-1">
               <div className="space-y-1">
                 <div className="flex justify-between items-start">
@@ -89,7 +86,7 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
                   ))}
                 </div>
                 <p className="text-sm text-gray-500">
-                  {o.project} · блок {o.block} · {o.building} · {o.floor} этаж · подъезд {o.entrance} · {o.quarter}                </p>
+                  {o.project} · блок {o.block} · {o.floor} этаж · подъезд               </p>
               </div>
               <div className="flex items-baseline gap-2">
                 {o.price != null ? (

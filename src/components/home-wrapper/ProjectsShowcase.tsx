@@ -1,5 +1,9 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { MapPin, Calendar, Building, Factory } from 'lucide-react';
+import { MapPin, Calendar, Building, Factory } from 'lucide-react'
+import ilanTower from '../../assets/image/ilan_tower.jpeg'
+import taras from '../../assets/image/taras.jpg'
+import beibitshilik from '../../assets/image/beibitshilik1.jpg'
+
 
 const ProjectsShowcase = () => {
   const { t } = useLanguage();
@@ -9,25 +13,25 @@ const ProjectsShowcase = () => {
       name: "Жилой комплекс «Caspian Coast»",
       location: "г. Актау",
       type: "Жилое строительство",
-      image: "https://images.unsplash.com/photo-1545324277-7b4e6b1f4b85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: 'https://storage.googleapis.com/bd-kz-01/buildings-v2/1280x960/8129.jpg',
     },
     {
       name: "Жилой комплекс «Ilan Tower»",
       location: "г. Актау",
       type: "Жилое строительство",
-      image: "https://images.unsplash.com/photo-1545324277-7b4e6b1f4b85?ixlib=rb-4.0.3&ixid=M3 wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: ilanTower
     },
     {
       name: "Жилой комплекс «Taras»",
       location: "г. Актау",
       type: "Жилое строительство",
-      image: "https://images.unsplash.com/photo-1545324277-7b4e6b1f4b85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: taras
     },
     {
       name: "Жилой комплекс «Бейбітшілік»",
       location: "г. Жанаозен",
       type: "Жилое строительство",
-      image: "https://images.unsplash.com/photo-1545324277-7b4e6b1f4b85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: beibitshilik
     }
   ];
 
@@ -71,20 +75,31 @@ const ProjectsShowcase = () => {
           </p>
         </div>
 
-        {/* Residential Projects */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-            <Building className="mr-3 text-blue-600" size={32} />
-            {t.projectsHomeResidential}
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {residentialProjects.map((project, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                  <Building size={48} className="text-white" />
+{/* Residential Projects */}
+<div className="mb-16">
+  <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+    <Building className="mr-3 text-blue-600" size={32} />
+    {t.projectsHomeResidential}
+  </h3>
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {residentialProjects.map((project, index) => (
+      <div
+        key={index}
+        className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+      >
+        {/* ← replace icon with real image */}
+                <div className="h-48 w-full overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+
                 <div className="p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">{project.name}</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    {project.name}
+                  </h4>
                   <div className="flex items-center text-gray-600 mb-2">
                     <MapPin size={16} className="mr-1" />
                     <span className="text-sm">{project.location}</span>
@@ -97,6 +112,7 @@ const ProjectsShowcase = () => {
             ))}
           </div>
         </div>
+
 
         {/* Industrial Projects */}
         <div>

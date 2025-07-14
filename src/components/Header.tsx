@@ -65,10 +65,11 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 shadow">
       <TopHeader visible={!isScrolled} />
       <div className={`transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200'
-          : 'bg-white/70 backdrop-blur-md border-b border-slate-200'
+          isScrolled
+            ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200'
+            : 'bg-white'
       }`}>
+
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Логотип */}
