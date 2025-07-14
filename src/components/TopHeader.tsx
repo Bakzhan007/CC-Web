@@ -49,7 +49,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
                 className="group relative flex items-center space-x-1 font-medium uppercase tracking-wider"
               >
                 <span className="pb-1">{link.label}</span>
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-600 transition-all group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-600 transition-all group-hover:w-full" />
               </Link>
             ) : link.href ? (
               <a
@@ -60,7 +60,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
                 rel="noopener noreferrer"
               >
                 <span className="pb-1">{link.label}</span>
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-600 transition-all group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-600 transition-all group-hover:w-full" />
               </a>
             ) : null
           ))}

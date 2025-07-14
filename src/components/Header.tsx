@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                   <div key={item.name} className="relative">
                     <button
                       onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center space-x-1 text-sm text-slate-700 hover:text-blue-600"
+                      className="flex items-center space-x-1 text-sm text-slate-700 hover:text-brand-600"
                     >
                       <span>{item.name}</span>
                       <ChevronDown
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                             <Link
                               to={sub.to}
                               onClick={() => setOpenDropdown(null)}
-                              className="relative group text-sm text-slate-700 hover:text-blue-600"
+                              className="relative group text-sm text-slate-700 hover:text-brand-600"
                             >
                               {sub.name}
                             </Link>
@@ -115,7 +115,7 @@ const Header: React.FC = () => {
                   <Link
                     key={item.name}
                     to={item.to}
-                    className="relative group text-slate-700 hover:text-blue-600"
+                    className="relative group text-slate-700 hover:text-brand-600"
                   >
                     <span>{item.name}</span>
                     <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-current transition-all group-hover:w-full" />
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
               )}
               <a
                 href="tel:+77006363631"
-                className="hidden lg:flex items-center space-x-2 px-3 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition-colors"
+                className="hidden lg:flex items-center space-x-2 px-3 py-1 border border-brand-600 text-brand-600 rounded hover:bg-brand-50 transition-colors"
               >
                 <Phone size={16} />
                 <span className="text-sm">+7 (700) 636-36-31</span>
@@ -188,14 +188,14 @@ const Header: React.FC = () => {
                 <div className="px-4 py-2 border-t border-slate-200 mt-4">
                   <a
                     href="tel:+77006363631"
-                    className="flex items-center space-x-2 text-slate-700 hover:text-blue-600 mt-3"
+                    className="flex items-center space-x-2 text-slate-700 hover:text-brand-600 mt-3"
                   >
                     <Phone size={16} />
                     <span>+7 (700) 636-36-31</span>
                   </a>
                   <a
                     href="mailto:info@caspiancoast.com"
-                    className="flex items-center space-x-2 text-slate-700 hover:text-blue-600 mt-2"
+                    className="flex items-center space-x-2 text-slate-700 hover:text-brand-600 mt-2"
                   >
                     <Mail size={16} />
                     <span>info@caspiancoast.com</span>
@@ -208,7 +208,7 @@ const Header: React.FC = () => {
                       <button
                         key={link.label}
                         onClick={() => handleNavigate(link.to!)}
-                        className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
+                        className="flex items-center space-x-2 text-slate-700 hover:text-brand-600"
                       >
                         <link.icon size={16} />
                         <span>{link.label}</span>
@@ -218,7 +218,7 @@ const Header: React.FC = () => {
                         key={link.label}
                         href={link.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center space-x-2 text-slate-700 hover:text-blue-600"
+                        className="flex items-center space-x-2 text-slate-700 hover:text-brand-600"
                       >
                         <span>{link.label}</span>
                       </a>

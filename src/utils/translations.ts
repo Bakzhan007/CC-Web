@@ -292,6 +292,13 @@ export interface Translation {
     // FAQ Page
   faqTitle: string;
   faqItems: { question: string; answer: string }[];
+
+    // After Purchase Page
+  afterPurchaseTitle: string;
+  afterPurchaseStepsTitle: string;
+  afterPurchaseSteps: { title: string; desc: string }[];
+  afterPurchaseHelp: string;
+  afterPurchaseContacts: { label: string; sub: string }[];
 }
 
 export const translations: Record<string, Translation> = {
@@ -723,6 +730,32 @@ export const translations: Record<string, Translation> = {
         question: 'How do I apply for a job?',
         answer: 'Visit the career page to see open positions and submit your application.'
       }
+    ]
+    ,
+    afterPurchaseTitle: 'What to do after purchase',
+    afterPurchaseStepsTitle: 'Your next steps',
+    afterPurchaseSteps: [
+      {
+        title: 'Finalize Documents',
+        desc: 'Review and sign all ownership papers to complete the transaction.'
+      },
+      {
+        title: 'Inspect Your Property',
+        desc: 'Walk through your new space and note any issues that need attention.'
+      },
+      {
+        title: 'Plan Renovations',
+        desc: 'Connect with our trusted partners if you wish to customize your home.'
+      },
+      {
+        title: 'Settle In',
+        desc: 'Move in and enjoy your new property with peace of mind.'
+      }
+    ],
+    afterPurchaseHelp: 'Need help?',
+    afterPurchaseContacts: [
+      { label: '+7(700) 636-36-31', sub: 'Call Center' },
+      { label: 'caspiancoast@list.ru', sub: 'Customer Support' }
     ]
   },
 
@@ -1156,6 +1189,31 @@ export const translations: Record<string, Translation> = {
         question: 'Как подать заявку на работу?',
         answer: 'Посетите страницу карьеры, чтобы увидеть открытые вакансии и отправить заявку.'
       }
+          ],
+    afterPurchaseTitle: 'Что делать после покупки',
+    afterPurchaseStepsTitle: 'Ваши следующие шаги',
+    afterPurchaseSteps: [
+      {
+        title: 'Завершите оформление документов',
+        desc: 'Проверьте и подпишите все документы о праве собственности для завершения сделки.'
+      },
+      {
+        title: 'Осмотрите недвижимость',
+        desc: 'Пройдите по новым помещениям и отметьте все вопросы, требующие внимания.'
+      },
+      {
+        title: 'Планируйте ремонт',
+        desc: 'Свяжитесь с нашими проверенными партнерами, если хотите сделать индивидуальную отделку.'
+      },
+      {
+        title: 'Заселяйтесь',
+        desc: 'Переезжайте и наслаждайтесь новой недвижимостью с чувством уверенности.'
+      }
+    ],
+    afterPurchaseHelp: 'Нужна помощь?',
+    afterPurchaseContacts: [
+      { label: '+7(700) 636-36-31', sub: 'Колл-центр' },
+      { label: 'caspiancoast@list.ru', sub: 'Поддержка клиентов' }
     ]
     },
   
@@ -1556,7 +1614,7 @@ export const translations: Record<string, Translation> = {
     partnerCtaButton: 'Хат жазу',
     maintenanceTitle: 'Сайт жаңартылуда',
     maintenanceMessage: 'Техникалық жұмыстар жүргізілуде. Кейінірек қайтып оралыңыз.',
-    
+
     faqTitle: 'Жиі қойылатын сұрақтар',
     faqItems: [
       {
@@ -1587,6 +1645,31 @@ export const translations: Record<string, Translation> = {
         question: 'Жұмысқа қалай өтініш беруге болады?',
         answer: 'Ашық бос орындарды көру және өтініш беру үшін мансап бетіне кіріңіз.'
       }
+          ],
+    afterPurchaseTitle: 'Сатып алғаннан кейін не істеу керек',
+    afterPurchaseStepsTitle: 'Келесі қадамдар',
+    afterPurchaseSteps: [
+      {
+        title: 'Құжаттарды рәсімдеу',
+        desc: 'Мәмілені аяқтау үшін барлық меншік құжаттарын қарап шығып, қол қойыңыз.'
+      },
+      {
+        title: 'Мүлікті тексеру',
+        desc: 'Жаңа кеңістікті аралап, назар аударуды қажет ететін мәселелерді белгілеңіз.'
+      },
+      {
+        title: 'Жөндеу жұмыстарын жоспарлау',
+        desc: 'Үйді өз қалауыңызша бейімдеу үшін біздің сенімді серіктестермен хабарласыңыз.'
+      },
+      {
+        title: 'Орналасу',
+        desc: 'Көшіп келіп, жаңа мүлікте тыныш өмір сүріңіз.'
+      }
+    ],
+    afterPurchaseHelp: 'Көмек керек пе?',
+    afterPurchaseContacts: [
+      { label: '+7(700) 636-36-31', sub: 'Колл-орталық' },
+      { label: 'caspiancoast@list.ru', sub: 'Қолдау қызметі' }
     ]
   }
   

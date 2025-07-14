@@ -74,13 +74,13 @@ const LanguageSwitcher = () => {
               onClick={() => handleLanguageChange(lang.code)}
               className={`w-full flex items-center space-x-3 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors ${
                 language === lang.code
-                  ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                  ? 'bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400'
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
               <span className="text-lg">{lang.flag}</span>
               <span>{lang.name}</span>
-              {language === lang.code && <div className="ml-auto w-2 h-2 bg-blue-600 rounded-full" />}
+              {language === lang.code && <div className="ml-auto w-2 h-2 bg-brand-600 rounded-full" />}
             </button>
           ))}
         </div>

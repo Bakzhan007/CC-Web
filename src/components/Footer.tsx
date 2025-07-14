@@ -47,15 +47,15 @@ const Footer = () => {
             <p className="text-slate-300 mb-6 leading-relaxed">{t.footerDescription}</p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-blue-400" />
+                <Phone size={16} className="text-brand-400" />
                 <span className="text-slate-300">+7 (700) 636-36-31</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-blue-400" />
+                <Mail size={16} className="text-brand-400" />
                 <span className="text-slate-300">caspiancoast@list.ru</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin size={16} className="text-blue-400" />
+                <MapPin size={16} className="text-brand-400" />
                 <span className="text-slate-300">Business Center Nesibek-Nur, 16 - 22/1</span>
               </div>
             </div>
@@ -67,7 +67,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, idx) => (
                 <li key={idx}>
-                  <a href="#services" className="text-slate-300 hover:text-blue-400 transition-colors">
+                  <a href="#services" className="text-slate-300 hover:text-brand-400 transition-colors">
                     {service}
                   </a>
                 </li>
@@ -81,7 +81,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map(({ name, href }, idx) => (
                 <li key={idx}>
-                  <Link to={href} className="text-slate-300 hover:text-blue-400 transition-colors">
+                  <Link to={href} className="text-slate-300 hover:text-brand-400 transition-colors">
                     {name}
                   </Link>
                 </li>
@@ -99,7 +99,7 @@ const Footer = () => {
                   key={idx}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                  className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"
                 >
                   <Icon size={20} className="text-white" />
                 </a>
