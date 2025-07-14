@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin as LinkedIn, Instagram
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import logoLight from '../assets/logo/logo-light-hor.png';
+import WhatsappIcon from './icons/WhatsappIcons';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -25,10 +26,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: LinkedIn, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: WhatsappIcon, href: 'https://api.whatsapp.com/send/?phone=77006363631&text&type=phone_number&app_absent=0', label: 'Whatsapp' },
+    { icon: Instagram, href: 'https://www.instagram.com/caspiancoast.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
   ];
 
   return (

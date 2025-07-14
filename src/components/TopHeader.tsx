@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { LucideIcon } from 'lucide-react'
-import { Building2, Newspaper, Briefcase, Percent, Book } from 'lucide-react'
+import { Building2, Newspaper, Briefcase, Percent, Book, Instagram } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
 import TelegramIcon from './icons/TelegramIcons'
@@ -77,11 +77,11 @@ const TopHeader: React.FC<TopHeaderProps> = ({ visible = true }) => {
 
         {/* Селектор языка и мессенджеры */}
         <div className="flex items-center space-x-3 text-slate-500">
-          <a href="#" aria-label="WhatsApp" className="hover:opacity-80">
+          <a href="https://api.whatsapp.com/send/?phone=77006363631&text&type=phone_number&app_absent=0" aria-label="WhatsApp" className="hover:opacity-80">
             <WhatsappIcon className="w-5 h-5" />
           </a>
-          <a href="#" aria-label="Telegram" className="hover:opacity-80">
-            <TelegramIcon className="w-5 h-5" />
+          <a href="https://www.instagram.com/caspiancoast.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" className="hover:opacity-80">
+            <Instagram className="w-5 h-5" />
           </a>
           <LanguageSwitcher />
         </div>
