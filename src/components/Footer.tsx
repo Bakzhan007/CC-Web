@@ -1,5 +1,4 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin as LinkedIn, Instagram } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { Phone, Mail, MapPin, Instagram } from 'lucide-react';import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import logoLight from '../assets/logo/logo-light-hor.png';
 import WhatsappIcon from './icons/WhatsappIcons';
@@ -26,8 +25,16 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: WhatsappIcon, href: 'https://api.whatsapp.com/send/?phone=77006363631&text&type=phone_number&app_absent=0', label: 'Whatsapp' },
-    { icon: Instagram, href: 'https://www.instagram.com/caspiancoast.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
+    {
+      icon: WhatsappIcon,
+      href: 'https://api.whatsapp.com/send/?phone=77006363631&text&type=phone_number&app_absent=0',
+      label: 'WhatsApp',
+    },
+    {
+      icon: Instagram,
+      href: 'https://www.instagram.com/caspiancoast.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+      label: 'Instagram',
+    },
   ];
 
   return (
@@ -62,8 +69,9 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">{t.homePage}</h4>
-            <ul className="space-y-3">
+            <h4 className="text-lg font-semibold mb-6">
+              {t.servicesTitle} {t.servicesSubtitle}
+            </h4>            <ul className="space-y-3">
               {services.map((service, idx) => (
                 <li key={idx}>
                   <a href="#services" className="text-slate-300 hover:text-brand-400 transition-colors">
@@ -98,9 +106,11 @@ const Footer = () => {
                   key={idx}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"
                 >
-                  <Icon size={20} className="text-white" />
+                  <Icon className="text-white w-5 h-5" />
                 </a>
               ))}
             </div>
