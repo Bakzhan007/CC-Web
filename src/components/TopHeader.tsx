@@ -4,7 +4,6 @@ import type { LucideIcon } from 'lucide-react'
 import { Building2, Newspaper, Briefcase, Percent, Book, Instagram } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
-import TelegramIcon from './icons/TelegramIcons'
 import { useLanguage } from '../contexts/LanguageContext'
 import { Translation } from '../utils/translations'
 
