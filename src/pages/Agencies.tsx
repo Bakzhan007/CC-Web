@@ -10,14 +10,14 @@ import logoKcm from '../assets/logo/kcmkz.png';
 import logoLAluminstroi from '../assets/logo/ljuminstroj.jpg';
 import logoOpti from '../assets/logo/opti.jpg';
 
-import agencies3 from '../assets/image/agencies3.jpg'
-import agencies4 from '../assets/image/agencies4.jpg'
-import agencies5 from '../assets/image/agencies5.jpg'
-import agencies6 from '../assets/image/agencies6.jpg'
-import agencies7 from '../assets/image/agencies7.jpg'
-import agencies8 from '../assets/image/agencies8.jpg'
-import agencies9 from '../assets/image/agencies9.jpg'
-import agencies10 from '../assets/image/agencies10.jpg'
+import agencies3 from '../assets/image/agencies3.webp'
+import agencies4 from '../assets/image/agencies4.webp'
+import agencies5 from '../assets/image/agencies5.webp'
+import agencies6 from '../assets/image/agencies6.webp'
+import agencies7 from '../assets/image/agencies7.webp'
+import agencies8 from '../assets/image/agencies8.webp'
+import agencies9 from '../assets/image/agencies9.webp'
+import agencies10 from '../assets/image/agencies10.webp'
 
 import Hero from "../components/agencies-wrapper/Hero";
 import SearchFilter from "../components/agencies-wrapper/SearchFilter";

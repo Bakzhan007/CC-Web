@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import career from '../../assets/image/career1.jpg';
+import career from '../../assets/image/career1.webp';
 
 const Hero = () => {
   const { t } = useLanguage();

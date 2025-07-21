@@ -1,6 +1,6 @@
 import { Award, Star, Users } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import agenciesPartner from '../../assets/image/agencies2.jpg';
+import agenciesPartner from '../../assets/image/agencies2.webp';
 
 export default function Hero() {
   const { t } = useLanguage();

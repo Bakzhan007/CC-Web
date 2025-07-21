@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
-import imgTaras from '../../assets/image/taras.jpg';
-import imgIlan from '../../assets/image/ilan_tower.jpeg';
+import imgTaras from '../../assets/image/taras.webp';
+import imgIlan from '../../assets/image/ilan_tower.webp';
 
 export default function ProjectList() {
   const { t } = useLanguage();

@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import home1 from '../../assets/image/home1.jpg';
+import home1 from '../../assets/image/home1.webp';
 
 const About = () => {
   const { t } = useLanguage();

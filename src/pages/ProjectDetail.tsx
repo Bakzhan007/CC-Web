@@ -12,9 +12,9 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-import gallery1 from '../assets/image/ilanTower1.jpg';
-import gallery2 from '../assets/image/home1.jpg';
-import gallery3 from '../assets/image/beibitshilik1.jpg';
+import gallery1 from '../assets/image/ilanTower1.webp';
+import gallery2 from '../assets/image/home1.webp';
+import gallery3 from '../assets/image/beibitshilik1.webp';
 
 interface Project {
   id: number;

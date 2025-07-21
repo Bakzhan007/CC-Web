@@ -1,9 +1,9 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import { User, Calendar, Award } from 'lucide-react';
-import leadership1 from '../../assets/image/leadership1.jpg';
-import leadership2 from '../../assets/image/leadership2.jpg';
-import leadership3 from '../../assets/image/leadership3.jpg';
-import leadership4 from '../../assets/image/leadership4.jpg';
+import leadership1 from '../../assets/image/leadership1.webp';
+import leadership2 from '../../assets/image/leadership2.webp';
+import leadership3 from '../../assets/image/leadership3.webp';
+import leadership4 from '../../assets/image/leadership4.webp';
 
 
 const Leadership = () => {

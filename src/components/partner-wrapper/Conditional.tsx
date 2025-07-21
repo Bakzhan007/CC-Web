@@ -4,10 +4,10 @@ import {
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
-import partner1 from '../../assets/image/partner1.jpg';
-import partner2 from '../../assets/image/partner2.jpg';
-import partner3 from '../../assets/image/partner3.jpg';
-import partner4 from '../../assets/image/partner4.jpg';
+import partner1 from '../../assets/image/partner1.webp';
+import partner2 from '../../assets/image/partner2.webp';
+import partner3 from '../../assets/image/partner3.webp';
+import partner4 from '../../assets/image/partner4.webp';
 
 export default function Conditions() {
   const { t } = useLanguage();

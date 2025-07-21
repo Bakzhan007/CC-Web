@@ -1,4 +1,4 @@
-import bannerImage from '../../assets/image/commercial-banner.jpg';
+import bannerImage from '../../assets/image/commercial-banner.webp';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Hero = () => {
