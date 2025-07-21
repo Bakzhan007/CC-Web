@@ -121,6 +121,7 @@ export default function ProjectList() {
                   src={project.image}
                   alt={project.name}
                   className="w-full h-56 sm:h-64 object-cover"
+                  loading="lazy"
                 />
                 <span
                   className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${

@@ -25,6 +25,7 @@ const Hero = () => {
             src={career}
             alt="Our partner agencies at work"
             className="w-full h-auto rounded-xl shadow-lg"
+            loading="lazy"
           />
         </div>
       </div>

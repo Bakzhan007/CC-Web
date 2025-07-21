@@ -10,6 +10,7 @@ const Hero = () => {
           src={bannerImage}
           alt={t.commerceHeroTitle}
           className="object-cover w-full h-full"
+          loading="lazy"
         />
         {/* Overlay container: Center on mobile, bottom on larger screens */}
         <div className="absolute inset-0 flex flex-col justify-center sm:justify-end items-center sm:items-start p-4 sm:p-6 lg:p-8">

@@ -58,6 +58,7 @@ const Testimonials = () => {
                 src={testimonialsData[current].image}
                 alt={testimonialsData[current].name}
                 className="w-16 h-16 rounded-full object-cover mr-4"
+                loading="lazy"
               />
               <div>
                 <h4 className="text-xl font-semibold text-gray-900">

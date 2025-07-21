@@ -7,6 +7,7 @@ const Hero: React.FC = () => (
         src="https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=1600"
         alt="After purchase banner"
         className="w-full h-full object-cover"
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-slate-900/60" />
       <div className="absolute inset-0 flex items-center justify-center">

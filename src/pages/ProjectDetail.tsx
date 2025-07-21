@@ -172,6 +172,7 @@ export default function ProjectDetail() {
                 src={img}
                 alt={`${p.name} ${i + 1}`}
                 className="w-full h-40 object-cover rounded-lg shadow"
+                loading="lazy"
               />
             ))}
           </div>

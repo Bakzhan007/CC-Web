@@ -62,6 +62,7 @@ const Leadership = () => {
                     src={leader.avatar}
                     alt={leader.name}
                     className="object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">

@@ -13,6 +13,7 @@ export default function Hero() {
           src={agenciesPartner}
           alt="Our partner agencies at work"
           className="absolute inset-0 w-full h-full object-cover opacity-10"
+          loading="lazy"
         />
       </div>
 

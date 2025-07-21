@@ -47,6 +47,7 @@ const Footer = () => {
                 src={logoLight}
                 alt="CaspianCoast Logo"
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+                loading="lazy"
               />
             </Link>
             <p className="text-slate-300 mb-6 leading-relaxed">{t.footerDescription}</p>

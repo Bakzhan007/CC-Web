@@ -32,8 +32,12 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             key={o.id}
             className="relative bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
-            <img src={o.image} alt={`Office ${o.area} m²`} className="w-full h-60 md:h-64 object-cover" />
-            <div className="p-4 space-y-2">
+            <img
+              src={o.image}
+              alt={`Office ${o.area} m²`}
+              className="w-full h-60 md:h-64 object-cover"
+              loading="lazy"
+            />            <div className="p-4 space-y-2">
               <div className="flex justify-between items-start">
                 <h3 className="text-lg font-medium">{t.commerceOfficeLabel} {o.area} м²</h3>
                 <Heart size={18} className="text-gray-400 hover:text-red-500 cursor-pointer" />
@@ -71,8 +75,13 @@ const Listings = ({ offices, viewMode }: ListingsProps) => {
             key={o.id}
             className="relative flex bg-white rounded-2xl shadow hover:shadow-md transition-shadow overflow-hidden"
           >
-            <img src={o.image} alt={`Office ${o.area} m²`} className="w-60 md:w-64 h-60 md:h-64 object-cover flex-shrink-0" />
-            <div className="p-4 flex flex-col justify-between flex-1">
+            <img
+              src={o.image}
+              alt={`Office ${o.area} m²`}
+              className="w-60 md:w-64 h-60 md:h-64 object-cover flex-shrink-0"
+              loading="lazy"
+            />
+              <div className="p-4 flex flex-col justify-between flex-1">
               <div className="space-y-1">
                 <div className="flex justify-between items-start">
                   <h3 className="text-lg font-medium">Офис {o.area} м²</h3>

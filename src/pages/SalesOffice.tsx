@@ -64,6 +64,7 @@ function SalesOffice() {
                       src={`${o.image}?auto=compress&cs=tinysrgb&w=600`}
                       alt={o.title}
                       className="w-full h-40 object-cover"
+                      loading="lazy"
                     />
                     <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
                       {o.title}

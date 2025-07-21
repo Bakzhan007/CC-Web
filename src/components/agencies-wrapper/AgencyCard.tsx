@@ -16,6 +16,7 @@ export default function AgencyCard({ agency, featured }: Props) {
           src={agency.coverImage}
           alt={`${agency.name} office`}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
@@ -33,6 +34,7 @@ export default function AgencyCard({ agency, featured }: Props) {
               src={agency.logo}
               alt={`${agency.name} logo`}
               className="w-full h-full object-cover rounded-md"
+              loading="lazy"
             />
           </div>
         </div>
@@ -75,6 +77,7 @@ export default function AgencyCard({ agency, featured }: Props) {
                   src={image}
                   alt={`${agency.name} work ${index + 1}`}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-200"
+                  loading="lazy"
                 />
               </div>
             ))}

@@ -78,6 +78,7 @@ const Header: React.FC = () => {
                 src={logoDark}
                 alt="CaspianCoast Logo"
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+                loading="lazy"
               />
             </Link>
 

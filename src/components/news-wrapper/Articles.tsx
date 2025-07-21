@@ -107,6 +107,7 @@ const Articles: React.FC = () => {
                   src={article.image}
                   alt={article.title}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <span className="absolute top-4 left-4 bg-white/90 text-xs font-medium px-3 py-1 rounded-full">
                   {article.date}

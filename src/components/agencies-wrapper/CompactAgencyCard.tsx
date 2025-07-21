@@ -17,6 +17,7 @@ export default function CompactAgencyCard({ agency }: Props) {
             src={agency.coverImage}
             alt={`${agency.name} office`}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
           <div className="absolute bottom-3 left-3">
@@ -25,6 +26,7 @@ export default function CompactAgencyCard({ agency }: Props) {
                 src={agency.logo}
                 alt={`${agency.name} logo`}
                 className="w-full h-full object-cover rounded-md"
+                loading="lazy"
               />
             </div>
           </div>
@@ -99,6 +101,7 @@ export default function CompactAgencyCard({ agency }: Props) {
                         src={image}
                         alt={`${agency.name} work ${index + 1}`}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                   ))}
@@ -117,6 +120,7 @@ export default function CompactAgencyCard({ agency }: Props) {
                         src={image}
                         alt={`${agency.name} work ${index + 1}`}
                         className="w-full h-full object-cover hover:scale-110 transition-transform duration-200"
+                        loading="lazy"
                       />
                     </div>
                   ))}

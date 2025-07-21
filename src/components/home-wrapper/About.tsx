@@ -33,6 +33,7 @@ const About = () => {
                 src={home1}
                 alt={t.aboutImageAlt}
                 className="w-full h-[400px] object-cover"
+                loading="lazy"
               />
             </div>
           </div>

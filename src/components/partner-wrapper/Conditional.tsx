@@ -59,6 +59,7 @@ export default function Conditions() {
                       src={c.img}
                       alt={c.title}
                       className="w-full h-44 object-cover rounded-xl mb-4"
+                      loading="lazy"
                     />
                     <h3 className="text-lg font-medium mb-2">{c.title}</h3>
                     <p className="text-sm text-slate-600 flex-grow leading-relaxed">
