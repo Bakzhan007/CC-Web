@@ -1,10 +1,24 @@
-import { Phone, Mail, MapPin, Instagram } from 'lucide-react';import { useLanguage } from '../contexts/LanguageContext';
+import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import logoLight from '../assets/logo/logo-light-hor.png';
 import WhatsappIcon from './icons/WhatsappIcons';
 
 const Footer = () => {
   const { t } = useLanguage();
+
+  // Contact handlers
+  const handlePhoneCall = () => {
+    window.open('tel:+77006363631', '_self');
+  };
+
+  const handleEmailClick = () => {
+    window.open('mailto:caspiancoast@list.ru?subject=Запрос о услугах&body=Здравствуйте! Меня интересует...', '_self');
+  };
+
+  const handleMapClick = () => {
+    window.open('https://maps.google.com/?q=Business+Center+Nesibek-Nur,+16+22/1+Aktau', '_blank');
+  };
 
   const services = [
     t.servicesList.commercial.title,
@@ -52,18 +66,27 @@ const Footer = () => {
             </Link>
             <p className="text-slate-300 mb-6 leading-relaxed">{t.footerDescription}</p>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-brand-400" />
-                <span className="text-slate-300">+7 (700) 636-36-31</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-brand-400" />
-                <span className="text-slate-300">caspiancoast@list.ru</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin size={16} className="text-brand-400" />
-                <span className="text-slate-300">Business Center Nesibek-Nur, 16 - 22/1</span>
-              </div>
+              <button 
+                onClick={handlePhoneCall}
+                className="flex items-center space-x-3 hover:text-white transition-colors cursor-pointer group w-full text-left"
+              >
+                <Phone size={16} className="text-brand-400 group-hover:text-white" />
+                <span className="text-slate-300 group-hover:text-white">+7 (700) 636-36-31</span>
+              </button>
+              <button 
+                onClick={handleEmailClick}
+                className="flex items-center space-x-3 hover:text-white transition-colors cursor-pointer group w-full text-left"
+              >
+                <Mail size={16} className="text-brand-400 group-hover:text-white" />
+                <span className="text-slate-300 group-hover:text-white">caspiancoast@list.ru</span>
+              </button>
+              <button 
+                onClick={handleMapClick}
+                className="flex items-center space-x-3 hover:text-white transition-colors cursor-pointer group w-full text-left"
+              >
+                <MapPin size={16} className="text-brand-400 group-hover:text-white" />
+                <span className="text-slate-300 group-hover:text-white">Business Center Nesibek-Nur, 16 - 22/1</span>
+              </button>
             </div>
           </div>
 

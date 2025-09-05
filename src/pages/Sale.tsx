@@ -3,10 +3,22 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useState } from 'react';
+import sale1 from '../assets/image/sale1.webp';
+import sale2 from '../assets/image/sale2.webp';
+import ContactModal from '../components/ContactModal';
 
 function Sale() {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  
+  // Handle promotion details
+  const handlePromoDetails = (promoTitle: string) => {
+    // Direct WhatsApp contact with promotion context
+    const message = `Здравствуйте! Меня интересует акция "${promoTitle}". Расскажите подробнее об условиях и как принять участие.`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=77006363631&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
   
   const filterOptions = [
     { id: 'all', label: 'Все' },
@@ -17,76 +29,22 @@ function Sale() {
   const promotions = [
     {
       id: 1,
-      title: "BIG Bonus | Construction",
-      subtitle: "СКИДКИ НА НЕДВИЖИМОСТЬ до 22%",
-      endDate: "до 29.09.2025",
-      image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "Специальное предложение",
+      subtitle: "ЭКСКЛЮЗИВНЫЕ УСЛОВИЯ НА НЕДВИЖИМОСТЬ",
+      endDate: "до 31.12.2025",
+      image: sale1,
       gradient: "from-blue-400 to-cyan-300",
       textColor: "text-white"
     },
     {
       id: 2,
-      title: "Ипотека на коммерческую недвижимость для ИП",
-      subtitle: "ваша площадка для роста бизнеса",
-      endDate: "до 15.07.2026",
-      image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "Выгодная ипотека",
+      subtitle: "ЛЬГОТНЫЕ УСЛОВИЯ КРЕДИТОВАНИЯ",
+      endDate: "до 30.06.2026",
+      image: sale2,
       gradient: "from-orange-400 to-red-400",
       textColor: "text-white"
     },
-    {
-      id: 3,
-      title: "West Sales в Атырау",
-      subtitle: "КВАРТИРЫ СО СКИДКОЙ ДО 15%",
-      endDate: "до 30.09.2025",
-      image: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-teal-400 to-blue-500",
-      textColor: "text-white"
-    },
-    {
-      id: 4,
-      title: "Онай Ипотека",
-      subtitle: "В твоем — свой подарок",
-      endDate: "до 28.02.2026",
-      image: "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-purple-400 to-pink-400",
-      textColor: "text-white"
-    },
-    {
-      id: 5,
-      title: "BIG Super Bonus",
-      subtitle: "ГРАНДИОЗНАЯ СКИДКА до 20%",
-      endDate: "до 15.10.2025",
-      image: "https://images.pexels.com/photos/87223/pexels-photo-87223.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-pink-500 to-purple-600",
-      textColor: "text-white"
-    },
-    {
-      id: 6,
-      title: "ПОКУПАЙТЕ И ЗАРАБАТЫВАЙТЕ",
-      subtitle: "В ГОТОВЫЕ КВАРТИРЫ",
-      endDate: "до 20.12.2025",
-      image: "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-blue-600 to-indigo-700",
-      textColor: "text-white"
-    },
-    {
-      id: 7,
-      title: "Halyk ипотека",
-      subtitle: "На эксклюзивные условия",
-      endDate: "до 31.08.2025",
-      image: "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-green-400 to-teal-500",
-      textColor: "text-white"
-    },
-    {
-      id: 8,
-      title: "Seaside Residences",
-      subtitle: "LUXURY WATERFRONT LIVING",
-      endDate: "до 10.11.2025",
-      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-cyan-400 to-blue-600",
-      textColor: "text-white"
-    }
   ];
 
   return (
@@ -96,10 +54,20 @@ function Sale() {
         {/* Header Section */}
         <section className="bg-white py-12 border-b border-gray-200">
           <div className="container mx-auto px-6">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Акции и предложения
-              </h1>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                  Акции и предложения
+                </h1>
+                <p className="text-gray-600">Выгодные условия на недвижимость от CaspianCoast</p>
+              </div>
+              <button
+                onClick={() => setIsContactModalOpen(true)}
+                className="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Связаться с нами
+              </button>
             </div>
             
             {/* Filter Dropdown - BI Group Style */}
@@ -122,43 +90,60 @@ function Sale() {
           </div>
         </section>
 
-        {/* Promotions Grid - BI Group Style */}
-        <section className="py-8 bg-gray-50">
+        {/* Promotions Grid - Enhanced Minimalistic Design */}
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {promotions.map((promo, index) => (
-                <div key={promo.id} className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group">
-                  {/* Image with overlay */}
-                  <div className="relative h-40 overflow-hidden">
-                    <img
-                      src={promo.image}
-                      alt={promo.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading={index < 2 ? "eager" : "lazy"}
-                      decoding={index < 2 ? "sync" : "async"}
-                      fetchPriority={index < 2 ? "high" : "low"}
-                    />
-                    {/* Gradient overlay for better text visibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div 
+                  key={promo.id} 
+                  className="group bg-white rounded-lg shadow-sm hover:shadow-md border border-gray-100 hover:border-blue-200 transition-all duration-300 cursor-pointer overflow-hidden"
+                >
+                  {/* Image container */}
+                  <div className="relative bg-gray-50 overflow-hidden">
+                    <div className="aspect-[16/10] relative">
+                      <img
+                        src={promo.image}
+                        alt={promo.title}
+                        className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                        loading={index < 2 ? "eager" : "lazy"}
+                        decoding={index < 2 ? "sync" : "async"}
+                        fetchPriority={index < 2 ? "high" : "low"}
+                      />
+                      
+                      {/* Subtle accent line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2 text-sm leading-tight">
-                      {promo.title}
-                    </h3>
-                    
-                    {/* Date with icon */}
-                    <div className="flex items-center text-gray-600 text-xs mb-3">
-                      <Clock className="w-3 h-3 mr-1" />
-                      <span>{promo.endDate}</span>
+                  {/* Content section */}
+                  <div className="p-6 space-y-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                        {promo.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm font-medium">
+                        {promo.subtitle}
+                      </p>
                     </div>
                     
-                    {/* Action button */}
-                    <button className="flex items-center justify-between w-full text-left group-hover:text-blue-600 transition-colors">
-                      <span className="text-sm text-gray-700 group-hover:text-blue-600">Подробнее</span>
-                      <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
-                    </button>
+                    <div className="flex items-center justify-between pt-2 border-t border-gray-50">
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                        <Clock className="w-4 h-4 mr-1" />
+                        <span>{promo.endDate}</span>
+                      </div>
+                      
+                      <button 
+                        onClick={() => handlePromoDetails(promo.title)}
+                        className="group/btn flex items-center text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                      >
+                        <span className="text-sm mr-2">Подробнее</span>
+                        <div className="w-6 h-6 rounded-full bg-gray-100 group-hover/btn:bg-blue-500 flex items-center justify-center transition-all duration-300">
+                          <ArrowRight className="w-3 h-3 group-hover/btn:text-white transition-colors" />
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -166,13 +151,20 @@ function Sale() {
             
             {/* Pagination info - BI Group style */}
             <div className="text-center mt-8">
-              <p className="text-sm text-gray-500">показано 8 из 11</p>
+              <p className="text-sm text-gray-500">показано 2 из 2</p>
             </div>
           </div>
         </section>
 
       </main>
       <Footer />
+      
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        title="Связаться по акциям"
+      />
     </div>
   );
 }

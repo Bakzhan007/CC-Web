@@ -6,6 +6,30 @@ const Jobs = () => {
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  const handleJobApplication = (jobTitle: string) => {
+    const subject = encodeURIComponent(`Отклик на вакансию: ${jobTitle}`);
+    const body = encodeURIComponent(`Здравствуйте!
+
+Меня заинтересовала вакансия "${jobTitle}" в компании CaspianCoast.
+
+Информация о себе:
+- Имя: 
+- Телефон: 
+- Email: 
+- Возраст: 
+- Опыт работы: 
+- Образование: 
+- Дополнительная информация: 
+
+Прошу рассмотреть мою кандидатуру. Готов(а) предоставить резюме и пройти собеседование в удобное для вас время.
+
+Резюме прикреплено к письму.
+
+С уважением,`);
+    
+    window.open(`mailto:otd.kadr@caspiancoast.kz?subject=${subject}&body=${body}`, '_self');
+  };
+
   const jobCategories = [
     { id: 'all', name: t.jobCategories.all },
     { id: 'accountant', name: t.jobCategories.accountant },
@@ -131,7 +155,10 @@ const Jobs = () => {
                 </div>
 
                 {/* Apply Button */}
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-2xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <button 
+                  onClick={() => handleJobApplication(job.title)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-2xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
                   {t.careerApplyButton}
                   <ChevronRight className="ml-3 h-6 w-6 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
