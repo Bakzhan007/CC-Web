@@ -7,4 +7,23 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          icons: ['lucide-react']
+        }
+      }
+    },
+    target: 'esnext',
+    minify: 'terser',
+    cssMinify: true
+  },
+  server: {
+    headers: {
+      'Cache-Control': 'public, max-age=31536000'
+    }
+  }
 });

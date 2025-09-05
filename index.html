@@ -7,9 +7,35 @@
     <title>CaspianCoast - Premium Construction & Development</title>
     <meta name="description" content="CaspianCoast Construction - 25 years of excellence in commercial and residential construction along the Caspian Coast. Building dreams, creating legacy.">
     <meta name="keywords" content="construction, building, development, commercial, residential, Caspian Coast">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/main.tsx" as="script" crossorigin>
+    <link rel="preload" href="https://images.pexels.com/photos/18862358/pexels-photo-18862358.jpeg" as="image" fetchpriority="high">
+    <link rel="dns-prefetch" href="https://images.pexels.com">
+    <link rel="dns-prefetch" href="https://storage.googleapis.com">
+    <link rel="dns-prefetch" href="https://kuula.co">
+    <link rel="dns-prefetch" href="https://youtu.be">
+    
+    <!-- Optimize font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker for caching
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

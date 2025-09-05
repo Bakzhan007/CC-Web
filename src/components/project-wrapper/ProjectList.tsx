@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Building2, Users, Target, Eye, Play, ExternalLink, Award, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import imgTaras from '../../assets/image/taras.webp';
 import imgIlan from '../../assets/image/ilan_tower.webp';
+import imgIlan3 from '../../assets/image/i3-d.webp';
+import imgIlan4 from '../../assets/image/i4-d.webp';
+import imgIlan5 from '../../assets/image/i5-d.webp';
 
 export default function ProjectList() {
   const { t } = useLanguage();
@@ -25,10 +28,11 @@ export default function ProjectList() {
       district: '15 мкр.',
       year: '2025',
       image: imgIlan,
+      images: [imgIlan, imgIlan3, imgIlan4, imgIlan5],
       description: 'Современный жилой комплекс бизнес-класса с видом на море.',
       videoUrl: 'https://youtu.be/KLwn1sejhiU?si=xlNb7dBer3eZFiR7',
       area: '45,000 кв.м',
-      floors: '15 этажей',
+      floors: '16 этажей',
       blocks: '2',
       type: 'Бизнес-класс',
       deadline: '4 кв. 2025',
@@ -40,14 +44,14 @@ export default function ProjectList() {
       name: 'ЖК Taras',
       category: 'residential',
       location: 'Aktau',
-      district: '17 мкр.',
+      district: '7а мкр.',
       year: '2025',
       image: imgTaras,
       description: 'Комфортный жилой комплекс рядом с набережной.',
       videoUrl: 'https://youtu.be/jzjwXM5ZoIA?si=bp7U0oMw2gXh7yFz',
       area: '120 квартир',
-      floors: '12 этажей',
-      blocks: '3',
+      floors: '12-14 этажей',
+      blocks: '4',
       type: 'Комфорт',
       deadline: '2 кв. 2024',
       priceRange: 'от 25 млн ₸',
@@ -92,79 +96,107 @@ export default function ProjectList() {
       : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <section className="py-12 bg-slate-50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 activeCategory === cat.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-slate-700 hover:bg-slate-100'
+                  ? 'text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
               }`}
+              style={activeCategory === cat.id ? { backgroundColor: '#2362eb' } : {}}
             >
               {cat.name}
             </button>
           ))}
         </div>
 
+        {/* Projects Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden transition"
+              className="group bg-white rounded-xl shadow-sm hover:shadow-lg overflow-hidden transition-all duration-300 border border-gray-200 hover:-translate-y-1 transform"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="relative">
+              {/* Image Container */}
+              <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-56 sm:h-64 object-cover"
-                  loading="lazy"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  decoding={index < 2 ? "sync" : "async"}
+                  fetchPriority={index < 2 ? "high" : "low"}
                 />
-                <span
-                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${
-                    project.status === 'completed'
-                      ? 'bg-green-100 text-green-800'
-                      : project.status === 'inProgress'
-                      ? 'bg-blue-100 text-blue-800'
-                      : 'bg-orange-100 text-orange-800'
-                  }`}
-                >
-                  {getStatusText(project.status)}
-                </span>
+                
+                {/* Status Badge */}
+                <div className="absolute top-4 right-4">
+                  <span
+                    className={`px-3 py-1 rounded-lg text-sm font-medium ${
+                      project.status === 'completed'
+                        ? 'bg-green-500 text-white'
+                        : project.status === 'inProgress'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-orange-500 text-white'
+                    }`}
+                  >
+                    {getStatusText(project.status)}
+                  </span>
+                </div>
+
+                {/* Project Type Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-white text-gray-800 text-xs font-medium rounded-lg">
+                    {project.type}
+                  </span>
+                </div>
               </div>
+
+              {/* Content */}
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {project.name}
                 </h3>
-                <p className="text-slate-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 text-sm mb-4">
                   {project.description}
                 </p>
-                <div className="space-y-1 text-sm text-slate-500 mb-4">
-                  <div className="flex items-center">
-                    <MapPin size={14} className="mr-1" /> {project.location}
-                  </div>
-                  <div className="flex items-center">
-                    <Calendar size={14} className="mr-1" /> {project.year}
-                  </div>
+
+                {/* Project Details */}
+                <div className="space-y-2 mb-6 text-sm text-gray-500">
+                  <div>{project.location}, {project.district}</div>
+                  <div>{project.floors} • {project.blocks} блока</div>
+                  <div className="font-medium text-gray-900">{project.priceRange}</div>
                 </div>
-                <div className="flex items-center justify-between text-sm border-t pt-4">
-                  <span className="font-medium text-slate-700">{project.area}</span>
-                  <Link
-                    to={`/projects/${project.id}`}
-                    state={{ project }}
-                    className="text-blue-600 hover:text-blue-700 flex items-center space-x-1"
-                  >
-                    <span>{t.learnMore}</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
+
+                <Link
+                  to={`/projects/${project.id}`}
+                  state={{ project }}
+                  className="w-full text-white py-3 px-4 rounded-lg font-medium text-center hover:opacity-90 transition-all duration-300 text-sm block transform hover:scale-105"
+                  style={{ backgroundColor: '#2362eb' }}
+                >
+                  Подробнее
+                </Link>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-20">
+            <div className="bg-white rounded-xl shadow-sm p-8 max-w-md mx-auto border border-gray-200">
+              <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Проекты не найдены</h3>
+              <p className="text-gray-600 text-sm">В выбранной категории пока нет доступных проектов</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

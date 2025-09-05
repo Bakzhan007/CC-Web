@@ -241,6 +241,46 @@ export interface Translation {
   careerBenefitsList: { title: string; description: string }[];
   careerProcessSteps: { step: string; title: string; description: string }[];
 
+  // Career Jobs
+  jobCategories: {
+    all: string;
+    accountant: string;
+    sales: string;
+    economist: string;
+  };
+  jobTypes: {
+    fullTime: string;
+    partTime: string;
+    contract: string;
+  };
+  jobLocations: {
+    aktau: string;
+    almaty: string;
+    astana: string;
+  };
+  jobs: {
+    chiefAccountant: {
+      title: string;
+      description: string;
+      requirements: string[];
+    };
+    salesSpecialist: {
+      title: string;
+      description: string;
+      requirements: string[];
+    };
+    economist: {
+      title: string;
+      description: string;
+      requirements: string[];
+    };
+  };
+  testimonials: {
+    name: string;
+    role: string;
+    quote: string;
+  }[];
+
     // Commerce Filter
   filterAllCities: string;
   filterCityAktau: string;
@@ -271,6 +311,22 @@ export interface Translation {
   salesOfficeHeadOffice: string;
   salesOfficeDepartment: string;
   salesOfficeMonFri: string;
+
+    // Sale Page
+  salePageTitle: string;
+  salePageSubtitle: string;
+  saleFilterAll: string;
+  saleFilterApartments: string;
+  saleFilterCommercial: string;
+  saleFilterMortgage: string;
+  saleCtaTitle: string;
+  saleCtaDescription: string;
+  saleCtaButton: string;
+  saleViewAllButton: string;
+  saleDetailsButton: string;
+  saleCategory: string;
+  saleBreadcrumbHome: string;
+  saleBreadcrumbSale: string;
 
     // Partner Page
   partnerConditionsTitle: string;
@@ -567,6 +623,67 @@ export const translations: Record<string, Translation> = {
       { step: '03', title: 'Technical Assessment', description: 'A role-specific exercise or on-site site-visit walkthrough.' },
       { step: '04', title: 'Final Interview & Offer', description: 'Meet with department heads and review benefits, then join the team.' }
     ],
+
+    // Career Jobs
+    jobCategories: {
+      all: 'All',
+      accountant: 'Accountant',
+      sales: 'Sales',
+      economist: 'Economist'
+    },
+    jobTypes: {
+      fullTime: 'Full-time',
+      partTime: 'Part-time',
+      contract: 'Contract'
+    },
+    jobLocations: {
+      aktau: 'Aktau',
+      almaty: 'Almaty', 
+      astana: 'Astana'
+    },
+    jobs: {
+      chiefAccountant: {
+        title: 'Chief Accountant',
+        description: 'Join our finance team to manage accounting operations and ensure financial compliance across all construction projects.',
+        requirements: ['5+ years accounting experience', 'CPA or equivalent certification', 'Construction industry knowledge', 'Advanced Excel skills']
+      },
+      salesSpecialist: {
+        title: 'Sales Specialist', 
+        description: 'Drive business development and build relationships with clients to expand our construction portfolio.',
+        requirements: ['3+ years sales experience', 'Construction/real estate background', 'Strong communication skills', 'CRM software proficiency']
+      },
+      economist: {
+        title: 'Economist',
+        description: 'We invite an experienced economist to develop and control the financial and economic direction of our construction projects.',
+        requirements: [
+          'Higher economic or financial education',
+          'Experience in a similar position from 5 years', 
+          'Confident proficiency in 1C: Enterprise 8 and MS Excel',
+          'Skills in financial planning, budgeting and building financial models',
+          'Experience in working with estimate documentation and cost calculations',
+          'Knowledge of project performance evaluation methods (NPV, IRR)',
+          'Experience in investment analytics and preparation of presentations for investors'
+        ]
+      }
+    },
+    testimonials: [
+      {
+        name: 'Altynbek Nazarbayev',
+        role: 'Economist',
+        quote: 'Working at Caspian Coast means knowing every structure we build—from pipelines to housing estates—serves our people and economy. The team\'s camaraderie and shared pride in safety standards make every day rewarding.'
+      },
+      {
+        name: 'Aida Tolegenova',
+        role: 'Architect',
+        quote: 'I\'ve never worked somewhere that values innovation and creativity as much as this company does. The collaborative environment allows us to push boundaries in sustainable design.'
+      },
+      {
+        name: 'Damir Utegenov',
+        role: 'Project Manager',
+        quote: 'The work-life balance and professional development opportunities are exceptional. Leadership truly cares about employee growth and maintaining high-quality project delivery.'
+      }
+    ],
+    
     filterAllCities: 'All cities of Kazakhstan',
     filterCityAktau: 'Aktau',
     filterCityZhanaOzen: 'ZhanaOzen',
@@ -632,6 +749,22 @@ export const translations: Record<string, Translation> = {
     salesOfficeHeadOffice: 'Head office',
     salesOfficeDepartment: 'Sales department',
     salesOfficeMonFri: 'Mon\u2013Fri',
+
+        // Sale Page
+    salePageTitle: 'Promotions and Offers',
+    salePageSubtitle: 'Discover exclusive deals and limited-time offers on our premium construction projects',
+    saleFilterAll: 'All',
+    saleFilterApartments: 'Apartments',
+    saleFilterCommercial: 'Commercial',
+    saleFilterMortgage: 'Mortgage',
+    saleCtaTitle: 'Don\'t Miss Out on Great Deals!',
+    saleCtaDescription: 'Get personalized consultation and learn about all available promotions and discounts on real estate.',
+    saleCtaButton: 'Get Consultation',
+    saleViewAllButton: 'View All Promotions',
+    saleDetailsButton: 'Details',
+    saleCategory: 'Real Estate',
+    saleBreadcrumbHome: 'Home',
+    saleBreadcrumbSale: 'Promotions',
 
         // Partner Page
     partnerConditionsTitle: 'Partnership Terms and Principles',
@@ -1020,6 +1153,67 @@ export const translations: Record<string, Translation> = {
       { step: '03', title: 'Техническая оценка', description: 'Задание по специальности или выездной осмотр объекта.' },
       { step: '04', title: 'Финальное собеседование и предложение', description: 'Встреча с руководителями подразделений и обсуждение условий, после чего присоединяйтесь к команде.' }
     ],
+
+    // Career Jobs
+    jobCategories: {
+      all: 'Все',
+      accountant: 'Бухгалтер',
+      sales: 'Продажи',
+      economist: 'Экономист'
+    },
+    jobTypes: {
+      fullTime: 'Полный рабочий день',
+      partTime: 'Неполный рабочий день',
+      contract: 'По договору'
+    },
+    jobLocations: {
+      aktau: 'Актау',
+      almaty: 'Алматы',
+      astana: 'Астана'
+    },
+    jobs: {
+      chiefAccountant: {
+        title: 'Главный бухгалтер',
+        description: 'Присоединяйтесь к нашей финансовой команде для управления бухгалтерскими операциями и обеспечения финансового соответствия во всех строительных проектах.',
+        requirements: ['Опыт работы бухгалтером 5+ лет', 'Сертификация CPA или аналогичная', 'Знание строительной отрасли', 'Продвинутые навыки Excel']
+      },
+      salesSpecialist: {
+        title: 'Специалист по продажам',
+        description: 'Развивайте бизнес и выстраивайте отношения с клиентами для расширения нашего строительного портфеля.',
+        requirements: ['Опыт продаж 3+ года', 'Опыт в строительстве/недвижимости', 'Сильные коммуникативные навыки', 'Владение CRM системами']
+      },
+      economist: {
+        title: 'Экономист',
+        description: 'Приглашаем опытного экономиста для разработки и контроля финансово-экономического направления наших строительных проектов.',
+        requirements: [
+          'Высшее экономическое или финансовое образование',
+          'Опыт работы на аналогичной должности от 5 лет',
+          'Уверенное владение 1C: Предприятие 8 и MS Excel',
+          'Навыки финансового планирования, бюджетирования и построения финансовых моделей',
+          'Опыт работы со сметной документацией и калькуляцией затрат',
+          'Знание методов оценки эффективности проектов (NPV, IRR)',
+          'Опыт инвестиционной аналитики и подготовки презентаций для инвесторов'
+        ]
+      }
+    },
+    testimonials: [
+      {
+        name: 'Алтынбек Назарбаев',
+        role: 'Экономист',
+        quote: 'Работа в Caspian Coast означает понимание того, что каждое сооружение, которое мы строим — от трубопроводов до жилых комплексов — служит нашему народу и экономике. Товарищество команды и общая гордость за стандарты безопасности делают каждый день полезным.'
+      },
+      {
+        name: 'Аида Толегенова',
+        role: 'Архитектор',
+        quote: 'Я никогда не работала в месте, которое так высоко ценит инновации и креативность. Совместная рабочая атмосфера позволяет нам расширять границы в области устойчивого дизайна.'
+      },
+      {
+        name: 'Дамир Утегенов',
+        role: 'Менеджер проектов',
+        quote: 'Баланс между работой и личной жизнью, а также возможности профессионального развития исключительны. Руководство действительно заботится о росте сотрудников и поддержании высокого качества реализации проектов.'
+      }
+    ],
+
     filterAllCities: 'Все города Казахстана',
     filterCityAktau: 'Актау',
     filterCityZhanaOzen: 'ЖанаОзен',
@@ -1086,6 +1280,22 @@ export const translations: Record<string, Translation> = {
     salesOfficeHeadOffice: 'Головной офис',
     salesOfficeDepartment: 'Отдел продаж',
     salesOfficeMonFri: 'Пн\u2013Пт',
+
+    // Sale Page
+    salePageTitle: 'Акции и предложения',
+    salePageSubtitle: 'Откройте для себя эксклюзивные предложения и ограниченные по времени акции на наши премиальные строительные проекты',
+    saleFilterAll: 'Все',
+    saleFilterApartments: 'Квартиры',
+    saleFilterCommercial: 'Коммерческая',
+    saleFilterMortgage: 'Ипотека',
+    saleCtaTitle: 'Не упустите выгодные предложения!',
+    saleCtaDescription: 'Получите персональную консультацию и узнайте о всех доступных акциях и скидках на недвижимость.',
+    saleCtaButton: 'Получить консультацию',
+    saleViewAllButton: 'Смотреть все акции',
+    saleDetailsButton: 'Подробнее',
+    saleCategory: 'Недвижимость',
+    saleBreadcrumbHome: 'Главная',
+    saleBreadcrumbSale: 'Акции',
 
     // Partner Page
     partnerConditionsTitle: 'Условия и принципы партнерства',
@@ -1471,6 +1681,67 @@ export const translations: Record<string, Translation> = {
       { step: '03', title: 'Техникалық тапсырма', description: 'Мамандыққа байланысты тапсырма немесе объектіге бару.' },
       { step: '04', title: 'Қорытынды сұхбат және ұсыныс', description: 'Бөлім басшыларымен кездесу, шарттарды талқылау және командаға қосылу.' }
     ],
+
+    // Career Jobs
+    jobCategories: {
+      all: 'Барлығы',
+      accountant: 'Есепші',
+      sales: 'Сату',
+      economist: 'Экономист'
+    },
+    jobTypes: {
+      fullTime: 'Толық жұмыс күні',
+      partTime: 'Жартылай жұмыс күні',
+      contract: 'Келісімшарт бойынша'
+    },
+    jobLocations: {
+      aktau: 'Ақтау',
+      almaty: 'Алматы',
+      astana: 'Астана'
+    },
+    jobs: {
+      chiefAccountant: {
+        title: 'Бас есепші',
+        description: 'Барлық құрылыс жобаларында есепшілік операцияларын басқару және қаржылық сәйкестікті қамтамасыз ету үшін біздің қаржы командасына қосылыңыз.',
+        requirements: ['Есепші тәжірибесі 5+ жыл', 'CPA немесе баламалы сертификат', 'Құрылыс саласын білу', 'Excel мамандық деңгейі']
+      },
+      salesSpecialist: {
+        title: 'Сату маманы',
+        description: 'Бизнесті дамыту және тұтынушылармен қарым-қатынас орнату арқылы біздің құрылыс портфолиосын кеңейтіңіз.',
+        requirements: ['Сату тәжірибесі 3+ жыл', 'Құрылыс/жылжымайтын мүлік тәжірибесі', 'Мықты коммуникациялық дағдылар', 'CRM жүйелерін білу']
+      },
+      economist: {
+        title: 'Экономист',
+        description: 'Біздің құрылыс жобаларының қаржы-экономикалық бағытын дамыту және бақылау үшін тәжірибелі экономистті шақырамыз.',
+        requirements: [
+          'Жоғары экономикалық немесе қаржылық білім',
+          'Ұқсас лауазымда 5 жылдан астам тәжірибе',
+          '1C: Кәсіпорын 8 және MS Excel-ді еркін меңгеру',
+          'Қаржылық жоспарлау, бюджеттеу және қаржылық модель құру дағдылары',
+          'Сметалық құжаттама және шығын калькуляциясымен жұмыс тәжірибесі',
+          'Жоба тиімділігін бағалау әдістерін білу (NPV, IRR)',
+          'Инвестициялық талдау және инвесторлар үшін презентация дайындау тәжірибесі'
+        ]
+      }
+    },
+    testimonials: [
+      {
+        name: 'Алтынбек Назарбаев',
+        role: 'Экономист',
+        quote: 'Caspian Coast-та жұмыс істеу біз салатын әрбір ғимарат — құбырлардан тұрғын үй кешендеріне дейін — халқымыз бен экономикамызға қызмет ететінін білуді білдіреді. Командадағы достық пен қауіпсіздік стандарттарына ортақ мақтаныш әрбір күнді пайдалы етеді.'
+      },
+      {
+        name: 'Аида Төлегенова',
+        role: 'Сәулетші',
+        quote: 'Мен ешқашан инновация мен креативтілікті осындай жоғары бағалайтын жерде жұмыс істемегенмін. Серіктестік орта бізге тұрақты дизайн саласындағы шекараларды кеңейтуге мүмкіндік береді.'
+      },
+      {
+        name: 'Дамир Үтегенов',
+        role: 'Жоба менеджері',
+        quote: 'Жұмыс пен өмір арасындағы тепе-теңдік, сондай-ақ кәсіби даму мүмкіндіктері ерекше. Басшылық қызметкерлердің өсуіне және жобаларды жоғары сапалы жүзеге асыруға шынымен қамқорлық танытады.'
+      }
+    ],
+
     filterAllCities: 'Қазақстанның барлық қалалары',
     filterCityAktau: 'Ақтау',
     filterCityZhanaOzen: 'Жаңаөзен',
@@ -1537,6 +1808,22 @@ export const translations: Record<string, Translation> = {
     salesOfficeHeadOffice: 'Бас кеңсе',
     salesOfficeDepartment: 'Сату бөлімі',
     salesOfficeMonFri: 'Дс\u2013Жм',
+
+    // Sale Page
+    salePageTitle: 'Акциялар мен ұсыныстар',
+    salePageSubtitle: 'Біздің премиум құрылыс жобаларына эксклюзивті мәмілелерді және уақыты шектелген ұсыныстарды табыңыз',
+    saleFilterAll: 'Барлығы',
+    saleFilterApartments: 'Пәтерлер',
+    saleFilterCommercial: 'Коммерциялық',
+    saleFilterMortgage: 'Ипотека',
+    saleCtaTitle: 'Тиімді ұсыныстарды жіберіп алмаңыз!',
+    saleCtaDescription: 'Дербес кеңес алыңыз және жылжымайтын мүлікке қолжетімді барлық акциялар мен жеңілдіктер туралы біліңіз.',
+    saleCtaButton: 'Кеңес алу',
+    saleViewAllButton: 'Барлық акцияларды көру',
+    saleDetailsButton: 'Толығырақ',
+    saleCategory: 'Жылжымайтын мүлік',
+    saleBreadcrumbHome: 'Басты бет',
+    saleBreadcrumbSale: 'Акциялар',
 
     // Partner Page
     partnerConditionsTitle: 'Серіктестік шарттары мен қағидалары',

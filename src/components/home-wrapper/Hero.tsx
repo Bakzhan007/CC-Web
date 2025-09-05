@@ -14,15 +14,15 @@ const Hero = () => {
       sm:-mt-16 
       lg:-mt-20 
       min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/18862358/pexels-photo-18862358.jpeg)'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
-      </div>
+      {/* Background Image - Optimized for LCP */}
+      <img 
+        src="https://images.pexels.com/photos/18862358/pexels-photo-18862358.jpeg"
+        alt="CaspianCoast Construction - Premium building development"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        decoding="sync"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
 
         <div className="relative z-10 container mx-auto px-4 pt-14 sm:pt-16 md:pt-24 lg:pt-28 text-center">
           <div className="max-w-4xl mx-auto">

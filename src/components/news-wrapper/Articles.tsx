@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface Article {
@@ -8,67 +8,97 @@ interface Article {
   date: string;
   image: string;
   excerpt: string;
+  categoryTag: string;
 }
 
 const Articles: React.FC = () => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const categories = [
-    { id: 'all', name: 'All' },
-    { id: 'company', name: 'Company' },
-    { id: 'projects', name: 'Projects' },
-    { id: 'events', name: 'Events' }
+    { id: 'all', name: 'Все' },
+    { id: 'cc-event', name: 'CC Event' },
+    { id: 'taras', name: 'Taras Development' },
+    { id: 'ilan', name: 'Ilan Towers Development' },
   ];
 
   const articles: Article[] = [
     {
       id: 1,
-      title: 'Groundbreaking Ceremony for New Coastal Tower',
-      category: 'company',
-      date: 'May 10, 2024',
-      image: 'https://images.pexels.com/photos/87223/pexels-photo-87223.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'CaspianCoast marked the start of construction on the landmark Coastal Tower with a festive ceremony.'
+      title: 'CC Event организует масштабное корпоративное мероприятие для застройщиков Казахстана',
+      category: 'cc-event',
+      date: '15 декабря 2024',
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'CC Event проведет крупнейший форум застройщиков с участием ведущих девелоперских компаний страны.',
+      categoryTag: 'CC Event'
     },
     {
       id: 2,
-      title: 'Quarterly Report Shows Record Growth',
-      category: 'company',
-      date: 'April 22, 2024',
-      image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'The latest financial report highlights impressive results across all divisions of the company.'
+      title: 'Taras Development представляет новую концепцию жилых комплексов премиум-класса',
+      category: 'taras',
+      date: '10 декабря 2024',
+      image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Taras Development анонсировала инновационный подход к проектированию жилых комплексов с уникальной архитектурой.',
+      categoryTag: 'Taras Development'
     },
     {
       id: 3,
-      title: 'Seaside Residences Near Completion',
-      category: 'projects',
-      date: 'April 5, 2024',
-      image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Finishing touches are underway on the luxury seaside complex set to open this summer.'
+      title: 'Ilan Towers Development начинает строительство нового небоскреба в центре Алматы',
+      category: 'ilan',
+      date: '5 декабря 2024',
+      image: 'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Ilan Towers Development объявила о старте строительства 40-этажного бизнес-центра в деловом центре города.',
+      categoryTag: 'Ilan Towers'
     },
     {
       id: 4,
-      title: 'Employees Join Annual Charity Marathon',
-      category: 'events',
-      date: 'March 18, 2024',
-      image: 'https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Team members participated in the city marathon raising funds for local hospitals.'
+      title: 'Taras Development завершает строительство экологичного жилого комплекса Green Valley',
+      category: 'taras',
+      date: '28 ноября 2024',
+      image: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Новый проект Taras Development получил сертификат экологической безопасности и готовится к заселению.',
+      categoryTag: 'Taras Development'
     },
     {
       id: 5,
-      title: 'Innovative Green Building Materials Adopted',
-      category: 'projects',
-      date: 'February 27, 2024',
-      image: 'https://images.pexels.com/photos/399321/pexels-photo-399321.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'New eco\u2011friendly materials will be used in upcoming developments across the region.'
+      title: 'Ilan Towers Development внедряет систему «умный дом» во все новые проекты',
+      category: 'ilan',
+      date: '25 ноября 2024',
+      image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Компания представила инновационные технологии автоматизации для повышения комфорта жильцов.',
+      categoryTag: 'Ilan Towers'
     },
     {
       id: 6,
-      title: 'Press Conference Recap: Future Vision',
-      category: 'company',
-      date: 'January 14, 2024',
-      image: 'https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Executives shared strategic plans for expansion and innovation at the annual press conference.'
+      title: 'CC Event проводит образовательные семинары для молодых специалистов',
+      category: 'cc-event',
+      date: '20 ноября 2024',
+      image: 'https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Серия мастер-классов и семинаров для развития профессиональных навыков в строительной отрасли.',
+      categoryTag: 'CC Event'
+    },
+    {
+      id: 7,
+      title: 'Taras Development открывает новый офис продаж в ТРЦ Mega Almaty',
+      category: 'taras',
+      date: '12 ноября 2024',
+      image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Удобное расположение нового офиса позволит клиентам получить консультации по всем проектам компании.',
+      categoryTag: 'Taras Development'
+    },
+    {
+      id: 8,
+      title: 'Ilan Towers Development получает международную награду за архитектурные решения',
+      category: 'ilan',
+      date: '8 ноября 2024',
+      image: 'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800',
+      excerpt: 'Проект Sky Tower удостоился престижной международной премии в области современной архитектуры.',
+      categoryTag: 'Ilan Towers'
     }
   ];
 
@@ -78,17 +108,18 @@ const Articles: React.FC = () => {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <section className="py-12">
+    <section className="py-8 bg-gray-100">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {categories.map((cat) => (
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap gap-3 mb-8">
+          {categories.map((cat, index) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
               {cat.name}
@@ -96,38 +127,72 @@ const Articles: React.FC = () => {
           ))}
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((article) => (
+        {/* News Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {filtered.map((article, index) => (
             <div
               key={article.id}
-              className="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden transition"
+              className="group bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1"
             >
-              <div className="relative">
+              {/* Image with overlay */}
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  decoding={index < 2 ? "sync" : "async"}
+                  fetchPriority={index < 2 ? "high" : "low"}
                 />
-                <span className="absolute top-4 left-4 bg-white/90 text-xs font-medium px-3 py-1 rounded-full">
-                  {article.date}
-                </span>
+                
+                {/* Category tag overlay */}
+                <div className="absolute top-3 left-3">
+                  <span className="bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded">
+                    {article.categoryTag}
+                  </span>
+                </div>
               </div>
+              
+              {/* Content */}
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-3 leading-tight group-hover:text-blue-600 transition-colors">
                   {article.title}
                 </h3>
-                <p className="text-slate-600 mb-4 line-clamp-3">
+                
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
                   {article.excerpt}
                 </p>
-                <a href="#" className="text-blue-600 hover:underline text-sm font-medium">
-                  Read more
-                </a>
+                
+                <div className="text-xs text-gray-500">
+                  {article.date}
+                </div>
               </div>
             </div>
           ))}
         </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">Новости в данной категории не найдены.</p>
+          </div>
+        )}
       </div>
+
+      <style jsx>{`
+        .line-clamp-2 {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        
+        .line-clamp-3 {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+        }
+      `}</style>
     </section>
   );
 };

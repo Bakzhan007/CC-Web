@@ -1,58 +1,57 @@
 import { useState } from 'react';
-import { ChevronRight, Clock, Briefcase, CheckCircle } from 'lucide-react';
+import { ChevronRight, Clock, Briefcase, CheckCircle, MapPin, Users } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Jobs = () => {
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const jobCategories = ['All', 'Accountant', 'Sales', 'Economist'];
+  const jobCategories = [
+    { id: 'all', name: t.jobCategories.all },
+    { id: 'accountant', name: t.jobCategories.accountant },
+    { id: 'sales', name: t.jobCategories.sales },
+    { id: 'economist', name: t.jobCategories.economist },
+  ];
 
   const jobs = [
     {
-      title: 'Chief accountant',
-      category: 'Accountant',
-      location: 'Aktau',
-      type: 'Full-time',
-      description:
-        'Join our engineering team to build scalable solutions that impact millions of users worldwide.',
-      requirements: ['5+ years experience', 'React/TypeScript', 'Node.js', 'Cloud platforms'],
+      id: 'chiefAccountant',
+      title: t.jobs.chiefAccountant.title,
+      category: 'accountant',
+      location: t.jobLocations.aktau,
+      type: t.jobTypes.fullTime,
+      description: t.jobs.chiefAccountant.description,
+      requirements: t.jobs.chiefAccountant.requirements,
     },
     {
-      title: 'Sales specialist',
-      category: 'Sales',
-      location: 'Aktau',
-      type: 'Full-time',
-      description: 'Create beautiful and intuitive user experiences that delight our customers.',
-      requirements: ['3+ years experience', 'Figma/Sketch', 'Design systems', 'User research'],
+      id: 'salesSpecialist', 
+      title: t.jobs.salesSpecialist.title,
+      category: 'sales',
+      location: t.jobLocations.aktau,
+      type: t.jobTypes.fullTime,
+      description: t.jobs.salesSpecialist.description,
+      requirements: t.jobs.salesSpecialist.requirements,
     },
     {
-      title: 'Economist',
-      category: 'Economist',
-      location: 'Aktau',
-      type: 'Full-time',
-      description:
-        'We invite an experienced economist to develop and control the financial and economic direction of our construction projects. The vacancy includes:',
-      requirements: [
-        'Higher economic or financial education',
-        'Experience in a similar position from 5 years',
-        'Confident proficiency in 1C: Enterprise 8 and MS Excel',
-        'Skills in financial planning, budgeting and building financial models',
-        'Experience in working with estimate documentation and cost calculations',
-        'Knowledge of project performance evaluation methods (NPV, IRR)',
-        'Experience in investment analytics and preparation of presentations for investors',
-      ],
+      id: 'economist',
+      title: t.jobs.economist.title,
+      category: 'economist',
+      location: t.jobLocations.aktau,
+      type: t.jobTypes.fullTime,
+      description: t.jobs.economist.description,
+      requirements: t.jobs.economist.requirements,
     },
   ];
 
   const filteredJobs =
-    selectedCategory === 'All'
+    selectedCategory === 'all'
       ? jobs
       : jobs.filter((job) => job.category === selectedCategory);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {t.careerOpenPositionsTitle}
@@ -61,70 +60,97 @@ const Jobs = () => {
             {t.careerOpenPositionsDescription}
           </p>
         </div>
-        <div className="flex flex-wrap justify-center mb-12 gap-2">
+
+        {/* Category Filter Pills - Modern BI Group Style */}
+        <div className="flex flex-wrap justify-center mb-12 gap-3">
           {jobCategories.map((category) => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-sm ${
+                selectedCategory === category.id
+                  ? 'bg-blue-600 text-white shadow-lg transform scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 hover:shadow-md border border-gray-200'
               }`}
             >
-              {category}
+              {category.name}
             </button>
           ))}
         </div>
-        <div className="space-y-6">
-          {filteredJobs.map((job, index) => (
+
+        {/* Jobs Grid - Modern Card Design */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {filteredJobs.map((job) => (
             <div
-              key={index}
-              className="p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition"
+              key={job.id}
+              className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100"
             >
-              <div className="md:flex md:items-center md:justify-between">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                    {job.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                    <span className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {job.type}
-                    </span>
-                    <span className="flex items-center">
-                      <Briefcase className="h-4 w-4 mr-1" />
-                      {job.category}
-                    </span>
-                    <span className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {job.type}
-                    </span>
+              {/* Card Header */}
+              <div className="p-8 pb-6">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      {job.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-4 text-sm">
+                      <span className="flex items-center text-gray-600 bg-gray-100 px-3 py-2 rounded-full">
+                        <MapPin className="h-4 w-4 mr-2" />
+                        {job.location}
+                      </span>
+                      <span className="flex items-center text-gray-600 bg-gray-100 px-3 py-2 rounded-full">
+                        <Clock className="h-4 w-4 mr-2" />
+                        {job.type}
+                      </span>
+                      <span className="flex items-center text-blue-600 bg-blue-50 px-3 py-2 rounded-full">
+                        <Briefcase className="h-4 w-4 mr-2" />
+                        {jobCategories.find(cat => cat.id === job.category)?.name}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <button className="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white py-2 px-5 rounded flex items-center group">
+                {/* Job Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  {job.description}
+                </p>
+
+                {/* Requirements */}
+                <div className="mb-8">
+                  <h4 className="font-bold text-gray-900 mb-4 flex items-center">
+                    <Users className="h-5 w-5 mr-2 text-blue-600" />
+                    {t.careerRequirementTitle}
+                  </h4>
+                  <div className="space-y-3">
+                    {job.requirements.map((req, reqIndex) => (
+                      <div key={reqIndex} className="flex items-start">
+                        <div className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-600 mt-2 mr-3"></div>
+                        <span className="text-gray-700 text-sm leading-relaxed">{req}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Apply Button */}
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-2xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                   {t.careerApplyButton}
-                  <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="ml-3 h-6 w-6 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
-              </div>
-              <p className="mt-4 text-gray-700">{job.description}</p>
-              <div className="mt-4">
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  {t.careerRequirementTitle}
-                </h4>
-                <ul className="space-y-1 text-sm text-gray-600">
-                  {job.requirements.map((req, reqIndex) => (
-                    <li key={reqIndex} className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                      {req}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Empty State */}
+        {filteredJobs.length === 0 && (
+          <div className="text-center py-16">
+            <div className="bg-white rounded-3xl shadow-lg p-12 max-w-md mx-auto">
+              <Briefcase className="h-16 w-16 text-gray-300 mx-auto mb-6" />
+              <p className="text-xl text-gray-500 mb-4">No positions available</p>
+              <p className="text-gray-400">Check back later for new opportunities</p>
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   );
