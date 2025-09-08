@@ -1,14 +1,12 @@
-import { Calendar, MapPin, Building, Home, TrendingUp, ArrowRight, Clock } from 'lucide-react';
+import { ArrowRight, Clock, Phone } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useLanguage } from '../contexts/LanguageContext';
 import { useState } from 'react';
 import sale1 from '../assets/image/sale1.webp';
 import sale2 from '../assets/image/sale2.webp';
 import ContactModal from '../components/ContactModal';
 
 function Sale() {
-  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   
@@ -91,9 +89,9 @@ function Sale() {
         </section>
 
         {/* Promotions Grid - Enhanced Minimalistic Design */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-4 bg-gray-50">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {promotions.map((promo, index) => (
                 <div 
                   key={promo.id} 
@@ -101,7 +99,7 @@ function Sale() {
                 >
                   {/* Image container */}
                   <div className="relative bg-gray-50 overflow-hidden">
-                    <div className="aspect-[16/10] relative">
+                    <div className="aspect-[5/3] relative">
                       <img
                         src={promo.image}
                         alt={promo.title}
@@ -117,9 +115,9 @@ function Sale() {
                   </div>
                   
                   {/* Content section */}
-                  <div className="p-6 space-y-4">
+                  <div className="p-3 space-y-2">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
                         {promo.title}
                       </h3>
                       <p className="text-gray-500 text-sm font-medium">
@@ -127,7 +125,7 @@ function Sale() {
                       </p>
                     </div>
                     
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-50">
+                    <div className="flex items-center justify-between pt-1 border-t border-gray-50">
                       <div className="flex items-center text-gray-400 text-sm">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
                         <Clock className="w-4 h-4 mr-1" />
@@ -150,7 +148,7 @@ function Sale() {
             </div>
             
             {/* Pagination info - BI Group style */}
-            <div className="text-center mt-8">
+            <div className="text-center mt-4">
               <p className="text-sm text-gray-500">показано 2 из 2</p>
             </div>
           </div>

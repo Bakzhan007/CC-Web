@@ -6,6 +6,7 @@ import News from './pages/News';
 import Career from './pages/Career';
 import Commerce from './pages/Commerce';
 import Sale from './pages/Sale';
+import SaleTest from './pages/Sale-test';
 import Partner from './pages/Partner';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/commerce" element={<Commerce />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/sale" element={<Sale />} />
+          <Route path="/sale-test" element={<SaleTest />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/sales-office" element={<SalesOffice />} />

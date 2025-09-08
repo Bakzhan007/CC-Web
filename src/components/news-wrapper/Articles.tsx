@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import news1 from '../../assets/image/news1.webp';
 
 interface Article {
   id: number;
@@ -30,75 +31,12 @@ const Articles: React.FC = () => {
   const articles: Article[] = [
     {
       id: 1,
-      title: 'CC Event организует масштабное корпоративное мероприятие для застройщиков Казахстана',
+      title: 'CC Event приглашает на торжественное празднование Дня строителя 2025',
       category: 'cc-event',
-      date: '15 декабря 2024',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'CC Event проведет крупнейший форум застройщиков с участием ведущих девелоперских компаний страны.',
+      date: '9 августа 2025',
+      image: news1,
+      excerpt: 'Присоединяйтесь к грандиозному празднованию профессионального праздника всех строителей. Награждение лучших специалистов, культурная программа и фуршет.',
       categoryTag: 'CC Event'
-    },
-    {
-      id: 2,
-      title: 'Taras Development представляет новую концепцию жилых комплексов премиум-класса',
-      category: 'taras',
-      date: '10 декабря 2024',
-      image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Taras Development анонсировала инновационный подход к проектированию жилых комплексов с уникальной архитектурой.',
-      categoryTag: 'Taras Development'
-    },
-    {
-      id: 3,
-      title: 'Ilan Towers Development начинает строительство нового небоскреба в центре Алматы',
-      category: 'ilan',
-      date: '5 декабря 2024',
-      image: 'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Ilan Towers Development объявила о старте строительства 40-этажного бизнес-центра в деловом центре города.',
-      categoryTag: 'Ilan Towers'
-    },
-    {
-      id: 4,
-      title: 'Taras Development завершает строительство экологичного жилого комплекса Green Valley',
-      category: 'taras',
-      date: '28 ноября 2024',
-      image: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Новый проект Taras Development получил сертификат экологической безопасности и готовится к заселению.',
-      categoryTag: 'Taras Development'
-    },
-    {
-      id: 5,
-      title: 'Ilan Towers Development внедряет систему «умный дом» во все новые проекты',
-      category: 'ilan',
-      date: '25 ноября 2024',
-      image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Компания представила инновационные технологии автоматизации для повышения комфорта жильцов.',
-      categoryTag: 'Ilan Towers'
-    },
-    {
-      id: 6,
-      title: 'CC Event проводит образовательные семинары для молодых специалистов',
-      category: 'cc-event',
-      date: '20 ноября 2024',
-      image: 'https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Серия мастер-классов и семинаров для развития профессиональных навыков в строительной отрасли.',
-      categoryTag: 'CC Event'
-    },
-    {
-      id: 7,
-      title: 'Taras Development открывает новый офис продаж в ТРЦ Mega Almaty',
-      category: 'taras',
-      date: '12 ноября 2024',
-      image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Удобное расположение нового офиса позволит клиентам получить консультации по всем проектам компании.',
-      categoryTag: 'Taras Development'
-    },
-    {
-      id: 8,
-      title: 'Ilan Towers Development получает международную награду за архитектурные решения',
-      category: 'ilan',
-      date: '8 ноября 2024',
-      image: 'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800',
-      excerpt: 'Проект Sky Tower удостоился престижной международной премии в области современной архитектуры.',
-      categoryTag: 'Ilan Towers'
     }
   ];
 
