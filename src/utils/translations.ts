@@ -125,6 +125,49 @@ export interface Translation {
   inProgress: string;
   planning: string;
   
+  // Projects Hero
+  projectsHeroTitle1: string;
+  projectsHeroTitle2: string;
+  projectsHeroDescription: string;
+  projectsStatsProjects: string;
+  projectsStatsCities: string;
+  projectsStatsYears: string;
+  projectsStatsCompletedProjects: string;
+  projectsStatsCitiesPresence: string;
+  projectsStatsYearsExperience: string;
+  
+  // Project Detail
+  backToProjects: string;
+  projectLocation: string;
+  projectFloors: string;
+  projectBlocks: string;
+  projectBuildings: string;
+  bookViewing: string;
+  watchVideo: string;
+  advantages: string;
+  highCeilings: string;
+  highCeilingsDesc: string;
+  playground: string;
+  playgroundDesc: string;
+  projectNotFound: string;
+  goBack: string;
+  interestedInProject: string;
+  contactSoon: string;
+  nameLabel: string;
+  phoneLabel: string;
+  messageLabel: string;
+  sendRequest: string;
+  waterReservoir: string;
+  waterReservoirDesc: string;
+  generator: string;
+  generatorDesc: string;
+  heatingBoiler: string;
+  heatingBoilerDesc: string;
+  ilanDescription: string;
+  tarasDescription: string;
+  caspianDescription: string;
+  defaultProjectDescription: string;
+  
   // Contact Section
   contactTitle: string;
   contactSubtitle: string;
@@ -506,6 +549,49 @@ export const translations: Record<string, Translation> = {
     completed: 'Completed',
     inProgress: 'In Progress',
     planning: 'Planning',
+    
+    // Projects Hero
+    projectsHeroTitle1: 'Our',
+    projectsHeroTitle2: 'projects',
+    projectsHeroDescription: 'Construction projects that shape the future architecture of Kazakhstan',
+    projectsStatsProjects: 'PROJECTS',
+    projectsStatsCities: 'CITIES',
+    projectsStatsYears: 'YEARS',
+    projectsStatsCompletedProjects: 'Completed projects',
+    projectsStatsCitiesPresence: 'Cities of presence',
+    projectsStatsYearsExperience: 'Years of successful work',
+    
+    // Project Detail
+    backToProjects: 'Back',
+    projectLocation: 'Location',
+    projectFloors: 'Floors',
+    projectBlocks: 'Blocks',
+    projectBuildings: 'Buildings',
+    bookViewing: 'Book Viewing',
+    watchVideo: 'Watch Video',
+    advantages: 'Advantages',
+    highCeilings: 'High 3.20 meter ceilings',
+    highCeilingsDesc: '3.2 meter high ceilings create a sense of spaciousness',
+    playground: 'Private playground',
+    playgroundDesc: 'Modern and safe play area for children',
+    projectNotFound: 'Project not found',
+    goBack: 'Go back',
+    interestedInProject: 'Interested in the project',
+    contactSoon: 'Thank you! We will contact you soon.',
+    nameLabel: 'Name',
+    phoneLabel: 'Phone',
+    messageLabel: 'Message',
+    sendRequest: 'Send Request',
+    waterReservoir: 'Drinking water reservoir',
+    waterReservoirDesc: 'Autonomous supply of quality drinking water',
+    generator: 'Electric generator',
+    generatorDesc: 'Uninterrupted power supply 24/7',
+    heatingBoiler: 'Autonomous heating boiler',
+    heatingBoilerDesc: 'Individual heating system for the complex',
+    ilanDescription: 'Premium residential complex on the first coastline, 15th district.',
+    tarasDescription: 'Comfortable residential complex near the waterfront, 7a district.',
+    caspianDescription: 'Residential complex with developed infrastructure, 3rd district.',
+    defaultProjectDescription: 'Modern residential complex with thoughtful planning and quality infrastructure.',
     
     // Contact Section
     contactTitle: 'Get In',
@@ -1037,6 +1123,49 @@ export const translations: Record<string, Translation> = {
     inProgress: 'В процессе',
     planning: 'Планирование',
     
+    // Projects Hero
+    projectsHeroTitle1: 'Наши',
+    projectsHeroTitle2: 'проекты',
+    projectsHeroDescription: 'Строительные проекты, которые формируют будущее архитектуры Казахстана',
+    projectsStatsProjects: 'ПРОЕКТОВ',
+    projectsStatsCities: 'ГОРОДОВ',
+    projectsStatsYears: 'ЛЕТ',
+    projectsStatsCompletedProjects: 'Завершенных проектов',
+    projectsStatsCitiesPresence: 'Городов присутствия',
+    projectsStatsYearsExperience: 'Лет успешной работы',
+    
+    // Project Detail
+    backToProjects: 'Назад',
+    projectLocation: 'Местоположение',
+    projectFloors: 'Высота',
+    projectBlocks: 'Корпуса',
+    projectBuildings: 'Здания',
+    bookViewing: 'Записаться на просмотр',
+    watchVideo: 'Смотреть видео',
+    advantages: 'Преимущества',
+    highCeilings: 'Высокие 3,20 метра потолки',
+    highCeilingsDesc: 'Потолки высотой 3,2 метра создают ощущение простора',
+    playground: 'Собственная детская площадка',
+    playgroundDesc: 'Современная и безопасная игровая зона для детей',
+    projectNotFound: 'Проект не найден',
+    goBack: 'Вернуться назад',
+    interestedInProject: 'Интересуюсь проектом',
+    contactSoon: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+    nameLabel: 'Имя',
+    phoneLabel: 'Телефон',
+    messageLabel: 'Сообщение',
+    sendRequest: 'Отправить заявку',
+    waterReservoir: 'Резервуар для питьевой воды',
+    waterReservoirDesc: 'Автономное водоснабжение качественной питьевой водой',
+    generator: 'Электрогенератор',
+    generatorDesc: 'Бесперебойное электроснабжение 24/7',
+    heatingBoiler: 'Котел автономного отопления',
+    heatingBoilerDesc: 'Индивидуальная система отопления для комплекса',
+    ilanDescription: 'Премиум-жилой комплекс на первой береговой линии моря, 15 мкр.',
+    tarasDescription: 'Комфортный жилой комплекс рядом с набережной, 7а мкр.',
+    caspianDescription: 'Жилой комплекс с развитой инфраструктурой, 3 мкр.',
+    defaultProjectDescription: 'Современный жилой комплекс с продуманной планировкой и качественной инфраструктурой.',
+    
     // Contact Section
     contactTitle: 'Свяжитесь',
     contactSubtitle: 'с нами',
@@ -1564,6 +1693,49 @@ export const translations: Record<string, Translation> = {
     completed: 'Аяқталды',
     inProgress: 'Орындалуда',
     planning: 'Жоспарлау',
+    
+    // Projects Hero
+    projectsHeroTitle1: 'Біздің',
+    projectsHeroTitle2: 'жобаларымыз',
+    projectsHeroDescription: 'Қазақстанның болашақ сәулетін қалыптастыратын құрылыс жобалары',
+    projectsStatsProjects: 'ЖОБАЛАР',
+    projectsStatsCities: 'ҚАЛАЛАР',
+    projectsStatsYears: 'ЖЫЛ',
+    projectsStatsCompletedProjects: 'Аяқталған жобалар',
+    projectsStatsCitiesPresence: 'Қатысатын қалалар',
+    projectsStatsYearsExperience: 'Табысты жұмыс жылдары',
+    
+    // Project Detail
+    backToProjects: 'Артқа',
+    projectLocation: 'Орналасқан жері',
+    projectFloors: 'Биіктік',
+    projectBlocks: 'Корпустар',
+    projectBuildings: 'Ғимараттар',
+    bookViewing: 'Көруге жазылу',
+    watchVideo: 'Видео көру',
+    advantages: 'Артықшылықтар',
+    highCeilings: 'Биік 3,20 метр төбелер',
+    highCeilingsDesc: '3,2 метр биіктіктегі төбелер кеңістік сезімін тудырады',
+    playground: 'Жеке балалар алаңы',
+    playgroundDesc: 'Балаларға арналған заманауи және қауіпсіз ойын аймағы',
+    projectNotFound: 'Жоба табылмады',
+    goBack: 'Артқа қайту',
+    interestedInProject: 'Жобаға қызығушылық танытам',
+    contactSoon: 'Рахмет! Біз жақын арада сізбен байланысамыз.',
+    nameLabel: 'Аты',
+    phoneLabel: 'Телефон',
+    messageLabel: 'Хабарлама',
+    sendRequest: 'Сұраныс жіберу',
+    waterReservoir: 'Ауызсу су қоймасы',
+    waterReservoirDesc: 'Сапалы ауызсумен автономды сумен қамтамасыз ету',
+    generator: 'Электр генераторы',
+    generatorDesc: 'Үздіксіз электрмен қамтамасыз ету 24/7',
+    heatingBoiler: 'Автономды жылыту қазандығы',
+    heatingBoilerDesc: 'Кешен үшін жеке жылыту жүйесі',
+    ilanDescription: 'Теңіз жағалауының бірінші сызығындағы премиум тұрғын кешені, 15 ш/а.',
+    tarasDescription: 'Жағалау жанындағы ыңғайлы тұрғын кешені, 7а ш/а.',
+    caspianDescription: 'Дамыған инфрақұрылымы бар тұрғын кешені, 3 ш/а.',
+    defaultProjectDescription: 'Ойланған жоспарлау және сапалы инфрақұрылым бар заманауи тұрғын кешені.',
     
     // Contact Section
     contactTitle: 'Байланысқа',

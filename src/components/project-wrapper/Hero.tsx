@@ -22,11 +22,11 @@ export default function Hero() {
         <div className="py-16 lg:py-24">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Наши <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">проекты</span>
+              {t.projectsHeroTitle1} <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t.projectsHeroTitle2}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Строительные проекты, которые формируют будущее архитектуры Казахстана
+              {t.projectsHeroDescription}
             </p>
           </div>
           
@@ -41,10 +41,10 @@ export default function Hero() {
                     <Award className="w-8 h-8 text-blue-600" />
                     <div className="text-right">
                       <div className="text-4xl font-bold text-gray-900">15+</div>
-                      <div className="text-sm text-gray-500 font-medium">ПРОЕКТОВ</div>
+                      <div className="text-sm text-gray-500 font-medium">{t.projectsStatsProjects}</div>
                     </div>
                   </div>
-                  <div className="text-gray-700 font-medium">Завершенных проектов</div>
+                  <div className="text-gray-700 font-medium">{t.projectsStatsCompletedProjects}</div>
                   <div className="w-full h-1 bg-blue-100 rounded-full mt-3">
                     <div className="w-4/5 h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                   </div>
@@ -58,10 +58,10 @@ export default function Hero() {
                     <MapPin className="w-8 h-8 text-purple-600" />
                     <div className="text-right">
                       <div className="text-4xl font-bold text-gray-900">2</div>
-                      <div className="text-sm text-gray-500 font-medium">ГОРОДОВ</div>
+                      <div className="text-sm text-gray-500 font-medium">{t.projectsStatsCities}</div>
                     </div>
                   </div>
-                  <div className="text-gray-700 font-medium">Городов присутствия</div>
+                  <div className="text-gray-700 font-medium">{t.projectsStatsCitiesPresence}</div>
                   <div className="w-full h-1 bg-purple-100 rounded-full mt-3">
                     <div className="w-2/5 h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                   </div>
@@ -75,10 +75,10 @@ export default function Hero() {
                     <Target className="w-8 h-8 text-green-600" />
                     <div className="text-right">
                       <div className="text-4xl font-bold text-gray-900">8</div>
-                      <div className="text-sm text-gray-500 font-medium">ЛЕТ</div>
+                      <div className="text-sm text-gray-500 font-medium">{t.projectsStatsYears}</div>
                     </div>
                   </div>
-                  <div className="text-gray-700 font-medium">Лет успешной работы</div>
+                  <div className="text-gray-700 font-medium">{t.projectsStatsYearsExperience}</div>
                   <div className="w-full h-1 bg-green-100 rounded-full mt-3">
                     <div className="w-5/6 h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                   </div>
