@@ -24,6 +24,7 @@ function Sale() {
     { id: 'commercial', label: 'Коммерческая' },
     { id: 'mortgage', label: 'Ипотека' }
   ];
+  
   const promotions = [
     {
       id: 1,
@@ -88,7 +89,7 @@ function Sale() {
           </div>
         </section>
 
-        {/* Promotions Grid - Enhanced Minimalistic Design */}
+        {/* Promotions Grid - Компактный дизайн */}
         <section className="py-4 bg-gray-50">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">

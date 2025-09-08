@@ -13,7 +13,7 @@ interface Article {
 }
 
 const Articles: React.FC = () => {
-  const { t } = useLanguage();
+  // const { t } = useLanguage(); // Временно отключено
   const [activeCategory, setActiveCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
 
