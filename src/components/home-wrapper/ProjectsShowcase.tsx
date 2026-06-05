@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { MapPin, Calendar, Building, Factory } from 'lucide-react'
+import { MapPin, Building, Factory } from 'lucide-react'
 import ilanTower from '../../assets/image/ilan_tower.webp'
 import taras from '../../assets/image/taras.webp'
 import beibitshilik from '../../assets/image/beibitshilik1.webp'

@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Building2, MapPin, Calendar, TrendingUp, Award, Target, Users } from 'lucide-react';
+import { MapPin, Award, Target } from 'lucide-react';
 
 export default function Hero() {
   const { t } = useLanguage();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Droplet,
@@ -6,28 +6,15 @@ import {
   Thermometer,
   Building2,
   Users,
-  Box,
   MapPin,
   ArrowLeft,
   Play,
-  Phone,
-  Mail,
-  Calendar,
   Home,
-  Car,
-  Shield,
-  Wifi,
-  Camera,
   TreePine,
-  Download,
-  Eye,
   ChevronLeft,
   ChevronRight,
   X,
-  Clock,
-  Award,
   Target,
-  Layers,
   Maximize
 } from 'lucide-react';
 import Header from '../components/Header';
@@ -70,43 +57,6 @@ function getEmbedUrl(url?: string) {
     ? `https://www.youtube.com/embed/${match[1]}`
     : url;
 }
-
-const FeatureCard: React.FC<{
-  title: string;
-  value: string;
-  icon: React.ReactNode;
-  color?: string;
-}> = ({ title, value, icon, color = 'blue' }) => (
-  <div className="group bg-white/80 backdrop-blur-sm border border-gray-100 rounded-2xl shadow-lg hover:shadow-xl p-6 transition-all duration-300 hover:-translate-y-1">
-    <div className="flex items-center space-x-4">
-      <div className={`p-3 rounded-xl bg-${color}-100 text-${color}-600 group-hover:scale-110 transition-transform duration-300`}>
-        {icon}
-      </div>
-      <div className="flex-1">
-        <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">{title}</div>
-        <div className="text-xl font-bold text-gray-900 mt-1">{value}</div>
-      </div>
-    </div>
-  </div>
-);
-
-const AdvantageCard: React.FC<{ 
-  title: string; 
-  icon: React.ReactNode; 
-  description?: string;
-}> = ({ title, icon, description }) => (
-  <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-    <div className="flex flex-col items-center text-center">
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300">
-        {icon}
-      </div>
-      <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-      {description && (
-        <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
-      )}
-    </div>
-  </div>
-);
 
 const ImageModal: React.FC<{
   images: string[];
@@ -165,9 +115,16 @@ const ContactModal: React.FC<{
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+    const text = `Здравствуйте! Меня зовут ${formData.name}.
+
+${formData.message}
+
+Контакты:
+Телефон: ${formData.phone}
+Email: ${formData.email}`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=77006363631&text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+    setFormData({ name: '', phone: '', email: '', message: '' });
     onClose();
   };
 
@@ -249,15 +206,6 @@ export default function ProjectDetail() {
   
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (!p) {
     return (
@@ -285,7 +233,6 @@ export default function ProjectDetail() {
   const galleryImages = p.images ?? [gallery1, gallery2, gallery3];
   const videoUrl = getEmbedUrl(p.videoUrl || 'https://youtu.be/jzjwXM5ZoIA?si=faPu9jPw7MyKg-1R&start=3');
 
-  const openImageModal = (index: number) => setSelectedImageIndex(index);
   const closeImageModal = () => setSelectedImageIndex(null);
   const nextImage = () => setSelectedImageIndex(prev => prev !== null ? (prev + 1) % galleryImages.length : 0);
   const prevImage = () => setSelectedImageIndex(prev => prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : 0);
@@ -616,6 +563,37 @@ export default function ProjectDetail() {
                     Открыть в полном экране
                   </a>
                 </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Gallery Section */}
+        {galleryImages.length > 0 && (
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Галерея</h2>
+                <p className="text-xl text-gray-600">Фотографии проекта</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200"
+                  >
+                    <img
+                      src={img}
+                      alt={`${p.name} — фото ${index + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/30">
+                      <Maximize className="w-8 h-8 text-white opacity-0 transition-opacity group-hover:opacity-100" />
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
           </section>

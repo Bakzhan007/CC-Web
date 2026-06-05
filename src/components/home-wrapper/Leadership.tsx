@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { User, Calendar, Award } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import leadership1 from '../../assets/image/leadership1.webp';
 import leadership2 from '../../assets/image/leadership2.webp';
 import leadership3 from '../../assets/image/leadership3.webp';

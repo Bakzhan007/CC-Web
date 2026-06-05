@@ -343,12 +343,6 @@ export interface Translation {
   filterHideReserved: string;
 
     // Commerce Page
-  commerceHeroTitle: string;
-  commerceHeroDescription: string;
-  commerceHeroButton: string;
-  commerceReserved: string;
-  commerceOfficeLabel: string;
-  commercePriceOnRequest: string;
 
   // Sales Office
   salesOfficeForBuyers: string;
@@ -359,20 +353,6 @@ export interface Translation {
   salesOfficeMonFri: string;
 
     // Sale Page
-  salePageTitle: string;
-  salePageSubtitle: string;
-  saleFilterAll: string;
-  saleFilterApartments: string;
-  saleFilterCommercial: string;
-  saleFilterMortgage: string;
-  saleCtaTitle: string;
-  saleCtaDescription: string;
-  saleCtaButton: string;
-  saleViewAllButton: string;
-  saleDetailsButton: string;
-  saleCategory: string;
-  saleBreadcrumbHome: string;
-  saleBreadcrumbSale: string;
 
     // Partner Page
   partnerConditionsTitle: string;
@@ -789,12 +769,6 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Area ↑',
     filterPromos: 'Promotions',
     filterHideReserved: 'Hide reserved',
-    commerceHeroTitle: 'Commercial Real Estate',
-    commerceHeroDescription: 'Best office spaces in key cities of Kazakhstan',
-    commerceHeroButton: 'Get consultation',
-    commerceReserved: 'Reserved',
-    commerceOfficeLabel: 'Apartment',
-    commercePriceOnRequest: 'Price on request',
         aboutImageAlt: 'CaspianCoast — our achievements',
     companyTitle: 'About',
     companySubtitle: 'Caspian Coast',
@@ -843,20 +817,6 @@ export const translations: Record<string, Translation> = {
     salesOfficeMonFri: 'Mon\u2013Fri',
 
         // Sale Page
-    salePageTitle: 'Promotions and Offers',
-    salePageSubtitle: 'Discover exclusive deals and limited-time offers on our premium construction projects',
-    saleFilterAll: 'All',
-    saleFilterApartments: 'Apartments',
-    saleFilterCommercial: 'Commercial',
-    saleFilterMortgage: 'Mortgage',
-    saleCtaTitle: 'Don\'t Miss Out on Great Deals!',
-    saleCtaDescription: 'Get personalized consultation and learn about all available promotions and discounts on real estate.',
-    saleCtaButton: 'Get Consultation',
-    saleViewAllButton: 'View All Promotions',
-    saleDetailsButton: 'Details',
-    saleCategory: 'Real Estate',
-    saleBreadcrumbHome: 'Home',
-    saleBreadcrumbSale: 'Promotions',
 
         // Partner Page
     partnerConditionsTitle: 'Partnership Terms and Principles',
@@ -1365,12 +1325,6 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Площадь ↑',
     filterPromos: 'Акции',
     filterHideReserved: 'Не показывать забронированные',
-    commerceHeroTitle: 'Коммерческая недвижимость',
-    commerceHeroDescription: 'Лучшие офисные помещения в ключевых городах Казахстана',
-    commerceHeroButton: 'Получить консультацию',
-    commerceReserved: 'Забронировано',
-    commerceOfficeLabel: 'Квартира',
-    commercePriceOnRequest: 'Цена по запросу',
         aboutImageAlt: 'CaspianCoast — наши достижения',
     companyTitle: 'О компании',
     companySubtitle: 'Caspian Coast',
@@ -1420,20 +1374,6 @@ export const translations: Record<string, Translation> = {
     salesOfficeMonFri: 'Пн\u2013Пт',
 
     // Sale Page
-    salePageTitle: 'Акции и предложения',
-    salePageSubtitle: 'Откройте для себя эксклюзивные предложения и ограниченные по времени акции на наши премиальные строительные проекты',
-    saleFilterAll: 'Все',
-    saleFilterApartments: 'Квартиры',
-    saleFilterCommercial: 'Коммерческая',
-    saleFilterMortgage: 'Ипотека',
-    saleCtaTitle: 'Не упустите выгодные предложения!',
-    saleCtaDescription: 'Получите персональную консультацию и узнайте о всех доступных акциях и скидках на недвижимость.',
-    saleCtaButton: 'Получить консультацию',
-    saleViewAllButton: 'Смотреть все акции',
-    saleDetailsButton: 'Подробнее',
-    saleCategory: 'Недвижимость',
-    saleBreadcrumbHome: 'Главная',
-    saleBreadcrumbSale: 'Акции',
 
     // Partner Page
     partnerConditionsTitle: 'Условия и принципы партнерства',
@@ -1939,12 +1879,6 @@ export const translations: Record<string, Translation> = {
     filterSortAreaAsc: 'Алаңы ↑',
     filterPromos: 'Акциялар',
     filterHideReserved: 'Брондалғандарды жасыру',
-    commerceHeroTitle: 'Коммерциялық жылжымайтын мүлік',
-    commerceHeroDescription: 'Қазақстанның негізгі қалаларындағы үздік кеңсе кеңістіктері',
-    commerceHeroButton: 'Кеңес алу',
-    commerceReserved: 'Брондалған',
-    commerceOfficeLabel: 'Пәтер',
-    commercePriceOnRequest: 'Баға сұрау бойынша',
         aboutImageAlt: 'CaspianCoast — жетістіктеріміз',
     companyTitle: 'Компания туралы',
     companySubtitle: 'Caspian Coast',
@@ -1994,20 +1928,6 @@ export const translations: Record<string, Translation> = {
     salesOfficeMonFri: 'Дс\u2013Жм',
 
     // Sale Page
-    salePageTitle: 'Акциялар мен ұсыныстар',
-    salePageSubtitle: 'Біздің премиум құрылыс жобаларына эксклюзивті мәмілелерді және уақыты шектелген ұсыныстарды табыңыз',
-    saleFilterAll: 'Барлығы',
-    saleFilterApartments: 'Пәтерлер',
-    saleFilterCommercial: 'Коммерциялық',
-    saleFilterMortgage: 'Ипотека',
-    saleCtaTitle: 'Тиімді ұсыныстарды жіберіп алмаңыз!',
-    saleCtaDescription: 'Дербес кеңес алыңыз және жылжымайтын мүлікке қолжетімді барлық акциялар мен жеңілдіктер туралы біліңіз.',
-    saleCtaButton: 'Кеңес алу',
-    saleViewAllButton: 'Барлық акцияларды көру',
-    saleDetailsButton: 'Толығырақ',
-    saleCategory: 'Жылжымайтын мүлік',
-    saleBreadcrumbHome: 'Басты бет',
-    saleBreadcrumbSale: 'Акциялар',
 
     // Partner Page
     partnerConditionsTitle: 'Серіктестік шарттары мен қағидалары',

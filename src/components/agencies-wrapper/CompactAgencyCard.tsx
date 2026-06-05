@@ -1,5 +1,4 @@
 import { Briefcase, Calendar, MapPin, Mail, Phone, Star, Users } from 'lucide-react';
-import { useLanguage } from '../../contexts/LanguageContext';
 import { Agency } from './types';
 
 interface Props {
@@ -7,7 +6,6 @@ interface Props {
 }
 
 export default function CompactAgencyCard({ agency }: Props) {
-  const { t } = useLanguage();
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
       <div className="flex flex-col lg:flex-row">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronRight, Clock, Briefcase, CheckCircle, MapPin, Users } from 'lucide-react';
+import { ChevronRight, Clock, Briefcase, MapPin, Users } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Jobs = () => {

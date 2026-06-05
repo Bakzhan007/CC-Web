@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar, MapPin, ArrowRight, Building2, Users, Target, Eye, Play, ExternalLink, Award, Layers } from 'lucide-react';
+import { Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import imgTaras from '../../assets/image/taras.webp';
