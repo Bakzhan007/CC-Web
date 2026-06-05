@@ -8,6 +8,9 @@ export interface Translation {
   sale: string;
   forPartner: string;
   ccGuide: string;
+  menu: string;
+  live: string;
+  panorama: string;
   topNews: string;
   topAgencies: string;
   topCareer: string;
@@ -406,6 +409,9 @@ export const translations: Record<string, Translation> = {
     sale: 'Sale',
     forPartner: 'For Partner',
     ccGuide: 'CC Guide',
+    menu: 'Menu',
+    live: 'Live',
+    panorama: 'Panorama',
     topNews: 'News',
     topAgencies: 'Real estate agencies',
     topCareer: 'Career',
@@ -980,6 +986,9 @@ export const translations: Record<string, Translation> = {
     sale: 'Продажа',
     forPartner: 'Партнерам',
     ccGuide: 'CC Гид',
+    menu: 'Меню',
+    live: 'Live-камера',
+    panorama: 'Панорама',
     topNews: 'Новости',
     topAgencies: 'Агентства недвижимости',
     topCareer: 'Карьера',
@@ -1551,6 +1560,9 @@ export const translations: Record<string, Translation> = {
     sale: 'Сатылым',
     forPartner: 'Серіктестерге',
     ccGuide: 'CC Гид',
+    menu: 'Мәзір',
+    live: 'Live-камера',
+    panorama: 'Панорама',
     topNews: 'Жаңалықтар',
     topAgencies: 'Жылжымайтын мүлік агенттіктері',
     topCareer: 'Мансап',

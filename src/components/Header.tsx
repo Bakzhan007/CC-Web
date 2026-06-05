@@ -1,25 +1,42 @@
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react'
+import {
+  Menu, X, Phone, Instagram,
+  Newspaper, Building2, Briefcase, Percent,
+  Home, Tag, Users, LayoutGrid,
+  MapPin, HelpCircle, ShoppingBag,
+  ChevronRight, Sparkles, Video, Orbit,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
-import TopHeader, { topHeaderLinks } from './TopHeader'
-// два варианта логотипа: светлый и тёмный
-import logoDark from '../assets/logo/logo-dark-hor.png'
+import LanguageSwitcher from './LanguageSwitcher'
+import WhatsappIcon from './icons/WhatsappIcons'
+import mainLogo from '../assets/logo/logo-dark-hor.png'
+
+interface MenuItem {
+  name: string
+  to: string
+  icon: LucideIcon
+}
+
+// TODO: подставить реальные ссылки на live-камеру и панораму
+const LIVE_URL = '#'
+const PANORAMA_URL = '#'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { t } = useLanguage()
   const navigate = useNavigate()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
 
-  // Закрытие dropdown при клике вне
+  // Закрытие меню при клике вне
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null)
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -33,24 +50,28 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Сброс dropdown при закрытии мобильного меню
+  // Закрытие меню при смене страницы
   useEffect(() => {
-    if (!isMenuOpen) setOpenDropdown(null)
-  }, [isMenuOpen])
+    setIsMenuOpen(false)
+  }, [location.pathname])
 
-  const navItems = [
-    { name: t.home, to: '/' },
-    { name: t.sale, to: '/sale' },
-    { name: t.forPartner, to: '/partner' },
-    { name: t.projects, to: '/projects' },
-    {
-      name: t.ccGuide,
-      subItems: [
-        { name: t.guideSalesOffice, to: '/sales-office' },
-        { name: t.guideFaq, to: '/faq' },
-        { name: t.guideAfterPurchase, to: '/after-purchase' },
-      ],
-    },
+  // Основные разделы меню
+  const menuItems: MenuItem[] = [
+    { name: t.topNews, to: '/news', icon: Newspaper },
+    { name: t.topAgencies, to: '/agencies', icon: Building2 },
+    { name: t.topCareer, to: '/career', icon: Briefcase },
+    { name: t.topCommerce, to: '/commerce', icon: Percent },
+    { name: t.home, to: '/', icon: Home },
+    { name: t.sale, to: '/sale', icon: Tag },
+    { name: t.forPartner, to: '/partner', icon: Users },
+    { name: t.projects, to: '/projects', icon: LayoutGrid },
+  ]
+
+  // Подразделы CC Гид
+  const guideItems: MenuItem[] = [
+    { name: t.guideSalesOffice, to: '/sales-office', icon: MapPin },
+    { name: t.guideFaq, to: '/faq', icon: HelpCircle },
+    { name: t.guideAfterPurchase, to: '/after-purchase', icon: ShoppingBag },
   ]
 
   const handleNavigate = (path: string) => {
@@ -58,12 +79,84 @@ const Header: React.FC = () => {
       navigate(path)
     }
     setIsMenuOpen(false)
-    setOpenDropdown(null)
+  }
+
+  // Анимации
+  const panelVariants = {
+    hidden: { opacity: 0, y: -10, scale: 0.96 },
+    show: {
+      opacity: 1, y: 0, scale: 1,
+      transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.035, delayChildren: 0.06 },
+    },
+    exit: { opacity: 0, y: -10, scale: 0.96, transition: { duration: 0.15 } },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -14 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } },
+  }
+
+  const renderItem = (item: MenuItem) => {
+    const Icon = item.icon
+    return (
+      <motion.button
+        key={item.to}
+        variants={itemVariants}
+        whileHover={{ x: 4 }}
+        whileTap={{ scale: 0.97 }}
+        onClick={() => handleNavigate(item.to)}
+        className="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-brand-50"
+      >
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+          <Icon size={18} />
+        </span>
+        <span className="flex-1 text-sm font-medium text-slate-700 transition-colors group-hover:text-brand-700">
+          {item.name}
+        </span>
+        <ChevronRight
+          size={16}
+          className="-translate-x-1 text-slate-300 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-brand-600 group-hover:opacity-100"
+        />
+      </motion.button>
+    )
   }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow">
-      <TopHeader visible={!isScrolled} />
+      {/* Верхняя плашка: мессенджеры, язык и телефон */}
+      <div className="hidden md:block border-b border-slate-200 bg-white">
+        <div className="container mx-auto flex h-9 items-center justify-end gap-4 px-4">
+          <a
+            href="https://api.whatsapp.com/send/?phone=77006363631&text&type=phone_number&app_absent=0"
+            aria-label="WhatsApp"
+            className="text-slate-500 hover:text-brand-600 transition-colors"
+          >
+            <WhatsappIcon className="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.instagram.com/caspiancoast.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            aria-label="Instagram"
+            className="text-slate-500 hover:text-brand-600 transition-colors"
+          >
+            <Instagram className="w-4 h-4" />
+          </a>
+
+          <span className="h-4 w-px bg-slate-300" />
+
+          <LanguageSwitcher />
+
+          <span className="h-4 w-px bg-slate-300" />
+
+          <a
+            href="tel:+77006363631"
+            className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+          >
+            <Phone size={14} />
+            <span>+7 (700) 636-36-31</span>
+          </a>
+        </div>
+      </div>
+
       <div className={`transition-all duration-300 ${
           isScrolled
             ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200'
@@ -71,165 +164,107 @@ const Header: React.FC = () => {
       }`}>
 
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-            {/* Логотип */}
-            <Link to="/" className="logo">
+          <nav className="relative flex items-center justify-between h-14 sm:h-16 lg:h-20">
+            {/* Кнопка «Меню» слева + дропдаун */}
+            <div className="relative" ref={menuRef}>
+              <motion.button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                whileTap={{ scale: 0.95 }}
+                aria-expanded={isMenuOpen}
+                aria-label="Меню"
+                className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2 text-white shadow-lg shadow-brand-600/20 transition-shadow hover:shadow-xl hover:shadow-brand-600/30"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={isMenuOpen ? 'close' : 'open'}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.18 }}
+                    className="flex"
+                  >
+                    {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="font-medium">{t.menu}</span>
+              </motion.button>
+
+              <AnimatePresence>
+                {isMenuOpen && (
+                  <motion.div
+                    variants={panelVariants}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                    style={{ transformOrigin: 'top left' }}
+                    className="absolute left-0 top-full z-50 mt-3 w-72 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 p-2 shadow-2xl ring-1 ring-black/5 backdrop-blur-xl"
+                  >
+                    {/* Декоративная подсветка сверху */}
+                    <div className="pointer-events-none absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-brand-400/20 blur-3xl" />
+
+                    <div className="relative space-y-0.5">
+                      {menuItems.map(renderItem)}
+                    </div>
+
+                    {/* CC Гид */}
+                    <div className="relative mt-2 border-t border-slate-100 pt-2">
+                      <div className="flex items-center gap-1.5 px-3 pb-1">
+                        <Sparkles size={13} className="text-brand-500" />
+                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                          {t.ccGuide}
+                        </span>
+                      </div>
+                      <div className="space-y-0.5">
+                        {guideItems.map(renderItem)}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Логотип — по центру шапки */}
+            <Link
+              to="/"
+              className="logo absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
               <img
-                src={logoDark}
+                src={mainLogo}
                 alt="CaspianCoast Logo"
-                className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+                className="h-14 sm:h-16 lg:h-20 w-auto object-contain transition-all duration-300"
                 loading="lazy"
               />
             </Link>
 
-            {/* Десктопная навигация */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8" ref={dropdownRef}>
-              {navItems.map(item =>
-                item.subItems ? (
-                  <div key={item.name} className="relative">
-                    <button
-                      onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center space-x-1 text-sm text-slate-700 hover:text-brand-600"
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`}  
-                      />
-                    </button>
-                    {openDropdown === item.name && (
-                      <ul className="absolute left-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-lg z-50">
-                        {item.subItems.map(sub => (
-                          <li key={sub.name}>
-                            <Link
-                              to={sub.to}
-                              onClick={() => setOpenDropdown(null)}
-                              className="relative group text-sm text-slate-700 hover:text-brand-600"
-                            >
-                              {sub.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.to}
-                    className="relative group text-slate-700 hover:text-brand-600"
-                  >
-                    <span>{item.name}</span>
-                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-current transition-all group-hover:w-full" />
-                  </Link>
-                )
-              )}
+            {/* Live-камера и панорама справа */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Live-камера */}
               <a
-                href="tel:+77006363631"
-                className="hidden lg:flex items-center space-x-2 px-3 py-1 border border-brand-600 text-brand-600 rounded hover:bg-brand-50 transition-colors"
+                href={LIVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:border-red-300 hover:bg-red-50"
               >
-                <Phone size={16} />
-                <span className="text-sm">+7 (700) 636-36-31</span>
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+                </span>
+                <Video size={16} className="text-slate-500 group-hover:text-red-500 transition-colors" />
+                <span className="hidden text-sm font-medium sm:inline">{t.live}</span>
+              </a>
+
+              {/* Панорама */}
+              <a
+                href={PANORAMA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:border-brand-300 hover:bg-brand-50"
+              >
+                <Orbit size={16} className="text-slate-500 transition-colors group-hover:text-brand-600 group-hover:rotate-90 duration-300" />
+                <span className="hidden text-sm font-medium sm:inline">{t.panorama}</span>
               </a>
             </div>
-
-            {/* Кнопка мобильного меню */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </nav>
-
-          {/* Мобильная навигация */}
-          {isMenuOpen && (
-            <div className="md:hidden backdrop-blur-md border-t border-slate-200 bg-white/95">
-              <div className="py-4 space-y-2">
-                {navItems.map(item =>
-                  item.subItems ? (
-                    <div key={item.name}>
-                      <button
-                        onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                        className="flex w-full items-center justify-between px-4 py-2 font-medium text-slate-700"
-                      >
-                        <span>{item.name}</span>
-                        <ChevronDown
-                          size={16}
-                          className={`transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`}
-                        />
-                      </button>
-                      {openDropdown === item.name && (
-                        <div className="space-y-1">
-                          {item.subItems.map(sub => (
-                            <Link
-                              key={sub.name}
-                              to={sub.to}
-                              onClick={() => {
-                                setIsMenuOpen(false)
-                                setOpenDropdown(null)
-                              }}                              
-                              className="block pl-8 pr-4 py-2 rounded-lg hover:bg-slate-100 text-sm text-slate-700 transition-colors"                            >
-                              {sub.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <button
-                      key={item.name}
-                      onClick={() => handleNavigate(item.to)}
-                      className="block px-4 py-2 rounded-lg hover:bg-slate-100 text-sm text-slate-700 transition-colors"
-                    >
-                      {item.name}
-                    </button>
-                  )
-                )}
-
-                <div className="px-4 py-2 border-t border-slate-200 mt-4">
-                  <a
-                    href="tel:+77006363631"
-                    className="flex items-center space-x-2 text-slate-700 hover:text-brand-600 mt-3"
-                  >
-                    <Phone size={16} />
-                    <span>+7 (700) 636-36-31</span>
-                  </a>
-                  <a
-                    href="mailto:info@caspiancoast.com"
-                    className="flex items-center space-x-2 text-slate-700 hover:text-brand-600 mt-2"
-                  >
-                    <Mail size={16} />
-                    <span>info@caspiancoast.com</span>
-                  </a>
-                </div>
-
-                <div className="px-4 py-2 border-t border-slate-200 mt-4 space-y-1">
-                  {topHeaderLinks(t).map(link =>
-                    link.to ? (
-                      <button
-                        key={link.label}
-                        onClick={() => handleNavigate(link.to!)}
-                        className="flex items-center space-x-2 text-slate-700 hover:text-brand-600"
-                      >
-                        <link.icon size={16} />
-                        <span>{link.label}</span>
-                      </button>
-                    ) : (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center space-x-2 text-slate-700 hover:text-brand-600"
-                      >
-                        <span>{link.label}</span>
-                      </a>
-                    )
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </header>
