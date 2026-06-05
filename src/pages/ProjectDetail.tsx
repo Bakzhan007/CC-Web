@@ -15,8 +15,13 @@ import {
   ChevronRight,
   X,
   Target,
-  Maximize
+  Maximize,
+  Layers,
+  Calendar,
+  ChevronDown,
+  Sparkles
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -30,6 +35,28 @@ import imgIlan5 from '../assets/image/i5-d.webp';
 import imgTaras1 from '../assets/image/t1-d.webp';
 import imgTaras2 from '../assets/image/t2-d.webp';
 import imgTaras3 from '../assets/image/t3-d.webp';
+import type { LucideIcon } from 'lucide-react';
+
+// Анимация появления для hero
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
+
+// Стеклянный чип характеристики в hero
+function HeroChip({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-md">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/15 text-white">
+        <Icon size={18} />
+      </span>
+      <div>
+        <div className="text-sm font-semibold leading-tight text-white">{value}</div>
+        <div className="text-xs text-white/60">{label}</div>
+      </div>
+    </div>
+  );
+}
 
 interface Project {
   id: number;
@@ -245,115 +272,106 @@ export default function ProjectDetail() {
 
       <main className="flex-1 pt-[104px] sm:pt-[112px] lg:pt-[128px]">
         {/* Hero Section */}
-        <div className="relative h-[60vh] overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src={p.name === 'ЖК Ilan Towers' ? imgIlan1 : p.name === 'ЖК Taras' ? imgTaras1 : p.image}
-              alt={p.name}
-              className="w-full h-full object-cover"
-              fetchPriority="high"
-              decoding="sync"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
+        <div className="relative h-[78vh] min-h-[540px] overflow-hidden">
+          {/* Фон с медленным зумом */}
+          <motion.img
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 9, ease: [0.16, 1, 0.3, 1] }}
+            src={p.name === 'ЖК Ilan Towers' ? imgIlan1 : p.name === 'ЖК Taras' ? imgTaras1 : p.image}
+            alt={p.name}
+            className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
+            decoding="sync"
+          />
+          {/* Кино-градиенты */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 via-transparent to-transparent" />
 
-          {/* Navigation Bar */}
+          {/* Верхняя панель */}
           <div className="absolute top-0 left-0 right-0 z-10">
-            <div className="container mx-auto px-6 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-white hover:text-slate-300 transition-colors"
-                  >
-                    <ArrowLeft className="w-6 h-6" />
-                    <span className="font-medium">Назад</span>
-                  </button>
-                  <div className="h-6 w-px bg-white/30"></div>
-                  <h1 className="text-2xl font-bold text-white">{p.name}</h1>
-                </div>
+            <div className="container mx-auto px-6 py-5">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => navigate(-1)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/20"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Назад
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Hero Content */}
+          {/* Контент */}
           <div className="absolute bottom-0 left-0 right-0">
-            <div className="container mx-auto px-6 pb-8">
-              <div className="max-w-4xl">
-                {(p.name === 'ЖК Ilan Towers' || p.name === 'ЖК Taras' || p.name === 'ЖК Caspian Coast') ? (
-                  <div>
-                    <p className="text-xl text-white mb-6 leading-relaxed">
-                      {p.name === 'ЖК Ilan Towers' && 'Премиум-жилой комплекс на первой береговой линии моря, 15 мкр.'}
-                      {p.name === 'ЖК Taras' && 'Комфортный жилой комплекс рядом с набережной, 7а мкр.'}
-                      {p.name === 'ЖК Caspian Coast' && 'Жилой комплекс с развитой инфраструктурой, 3 мкр.'}
-                    </p>
+            <div className="container mx-auto px-6 pb-12">
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
+                className="max-w-4xl"
+              >
+                {/* Кикер: класс + статус */}
+                <motion.div variants={fadeUp} className="mb-4 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
+                    <Sparkles className="h-3.5 w-3.5" /> {p.type}
+                  </span>
+                  {p.deadline && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur">
+                      <Calendar className="h-3.5 w-3.5" /> {p.deadline}
+                    </span>
+                  )}
+                </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 text-white/90">
-                      <div className="text-center">
-                        <div className="text-lg font-semibold">Актау, {p.district}</div>
-                        <div className="text-sm opacity-80">Местоположение</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-semibold">
-                          {p.name === 'ЖК Ilan Towers' && '16 этажей'}
-                          {p.name === 'ЖК Taras' && '12-14 этажей'} 
-                          {p.name === 'ЖК Caspian Coast' && '9 этажей'}
-                        </div>
-                        <div className="text-sm opacity-80">Высота</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-semibold">
-                          {p.name === 'ЖК Ilan Towers' && '2 блока'}
-                          {p.name === 'ЖК Taras' && '4 блока'}
-                          {p.name === 'ЖК Caspian Coast' && '2 блока'}
-                        </div>
-                        <div className="text-sm opacity-80">Корпуса</div>
-                      </div>
-                    </div>
+                {/* Название */}
+                <motion.h1 variants={fadeUp} className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+                  {p.name}
+                </motion.h1>
 
-                  </div>
-                ) : (
-                  <div>
-                    <p className="text-xl text-white mb-6 leading-relaxed">
-                      {p.description || `Современный жилой комплекс с продуманной планировкой и качественной инфраструктурой, ${p.district}`}
-                    </p>
+                {/* Описание */}
+                <motion.p variants={fadeUp} className="mt-4 max-w-2xl text-lg text-slate-200">
+                  {p.description || `Современный жилой комплекс с продуманной планировкой, ${p.district}`}
+                </motion.p>
 
-                    <div className="flex flex-wrap items-center gap-6 mb-8 text-white/90">
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-5 h-5" />
-                        <span>Актау, {p.district}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Building2 className="w-5 h-5" />
-                        <span>{p.floors}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                {/* Чипы характеристик */}
+                <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-3">
+                  <HeroChip icon={MapPin} label="Местоположение" value={`Актау, ${p.district}`} />
+                  <HeroChip icon={Layers} label="Высота" value={p.floors} />
+                  <HeroChip icon={Building2} label="Корпуса" value={`${p.blocks} блока`} />
+                </motion.div>
 
-                <div className="flex flex-wrap gap-4">
+                {/* Кнопки */}
+                <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
                   <button
                     onClick={() => setIsContactModalOpen(true)}
-                    className="bg-brand-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-brand-700 transition-all duration-300"
+                    className="rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-8 py-4 font-semibold text-white shadow-lg shadow-brand-600/30 transition-shadow hover:shadow-xl hover:shadow-brand-600/40"
                   >
                     Записаться на просмотр
                   </button>
-                  
                   {videoUrl && (
                     <a
                       href={videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-6 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300"
+                      className="group flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-6 py-4 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
                     >
-                      <Play className="w-5 h-5" fill="currentColor" />
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110">
+                        <Play className="h-4 w-4" fill="currentColor" />
+                      </span>
                       Смотреть видео
                     </a>
                   )}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
+
+          {/* Индикатор прокрутки */}
+          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.6, repeat: Infinity }}
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50">
+            <ChevronDown size={24} />
+          </motion.div>
         </div>
 
 
@@ -364,16 +382,16 @@ export default function ProjectDetail() {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               {/* Header */}
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 reveal-up">
                 <h2 className="text-3xl font-bold text-slate-900 mb-3">Преимущества</h2>
-                <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
+                <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
               </div>
 
               {/* Advantages List */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-up">
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <Droplet className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -382,8 +400,8 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <Zap className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -392,8 +410,8 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <Thermometer className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -404,8 +422,8 @@ export default function ProjectDetail() {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <Home className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -414,8 +432,8 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <Users className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -424,8 +442,8 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                       <MapPin className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -447,16 +465,16 @@ export default function ProjectDetail() {
             <div className="container mx-auto px-6">
               <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-12 reveal-up">
                   <h2 className="text-3xl font-bold text-slate-900 mb-3">Философия проекта</h2>
-                  <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
+                  <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
                 </div>
 
-                <div className="space-y-12">
+                <div className="space-y-12 stagger-up">
                   {/* Уникальная концепция */}
-                  <div className="border-l-4 border-slate-900 pl-8">
+                  <div className="border-l-4 border-brand-500 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Target className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-xl font-bold text-slate-900">Уникальная концепция</h3>
@@ -470,9 +488,9 @@ export default function ProjectDetail() {
                   </div>
 
                   {/* Позитивная среда */}
-                  <div className="border-l-4 border-slate-900 pl-8">
+                  <div className="border-l-4 border-brand-500 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Users className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-xl font-bold text-slate-900">Позитивная среда</h3>
@@ -486,9 +504,9 @@ export default function ProjectDetail() {
                   </div>
 
                   {/* Гармоничное пространство */}
-                  <div className="border-l-4 border-slate-900 pl-8">
+                  <div className="border-l-4 border-brand-500 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Home className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-xl font-bold text-slate-900">Гармоничное пространство</h3>
@@ -504,8 +522,8 @@ export default function ProjectDetail() {
 
                 {/* Professional Statement */}
                 <div className="mt-12 pt-8 border-t border-slate-200">
-                  <div className="bg-slate-50 p-8 rounded-lg">
-                    <p className="text-center text-slate-800 font-medium text-lg leading-relaxed">
+                  <div className="rounded-2xl bg-gradient-to-br from-brand-600 to-brand-500 p-8 shadow-lg shadow-brand-600/20">
+                    <p className="text-center text-white font-medium text-lg leading-relaxed">
                       {p.name === 'ЖК Ilan Towers' && 'Ilan Towers — премиум жилой комплекс, который сочетает в себе современные технологии и комфорт высочайшего уровня'}
                       {p.name === 'ЖК Taras' && 'Taras — комфортный жилой комплекс, созданный для тех, кто ценит качество жизни и удобство расположения'}
                       {p.name === 'ЖК Caspian Coast' && 'Caspian Coast — строительная компания с многолетним опытом создания качественных жилых комплексов в Актау'}
@@ -521,9 +539,9 @@ export default function ProjectDetail() {
         {(p.name === 'ЖК Ilan Towers' || p.name === 'ЖК Taras') && (
           <section className="py-20 bg-slate-50">
             <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 reveal-up">
                 <h2 className="text-3xl font-bold text-slate-900 mb-3">Виртуальный тур 360°</h2>
-                <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
+                <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
               </div>
               
               <div className="max-w-6xl mx-auto">
@@ -572,11 +590,11 @@ export default function ProjectDetail() {
         {galleryImages.length > 0 && (
           <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 reveal-up">
                 <h2 className="text-4xl font-bold text-slate-900 mb-4">Галерея</h2>
                 <p className="text-xl text-slate-600">Фотографии проекта</p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto stagger-up">
                 {galleryImages.map((img, index) => (
                   <button
                     key={index}
@@ -631,10 +649,10 @@ export default function ProjectDetail() {
               <div className="max-w-6xl mx-auto space-y-16">
                 
                 {/* Unique Location */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-up">
                   <div className="order-2 lg:order-1">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <MapPin className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-slate-900">Уникальное место</h3>
@@ -660,14 +678,14 @@ export default function ProjectDetail() {
                         </>
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-slate-900"></div>
+                    <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
                   <div className="order-1 lg:order-2">
                     <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                       <img 
                         src={p.name === 'ЖК Ilan Towers' ? imgIlan3 : p.name === 'ЖК Taras' ? imgTaras2 : p.image} 
                         alt="Unique location"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover parallax-img"
                         loading="lazy"
                       />
                     </div>
@@ -675,18 +693,18 @@ export default function ProjectDetail() {
                 </div>
 
                 {/* Own Territory */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-up">
                   <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                     <img 
                       src={p.name === 'ЖК Ilan Towers' ? imgIlan4 : p.name === 'ЖК Taras' ? imgTaras3 : "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"} 
                       alt="Own territory"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover parallax-img"
                       loading="lazy"
                     />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <TreePine className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-slate-900">Своя территория</h3>
@@ -702,15 +720,15 @@ export default function ProjectDetail() {
                         'Вы сможете вести активный образ жизни, не выходя за пределы жилого комплекса. На его территории будут расположены детские и спортивные площадки.'
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-slate-900"></div>
+                    <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
                 </div>
 
                 {/* Design and Architecture */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-up">
                   <div className="order-2 lg:order-1">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <Building2 className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-slate-900">Дизайн и архитектура</h3>
@@ -722,14 +740,14 @@ export default function ProjectDetail() {
                         'Переменная этажность комплекса от 2 до 15 этажей, колонная галерея со входа, разная фактура и цвет фасадов создают ощущение легкости, динамичности и современности всего жилого комплекса.'
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-slate-900"></div>
+                    <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
                   <div className="order-1 lg:order-2">
                     <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                       <img 
                         src={p.name === 'ЖК Ilan Towers' ? imgIlan5 : p.name === 'ЖК Taras' ? imgTaras2 : "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800"} 
                         alt="Design and architecture"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover parallax-img"
                         loading="lazy"
                       />
                     </div>
@@ -790,7 +808,7 @@ export default function ProjectDetail() {
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl font-bold text-slate-900 mb-4">Местоположение</h2>
-                  <div className="w-12 h-0.5 bg-slate-900 mx-auto"></div>
+                  <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
                 </div>
 
                 <div className="space-y-8">
