@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import {
   Menu, X, Phone, Instagram,
   Building2, Briefcase,
-  Home, Users, LayoutGrid,
+  Home, Users, LayoutGrid, Building,
   MapPin, HelpCircle, ShoppingBag,
   ChevronRight, Sparkles, Video, Orbit,
 } from 'lucide-react'
@@ -62,6 +62,7 @@ const Header: React.FC = () => {
     { name: t.home, to: '/', icon: Home },
     { name: t.forPartner, to: '/partner', icon: Users },
     { name: t.projects, to: '/projects', icon: LayoutGrid },
+    { name: t.menuApartments, to: '/apartments', icon: Building },
   ]
 
   // Подразделы CC Гид

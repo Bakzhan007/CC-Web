@@ -5,6 +5,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Home from './pages/Home';
 
 const Agencies = lazy(() => import('./pages/Agencies'));
+const Apartments = lazy(() => import('./pages/Apartments'));
 const Career = lazy(() => import('./pages/Career'));
 const Partner = lazy(() => import('./pages/Partner'));
 const Projects = lazy(() => import('./pages/Projects'));
@@ -28,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/agencies" element={<Agencies />} />
+            <Route path="/apartments" element={<Apartments />} />
             <Route path="/career" element={<Career />} />
             <Route path="/partner" element={<Partner />} />
             <Route path="/projects" element={<Projects />} />

@@ -24,6 +24,15 @@ export default defineConfig({
   server: {
     headers: {
       'Cache-Control': 'public, max-age=31536000'
+    },
+    // Dev-прокси к публичному каталогу CRM (обходит CORS при локальной разработке)
+    proxy: {
+      '/catalog-api': {
+        target: 'https://caspian-coast.vercel.app',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/catalog-api/, '/api/units/public'),
+      }
     }
   }
 });
