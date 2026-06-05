@@ -56,7 +56,7 @@ const LanguageSwitcher = () => {
         onClick={() => setIsOpen(o => !o)}
         className="
         flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium
-        text-gray-800 dark:text-white
+        text-slate-800 dark:text-white
         transition-colors
         hover:bg-slate-100 dark:hover:bg-slate-800"
       >

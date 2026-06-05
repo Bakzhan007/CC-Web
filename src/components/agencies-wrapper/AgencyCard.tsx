@@ -33,7 +33,7 @@ export default function AgencyCard({ agency, featured }: Props) {
             <img
               src={agency.logo}
               alt={`${agency.name} logo`}
-              className="w-full h-full object-cover rounded-md"
+              className="w-full h-full object-cover rounded-lg"
               loading="lazy"
             />
           </div>
@@ -43,14 +43,14 @@ export default function AgencyCard({ agency, featured }: Props) {
       <div className="p-6">
         {/* Agency Header */}
         <div className="mb-4">
-          <h3 className="font-bold text-xl text-gray-900 mb-2">{agency.name}</h3>
-          <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+          <h3 className="font-bold text-xl text-slate-900 mb-2">{agency.name}</h3>
+          <span className="inline-block px-3 py-1 bg-brand-100 text-brand-800 text-sm font-medium rounded-full">
             {agency.category}
           </span>
         </div>
 
         {/* Rating and Stats */}
-        <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+        <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
           <div className="flex items-center gap-1">
             <Star className="w-4 h-4 text-yellow-400 fill-current" />
             <span className="font-medium">{agency.rating}</span>
@@ -66,13 +66,13 @@ export default function AgencyCard({ agency, featured }: Props) {
         </div>
 
         {/* Description */}
-        <p className="text-gray-600 mb-4 line-clamp-3">{agency.description}</p>
+        <p className="text-slate-600 mb-4 line-clamp-3">{agency.description}</p>
 
         {/* Gallery Preview */}
         <div className="mb-4">
           <div className="flex gap-2 overflow-hidden">
             {agency.galleryImages.slice(0, 3).map((image, index) => (
-              <div key={index} className="w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
+              <div key={index} className="w-16 h-12 rounded-lg overflow-hidden flex-shrink-0">
                 <img
                   src={image}
                   alt={`${agency.name} work ${index + 1}`}
@@ -81,7 +81,7 @@ export default function AgencyCard({ agency, featured }: Props) {
                 />
               </div>
             ))}
-            <div className="w-16 h-12 rounded-md bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-medium">
+            <div className="w-16 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-xs text-slate-500 font-medium">
               +{agency.galleryImages.length - 3}
             </div>
           </div>
@@ -91,12 +91,12 @@ export default function AgencyCard({ agency, featured }: Props) {
         <div className="mb-4">
           <div className="flex flex-wrap gap-2">
             {agency.specialties.slice(0, 3).map(specialty => (
-              <span key={specialty} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
+              <span key={specialty} className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg">
                 {specialty}
               </span>
             ))}
             {agency.specialties.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
+              <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg">
                 +{agency.specialties.length - 3} more
               </span>
             )}
@@ -105,15 +105,15 @@ export default function AgencyCard({ agency, featured }: Props) {
 
         {/* Contact Info */}
         <div className="space-y-2 mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 text-sm text-slate-600">
             <MapPin className="w-4 h-4" />
             <span>{agency.location}</span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 text-sm text-slate-600">
             <Phone className="w-4 h-4" />
             <span>{agency.phone}</span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 text-sm text-slate-600">
             <Mail className="w-4 h-4" />
             <span className="truncate">{agency.email}</span>
           </div>

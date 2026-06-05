@@ -12,7 +12,7 @@ const CompanyOverview = () => {
       icon: Building2,
       title: area.value,
       description: area.label,
-      color: 'bg-blue-500'
+      color: 'bg-brand-500'
     },
     {
       icon: Users,
@@ -24,7 +24,7 @@ const CompanyOverview = () => {
       icon: Award,
       title: projects.value,
       description: projects.label,
-      color: 'bg-purple-500'
+      color: 'bg-brand-500'
     },
     {
       icon: Target,
@@ -35,15 +35,15 @@ const CompanyOverview = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             {t.companyTitle}
-            <span className="text-blue-600"> {t.companySubtitle}</span>
+            <span className="text-brand-600"> {t.companySubtitle}</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
             {t.companyDescription}
           </p>
         </div>
@@ -52,21 +52,21 @@ const CompanyOverview = () => {
           {/* Left: Main description */}
           <div>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">
                 {t.companyHistoryTitle}
               </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-slate-600 mb-4 leading-relaxed">
                 {t.companyHistoryP1}
               </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-slate-600 mb-6 leading-relaxed">
                 {t.companyHistoryP2}
               </p>
               
               <div className="space-y-3">
                 {t.companyHistoryPoints.map((point, idx) => (
                   <div key={idx} className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{point}</span>
+                    <div className="w-2 h-2 bg-brand-500 rounded-full mr-3"></div>
+                    <span className="text-slate-700">{point}</span>
                   </div>
                 ))}
               </div>
@@ -80,8 +80,8 @@ const CompanyOverview = () => {
                 <div className={`w-12 h-12 ${item.color} rounded-lg flex items-center justify-center mb-4`}>
                   <item.icon size={24} className="text-white" />
                 </div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+                <h4 className="text-2xl font-bold text-slate-900 mb-2">{item.title}</h4>
+                <p className="text-slate-600 text-sm">{item.description}</p>
               </div>
             ))}
           </div>
@@ -89,21 +89,21 @@ const CompanyOverview = () => {
 
         {/* Key advantages */}
         <div className="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
             {t.companyAdvantagesTitle}
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             {t.companyAdvantages.map((adv, idx) => {
               const Icon = idx === 0 ? Building2 : idx === 1 ? Users : Award;
-              const color = idx === 0 ? 'bg-blue-100' : idx === 1 ? 'bg-emerald-100' : 'bg-purple-100';
-              const iconColor = idx === 0 ? 'text-blue-600' : idx === 1 ? 'text-emerald-600' : 'text-purple-600';
+              const color = idx === 0 ? 'bg-brand-100' : idx === 1 ? 'bg-emerald-100' : 'bg-brand-100';
+              const iconColor = idx === 0 ? 'text-brand-600' : idx === 1 ? 'text-emerald-600' : 'text-brand-600';
               return (
                 <div key={idx} className="text-center">
                   <div className={`w-16 h-16 ${color} rounded-full flex items-center justify-center mx-auto mb-4`}>
                     <Icon size={32} className={iconColor} />
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">{adv.title}</h4>
-                  <p className="text-gray-600 text-sm">{adv.description}</p>
+                  <h4 className="text-lg font-semibold text-slate-900 mb-2">{adv.title}</h4>
+                  <p className="text-slate-600 text-sm">{adv.description}</p>
                 </div>
               );
             })}

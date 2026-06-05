@@ -56,19 +56,19 @@ Email: ${formData.email}`;
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+        <div className="flex items-center justify-between p-6 border-b border-slate-100">
+          <h2 className="text-xl font-bold text-slate-900">{title}</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-slate-500" />
           </button>
         </div>
 
         {/* Quick Contact Options */}
-        <div className="p-6 border-b border-gray-100">
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">Быстрая связь</h3>
+        <div className="p-6 border-b border-slate-100">
+          <h3 className="text-sm font-semibold text-slate-900 mb-3">Быстрая связь</h3>
           <div className="flex gap-3">
             <button
               onClick={handlePhoneCall}
@@ -79,7 +79,7 @@ Email: ${formData.email}`;
             </button>
             <button
               onClick={handleEmailClick}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-brand-500 hover:bg-brand-600 text-white rounded-lg transition-colors"
             >
               <Mail className="w-4 h-4" />
               <span className="text-sm font-medium">Email</span>
@@ -89,11 +89,11 @@ Email: ${formData.email}`;
 
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="p-6">
-          <h3 className="text-sm font-semibold text-gray-900 mb-4">Или оставьте сообщение</h3>
+          <h3 className="text-sm font-semibold text-slate-900 mb-4">Или оставьте сообщение</h3>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1">
                 Имя *
               </label>
               <input
@@ -102,13 +102,13 @@ Email: ${formData.email}`;
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 placeholder="Ваше имя"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1">
                 Телефон *
               </label>
               <input
@@ -117,13 +117,13 @@ Email: ${formData.email}`;
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 placeholder="+7 (___) ___-__-__"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1">
                 Email
               </label>
               <input
@@ -131,13 +131,13 @@ Email: ${formData.email}`;
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 placeholder="your@email.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1">
                 Сообщение *
               </label>
               <textarea
@@ -146,7 +146,7 @@ Email: ${formData.email}`;
                 onChange={handleInputChange}
                 required
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
                 placeholder="Расскажите о ваших потребностях..."
               />
             </div>
@@ -154,7 +154,7 @@ Email: ${formData.email}`;
 
           <button
             type="submit"
-            className="w-full mt-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full mt-6 bg-gradient-to-r from-brand-600 to-brand-400 hover:from-brand-700 hover:to-brand-500 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-4 h-4" />
             Отправить в WhatsApp

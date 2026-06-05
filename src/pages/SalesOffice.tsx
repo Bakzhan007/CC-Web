@@ -66,7 +66,7 @@ function SalesOffice() {
                       className="w-full h-40 object-cover"
                       loading="lazy"
                     />
-                    <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+                    <span className="absolute top-2 left-2 bg-brand-600 text-white text-xs px-2 py-1 rounded">
                       {o.title}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ function SalesOffice() {
                   className="flex items-center space-x-4 p-4 bg-slate-50 rounded-lg shadow-inner"
                 >
                   <div className="p-3 bg-white rounded-lg flex-shrink-0">
-                    <b.icon size={20} className="text-blue-600" />
+                    <b.icon size={20} className="text-brand-600" />
                   </div>
                   <div>
                     <p className="text-lg font-medium text-slate-900">{b.title}</p>

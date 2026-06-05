@@ -6,7 +6,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 function Maintenance() {
     const { t } = useLanguage();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-slate-100">
 
       {/* Maintenance text */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">

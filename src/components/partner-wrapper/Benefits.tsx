@@ -35,7 +35,7 @@ export default function Benefits() {
               key={i}
               className="text-center px-4 py-6 rounded-xl border border-slate-200 shadow-sm"
             >
-              <b.icon className="w-8 h-8 mx-auto text-blue-600 mb-4" />
+              <b.icon className="w-8 h-8 mx-auto text-brand-600 mb-4" />
               <h3 className="text-lg font-medium mb-2">{b.title}</h3>
               <p className="text-sm text-slate-600 leading-relaxed">{b.description}</p>
             </div>

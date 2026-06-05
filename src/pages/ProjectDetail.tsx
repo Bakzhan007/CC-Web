@@ -68,21 +68,21 @@ const ImageModal: React.FC<{
   <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
     <button
       onClick={onClose}
-      className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors z-10"
+      className="absolute top-6 right-6 text-white hover:text-slate-300 transition-colors z-10"
     >
       <X className="w-8 h-8" />
     </button>
     
     <button
       onClick={onPrev}
-      className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10"
+      className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
     >
       <ChevronLeft className="w-10 h-10" />
     </button>
     
     <button
       onClick={onNext}
-      className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10"
+      className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
     >
       <ChevronRight className="w-10 h-10" />
     </button>
@@ -130,13 +130,13 @@ Email: ${formData.email}`;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="p-8">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">Записаться на просмотр</h3>
+            <h3 className="text-2xl font-bold text-slate-900">Записаться на просмотр</h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-slate-400 hover:text-slate-600 transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -144,42 +144,42 @@ Email: ${formData.email}`;
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Имя</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Имя</label>
               <input
                 type="text"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Телефон</label>
               <input
                 type="tel"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                 value={formData.phone}
                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Сообщение</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Сообщение</label>
               <textarea
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none"
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
               />
@@ -187,7 +187,7 @@ Email: ${formData.email}`;
             
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+              className="w-full bg-gradient-to-r from-brand-600 to-brand-400 text-white py-3 rounded-xl font-semibold hover:from-brand-700 hover:to-brand-500 transition-all duration-300 transform hover:scale-105"
             >
               Отправить заявку
             </button>
@@ -213,12 +213,12 @@ export default function ProjectDetail() {
         <Header />
         <main className="flex-1 flex flex-col items-center justify-center pt-[104px] sm:pt-[112px] lg:pt-[128px] p-6">
           <div className="text-center">
-            <Building2 className="w-20 h-20 text-gray-300 mx-auto mb-6" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Проект не найден</h1>
-            <p className="text-gray-600 mb-8">К сожалению, информация о проекте недоступна</p>
+            <Building2 className="w-20 h-20 text-slate-300 mx-auto mb-6" />
+            <h1 className="text-2xl font-bold text-slate-900 mb-4">Проект не найден</h1>
+            <p className="text-slate-600 mb-8">К сожалению, информация о проекте недоступна</p>
             <button
               onClick={() => navigate(-1)}
-              className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 mx-auto"
+              className="bg-brand-600 text-white px-6 py-3 rounded-xl hover:bg-brand-700 transition-all duration-300 flex items-center gap-2 mx-auto"
             >
               <ArrowLeft className="w-5 h-5" />
               Вернуться назад
@@ -264,7 +264,7 @@ export default function ProjectDetail() {
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
+                    className="flex items-center gap-2 text-white hover:text-slate-300 transition-colors"
                   >
                     <ArrowLeft className="w-6 h-6" />
                     <span className="font-medium">Назад</span>
@@ -334,7 +334,7 @@ export default function ProjectDetail() {
                 <div className="flex flex-wrap gap-4">
                   <button
                     onClick={() => setIsContactModalOpen(true)}
-                    className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300"
+                    className="bg-brand-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-brand-700 transition-all duration-300"
                   >
                     Записаться на просмотр
                   </button>
@@ -360,77 +360,77 @@ export default function ProjectDetail() {
 
         {/* Advantages Section - First for residential projects */}
         {(p.name === 'ЖК Ilan Towers' || p.name === 'ЖК Taras' || p.name === 'ЖК Caspian Coast') && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               {/* Header */}
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">Преимущества</h2>
-                <div className="w-16 h-0.5 bg-gray-900 mx-auto"></div>
+                <h2 className="text-3xl font-bold text-slate-900 mb-3">Преимущества</h2>
+                <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
               </div>
 
               {/* Advantages List */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Droplet className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Резервуар для питьевой воды</h3>
-                      <p className="text-gray-600 text-sm">Автономное водоснабжение качественной питьевой водой</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Резервуар для питьевой воды</h3>
+                      <p className="text-slate-600 text-sm">Автономное водоснабжение качественной питьевой водой</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Zap className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Электрогенератор</h3>
-                      <p className="text-gray-600 text-sm">Бесперебойное электроснабжение 24/7</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Электрогенератор</h3>
+                      <p className="text-slate-600 text-sm">Бесперебойное электроснабжение 24/7</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Thermometer className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Котел автономного отопления</h3>
-                      <p className="text-gray-600 text-sm">Индивидуальная система отопления для комплекса</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Котел автономного отопления</h3>
+                      <p className="text-slate-600 text-sm">Индивидуальная система отопления для комплекса</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Home className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Высокие 3,20 метра потолки</h3>
-                      <p className="text-gray-600 text-sm">Потолки высотой 3,2 метра создают ощущение простора</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Высокие 3,20 метра потолки</h3>
+                      <p className="text-slate-600 text-sm">Потолки высотой 3,2 метра создают ощущение простора</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Users className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Собственная детская площадка</h3>
-                      <p className="text-gray-600 text-sm">Современная и безопасная игровая зона для детей</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Собственная детская площадка</h3>
+                      <p className="text-slate-600 text-sm">Современная и безопасная игровая зона для детей</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-gray-900">
-                    <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white border-l-4 border-slate-900">
+                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Развитая инфраструктура</h3>
-                      <p className="text-gray-600 text-sm">Рядом школы, магазины, набережная и развлечения</p>
+                      <h3 className="font-bold text-slate-900 mb-1">Развитая инфраструктура</h3>
+                      <p className="text-slate-600 text-sm">Рядом школы, магазины, набережная и развлечения</p>
                     </div>
                   </div>
                 </div>
@@ -448,20 +448,20 @@ export default function ProjectDetail() {
               <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-3">Философия проекта</h2>
-                  <div className="w-16 h-0.5 bg-gray-900 mx-auto"></div>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-3">Философия проекта</h2>
+                  <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
                 </div>
 
                 <div className="space-y-12">
                   {/* Уникальная концепция */}
-                  <div className="border-l-4 border-gray-900 pl-8">
+                  <div className="border-l-4 border-slate-900 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Target className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900">Уникальная концепция</h3>
+                      <h3 className="text-xl font-bold text-slate-900">Уникальная концепция</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg pl-12">
+                    <p className="text-slate-700 leading-relaxed text-lg pl-12">
                       {p.name === 'ЖК Taras' 
                         ? 'Уникальный жилой комплекс «TARAS» обеспечивает спокойствие и комфорт для жизни каждого его жителя'
                         : `Уникальный жилой комплекс позволяет наслаждаться спокойствием. Ведь в «${p.name.replace('ЖК ', '')}» будет все для комфортной жизни.`
@@ -470,14 +470,14 @@ export default function ProjectDetail() {
                   </div>
 
                   {/* Позитивная среда */}
-                  <div className="border-l-4 border-gray-900 pl-8">
+                  <div className="border-l-4 border-slate-900 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Users className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900">Позитивная среда</h3>
+                      <h3 className="text-xl font-bold text-slate-900">Позитивная среда</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg pl-12">
+                    <p className="text-slate-700 leading-relaxed text-lg pl-12">
                       {p.name === 'ЖК Taras' 
                         ? 'В жилом комплексе каждый житель сможет наслаждаться прогулками, уютной набережной и детскими спортивными площадками, создающими положительную атмосферу'
                         : 'Места для прогулок, набережная, детская и спортивная площадки будут создавать позитивную среду в жилом комплексе.'
@@ -486,14 +486,14 @@ export default function ProjectDetail() {
                   </div>
 
                   {/* Гармоничное пространство */}
-                  <div className="border-l-4 border-gray-900 pl-8">
+                  <div className="border-l-4 border-slate-900 pl-8">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Home className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900">Гармоничное пространство</h3>
+                      <h3 className="text-xl font-bold text-slate-900">Гармоничное пространство</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg pl-12">
+                    <p className="text-slate-700 leading-relaxed text-lg pl-12">
                       {p.name === 'ЖК Taras' 
                         ? 'Из окон вашего дома вы будете наслаждаться видами города и впечатляющими закатами над морем, что поможет вам и вашей семье ощущать гармонию'
                         : 'Из окон дома вы сможете ежедневно наслаждаться видами города и потрясающих закатов у моря. А это означает постоянно находиться в гармонии с собой и своей семьей.'
@@ -503,9 +503,9 @@ export default function ProjectDetail() {
                 </div>
 
                 {/* Professional Statement */}
-                <div className="mt-12 pt-8 border-t border-gray-200">
-                  <div className="bg-gray-50 p-8 rounded-sm">
-                    <p className="text-center text-gray-800 font-medium text-lg leading-relaxed">
+                <div className="mt-12 pt-8 border-t border-slate-200">
+                  <div className="bg-slate-50 p-8 rounded-lg">
+                    <p className="text-center text-slate-800 font-medium text-lg leading-relaxed">
                       {p.name === 'ЖК Ilan Towers' && 'Ilan Towers — премиум жилой комплекс, который сочетает в себе современные технологии и комфорт высочайшего уровня'}
                       {p.name === 'ЖК Taras' && 'Taras — комфортный жилой комплекс, созданный для тех, кто ценит качество жизни и удобство расположения'}
                       {p.name === 'ЖК Caspian Coast' && 'Caspian Coast — строительная компания с многолетним опытом создания качественных жилых комплексов в Актау'}
@@ -519,15 +519,15 @@ export default function ProjectDetail() {
 
         {/* 360° Virtual Tour Section - For Ilan Towers and Taras */}
         {(p.name === 'ЖК Ilan Towers' || p.name === 'ЖК Taras') && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-slate-50">
             <div className="container mx-auto px-6">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">Виртуальный тур 360°</h2>
-                <div className="w-16 h-0.5 bg-gray-900 mx-auto"></div>
+                <h2 className="text-3xl font-bold text-slate-900 mb-3">Виртуальный тур 360°</h2>
+                <div className="w-16 h-0.5 bg-slate-900 mx-auto"></div>
               </div>
               
               <div className="max-w-6xl mx-auto">
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
                   <div className="aspect-[16/10]">
                     <iframe
                       width="100%"
@@ -547,7 +547,7 @@ export default function ProjectDetail() {
                 </div>
                 
                 <div className="flex justify-between items-center mt-6">
-                  <p className="text-gray-600">
+                  <p className="text-slate-600">
                     Используйте мышь или сенсорный экран для навигации по виртуальному туру
                   </p>
                   <a
@@ -557,7 +557,7 @@ export default function ProjectDetail() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                    className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors text-sm"
                   >
                     <Maximize className="w-4 h-4" />
                     Открыть в полном экране
@@ -573,15 +573,15 @@ export default function ProjectDetail() {
           <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">Галерея</h2>
-                <p className="text-xl text-gray-600">Фотографии проекта</p>
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">Галерея</h2>
+                <p className="text-xl text-slate-600">Фотографии проекта</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
                 {galleryImages.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200"
+                    className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200"
                   >
                     <img
                       src={img}
@@ -601,15 +601,15 @@ export default function ProjectDetail() {
 
         {/* Video Section */}
         {videoUrl && (
-          <section className="py-20 bg-gray-900">
+          <section className="py-20 bg-slate-900">
             <div className="container mx-auto px-6">
               <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-white mb-4">Видеопрезентация проекта</h2>
-                <p className="text-xl text-gray-300">Погрузитесь в атмосферу будущего дома</p>
+                <p className="text-xl text-slate-300">Погрузитесь в атмосферу будущего дома</p>
               </div>
               
               <div className="max-w-5xl mx-auto">
-                <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl">
+                <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
                   <iframe
                     className="w-full h-full"
                     src={videoUrl}
@@ -634,12 +634,12 @@ export default function ProjectDetail() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
                         <MapPin className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Уникальное место</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">Уникальное место</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                    <p className="text-slate-700 leading-relaxed text-lg mb-6">
                       {p.name === 'ЖК Ilan Towers' && (
                         <>
                           Уникальное место расположения жилого комплекса «Ilan Tower» в 15-м микрорайоне Актау на первой береговой линии моря. 
@@ -660,10 +660,10 @@ export default function ProjectDetail() {
                         </>
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-gray-900"></div>
+                    <div className="w-12 h-0.5 bg-slate-900"></div>
                   </div>
                   <div className="order-1 lg:order-2">
-                    <div className="aspect-[4/3] bg-gray-200 rounded-sm overflow-hidden">
+                    <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                       <img 
                         src={p.name === 'ЖК Ilan Towers' ? imgIlan3 : p.name === 'ЖК Taras' ? imgTaras2 : p.image} 
                         alt="Unique location"
@@ -676,7 +676,7 @@ export default function ProjectDetail() {
 
                 {/* Own Territory */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm overflow-hidden">
+                  <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                     <img 
                       src={p.name === 'ЖК Ilan Towers' ? imgIlan4 : p.name === 'ЖК Taras' ? imgTaras3 : "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"} 
                       alt="Own territory"
@@ -686,12 +686,12 @@ export default function ProjectDetail() {
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
                         <TreePine className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Своя территория</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">Своя территория</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                    <p className="text-slate-700 leading-relaxed text-lg mb-6">
                       {p.name === 'ЖК Taras' ? (
                         <>
                           В рамках жилого комплекса вы сможете вести активный образ жизни, благодаря наличию детских и спортивных площадок прямо на его территории. 
@@ -702,7 +702,7 @@ export default function ProjectDetail() {
                         'Вы сможете вести активный образ жизни, не выходя за пределы жилого комплекса. На его территории будут расположены детские и спортивные площадки.'
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-gray-900"></div>
+                    <div className="w-12 h-0.5 bg-slate-900"></div>
                   </div>
                 </div>
 
@@ -710,22 +710,22 @@ export default function ProjectDetail() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gray-900 rounded-sm flex items-center justify-center">
+                      <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
                         <Building2 className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Дизайн и архитектура</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">Дизайн и архитектура</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                    <p className="text-slate-700 leading-relaxed text-lg mb-6">
                       {p.name === 'ЖК Taras' ? (
                         'Жилой комплекс «Taras» воплощает современный стиль и утонченный дизайн фасадных панелей. Его эргономичная планировка жилых помещений создает комфорт и удобство, идеально соответствуя современным потребностям жителей.'
                       ) : (
                         'Переменная этажность комплекса от 2 до 15 этажей, колонная галерея со входа, разная фактура и цвет фасадов создают ощущение легкости, динамичности и современности всего жилого комплекса.'
                       )}
                     </p>
-                    <div className="w-12 h-0.5 bg-gray-900"></div>
+                    <div className="w-12 h-0.5 bg-slate-900"></div>
                   </div>
                   <div className="order-1 lg:order-2">
-                    <div className="aspect-[4/3] bg-gray-200 rounded-sm overflow-hidden">
+                    <div className="aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden">
                       <img 
                         src={p.name === 'ЖК Ilan Towers' ? imgIlan5 : p.name === 'ЖК Taras' ? imgTaras2 : "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800"} 
                         alt="Design and architecture"
@@ -747,33 +747,33 @@ export default function ProjectDetail() {
           <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">О проекте</h2>
+                <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">О проекте</h2>
                 
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-xl text-gray-700 leading-relaxed mb-8">
+                  <p className="text-xl text-slate-700 leading-relaxed mb-8">
                     {p.description ?? 
                       `Современный жилой комплекс с продуманной планировкой и качественной инфраструктурой.`
                     }
                   </p>
 
-                  <div className="bg-gray-50 rounded-2xl p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Ключевые особенности:</h3>
+                  <div className="bg-slate-50 rounded-2xl p-8">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6">Ключевые особенности:</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">Современная архитектура</span>
+                        <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-slate-700">Современная архитектура</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">Развитая инфраструктура</span>
+                        <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-slate-700">Развитая инфраструктура</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">Удобное расположение</span>
+                        <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-slate-700">Удобное расположение</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">Качественная отделка</span>
+                        <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-slate-700">Качественная отделка</span>
                       </div>
                     </div>
                   </div>
@@ -789,12 +789,12 @@ export default function ProjectDetail() {
             <div className="container mx-auto px-6">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Местоположение</h2>
-                  <div className="w-12 h-0.5 bg-gray-900 mx-auto"></div>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Местоположение</h2>
+                  <div className="w-12 h-0.5 bg-slate-900 mx-auto"></div>
                 </div>
 
                 <div className="space-y-8">
-                  <div className="h-[500px] bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                  <div className="h-[500px] bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
                     <iframe
                       src={p.name === 'ЖК Ilan Towers' 
                         ? "https://maps.google.com/maps?q=15-й+микрорайон+6+Актау+Казахстан&output=embed&z=16"
@@ -811,8 +811,8 @@ export default function ProjectDetail() {
                   
                   <div className="flex justify-between items-start">
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-900">Адрес</h3>
-                      <p className="text-gray-600">
+                      <h3 className="font-semibold text-slate-900">Адрес</h3>
+                      <p className="text-slate-600">
                         {p.name === 'ЖК Ilan Towers' 
                           ? '15-й микрорайон, 6, Актау'
                           : '7а микрорайон, 18, Актау'
@@ -827,7 +827,7 @@ export default function ProjectDetail() {
                         }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                        className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors text-sm"
                       >
                         <MapPin className="w-4 h-4" />
                         2GIS
@@ -839,7 +839,7 @@ export default function ProjectDetail() {
                         }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+                        className="inline-flex items-center gap-2 border border-slate-300 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors text-sm"
                       >
                         Google Maps
                       </a>

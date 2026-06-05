@@ -96,7 +96,7 @@ export default function ProjectList() {
       : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-6">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
@@ -107,7 +107,7 @@ export default function ProjectList() {
               className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 activeCategory === cat.id
                   ? 'text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
               style={activeCategory === cat.id ? { backgroundColor: '#2362eb' } : {}}
             >
@@ -121,7 +121,7 @@ export default function ProjectList() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-white rounded-xl shadow-sm hover:shadow-lg overflow-hidden transition-all duration-300 border border-gray-200 hover:-translate-y-1 transform"
+              className="group bg-white rounded-xl shadow-sm hover:shadow-lg overflow-hidden transition-all duration-300 border border-slate-200 hover:-translate-y-1 transform"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Image Container */}
@@ -142,7 +142,7 @@ export default function ProjectList() {
                       project.status === 'completed'
                         ? 'bg-green-500 text-white'
                         : project.status === 'inProgress'
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-brand-500 text-white'
                         : 'bg-orange-500 text-white'
                     }`}
                   >
@@ -152,7 +152,7 @@ export default function ProjectList() {
 
                 {/* Project Type Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white text-gray-800 text-xs font-medium rounded-lg">
+                  <span className="px-3 py-1 bg-white text-slate-800 text-xs font-medium rounded-lg">
                     {project.type}
                   </span>
                 </div>
@@ -160,18 +160,18 @@ export default function ProjectList() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
                   {project.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-slate-600 text-sm mb-4">
                   {project.description}
                 </p>
 
                 {/* Project Details */}
-                <div className="space-y-2 mb-6 text-sm text-gray-500">
+                <div className="space-y-2 mb-6 text-sm text-slate-500">
                   <div>{project.location}, {project.district}</div>
                   <div>{project.floors} • {project.blocks} блока</div>
-                  <div className="font-medium text-gray-900">{project.priceRange}</div>
+                  <div className="font-medium text-slate-900">{project.priceRange}</div>
                 </div>
 
                 <Link
@@ -190,10 +190,10 @@ export default function ProjectList() {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-20">
-            <div className="bg-white rounded-xl shadow-sm p-8 max-w-md mx-auto border border-gray-200">
-              <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Проекты не найдены</h3>
-              <p className="text-gray-600 text-sm">В выбранной категории пока нет доступных проектов</p>
+            <div className="bg-white rounded-xl shadow-sm p-8 max-w-md mx-auto border border-slate-200">
+              <Building2 className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Проекты не найдены</h3>
+              <p className="text-slate-600 text-sm">В выбранной категории пока нет доступных проектов</p>
             </div>
           </div>
         )}

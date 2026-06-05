@@ -8,7 +8,7 @@ const Video = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             {t.videoTitle}
-            <span className="text-blue-600"> {t.videoSubtitle}</span>
+            <span className="text-brand-600"> {t.videoSubtitle}</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {t.videoDescription}

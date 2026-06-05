@@ -37,7 +37,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {t.contactTitle}
-            <span className="text-blue-400"> {t.contactSubtitle}</span>
+            <span className="text-brand-400"> {t.contactSubtitle}</span>
           </h2>
           <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
             {t.contactDescription}
@@ -51,7 +51,7 @@ const Contact = () => {
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <info.icon size={24} className="text-white" />
                   </div>
                   <div>
@@ -59,7 +59,7 @@ const Contact = () => {
                     {info.details.map((detail, detailIndex) => (
                       <p key={detailIndex} className="text-slate-300 mb-1">
                         {info.action.startsWith('tel:') || info.action.startsWith('mailto:') ? (
-                          <a href={info.action} className="hover:text-blue-400 transition-colors">
+                          <a href={info.action} className="hover:text-brand-400 transition-colors">
                             {detail}
                           </a>
                         ) : (
@@ -93,7 +93,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                     placeholder="John"
                   />
                 </div>
@@ -103,7 +103,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                     placeholder="Doe"
                   />
                 </div>
@@ -115,7 +115,7 @@ const Contact = () => {
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                   placeholder="john.doe@example.com"
                 />
               </div>
@@ -126,7 +126,7 @@ const Contact = () => {
                 </label>
                 <input
                   type="tel"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                   placeholder="+7 (707) 0123-45-67"
                 />
               </div>
@@ -135,7 +135,7 @@ const Contact = () => {
                 <label className="block text-sm font-medium text-slate-700 mb-2">
                   {t.projectType}
                 </label>
-                <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors">
                   <option>{t.selectProjectType}</option>
                   <option>{t.projectTypes.commercial}</option>
                   <option>{t.projectTypes.residential}</option>
@@ -151,14 +151,14 @@ const Contact = () => {
                 </label>
                 <textarea
                   rows={4}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors resize-none"
                   placeholder={t.messagePlaceholder}
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                className="w-full bg-brand-600 text-white py-4 rounded-lg font-semibold hover:bg-brand-700 transition-colors flex items-center justify-center space-x-2"
               >
                 <Send size={20} />
                 <span>{t.sendMessage}</span>

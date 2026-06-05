@@ -13,52 +13,52 @@ export default function Hero() {
           {/* Left Content */}
           <div className="py-16 sm:py-24 lg:py-12">
             <div className="max-w-xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 {t.agenciesHeroTitle1 || "Официальные"}
                 <br />
-                <span className="text-blue-600">{t.agenciesHeroTitle2 || "партнеры"}</span>
+                <span className="text-brand-600">{t.agenciesHeroTitle2 || "партнеры"}</span>
               </h1>
               
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 {t.agenciesHeroDescription || "Работайте только с проверенными и надежными партнерами в области строительства и недвижимости"}
               </p>
               
               {/* Call to Action Button */}
               <div className="mb-8">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <button className="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                   Стать партнером
                 </button>
               </div>
               
               {/* Benefits Section */}
-              <div className="bg-blue-50 rounded-2xl p-6">
+              <div className="bg-brand-50 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-blue-600 rounded-full p-2">
+                  <div className="bg-brand-600 rounded-full p-2">
                     <Shield className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="font-bold text-gray-900">
+                  <h3 className="font-bold text-slate-900">
                     Более 10 агентств недвижимости уже работают с нами
                   </h3>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="bg-blue-600 rounded-full p-1">
+                    <div className="bg-brand-600 rounded-full p-1">
                       <Check className="w-3 h-3 text-white" />
                     </div>
-                    <span className="text-gray-700">Проверенные партнеры с многолетним опытом</span>
+                    <span className="text-slate-700">Проверенные партнеры с многолетним опытом</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="bg-blue-600 rounded-full p-1">
+                    <div className="bg-brand-600 rounded-full p-1">
                       <Check className="w-3 h-3 text-white" />
                     </div>
-                    <span className="text-gray-700">Высокие стандарты качества обслуживания</span>
+                    <span className="text-slate-700">Высокие стандарты качества обслуживания</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="bg-blue-600 rounded-full p-1">
+                    <div className="bg-brand-600 rounded-full p-1">
                       <Check className="w-3 h-3 text-white" />
                     </div>
-                    <span className="text-gray-700">Прозрачные условия сотрудничества</span>
+                    <span className="text-slate-700">Прозрачные условия сотрудничества</span>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function Hero() {
           
           {/* Right Content - Image */}
           <div className="relative lg:py-12">
-            <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={agenciesPartner}
                 alt="Our partner agencies at work"
@@ -82,24 +82,24 @@ export default function Hero() {
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="flex items-center justify-center gap-1 mb-1">
-                        <Award className="w-4 h-4 text-blue-600" />
+                        <Award className="w-4 h-4 text-brand-600" />
                       </div>
-                      <div className="text-2xl font-bold text-gray-900">10+</div>
-                      <div className="text-sm text-gray-600">Партнеров</div>
+                      <div className="text-2xl font-bold text-slate-900">10+</div>
+                      <div className="text-sm text-slate-600">Партнеров</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-1 mb-1">
                         <Star className="w-4 h-4 text-yellow-500" />
                       </div>
-                      <div className="text-2xl font-bold text-gray-900">4.8</div>
-                      <div className="text-sm text-gray-600">Рейтинг</div>
+                      <div className="text-2xl font-bold text-slate-900">4.8</div>
+                      <div className="text-sm text-slate-600">Рейтинг</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-1 mb-1">
                         <Users className="w-4 h-4 text-green-600" />
                       </div>
-                      <div className="text-2xl font-bold text-gray-900">1000+</div>
-                      <div className="text-sm text-gray-600">Проектов</div>
+                      <div className="text-2xl font-bold text-slate-900">1000+</div>
+                      <div className="text-sm text-slate-600">Проектов</div>
                     </div>
                   </div>
                 </div>

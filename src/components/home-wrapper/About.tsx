@@ -17,18 +17,18 @@ const About = () => {
         {/* ── First row: text on left, image1 on right ── */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="z-10">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
               {t.aboutTitle}
-              <span className="block text-blue-600">{t.aboutSubtitle}</span>
+              <span className="block text-brand-600">{t.aboutSubtitle}</span>
             </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-slate-700 mb-6 leading-relaxed">
               {t.aboutDescription1}
             </p>
           </div>
 
           <div className="relative z-10">
-            <div className="absolute top-8 left-8 w-[90%] h-full bg-blue-50 rounded-3xl transform rotate-2"></div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+            <div className="absolute top-8 left-8 w-[90%] h-full bg-brand-50 rounded-2xl transform rotate-2"></div>
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img
                 src={home1}
                 alt={t.aboutImageAlt}

@@ -31,12 +31,12 @@ const Contact = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-gradient-to-br from-blue-900 to-cyan-600 rounded-3xl p-12 lg:p-16 text-white">
+        <div className="bg-gradient-to-br from-brand-900 to-cyan-600 rounded-2xl p-12 lg:p-16 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               {t.careerReadyTitle}
             </h2>
-            <p className="text-xl mb-8 text-blue-100 leading-relaxed">
+            <p className="text-xl mb-8 text-brand-100 leading-relaxed">
               {t.careerReadyDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -55,7 +55,7 @@ const Contact = () => {
                 +7 (700) 636-36-31
               </button>
             </div>
-            <p className="text-blue-200 text-sm">
+            <p className="text-brand-200 text-sm">
               {t.careerEqualOpportunity}
             </p>
           </div>

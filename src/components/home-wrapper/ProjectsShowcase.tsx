@@ -66,19 +66,19 @@ const ProjectsShowcase = () => {
     <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             {t.projectsHomeTitle1}
-            <span className="text-blue-600"> {t.projectsHomeTitle2}</span>
+            <span className="text-brand-600"> {t.projectsHomeTitle2}</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {t.projectsHomeDescription}
           </p>
         </div>
 
 {/* Residential Projects */}
 <div className="mb-16">
-  <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-    <Building className="mr-3 text-blue-600" size={32} />
+  <h3 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+    <Building className="mr-3 text-brand-600" size={32} />
     {t.projectsHomeResidential}
   </h3>
   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -98,14 +98,14 @@ const ProjectsShowcase = () => {
                 </div>
 
                 <div className="p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h4 className="text-lg font-semibold text-slate-900 mb-2">
                     {project.name}
                   </h4>
-                  <div className="flex items-center text-gray-600 mb-2">
+                  <div className="flex items-center text-slate-600 mb-2">
                     <MapPin size={16} className="mr-1" />
                     <span className="text-sm">{project.location}</span>
                   </div>
-                  <div className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full inline-block">
+                  <div className="bg-brand-100 text-brand-800 text-xs px-2 py-1 rounded-full inline-block">
                     {project.type}
                   </div>
                 </div>
@@ -117,27 +117,27 @@ const ProjectsShowcase = () => {
 
         {/* Industrial Projects */}
         <div>
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+          <h3 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
             <Factory className="mr-3 text-emerald-600" size={32} />
             {t.projectsHomeIndustrial}
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {industrialProjects.map((project, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
                 <div className="flex items-start mb-4">
                   <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <Factory size={24} className="text-emerald-600" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{project.name}</h4>
-                    <div className="flex items-center text-gray-600 mb-2">
+                    <h4 className="text-lg font-semibold text-slate-900 mb-2">{project.name}</h4>
+                    <div className="flex items-center text-slate-600 mb-2">
                       <MapPin size={16} className="mr-1" />
                       <span className="text-sm">{project.location}</span>
                     </div>
                     <div className="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded-full inline-block mb-2">
                       {project.type}
                     </div>
-                    <p className="text-gray-600 text-sm">{project.description}</p>
+                    <p className="text-slate-600 text-sm">{project.description}</p>
                   </div>
                 </div>
               </div>
@@ -147,11 +147,11 @@ const ProjectsShowcase = () => {
 
         {/* Additional projects note */}
         <div className="text-center mt-12">
-          <div className="bg-blue-50 rounded-xl p-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-4">
+          <div className="bg-brand-50 rounded-xl p-8">
+            <h4 className="text-xl font-semibold text-slate-900 mb-4">
               {t.projectsHomeMoreTitle}
             </h4>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-slate-600 max-w-2xl mx-auto">
               {t.projectsHomeMoreDescription}
             </p>
           </div>

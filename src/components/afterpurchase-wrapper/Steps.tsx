@@ -36,7 +36,7 @@ const Steps: React.FC = () => (
             key={i}
             className="bg-white rounded-xl shadow p-6 text-center flex flex-col items-center"
           >
-            <step.icon className="w-10 h-10 text-blue-600 mb-4" />
+            <step.icon className="w-10 h-10 text-brand-600 mb-4" />
             <h3 className="font-semibold text-lg text-slate-900 mb-2">
               {step.title}
             </h3>

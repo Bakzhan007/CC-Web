@@ -74,7 +74,7 @@ export default function Conditions() {
             <div className="hidden sm:flex flex-1 items-center px-4">
               <div className="h-1 w-full bg-slate-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-blue-600"
+                  className="h-full bg-brand-600"
                   style={{ width: `${((page + 1) / totalPages) * 100}%` }}
                 />
               </div>

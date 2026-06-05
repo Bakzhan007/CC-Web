@@ -44,11 +44,11 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-slate-900 via-brand-900 to-brand-900 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-indigo-400 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-brand-400 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-400 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-400 rounded-full blur-3xl"></div>
       </div>
 
@@ -58,7 +58,7 @@ const Testimonials = () => {
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             {t.careerTeamSaysTitle}
           </h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-brand-100 max-w-3xl mx-auto leading-relaxed">
             {t.careerTeamSaysDescription}
           </p>
         </div>
@@ -83,13 +83,13 @@ const Testimonials = () => {
           {/* Main Testimonial Card */}
           <div className="relative">
             {/* Glowing Background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-3xl blur-xl transform scale-105"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-600/20 to-brand-600/20 rounded-2xl blur-xl transform scale-105"></div>
             
             {/* Card Content */}
-            <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/20">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 lg:p-12 border border-white/20">
               {/* Quote Icon */}
               <div className="absolute -top-6 left-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-brand-600 to-brand-400 rounded-full flex items-center justify-center shadow-lg">
                   <Quote className="w-6 h-6 text-white" />
                 </div>
               </div>
@@ -108,10 +108,10 @@ const Testimonials = () => {
                 </div>
                 
                 <div className="ml-6 flex-1">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-1">
+                  <h4 className="text-2xl font-bold text-slate-900 mb-1">
                     {testimonialsData[current].name}
                   </h4>
-                  <p className="text-lg text-blue-600 font-semibold mb-2">
+                  <p className="text-lg text-brand-600 font-semibold mb-2">
                     {testimonialsData[current].role}
                   </p>
                   
@@ -120,7 +120,7 @@ const Testimonials = () => {
                     {[...Array(testimonialsData[current].rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current mr-1" />
                     ))}
-                    <span className="ml-2 text-sm text-gray-600 font-medium">
+                    <span className="ml-2 text-sm text-slate-600 font-medium">
                       {testimonialsData[current].rating}.0
                     </span>
                   </div>
@@ -128,17 +128,17 @@ const Testimonials = () => {
 
                 {/* Company Logo Placeholder */}
                 <div className="hidden lg:block">
-                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg"></div>
+                  <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-br from-brand-600 to-brand-400 rounded-lg"></div>
                   </div>
                 </div>
               </div>
 
               {/* Quote Text */}
-              <blockquote className="text-xl lg:text-2xl text-gray-800 leading-relaxed font-medium relative">
-                <span className="text-blue-600 text-6xl absolute -top-4 -left-2 opacity-20">"</span>
+              <blockquote className="text-xl lg:text-2xl text-slate-800 leading-relaxed font-medium relative">
+                <span className="text-brand-600 text-6xl absolute -top-4 -left-2 opacity-20">"</span>
                 <span className="relative z-10">{testimonialsData[current].quote}</span>
-                <span className="text-blue-600 text-6xl absolute -bottom-8 -right-2 opacity-20">"</span>
+                <span className="text-brand-600 text-6xl absolute -bottom-8 -right-2 opacity-20">"</span>
               </blockquote>
             </div>
           </div>
@@ -169,7 +169,7 @@ const Testimonials = () => {
           <div className="mt-8 max-w-md mx-auto">
             <div className="w-full bg-white/20 rounded-full h-1.5">
               <div 
-                className="bg-gradient-to-r from-blue-400 to-indigo-400 h-1.5 rounded-full transition-all duration-300 shadow-lg"
+                className="bg-gradient-to-r from-brand-500 to-brand-400 h-1.5 rounded-full transition-all duration-300 shadow-lg"
                 style={{ width: `${((current + 1) / testimonialsData.length) * 100}%` }}
               ></div>
             </div>

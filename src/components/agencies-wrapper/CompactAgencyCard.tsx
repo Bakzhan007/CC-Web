@@ -7,7 +7,7 @@ interface Props {
 
 export default function CompactAgencyCard({ agency }: Props) {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-100">
       <div className="flex flex-col lg:flex-row">
         {/* Left Side - Image and Logo */}
         <div className="lg:w-80 h-48 lg:h-auto relative overflow-hidden flex-shrink-0">
@@ -23,7 +23,7 @@ export default function CompactAgencyCard({ agency }: Props) {
               <img
                 src={agency.logo}
                 alt={`${agency.name} logo`}
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full object-cover rounded-lg"
                 loading="lazy"
               />
             </div>
@@ -38,12 +38,12 @@ export default function CompactAgencyCard({ agency }: Props) {
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
                 <div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-1">{agency.name}</h3>
-                  <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                  <h3 className="font-bold text-xl text-slate-900 mb-1">{agency.name}</h3>
+                  <span className="inline-block px-3 py-1 bg-brand-100 text-brand-800 text-sm font-medium rounded-full">
                     {agency.category}
                   </span>
                 </div>
-                <div className="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-slate-600">
                   <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />
                     <span className="font-medium">{agency.rating}</span>
@@ -56,10 +56,10 @@ export default function CompactAgencyCard({ agency }: Props) {
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{agency.description}</p>
+              <p className="text-slate-600 mb-4 text-sm leading-relaxed">{agency.description}</p>
 
               {/* Stats Row */}
-              <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-600">
+              <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-slate-600">
                 <div className="flex items-center gap-1">
                   <Users className="w-4 h-4" />
                   <span>{agency.employees} employees</span>
@@ -78,12 +78,12 @@ export default function CompactAgencyCard({ agency }: Props) {
               <div className="mb-4">
                 <div className="flex flex-wrap gap-2">
                   {agency.specialties.slice(0, 4).map(specialty => (
-                    <span key={specialty} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
+                    <span key={specialty} className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg">
                       {specialty}
                     </span>
                   ))}
                   {agency.specialties.length > 4 && (
-                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md">
+                    <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg">
                       +{agency.specialties.length - 4} more
                     </span>
                   )}
@@ -94,7 +94,7 @@ export default function CompactAgencyCard({ agency }: Props) {
               <div className="lg:hidden mb-4">
                 <div className="flex gap-2">
                   {agency.galleryImages.slice(0, 4).map((image, index) => (
-                    <div key={index} className="w-12 h-9 rounded-md overflow-hidden flex-shrink-0">
+                    <div key={index} className="w-12 h-9 rounded-lg overflow-hidden flex-shrink-0">
                       <img
                         src={image}
                         alt={`${agency.name} work ${index + 1}`}
@@ -113,7 +113,7 @@ export default function CompactAgencyCard({ agency }: Props) {
               <div className="hidden lg:block mb-4">
                 <div className="grid grid-cols-2 gap-2">
                   {agency.galleryImages.slice(0, 4).map((image, index) => (
-                    <div key={index} className="aspect-square rounded-md overflow-hidden">
+                    <div key={index} className="aspect-square rounded-lg overflow-hidden">
                       <img
                         src={image}
                         alt={`${agency.name} work ${index + 1}`}
@@ -126,7 +126,7 @@ export default function CompactAgencyCard({ agency }: Props) {
               </div>
 
               {/* Contact Info */}
-              <div className="space-y-2 mb-4 text-sm text-gray-600">
+              <div className="space-y-2 mb-4 text-sm text-slate-600">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
                   <span className="truncate">{agency.phone}</span>

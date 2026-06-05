@@ -61,15 +61,15 @@ const WhyChooseUs = () => {
                 className="group bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-slate-200"
               >
                 <div className="flex items-center mb-4">
-                  <span className="text-5xl font-bold text-blue-600 mr-3">
+                  <span className="text-5xl font-bold text-brand-600 mr-3">
                     {NumberLabel}
                   </span>
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                    <Icon size={28} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center group-hover:bg-brand-600 transition-colors duration-300">
+                    <Icon size={28} className="text-brand-600 group-hover:text-white transition-colors duration-300" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">
                   {reason.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">

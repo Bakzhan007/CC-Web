@@ -209,9 +209,9 @@ export default function Agencies() {
         />
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <p className="text-gray-600 text-lg">
+        <p className="text-slate-600 text-lg">
           {t.agenciesShowing}{' '}
-          <span className="font-semibold text-blue-600">{filteredAgencies.length}</span>{' '}
+          <span className="font-semibold text-brand-600">{filteredAgencies.length}</span>{' '}
           {t.agenciesWord}        </p>
       </div>
 
@@ -220,7 +220,7 @@ export default function Agencies() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="flex items-center gap-3 mb-8">
             <Award className="w-6 h-6 text-yellow-500" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t.agenciesFeaturedPartners}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">{t.agenciesFeaturedPartners}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredAgencies.map(agency => (
@@ -232,7 +232,7 @@ export default function Agencies() {
 
       {/* All Agencies - New Compact List Design */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">{t.agenciesAllAgencies}</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-8">{t.agenciesAllAgencies}</h2>
         <div className="space-y-4">
           {regularAgencies.map(agency => (
             <CompactAgencyCard key={agency.id} agency={agency} />
