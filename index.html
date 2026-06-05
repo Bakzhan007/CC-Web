@@ -30,17 +30,16 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      // Register service worker for caching
+      // Старый cache-first service worker кэшировал JS-чанки навсегда и ломал
+      // приложение после обновлений (две версии React → белый экран).
+      // Снимаем регистрацию и чистим кэши, чтобы вылечить уже установленный SW.
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
+        navigator.serviceWorker.getRegistrations()
+          .then((regs) => regs.forEach((r) => r.unregister()))
+          .catch(() => {});
+      }
+      if (window.caches && caches.keys) {
+        caches.keys().then((keys) => keys.forEach((k) => caches.delete(k))).catch(() => {});
       }
     </script>
   </body>

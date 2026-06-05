@@ -22,9 +22,6 @@ export default defineConfig({
     cssMinify: true
   },
   server: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000'
-    },
     // Dev-прокси к публичному каталогу CRM (обходит CORS при локальной разработке)
     proxy: {
       '/catalog-api': {

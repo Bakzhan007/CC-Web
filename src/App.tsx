@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
+import ErrorBoundary from './components/ErrorBoundary';
 // Главная грузится сразу (точка входа / LCP), остальные страницы — лениво
 import Home from './pages/Home';
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
+        <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -40,6 +42,7 @@ function App() {
             <Route path="/maintenance" element={<Maintenance />} />
           </Routes>
         </Suspense>
+        </ErrorBoundary>
       </Router>
     </LanguageProvider>
   );
