@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   Menu, X, Phone, Instagram,
-  Newspaper, Building2, Briefcase, Percent,
-  Home, Tag, Users, LayoutGrid,
+  Building2, Briefcase,
+  Home, Users, LayoutGrid,
   MapPin, HelpCircle, ShoppingBag,
   ChevronRight, Sparkles, Video, Orbit,
 } from 'lucide-react'
@@ -57,12 +57,9 @@ const Header: React.FC = () => {
 
   // Основные разделы меню
   const menuItems: MenuItem[] = [
-    { name: t.topNews, to: '/news', icon: Newspaper },
     { name: t.topAgencies, to: '/agencies', icon: Building2 },
     { name: t.topCareer, to: '/career', icon: Briefcase },
-    { name: t.topCommerce, to: '/commerce', icon: Percent },
     { name: t.home, to: '/', icon: Home },
-    { name: t.sale, to: '/sale', icon: Tag },
     { name: t.forPartner, to: '/partner', icon: Users },
     { name: t.projects, to: '/projects', icon: LayoutGrid },
   ]

@@ -29,12 +29,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: t.footerLinks.sale, href: '/sale' },
     { name: `${t.servicesTitle} ${t.servicesSubtitle}`, href: '#services' },
     { name: `${t.projectsTitle} ${t.projectsSubtitle}`, href: '/projects' },
     { name: t.contact, href: '#contact' },
     { name: t.footerLinks.forPartner, href: '/partner' },
-    { name: t.footerLinks.news, href: '/news' },
   ];
 
   const socialLinks = [
