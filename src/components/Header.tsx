@@ -4,7 +4,7 @@ import {
   Building2, Briefcase,
   Home, Users, LayoutGrid, Building,
   MapPin, HelpCircle, ShoppingBag,
-  ChevronRight, Sparkles, Video, Orbit,
+  ChevronRight, Sparkles, Video,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -20,9 +20,8 @@ interface MenuItem {
   icon: LucideIcon
 }
 
-// TODO: подставить реальные ссылки на live-камеру и панораму
+// TODO: подставить реальную ссылку на live-камеру
 const LIVE_URL = '#'
-const PANORAMA_URL = '#'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -249,17 +248,6 @@ const Header: React.FC = () => {
                 </span>
                 <Video size={16} className="text-slate-500 group-hover:text-red-500 transition-colors" />
                 <span className="hidden text-sm font-medium sm:inline">{t.live}</span>
-              </a>
-
-              {/* Панорама */}
-              <a
-                href={PANORAMA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:border-brand-300 hover:bg-brand-50"
-              >
-                <Orbit size={16} className="text-slate-500 transition-colors group-hover:text-brand-600 group-hover:rotate-90 duration-300" />
-                <span className="hidden text-sm font-medium sm:inline">{t.panorama}</span>
               </a>
             </div>
           </nav>

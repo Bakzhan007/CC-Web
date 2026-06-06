@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Search, ChevronDown, RotateCcw, Maximize2 } from 'lucide-react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -135,13 +136,19 @@ export default function Apartments() {
       <main className="flex-1 pt-[88px] sm:pt-[96px] lg:pt-[112px]">
         <div className="container mx-auto px-4 py-8">
           {/* Заголовок */}
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1">
             {t.titleA} <span className="text-brand-600">{t.titleB}</span>
-          </h1>
-          <p className="text-slate-500 mb-6">{t.subtitle}</p>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.06 }}
+            className="text-slate-500 mb-6">{t.subtitle}</motion.p>
 
           {/* Панель фильтров */}
-          <div className="rounded-2xl bg-white p-4 sm:p-5 shadow-sm border border-slate-200">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.12 }}
+            className="rounded-2xl bg-white p-4 sm:p-5 shadow-sm border border-slate-200">
             <div className="flex flex-wrap items-end gap-3">
               {/* Проект */}
               <Field label={t.project}>
@@ -203,14 +210,16 @@ export default function Apartments() {
                   options={[{ v: 'price', l: t.sortPrice }, { v: 'priceDesc', l: t.sortPriceDesc }, { v: 'area', l: t.sortArea }]} />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Поиск */}
-          <div className="relative mt-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.18 }}
+            className="relative mt-4">
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder={t.search}
               className="w-full rounded-2xl border border-slate-200 bg-white py-3.5 pl-5 pr-12 text-sm shadow-sm outline-none focus:ring-2 focus:ring-brand-500" />
             <Search size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
-          </div>
+          </motion.div>
 
           {/* Счётчик */}
           <div className="mt-6 mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -241,8 +250,16 @@ export default function Apartments() {
           ) : (
             <>
               <Grid>
-                {filtered.slice(0, visible).map(u => (
-                  <UnitCard key={u.id} u={u} t={t} roomsLabel={roomsLabel} onDetails={openProject} />
+                {filtered.slice(0, visible).map((u, i) => (
+                  <motion.div
+                    key={u.id}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: Math.min((i % 12) * 0.05, 0.5) }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <UnitCard u={u} t={t} roomsLabel={roomsLabel} onDetails={openProject} />
+                  </motion.div>
                 ))}
               </Grid>
               {visible < filtered.length && (
@@ -329,10 +346,6 @@ function UnitCard({ u, t, roomsLabel, onDetails }: {
           <span className="text-slate-300">|</span>
           <span className="text-slate-600">{roomsLabel(u.rooms)}</span>
         </div>
-        {u.pricePerSqm && (
-          <div className="mt-1 text-xs text-slate-400">{formatMoney(u.pricePerSqm)} {t.perSqm}</div>
-        )}
-
         {/* Кнопки */}
         <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
           <button

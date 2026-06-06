@@ -24,6 +24,199 @@ import {
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
+// Локальные переводы страницы ЖК (UI-каркас), RU / KZ / EN
+const PD: Record<string, Record<string, string>> = {
+  ru: {
+    back: 'Назад', bookViewing: 'Записаться на просмотр', watchVideo: 'Смотреть видео',
+    chipLocation: 'Местоположение', chipHeight: 'Высота', chipBlocks: 'Корпуса',
+    advantages: 'Преимущества', philosophy: 'Философия проекта',
+    tour360: 'Виртуальный тур 360°', tourHint: 'Используйте мышь или сенсорный экран для навигации по виртуальному туру', fullscreen: 'Открыть в полном экране',
+    gallery: 'Галерея', galleryPhotos: 'Фотографии проекта',
+    videoTitle: 'Видеопрезентация проекта', videoSubtitle: 'Погрузитесь в атмосферу будущего дома',
+    uniquePlace: 'Уникальное место', ownTerritory: 'Своя территория', design: 'Дизайн и архитектура',
+    location: 'Местоположение', address: 'Адрес', notFound: 'Проект не найден', goBack: 'Вернуться назад',
+    advWater: 'Резервуар для питьевой воды', advWaterDesc: 'Автономное водоснабжение качественной питьевой водой',
+    advGen: 'Электрогенератор', advGenDesc: 'Бесперебойное электроснабжение 24/7',
+    advBoiler: 'Котел автономного отопления', advBoilerDesc: 'Индивидуальная система отопления для комплекса',
+    advCeiling: 'Высокие 3,20 метра потолки', advCeilingDesc: 'Потолки высотой 3,2 метра создают ощущение простора',
+    advPlay: 'Собственная детская площадка', advPlayDesc: 'Современная и безопасная игровая зона для детей',
+    advInfra: 'Развитая инфраструктура', advInfraDesc: 'Рядом школы, магазины, набережная и развлечения',
+    philUnique: 'Уникальная концепция', philPositive: 'Позитивная среда', philHarmony: 'Гармоничное пространство',
+    infraConvenient: 'Удобное расположение', infraFinishing: 'Качественная отделка',
+    name: 'Имя', phone: 'Телефон', email: 'Email', message: 'Сообщение', submit: 'Отправить заявку',
+  },
+  kz: {
+    back: 'Артқа', bookViewing: 'Қарауға жазылу', watchVideo: 'Видео көру',
+    chipLocation: 'Орналасуы', chipHeight: 'Биіктігі', chipBlocks: 'Корпустар',
+    advantages: 'Артықшылықтар', philosophy: 'Жоба философиясы',
+    tour360: '360° виртуалды тур', tourHint: 'Виртуалды турда жылжу үшін тінтуірді немесе сенсорлық экранды пайдаланыңыз', fullscreen: 'Толық экранда ашу',
+    gallery: 'Галерея', galleryPhotos: 'Жоба фотолары',
+    videoTitle: 'Жобаның бейнетаныстырылымы', videoSubtitle: 'Болашақ үйдің атмосферасына еніңіз',
+    uniquePlace: 'Бірегей орын', ownTerritory: 'Жеке аумақ', design: 'Дизайн және сәулет',
+    location: 'Орналасуы', address: 'Мекенжай', notFound: 'Жоба табылмады', goBack: 'Артқа қайту',
+    advWater: 'Ауызсу қоймасы', advWaterDesc: 'Сапалы ауызсумен автономды қамтамасыз ету',
+    advGen: 'Электр генераторы', advGenDesc: '24/7 үздіксіз электрмен қамтамасыз ету',
+    advBoiler: 'Автономды жылыту қазандығы', advBoilerDesc: 'Кешенге арналған жеке жылыту жүйесі',
+    advCeiling: 'Биік 3,20 метр төбелер', advCeilingDesc: '3,2 метр биіктіктегі төбелер кеңдік сезімін тудырады',
+    advPlay: 'Жеке балалар алаңы', advPlayDesc: 'Балаларға арналған заманауи әрі қауіпсіз ойын аймағы',
+    advInfra: 'Дамыған инфрақұрылым', advInfraDesc: 'Жақын маңда мектептер, дүкендер, жағалау және ойын-сауық',
+    philUnique: 'Бірегей тұжырымдама', philPositive: 'Позитивті орта', philHarmony: 'Үйлесімді кеңістік',
+    infraConvenient: 'Ыңғайлы орналасу', infraFinishing: 'Сапалы әрлеу',
+    name: 'Аты', phone: 'Телефон', email: 'Email', message: 'Хабарлама', submit: 'Өтінім жіберу',
+  },
+  en: {
+    back: 'Back', bookViewing: 'Book a viewing', watchVideo: 'Watch video',
+    chipLocation: 'Location', chipHeight: 'Height', chipBlocks: 'Blocks',
+    advantages: 'Advantages', philosophy: 'Project philosophy',
+    tour360: '360° virtual tour', tourHint: 'Use your mouse or touch screen to navigate the virtual tour', fullscreen: 'Open fullscreen',
+    gallery: 'Gallery', galleryPhotos: 'Project photos',
+    videoTitle: 'Project video presentation', videoSubtitle: 'Immerse yourself in your future home',
+    uniquePlace: 'Unique location', ownTerritory: 'Private grounds', design: 'Design & architecture',
+    location: 'Location', address: 'Address', notFound: 'Project not found', goBack: 'Go back',
+    advWater: 'Drinking water reservoir', advWaterDesc: 'Autonomous supply of quality drinking water',
+    advGen: 'Power generator', advGenDesc: 'Uninterrupted power supply 24/7',
+    advBoiler: 'Autonomous heating boiler', advBoilerDesc: 'Individual heating system for the complex',
+    advCeiling: 'High 3.20 m ceilings', advCeilingDesc: '3.2 m ceilings create a sense of space',
+    advPlay: 'Own playground', advPlayDesc: 'Modern and safe play area for children',
+    advInfra: 'Developed infrastructure', advInfraDesc: 'Schools, shops, waterfront and entertainment nearby',
+    philUnique: 'Unique concept', philPositive: 'Positive environment', philHarmony: 'Harmonious space',
+    infraConvenient: 'Convenient location', infraFinishing: 'Quality finishing',
+    name: 'Name', phone: 'Phone', email: 'Email', message: 'Message', submit: 'Submit request',
+  },
+};
+
+type PKey = 'ilan' | 'taras' | 'caspian';
+// Описания под каждый ЖК (язык → поле → проект)
+const PARA: Record<string, Record<string, Record<PKey, string>>> = {
+  ru: {
+    heroDesc: {
+      ilan: 'Премиум-комплекс на первой береговой линии моря, 15 мкр.',
+      taras: 'Комфортный жилой комплекс рядом с набережной, 7а мкр.',
+      caspian: 'Жилой комплекс с развитой инфраструктурой, 3 мкр.',
+    },
+    philUniqueDesc: {
+      ilan: 'Уникальный жилой комплекс позволяет наслаждаться спокойствием — ведь в «Ilan Towers» есть всё для комфортной жизни.',
+      taras: 'Уникальный жилой комплекс «TARAS» обеспечивает спокойствие и комфорт для жизни каждого его жителя.',
+      caspian: 'Уникальный жилой комплекс позволяет наслаждаться спокойствием — ведь в «Caspian Coast» есть всё для комфортной жизни.',
+    },
+    philPositiveDesc: {
+      ilan: 'Места для прогулок, набережная, детская и спортивная площадки создают позитивную среду в жилом комплексе.',
+      taras: 'Каждый житель сможет наслаждаться прогулками, уютной набережной и детскими и спортивными площадками, создающими положительную атмосферу.',
+      caspian: 'Места для прогулок, набережная, детская и спортивная площадки создают позитивную среду в жилом комплексе.',
+    },
+    philHarmonyDesc: {
+      ilan: 'Из окон дома вы сможете ежедневно наслаждаться видами города и потрясающими закатами у моря, постоянно находясь в гармонии с собой и своей семьёй.',
+      taras: 'Из окон вашего дома вы будете наслаждаться видами города и впечатляющими закатами над морем — это поможет вам и вашей семье ощущать гармонию.',
+      caspian: 'Из окон дома вы сможете ежедневно наслаждаться видами города и потрясающими закатами у моря, постоянно находясь в гармонии с собой и своей семьёй.',
+    },
+    statement: {
+      ilan: 'Ilan Towers — премиум жилой комплекс, который сочетает в себе современные технологии и комфорт высочайшего уровня.',
+      taras: 'Taras — комфортный жилой комплекс, созданный для тех, кто ценит качество жизни и удобство расположения.',
+      caspian: 'Caspian Coast — строительная компания с многолетним опытом создания качественных жилых комплексов в Актау.',
+    },
+    uniqueBody: {
+      ilan: 'Уникальное расположение жилого комплекса «Ilan Towers» в 15-м микрорайоне Актау, на первой береговой линии моря. Адрес: 15-й микрорайон, 6, Актау. Здесь каждый день начинается с видом на бескрайние воды Каспийского моря, а вечера украшают роскошные закаты.',
+      taras: 'Расположенный вдоль берега моря, жилой комплекс «TARAS» предлагает уникальные виды на воду и великолепные закаты, делая каждый день особенным и незабываемым.',
+      caspian: 'Уникальное расположение жилого комплекса «Caspian Coast» в 3-м микрорайоне Актау с развитой инфраструктурой. Удобное расположение обеспечивает лёгкий доступ ко всем городским услугам и достопримечательностям.',
+    },
+    ownBody: {
+      ilan: 'Вы сможете вести активный образ жизни, не выходя за пределы жилого комплекса. На его территории будут расположены детские и спортивные площадки.',
+      taras: 'В рамках жилого комплекса вы сможете вести активный образ жизни благодаря детским и спортивным площадкам прямо на его территории. «TARAS» расположен в 7А микрорайоне, где вы сможете наслаждаться близостью к морю и великолепными видами, создающими неповторимую атмосферу.',
+      caspian: 'Вы сможете вести активный образ жизни, не выходя за пределы жилого комплекса. На его территории будут расположены детские и спортивные площадки.',
+    },
+    designBody: {
+      ilan: 'Переменная этажность комплекса от 2 до 15 этажей, колонная галерея у входа, разная фактура и цвет фасадов создают ощущение лёгкости, динамичности и современности всего жилого комплекса.',
+      taras: 'Жилой комплекс «Taras» воплощает современный стиль и утончённый дизайн фасадных панелей. Эргономичная планировка жилых помещений создаёт комфорт и удобство, идеально соответствуя современным потребностям жителей.',
+      caspian: 'Переменная этажность комплекса от 2 до 15 этажей, колонная галерея у входа, разная фактура и цвет фасадов создают ощущение лёгкости, динамичности и современности всего жилого комплекса.',
+    },
+  },
+  kz: {
+    heroDesc: {
+      ilan: 'Теңіз жағалауының бірінші желісіндегі премиум-кешен, 15 ш/а.',
+      taras: 'Жағалауға жақын ыңғайлы тұрғын кешені, 7а ш/а.',
+      caspian: 'Дамыған инфрақұрылымы бар тұрғын кешені, 3 ш/а.',
+    },
+    philUniqueDesc: {
+      ilan: 'Бірегей тұрғын кешені тыныштықты сезінуге мүмкіндік береді — себебі «Ilan Towers»-та жайлы өмір сүруге барлығы бар.',
+      taras: '«TARAS» тұрғын кешені әрбір тұрғынға тыныштық пен өмір сүруге жайлылық сыйлайды.',
+      caspian: 'Бірегей тұрғын кешені тыныштықты сезінуге мүмкіндік береді — себебі «Caspian Coast»-та жайлы өмір сүруге барлығы бар.',
+    },
+    philPositiveDesc: {
+      ilan: 'Серуендеуге арналған орындар, жағалау, балалар және спорт алаңдары кешенде позитивті орта қалыптастырады.',
+      taras: 'Әрбір тұрғын серуендеуден, жайлы жағалаудан, балалар мен спорт алаңдарынан ләззат алып, жағымды атмосфера сезінеді.',
+      caspian: 'Серуендеуге арналған орындар, жағалау, балалар және спорт алаңдары кешенде позитивті орта қалыптастырады.',
+    },
+    philHarmonyDesc: {
+      ilan: 'Үйдің терезесінен қала көріністері мен теңіздегі тамаша күн батуын күн сайын тамашалап, өзіңізбен және отбасыңызбен үйлесімде боласыз.',
+      taras: 'Үйіңіздің терезесінен қала көріністері мен теңіз үстіндегі әсем күн батуын тамашалайсыз — бұл сізге және отбасыңызға үйлесім сезінуге көмектеседі.',
+      caspian: 'Үйдің терезесінен қала көріністері мен теңіздегі тамаша күн батуын күн сайын тамашалап, өзіңізбен және отбасыңызбен үйлесімде боласыз.',
+    },
+    statement: {
+      ilan: 'Ilan Towers — заманауи технологиялар мен жоғары деңгейдегі жайлылықты үйлестіретін премиум тұрғын кешені.',
+      taras: 'Taras — өмір сапасы мен орналасу ыңғайлылығын бағалайтындарға арналған жайлы тұрғын кешені.',
+      caspian: 'Caspian Coast — Ақтауда сапалы тұрғын кешендерін салуда көпжылдық тәжірибесі бар құрылыс компаниясы.',
+    },
+    uniqueBody: {
+      ilan: '«Ilan Towers» тұрғын кешенінің Ақтаудың 15-ші шағын ауданындағы, теңіздің бірінші жағалау желісіндегі бірегей орналасуы. Мекенжайы: 15-ші шағын аудан, 6, Ақтау. Мұнда әр күн Каспий теңізінің шексіз суларына көзқараспен басталып, кештерді әсем күн батулары әрлейді.',
+      taras: 'Теңіз жағасында орналасқан «TARAS» тұрғын кешені суға бірегей көріністер мен керемет күн батуларын ұсынып, әр күнді ерекше әрі ұмытылмас етеді.',
+      caspian: '«Caspian Coast» тұрғын кешенінің Ақтаудың 3-ші шағын ауданындағы дамыған инфрақұрылымы бар бірегей орналасуы. Ыңғайлы орналасу барлық қалалық қызметтер мен көрікті жерлерге оңай қол жеткізуді қамтамасыз етеді.',
+    },
+    ownBody: {
+      ilan: 'Тұрғын кешеннен шықпай-ақ белсенді өмір салтын ұстана аласыз. Оның аумағында балалар мен спорт алаңдары орналасады.',
+      taras: 'Тұрғын кешен аясында оның аумағындағы балалар мен спорт алаңдарының арқасында белсенді өмір салтын ұстана аласыз. «TARAS» 7А шағын ауданында орналасқан, мұнда теңізге жақындықтан және қайталанбас атмосфера жасайтын тамаша көріністерден ләззат аласыз.',
+      caspian: 'Тұрғын кешеннен шықпай-ақ белсенді өмір салтын ұстана аласыз. Оның аумағында балалар мен спорт алаңдары орналасады.',
+    },
+    designBody: {
+      ilan: 'Кешеннің 2-ден 15 қабатқа дейінгі айнымалы қабаттылығы, кіреберістегі бағаналы галерея, фасадтардың әртүрлі фактурасы мен түсі бүкіл тұрғын кешенге жеңілдік, динамикалық және заманауилық сезімін береді.',
+      taras: '«Taras» тұрғын кешені заманауи стиль мен фасад панельдерінің талғампаз дизайнын бейнелейді. Тұрғын бөлмелердің эргономикалық жоспарлауы тұрғындардың заманауи қажеттіліктеріне сай жайлылық пен ыңғайлылық жасайды.',
+      caspian: 'Кешеннің 2-ден 15 қабатқа дейінгі айнымалы қабаттылығы, кіреберістегі бағаналы галерея, фасадтардың әртүрлі фактурасы мен түсі бүкіл тұрғын кешенге жеңілдік, динамикалық және заманауилық сезімін береді.',
+    },
+  },
+  en: {
+    heroDesc: {
+      ilan: 'A premium complex on the seafront, district 15.',
+      taras: 'A comfortable residential complex near the waterfront, district 7a.',
+      caspian: 'A residential complex with developed infrastructure, district 3.',
+    },
+    philUniqueDesc: {
+      ilan: 'This unique complex lets you enjoy tranquility — «Ilan Towers» has everything for comfortable living.',
+      taras: 'The «TARAS» complex brings peace and comfort to the life of every resident.',
+      caspian: 'This unique complex lets you enjoy tranquility — «Caspian Coast» has everything for comfortable living.',
+    },
+    philPositiveDesc: {
+      ilan: 'Walking areas, a waterfront, and children’s and sports grounds create a positive environment within the complex.',
+      taras: 'Every resident can enjoy walks, a cozy waterfront and children’s and sports grounds that create a positive atmosphere.',
+      caspian: 'Walking areas, a waterfront, and children’s and sports grounds create a positive environment within the complex.',
+    },
+    philHarmonyDesc: {
+      ilan: 'From your home’s windows you can enjoy city views and breathtaking sunsets by the sea every day, staying in harmony with yourself and your family.',
+      taras: 'From your windows you’ll enjoy city views and stunning sunsets over the sea — helping you and your family feel in harmony.',
+      caspian: 'From your home’s windows you can enjoy city views and breathtaking sunsets by the sea every day, staying in harmony with yourself and your family.',
+    },
+    statement: {
+      ilan: 'Ilan Towers is a premium residential complex combining modern technology with the highest level of comfort.',
+      taras: 'Taras is a comfortable residential complex created for those who value quality of life and a convenient location.',
+      caspian: 'Caspian Coast is a construction company with many years of experience building quality residential complexes in Aktau.',
+    },
+    uniqueBody: {
+      ilan: 'A unique location for the «Ilan Towers» complex in district 15 of Aktau, on the first seafront line. Address: district 15, 6, Aktau. Here every day begins with a view of the boundless Caspian Sea, and evenings are graced by magnificent sunsets.',
+      taras: 'Set along the seashore, the «TARAS» complex offers unique water views and magnificent sunsets, making every day special and unforgettable.',
+      caspian: 'A unique location for the «Caspian Coast» complex in district 3 of Aktau with developed infrastructure. Its convenient position provides easy access to all city services and attractions.',
+    },
+    ownBody: {
+      ilan: 'You can lead an active lifestyle without leaving the complex. Children’s and sports grounds will be located on its territory.',
+      taras: 'Within the complex you can lead an active lifestyle thanks to children’s and sports grounds right on its territory. «TARAS» is located in district 7A, where you can enjoy proximity to the sea and magnificent views that create a unique atmosphere.',
+      caspian: 'You can lead an active lifestyle without leaving the complex. Children’s and sports grounds will be located on its territory.',
+    },
+    designBody: {
+      ilan: 'Variable height from 2 to 15 floors, a colonnade gallery at the entrance, and varied facade textures and colors give the whole complex a sense of lightness, dynamism and modernity.',
+      taras: 'The «Taras» complex embodies modern style and refined facade-panel design. Its ergonomic layout of living spaces creates comfort and convenience, perfectly matching residents’ modern needs.',
+      caspian: 'Variable height from 2 to 15 floors, a colonnade gallery at the entrance, and varied facade textures and colors give the whole complex a sense of lightness, dynamism and modernity.',
+    },
+  },
+};
 
 import gallery1 from '../assets/image/ilanTower1.webp';
 import gallery2 from '../assets/image/home1.webp';
@@ -131,6 +324,8 @@ const ContactModal: React.FC<{
   onClose: () => void;
   projectName: string;
 }> = ({ isOpen, onClose, projectName }) => {
+  const { language } = useLanguage();
+  const td = (k: string) => (PD[language] || PD.ru)[k];
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -160,7 +355,7 @@ Email: ${formData.email}`;
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="p-8">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-slate-900">Записаться на просмотр</h3>
+            <h3 className="text-2xl font-bold text-slate-900">{td('bookViewing')}</h3>
             <button
               onClick={onClose}
               className="text-slate-400 hover:text-slate-600 transition-colors"
@@ -171,7 +366,7 @@ Email: ${formData.email}`;
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Имя</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">{td('name')}</label>
               <input
                 type="text"
                 required
@@ -182,7 +377,7 @@ Email: ${formData.email}`;
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Телефон</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">{td('phone')}</label>
               <input
                 type="tel"
                 required
@@ -193,7 +388,7 @@ Email: ${formData.email}`;
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">{td('email')}</label>
               <input
                 type="email"
                 className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
@@ -203,7 +398,7 @@ Email: ${formData.email}`;
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Сообщение</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">{td('message')}</label>
               <textarea
                 rows={4}
                 className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none"
@@ -216,7 +411,7 @@ Email: ${formData.email}`;
               type="submit"
               className="w-full bg-gradient-to-r from-brand-600 to-brand-400 text-white py-3 rounded-xl font-semibold hover:from-brand-700 hover:to-brand-500 transition-all duration-300 transform hover:scale-105"
             >
-              Отправить заявку
+              {td('submit')}
             </button>
           </form>
         </div>
@@ -228,8 +423,12 @@ Email: ${formData.email}`;
 export default function ProjectDetail() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const td = (k: string) => (PD[language] || PD.ru)[k];
   const state = location.state as { project?: Project } | undefined;
   const p = state?.project;
+  const pk: PKey = p?.name.includes('Taras') ? 'taras' : p?.name.includes('Caspian') ? 'caspian' : 'ilan';
+  const tp = (field: string) => (PARA[language] || PARA.ru)[field][pk];
   
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -241,14 +440,14 @@ export default function ProjectDetail() {
         <main className="flex-1 flex flex-col items-center justify-center pt-[104px] sm:pt-[112px] lg:pt-[128px] p-6">
           <div className="text-center">
             <Building2 className="w-20 h-20 text-slate-300 mx-auto mb-6" />
-            <h1 className="text-2xl font-bold text-slate-900 mb-4">Проект не найден</h1>
+            <h1 className="text-2xl font-bold text-slate-900 mb-4">{td('notFound')}</h1>
             <p className="text-slate-600 mb-8">К сожалению, информация о проекте недоступна</p>
             <button
               onClick={() => navigate(-1)}
               className="bg-brand-600 text-white px-6 py-3 rounded-xl hover:bg-brand-700 transition-all duration-300 flex items-center gap-2 mx-auto"
             >
               <ArrowLeft className="w-5 h-5" />
-              Вернуться назад
+              {td('goBack')}
             </button>
           </div>
         </main>
@@ -297,7 +496,7 @@ export default function ProjectDetail() {
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/20"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Назад
+                  {td('back')}
                 </button>
               </div>
             </div>
@@ -331,14 +530,14 @@ export default function ProjectDetail() {
 
                 {/* Описание */}
                 <motion.p variants={fadeUp} className="mt-4 max-w-2xl text-lg text-slate-200">
-                  {p.description || `Современный жилой комплекс с продуманной планировкой, ${p.district}`}
+                  {tp('heroDesc')}
                 </motion.p>
 
                 {/* Чипы характеристик */}
                 <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-3">
-                  <HeroChip icon={MapPin} label="Местоположение" value={`Актау, ${p.district}`} />
-                  <HeroChip icon={Layers} label="Высота" value={p.floors} />
-                  <HeroChip icon={Building2} label="Корпуса" value={`${p.blocks} блока`} />
+                  <HeroChip icon={MapPin} label={td('chipLocation')} value={`Актау, ${p.district}`} />
+                  <HeroChip icon={Layers} label={td('chipHeight')} value={p.floors} />
+                  <HeroChip icon={Building2} label={td('chipBlocks')} value={`${p.blocks} блока`} />
                 </motion.div>
 
                 {/* Кнопки */}
@@ -347,7 +546,7 @@ export default function ProjectDetail() {
                     onClick={() => setIsContactModalOpen(true)}
                     className="rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-8 py-4 font-semibold text-white shadow-lg shadow-brand-600/30 transition-shadow hover:shadow-xl hover:shadow-brand-600/40"
                   >
-                    Записаться на просмотр
+                    {td('bookViewing')}
                   </button>
                   {videoUrl && (
                     <a
@@ -359,7 +558,7 @@ export default function ProjectDetail() {
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110">
                         <Play className="h-4 w-4" fill="currentColor" />
                       </span>
-                      Смотреть видео
+                      {td('watchVideo')}
                     </a>
                   )}
                 </motion.div>
@@ -383,7 +582,7 @@ export default function ProjectDetail() {
             <div className="max-w-4xl mx-auto">
               {/* Header */}
               <div className="text-center mb-12 reveal-up">
-                <h2 className="text-3xl font-bold text-slate-900 mb-3">Преимущества</h2>
+                <h2 className="text-3xl font-bold text-slate-900 mb-3">{td('advantages')}</h2>
                 <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
               </div>
 
@@ -395,8 +594,8 @@ export default function ProjectDetail() {
                       <Droplet className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Резервуар для питьевой воды</h3>
-                      <p className="text-slate-600 text-sm">Автономное водоснабжение качественной питьевой водой</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advWater')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advWaterDesc')}</p>
                     </div>
                   </div>
 
@@ -405,8 +604,8 @@ export default function ProjectDetail() {
                       <Zap className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Электрогенератор</h3>
-                      <p className="text-slate-600 text-sm">Бесперебойное электроснабжение 24/7</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advGen')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advGenDesc')}</p>
                     </div>
                   </div>
 
@@ -415,8 +614,8 @@ export default function ProjectDetail() {
                       <Thermometer className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Котел автономного отопления</h3>
-                      <p className="text-slate-600 text-sm">Индивидуальная система отопления для комплекса</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advBoiler')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advBoilerDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -427,8 +626,8 @@ export default function ProjectDetail() {
                       <Home className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Высокие 3,20 метра потолки</h3>
-                      <p className="text-slate-600 text-sm">Потолки высотой 3,2 метра создают ощущение простора</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advCeiling')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advCeilingDesc')}</p>
                     </div>
                   </div>
 
@@ -437,8 +636,8 @@ export default function ProjectDetail() {
                       <Users className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Собственная детская площадка</h3>
-                      <p className="text-slate-600 text-sm">Современная и безопасная игровая зона для детей</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advPlay')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advPlayDesc')}</p>
                     </div>
                   </div>
 
@@ -447,8 +646,8 @@ export default function ProjectDetail() {
                       <MapPin className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Развитая инфраструктура</h3>
-                      <p className="text-slate-600 text-sm">Рядом школы, магазины, набережная и развлечения</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{td('advInfra')}</h3>
+                      <p className="text-slate-600 text-sm">{td('advInfraDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -466,7 +665,7 @@ export default function ProjectDetail() {
               <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12 reveal-up">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-3">Философия проекта</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-3">{td('philosophy')}</h2>
                   <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
                 </div>
 
@@ -477,13 +676,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Target className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900">Уникальная концепция</h3>
+                      <h3 className="text-xl font-bold text-slate-900">{td('philUnique')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg pl-12">
-                      {p.name === 'ЖК Taras' 
-                        ? 'Уникальный жилой комплекс «TARAS» обеспечивает спокойствие и комфорт для жизни каждого его жителя'
-                        : `Уникальный жилой комплекс позволяет наслаждаться спокойствием. Ведь в «${p.name.replace('ЖК ', '')}» будет все для комфортной жизни.`
-                      }
+                      {tp('philUniqueDesc')}
                     </p>
                   </div>
 
@@ -493,13 +689,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Users className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900">Позитивная среда</h3>
+                      <h3 className="text-xl font-bold text-slate-900">{td('philPositive')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg pl-12">
-                      {p.name === 'ЖК Taras' 
-                        ? 'В жилом комплексе каждый житель сможет наслаждаться прогулками, уютной набережной и детскими спортивными площадками, создающими положительную атмосферу'
-                        : 'Места для прогулок, набережная, детская и спортивная площадки будут создавать позитивную среду в жилом комплексе.'
-                      }
+                      {tp('philPositiveDesc')}
                     </p>
                   </div>
 
@@ -509,13 +702,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-brand-600/20">
                         <Home className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900">Гармоничное пространство</h3>
+                      <h3 className="text-xl font-bold text-slate-900">{td('philHarmony')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg pl-12">
-                      {p.name === 'ЖК Taras' 
-                        ? 'Из окон вашего дома вы будете наслаждаться видами города и впечатляющими закатами над морем, что поможет вам и вашей семье ощущать гармонию'
-                        : 'Из окон дома вы сможете ежедневно наслаждаться видами города и потрясающих закатов у моря. А это означает постоянно находиться в гармонии с собой и своей семьей.'
-                      }
+                      {tp('philHarmonyDesc')}
                     </p>
                   </div>
                 </div>
@@ -524,9 +714,7 @@ export default function ProjectDetail() {
                 <div className="mt-12 pt-8 border-t border-slate-200">
                   <div className="rounded-2xl bg-gradient-to-br from-brand-600 to-brand-500 p-8 shadow-lg shadow-brand-600/20">
                     <p className="text-center text-white font-medium text-lg leading-relaxed">
-                      {p.name === 'ЖК Ilan Towers' && 'Ilan Towers — премиум жилой комплекс, который сочетает в себе современные технологии и комфорт высочайшего уровня'}
-                      {p.name === 'ЖК Taras' && 'Taras — комфортный жилой комплекс, созданный для тех, кто ценит качество жизни и удобство расположения'}
-                      {p.name === 'ЖК Caspian Coast' && 'Caspian Coast — строительная компания с многолетним опытом создания качественных жилых комплексов в Актау'}
+                      {tp('statement')}
                     </p>
                   </div>
                 </div>
@@ -540,7 +728,7 @@ export default function ProjectDetail() {
           <section className="py-20 bg-slate-50">
             <div className="container mx-auto px-6">
               <div className="text-center mb-12 reveal-up">
-                <h2 className="text-3xl font-bold text-slate-900 mb-3">Виртуальный тур 360°</h2>
+                <h2 className="text-3xl font-bold text-slate-900 mb-3">{td('tour360')}</h2>
                 <div className="w-20 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
               </div>
               
@@ -550,23 +738,21 @@ export default function ProjectDetail() {
                     <iframe
                       width="100%"
                       height="100%"
-                      frameBorder="0"
                       allow="xr-spatial-tracking; gyroscope; accelerometer"
                       allowFullScreen
-                      scrolling="no"
-                      src={p.name === 'ЖК Ilan Towers' 
+                      src={p.name === 'ЖК Ilan Towers'
                         ? "https://kuula.co/share/collection/7DHL6?logo=1&info=1&fs=1&vr=0&thumbs=0&inst=ru"
                         : "https://kuula.co/share/collection/7DHxt?logo=1&info=1&fs=1&vr=0&thumbs=0&inst=ru"
                       }
                       title={`${p.name} - Виртуальный тур 360°`}
-                      className="w-full h-full"
+                      className="w-full h-full border-0"
                     />
                   </div>
                 </div>
                 
                 <div className="flex justify-between items-center mt-6">
                   <p className="text-slate-600">
-                    Используйте мышь или сенсорный экран для навигации по виртуальному туру
+                    {td('tourHint')}
                   </p>
                   <a
                     href={p.name === 'ЖК Ilan Towers' 
@@ -578,7 +764,7 @@ export default function ProjectDetail() {
                     className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors text-sm"
                   >
                     <Maximize className="w-4 h-4" />
-                    Открыть в полном экране
+                    {td('fullscreen')}
                   </a>
                 </div>
               </div>
@@ -591,8 +777,8 @@ export default function ProjectDetail() {
           <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
               <div className="text-center mb-12 reveal-up">
-                <h2 className="text-4xl font-bold text-slate-900 mb-4">Галерея</h2>
-                <p className="text-xl text-slate-600">Фотографии проекта</p>
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">{td('gallery')}</h2>
+                <p className="text-xl text-slate-600">{td('galleryPhotos')}</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto stagger-up">
                 {galleryImages.map((img, index) => (
@@ -622,8 +808,8 @@ export default function ProjectDetail() {
           <section className="py-20 bg-slate-900">
             <div className="container mx-auto px-6">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-white mb-4">Видеопрезентация проекта</h2>
-                <p className="text-xl text-slate-300">Погрузитесь в атмосферу будущего дома</p>
+                <h2 className="text-4xl font-bold text-white mb-4">{td('videoTitle')}</h2>
+                <p className="text-xl text-slate-300">{td('videoSubtitle')}</p>
               </div>
               
               <div className="max-w-5xl mx-auto">
@@ -655,28 +841,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <MapPin className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-slate-900">Уникальное место</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">{td('uniquePlace')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg mb-6">
-                      {p.name === 'ЖК Ilan Towers' && (
-                        <>
-                          Уникальное место расположения жилого комплекса «Ilan Tower» в 15-м микрорайоне Актау на первой береговой линии моря. 
-                          Адрес: 15-й микрорайон, 6, Актау. Здесь каждый день начинается с видом на бескрайние воды Каспийского моря, 
-                          а вечера украшают роскошные закаты.
-                        </>
-                      )}
-                      {p.name === 'ЖК Taras' && (
-                        <>
-                          Расположенный вдоль берега моря, жилой комплекс «TARAS» предлагает уникальные виды на воду и великолепные закаты, 
-                          делая каждый день особенным и незабываемым.
-                        </>
-                      )}
-                      {p.name === 'ЖК Caspian Coast' && (
-                        <>
-                          Уникальное место расположения жилого комплекса «Caspian Coast» в 3-м микрорайоне Актау с развитой инфраструктурой. 
-                          Удобное расположение обеспечивает легкий доступ ко всем городским услугам и достопримечательностям.
-                        </>
-                      )}
+                      {tp('uniqueBody')}
                     </p>
                     <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
@@ -707,18 +875,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <TreePine className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-slate-900">Своя территория</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">{td('ownTerritory')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg mb-6">
-                      {p.name === 'ЖК Taras' ? (
-                        <>
-                          В рамках жилого комплекса вы сможете вести активный образ жизни, благодаря наличию детских и спортивных площадок прямо на его территории. 
-                          Жилой комплекс «TARAS» расположен в 7А микрорайоне, где вы сможете наслаждаться близостью к морю и великолепными видами, 
-                          создающими неповторимую атмосферу.
-                        </>
-                      ) : (
-                        'Вы сможете вести активный образ жизни, не выходя за пределы жилого комплекса. На его территории будут расположены детские и спортивные площадки.'
-                      )}
+                      {tp('ownBody')}
                     </p>
                     <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
@@ -731,14 +891,10 @@ export default function ProjectDetail() {
                       <div className="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-500 rounded-xl flex items-center justify-center shadow-md shadow-brand-600/20">
                         <Building2 className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-slate-900">Дизайн и архитектура</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">{td('design')}</h3>
                     </div>
                     <p className="text-slate-700 leading-relaxed text-lg mb-6">
-                      {p.name === 'ЖК Taras' ? (
-                        'Жилой комплекс «Taras» воплощает современный стиль и утонченный дизайн фасадных панелей. Его эргономичная планировка жилых помещений создает комфорт и удобство, идеально соответствуя современным потребностям жителей.'
-                      ) : (
-                        'Переменная этажность комплекса от 2 до 15 этажей, колонная галерея со входа, разная фактура и цвет фасадов создают ощущение легкости, динамичности и современности всего жилого комплекса.'
-                      )}
+                      {tp('designBody')}
                     </p>
                     <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
                   </div>
@@ -783,15 +939,15 @@ export default function ProjectDetail() {
                       </div>
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-slate-700">Развитая инфраструктура</span>
+                        <span className="text-slate-700">{td('advInfra')}</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-slate-700">Удобное расположение</span>
+                        <span className="text-slate-700">{td('infraConvenient')}</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-brand-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-slate-700">Качественная отделка</span>
+                        <span className="text-slate-700">{td('infraFinishing')}</span>
                       </div>
                     </div>
                   </div>
@@ -807,7 +963,7 @@ export default function ProjectDetail() {
             <div className="container mx-auto px-6">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Местоположение</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">{td('location')}</h2>
                   <div className="w-12 h-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 mx-auto"></div>
                 </div>
 
@@ -820,16 +976,15 @@ export default function ProjectDetail() {
                       }
                       width="100%"
                       height="100%"
-                      frameBorder="0"
                       allowFullScreen
                       title={`${p.name} на карте`}
-                      className="w-full h-full"
+                      className="w-full h-full border-0"
                     />
                   </div>
                   
                   <div className="flex justify-between items-start">
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-slate-900">Адрес</h3>
+                      <h3 className="font-semibold text-slate-900">{td('address')}</h3>
                       <p className="text-slate-600">
                         {p.name === 'ЖК Ilan Towers' 
                           ? '15-й микрорайон, 6, Актау'
