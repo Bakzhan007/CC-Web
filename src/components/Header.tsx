@@ -12,6 +12,7 @@ import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 import WhatsappIcon from './icons/WhatsappIcons'
+import LiveCameraModal from './LiveCameraModal'
 import mainLogo from '../assets/logo/logo-dark-hor.png'
 
 interface MenuItem {
@@ -20,12 +21,10 @@ interface MenuItem {
   icon: LucideIcon
 }
 
-// TODO: подставить реальную ссылку на live-камеру
-const LIVE_URL = '#'
-
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isLiveOpen, setIsLiveOpen] = useState(false)
   const { t } = useLanguage()
   const navigate = useNavigate()
   const menuRef = useRef<HTMLDivElement>(null)
@@ -236,10 +235,9 @@ const Header: React.FC = () => {
             {/* Live-камера и панорама справа */}
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Live-камера */}
-              <a
-                href={LIVE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => setIsLiveOpen(true)}
                 className="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:border-red-300 hover:bg-red-50"
               >
                 <span className="relative flex h-2.5 w-2.5">
@@ -248,11 +246,17 @@ const Header: React.FC = () => {
                 </span>
                 <Video size={16} className="text-slate-500 group-hover:text-red-500 transition-colors" />
                 <span className="hidden text-sm font-medium sm:inline">{t.live}</span>
-              </a>
+              </button>
             </div>
           </nav>
         </div>
       </div>
+
+      <LiveCameraModal
+        isOpen={isLiveOpen}
+        onClose={() => setIsLiveOpen(false)}
+        title={t.live}
+      />
     </header>
   )
 }
