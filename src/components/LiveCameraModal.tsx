@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
 interface LiveCameraModalProps {
@@ -7,12 +7,25 @@ interface LiveCameraModalProps {
   title?: string;
 }
 
-// Ссылка на прямой эфир камеры (ipglaz.kz). autoplay=1 — сразу запускаем поток,
-// т.к. пользователь открыл окно осознанно.
-const CAMERA_SRC =
-  'https://ipglaz.kz/service/api/iframe.php?iframe_player=1&dev=6f0f61e1dbcb47848199ec04cd6250e2&autoplay=1&archive=1';
+interface Camera {
+  id: string;
+  label: string;
+}
+
+// Камеры прямого эфира (ipglaz.kz). Достаточно указать dev-идентификатор —
+// остальные параметры одинаковые для всех камер.
+const CAMERAS: Camera[] = [
+  { id: '6f0f61e1dbcb47848199ec04cd6250e2', label: 'Камера 1' },
+  { id: '79bc1515743d41e8a5795e0537f4dfde', label: 'Камера 2' },
+];
+
+// autoplay=1 — сразу запускаем поток, т.к. пользователь открыл окно осознанно.
+const cameraSrc = (dev: string) =>
+  `https://ipglaz.kz/service/api/iframe.php?iframe_player=1&dev=${dev}&autoplay=1&archive=1`;
 
 const LiveCameraModal: React.FC<LiveCameraModalProps> = ({ isOpen, onClose, title = 'Тікелей камера' }) => {
+  const [activeId, setActiveId] = useState(CAMERAS[0].id);
+
   // Закрытие по Escape
   useEffect(() => {
     if (!isOpen) return;
@@ -23,7 +36,14 @@ const LiveCameraModal: React.FC<LiveCameraModalProps> = ({ isOpen, onClose, titl
     return () => document.removeEventListener('keydown', onKey);
   }, [isOpen, onClose]);
 
+  // При открытии всегда показываем первую камеру
+  useEffect(() => {
+    if (isOpen) setActiveId(CAMERAS[0].id);
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  const activeCamera = CAMERAS.find((c) => c.id === activeId) ?? CAMERAS[0];
 
   return (
     <div
@@ -52,11 +72,36 @@ const LiveCameraModal: React.FC<LiveCameraModalProps> = ({ isOpen, onClose, titl
           </button>
         </div>
 
+        {/* Переключатель камер */}
+        {CAMERAS.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto border-b border-slate-100 px-5 py-3">
+            {CAMERAS.map((camera) => {
+              const isActive = camera.id === activeCamera.id;
+              return (
+                <button
+                  key={camera.id}
+                  type="button"
+                  onClick={() => setActiveId(camera.id)}
+                  aria-pressed={isActive}
+                  className={`shrink-0 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'border-red-300 bg-red-50 text-red-600'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                  }`}
+                >
+                  {camera.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {/* Видео (4:3, как у камеры 800x600) */}
         <div className="relative w-full bg-black" style={{ aspectRatio: '4 / 3' }}>
           <iframe
-            src={CAMERA_SRC}
-            title={title}
+            key={activeCamera.id}
+            src={cameraSrc(activeCamera.id)}
+            title={`${title} — ${activeCamera.label}`}
             className="absolute inset-0 h-full w-full"
             frameBorder="0"
             seamless
