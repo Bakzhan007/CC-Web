@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Деплой на hoster.kz по FTPS: сборка → загрузка → проверка.
+# Деплой на hoster.kz (Plesk) по FTPS: сборка → загрузка → проверка.
 # Настройки берутся из .env.deploy (не коммитится), пример — .env.deploy.example.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -11,7 +11,7 @@ fi
 # shellcheck disable=SC1091
 source .env.deploy
 : "${FTP_HOST:?FTP_HOST не задан}" "${FTP_USER:?FTP_USER не задан}" "${FTP_PASS:?FTP_PASS не задан}"
-REMOTE_DIR="${REMOTE_DIR:-public_html}"
+REMOTE_DIR="${REMOTE_DIR:-httpdocs}"
 SITE_URL="${SITE_URL:-https://caspiancoast.kz}"
 
 command -v lftp >/dev/null || { echo "Нужен lftp: brew install lftp"; exit 1; }
