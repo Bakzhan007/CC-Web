@@ -19,7 +19,7 @@ command -v lftp >/dev/null || { echo "Нужен lftp: brew install lftp"; exit 
 echo "▶ Сборка…"
 npm run build
 
-echo "▶ Загрузка на $FTP_HOST:$REMOTE_DIR…"
+echo "▶ Загрузка на ${FTP_HOST}:${REMOTE_DIR}…"
 # Порядок важен, чтобы посетители не поймали полусобранный сайт:
 #  1) новые файлы /assets (старые пока остаются — открытые вкладки продолжают работать)
 #  2) остальные файлы из dist, кроме index.html
@@ -39,7 +39,7 @@ mirror -R --delete --only-newer --no-perms dist/assets $REMOTE_DIR/assets
 bye
 LFTP
 
-echo "▶ Проверка $SITE_URL…"
+echo "▶ Проверка ${SITE_URL}…"
 fail=0
 for path in / /projects/taras /apartments /robots.txt /sitemap.xml; do
   code=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL$path?deploy=$(date +%s)")
