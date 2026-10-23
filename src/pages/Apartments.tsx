@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react'
+import { useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Search, ChevronDown, RotateCcw, Maximize2 } from 'lucide-react'
@@ -6,7 +6,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useLanguage } from '../contexts/LanguageContext'
 import { fetchUnits, formatMoney, num, type Unit } from '../utils/apartments'
-import { findProjectByName } from '../data/projects'
+import { findProjectByName, projectPath } from '../data/projects'
 
 // Локальные переводы страницы (RU / KZ / EN)
 const I18N: Record<string, Record<string, string>> = {
@@ -55,13 +55,13 @@ export default function Apartments() {
   // Переход на страницу ЖК (как со страницы «Проекты»)
   const openProject = (projectName: string | null) => {
     const project = findProjectByName(projectName)
-    if (project) navigate(`/projects/${project.id}`, { state: { project } })
+    if (project) navigate(projectPath(project), { state: { project } })
     else navigate('/projects')
   }
 
   const [units, setUnits] = useState<Unit[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState(false)
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   const [search, setSearch] = useState('')
@@ -75,23 +75,35 @@ export default function Apartments() {
   const [sortBy, setSortBy] = useState<SortKey>('price')
   const [visible, setVisible] = useState(12)
 
+  // Абортим предыдущий запрос: ручное «Обновить» и фоновый таймер не перетирают друг друга
+  const controllerRef = useRef<AbortController | null>(null)
+
   const load = useCallback(async () => {
+    controllerRef.current?.abort()
+    const controller = new AbortController()
+    controllerRef.current = controller
     try {
-      setError(null)
-      const data = await fetchUnits()
-      setUnits(data.filter(u => u.status === 'available'))
+      const data = await fetchUnits(controller.signal)
+      // Каталог квартир: паркинги, кладовые и коммерция приходят из того же API — их не показываем
+      setUnits(data.filter(u => u.status === 'available' && (u.propertyType ?? 'apartment') === 'apartment'))
       setLastUpdated(new Date())
+      setError(false)
     } catch {
-      setError(t.error)
+      if (controller.signal.aborted) return
+      // Ошибку показываем, только если показать нечего; иначе остаётся последний удачный список
+      setError(true)
     } finally {
-      setLoading(false)
+      if (!controller.signal.aborted) setLoading(false)
     }
-  }, [t.error])
+  }, [])
 
   useEffect(() => {
     load()
     const id = setInterval(load, 60_000)
-    return () => clearInterval(id)
+    return () => {
+      clearInterval(id)
+      controllerRef.current?.abort()
+    }
   }, [load])
 
   const meta = useMemo(() => {
@@ -107,7 +119,7 @@ export default function Apartments() {
     const af = areaFrom ? num(areaFrom) : -Infinity
     const at = areaTo ? num(areaTo) : Infinity
     const list = units.filter(u => {
-      if (search && !u.unitNumber.toLowerCase().includes(search.toLowerCase())) return false
+      if (search && !u.unitNumber.toLowerCase().includes(search.trim().toLowerCase())) return false
       if (project && u.projectName !== project) return false
       if (section && u.sectionName !== section) return false
       if (roomsF && String(u.rooms) !== roomsF) return false
@@ -240,9 +252,9 @@ export default function Apartments() {
           {/* Сетка карточек */}
           {loading ? (
             <Grid>{Array.from({ length: 8 }).map((_, i) => <div key={i} className="h-80 animate-pulse rounded-2xl bg-slate-200" />)}</Grid>
-          ) : error ? (
+          ) : error && units.length === 0 ? (
             <div className="rounded-2xl bg-white border border-slate-200 p-10 text-center">
-              <p className="text-slate-600 mb-4">{error}</p>
+              <p className="text-slate-600 mb-4">{t.error}</p>
               <button onClick={load} className="rounded-lg bg-brand-600 px-5 py-2 text-white hover:bg-brand-700">{t.refresh}</button>
             </div>
           ) : filtered.length === 0 ? (

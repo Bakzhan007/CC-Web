@@ -1,7 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import ErrorBoundary from './components/ErrorBoundary';
+import ScrollManager from './components/ScrollManager';
+import RouteMeta from './components/RouteMeta';
 // Главная грузится сразу (точка входа / LCP), остальные страницы — лениво
 import Home from './pages/Home';
 
@@ -15,6 +17,7 @@ const SalesOffice = lazy(() => import('./pages/SalesOffice'));
 const Faq = lazy(() => import('./pages/Faq'));
 const AfterPurchase = lazy(() => import('./pages/AfterPurchase'));
 const Maintenance = lazy(() => import('./pages/Maintenance'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageLoader = () => (
   <div className="flex min-h-screen items-center justify-center bg-white">
@@ -22,27 +25,37 @@ const PageLoader = () => (
   </div>
 );
 
+function AppRoutes() {
+  const { pathname } = useLocation();
+  return (
+    <ErrorBoundary resetKey={pathname}>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/agencies" element={<Agencies />} />
+          <Route path="/apartments" element={<Apartments />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/partner" element={<Partner />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/sales-office" element={<SalesOffice />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/after-purchase" element={<AfterPurchase />} />
+          <Route path="/maintenance" element={<Maintenance />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+
 function App() {
   return (
     <LanguageProvider>
       <Router>
-        <ErrorBoundary>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/agencies" element={<Agencies />} />
-            <Route path="/apartments" element={<Apartments />} />
-            <Route path="/career" element={<Career />} />
-            <Route path="/partner" element={<Partner />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/sales-office" element={<SalesOffice />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/after-purchase" element={<AfterPurchase />} />
-            <Route path="/maintenance" element={<Maintenance />} />
-          </Routes>
-        </Suspense>
-        </ErrorBoundary>
+        <ScrollManager />
+        <RouteMeta />
+        <AppRoutes />
       </Router>
     </LanguageProvider>
   );

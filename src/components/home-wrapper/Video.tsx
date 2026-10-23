@@ -1,4 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
+import YouTubeFacade from '../YouTubeFacade';
 
 const Video = () => {
   const { t } = useLanguage();
@@ -15,13 +16,11 @@ const Video = () => {
           </p>
         </div>
         <div className="aspect-video">
-          <iframe
+          <YouTubeFacade
+            videoId="f2wmLFigdSg"
+            title={t.videoTitle}
             className="w-full h-full rounded-xl shadow-xl"
-            src="https://www.youtube.com/embed/f2wmLFigdSg?si=96YJMcUWwPNSwf5L"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+          />
         </div>
       </div>
     </section>

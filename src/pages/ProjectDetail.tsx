@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   Droplet,
   Zap,
@@ -21,10 +21,12 @@ import {
   ChevronDown,
   Sparkles
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { findProject, projectPath, type Project } from '../data/projects';
+import { useModal } from '../hooks/useModal';
 
 // Локальные переводы страницы ЖК (UI-каркас), RU / KZ / EN
 const PD: Record<string, Record<string, string>> = {
@@ -218,9 +220,6 @@ const PARA: Record<string, Record<string, Record<PKey, string>>> = {
   },
 };
 
-import gallery1 from '../assets/image/ilanTower1.webp';
-import gallery2 from '../assets/image/home1.webp';
-import gallery3 from '../assets/image/beibitshilik1.webp';
 import imgIlan1 from '../assets/image/i1-d.webp';
 import imgIlan3 from '../assets/image/i3-d.webp';
 import imgIlan4 from '../assets/image/i4-d.webp';
@@ -231,7 +230,7 @@ import imgTaras3 from '../assets/image/t3-d.webp';
 import type { LucideIcon } from 'lucide-react';
 
 // Анимация появления для hero
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
@@ -251,22 +250,6 @@ function HeroChip({ icon: Icon, label, value }: { icon: LucideIcon; label: strin
   );
 }
 
-interface Project {
-  id: number;
-  name: string;
-  image: string;
-  district: string;
-  status: string;
-  floors: string;
-  blocks: string;
-  type: string;
-  deadline: string;
-  priceRange: string;
-  description?: string;
-  images?: string[];
-  videoUrl?: string;
-}
-
 // Helper: turn any YouTube URL into an embed URL
 function getEmbedUrl(url?: string) {
   if (!url) return '';
@@ -284,40 +267,65 @@ const ImageModal: React.FC<{
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
-}> = ({ images, currentIndex, onClose, onPrev, onNext }) => (
-  <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
-    <button
+}> = ({ images, currentIndex, onClose, onPrev, onNext }) => {
+  const ref = useModal(true, onClose);
+
+  // Листание стрелками клавиатуры
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'ArrowRight') onNext();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onPrev, onNext]);
+
+  return (
+    <div
+      ref={ref}
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
       onClick={onClose}
-      className="absolute top-6 right-6 text-white hover:text-slate-300 transition-colors z-10"
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center outline-none"
     >
-      <X className="w-8 h-8" />
-    </button>
-    
-    <button
-      onClick={onPrev}
-      className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
-    >
-      <ChevronLeft className="w-10 h-10" />
-    </button>
-    
-    <button
-      onClick={onNext}
-      className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
-    >
-      <ChevronRight className="w-10 h-10" />
-    </button>
-    
-    <img
-      src={images[currentIndex]}
-      alt={`Gallery image ${currentIndex + 1}`}
-      className="max-w-[90vw] max-h-[90vh] object-contain"
-    />
-    
-    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-lg font-medium">
-      {currentIndex + 1} / {images.length}
+      <button
+        onClick={onClose}
+        aria-label="Close"
+        className="absolute top-6 right-6 text-white hover:text-slate-300 transition-colors z-10"
+      >
+        <X className="w-8 h-8" />
+      </button>
+
+      <button
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        aria-label="Previous"
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
+      >
+        <ChevronLeft className="w-10 h-10" />
+      </button>
+
+      <button
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        aria-label="Next"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
+      >
+        <ChevronRight className="w-10 h-10" />
+      </button>
+
+      <img
+        src={images[currentIndex]}
+        alt={`Gallery image ${currentIndex + 1}`}
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-[90vw] max-h-[90vh] object-contain"
+      />
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-lg font-medium">
+        {currentIndex + 1} / {images.length}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ContactModal: React.FC<{
   isOpen: boolean;
@@ -326,12 +334,14 @@ const ContactModal: React.FC<{
 }> = ({ isOpen, onClose, projectName }) => {
   const { language } = useLanguage();
   const td = (k: string) => (PD[language] || PD.ru)[k];
-  const [formData, setFormData] = useState({
+  const initialForm = {
     name: '',
     phone: '',
     email: '',
     message: `Интересуюсь проектом ${projectName}. Хотел бы записаться на просмотр.`
-  });
+  };
+  const [formData, setFormData] = useState(initialForm);
+  const ref = useModal(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -345,19 +355,28 @@ ${formData.message}
 Телефон: ${formData.phone}
 Email: ${formData.email}`;
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=77006363631&text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, '_blank');
-    setFormData({ name: '', phone: '', email: '', message: '' });
+    window.open(whatsappUrl, '_blank', 'noopener');
+    setFormData(initialForm);
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6" onClick={onClose}>
+      <div
+        ref={ref}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-title"
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto outline-none"
+      >
         <div className="p-8">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-slate-900">{td('bookViewing')}</h3>
+            <h3 id="booking-title" className="text-2xl font-bold text-slate-900">{td('bookViewing')}</h3>
             <button
               onClick={onClose}
+              aria-label="Close"
               className="text-slate-400 hover:text-slate-600 transition-colors"
             >
               <X className="w-6 h-6" />
@@ -425,8 +444,19 @@ export default function ProjectDetail() {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const td = (k: string) => (PD[language] || PD.ru)[k];
+  const { id } = useParams<{ id: string }>();
   const state = location.state as { project?: Project } | undefined;
-  const p = state?.project;
+  // Источник истины — адрес (слаг или старый номер); state остаётся запасным вариантом
+  const p = findProject(id) ?? state?.project;
+
+  // Старые цифровые ссылки (/projects/2) переводим на читаемый адрес (/projects/taras)
+  useEffect(() => {
+    if (p && id !== p.slug) {
+      navigate(projectPath(p) + location.search + location.hash, { replace: true, state: location.state });
+    }
+  }, [p, id, navigate, location.search, location.hash, location.state]);
+  // При прямом заходе истории нет — navigate(-1) увёл бы с сайта
+  const goBack = () => (location.key === 'default' ? navigate('/projects') : navigate(-1));
   const pk: PKey = p?.name.includes('Taras') ? 'taras' : p?.name.includes('Caspian') ? 'caspian' : 'ilan';
   const tp = (field: string) => (PARA[language] || PARA.ru)[field][pk];
   
@@ -441,9 +471,8 @@ export default function ProjectDetail() {
           <div className="text-center">
             <Building2 className="w-20 h-20 text-slate-300 mx-auto mb-6" />
             <h1 className="text-2xl font-bold text-slate-900 mb-4">{td('notFound')}</h1>
-            <p className="text-slate-600 mb-8">К сожалению, информация о проекте недоступна</p>
-            <button
-              onClick={() => navigate(-1)}
+                        <button
+              onClick={goBack}
               className="bg-brand-600 text-white px-6 py-3 rounded-xl hover:bg-brand-700 transition-all duration-300 flex items-center gap-2 mx-auto"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -456,7 +485,8 @@ export default function ProjectDetail() {
     );
   }
 
-  const galleryImages = p.images ?? [gallery1, gallery2, gallery3];
+  // Без своей галереи показываем только обложку проекта, а не фото других ЖК
+  const galleryImages = p.images ?? [p.image];
   const videoUrl = getEmbedUrl(p.videoUrl || 'https://youtu.be/jzjwXM5ZoIA?si=faPu9jPw7MyKg-1R&start=3');
 
   const closeImageModal = () => setSelectedImageIndex(null);
@@ -492,7 +522,7 @@ export default function ProjectDetail() {
             <div className="container mx-auto px-6 py-5">
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => navigate(-1)}
+                  onClick={goBack}
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/20"
                 >
                   <ArrowLeft className="h-4 w-4" />
@@ -736,6 +766,7 @@ export default function ProjectDetail() {
                 <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
                   <div className="aspect-[16/10]">
                     <iframe
+                      loading="lazy"
                       width="100%"
                       height="100%"
                       allow="xr-spatial-tracking; gyroscope; accelerometer"
@@ -815,6 +846,7 @@ export default function ProjectDetail() {
               <div className="max-w-5xl mx-auto">
                 <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
                   <iframe
+                    loading="lazy"
                     className="w-full h-full"
                     src={videoUrl}
                     title={`${p.name} - видеопрезентация`}
@@ -970,6 +1002,7 @@ export default function ProjectDetail() {
                 <div className="space-y-8">
                   <div className="h-[500px] bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
                     <iframe
+                      loading="lazy"
                       src={p.name === 'ЖК Ilan Towers' 
                         ? "https://maps.google.com/maps?q=15-й+микрорайон+6+Актау+Казахстан&output=embed&z=16"
                         : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.3762338431015!2d51.15053037630154!3d43.64034007110283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41b433f8c5047861%3A0x674154285ea616b7!2sTARAS!5e0!3m2!1sru!2skz!4v1757048502724!5m2!1sru!2skz"

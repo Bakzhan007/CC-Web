@@ -160,7 +160,6 @@ export interface Translation {
   nameLabel: string;
   phoneLabel: string;
   messageLabel: string;
-  sendRequest: string;
   waterReservoir: string;
   waterReservoirDesc: string;
   generator: string;
@@ -445,7 +444,7 @@ export const translations: Record<string, Translation> = {
     portfolioStats: [
       { value: '500,000 m²', label: 'of completed area' },
       { value: '8 years', label: 'of successful work' },
-      { value: '50+', label: 'finished projects' },
+      { value: '15+', label: 'finished projects' },
       { value: '80+', label: 'qualified employees' }
     ],
     portfolioFeatures: [
@@ -569,7 +568,6 @@ export const translations: Record<string, Translation> = {
     nameLabel: 'Name',
     phoneLabel: 'Phone',
     messageLabel: 'Message',
-    sendRequest: 'Send Request',
     waterReservoir: 'Drinking water reservoir',
     waterReservoirDesc: 'Autonomous supply of quality drinking water',
     generator: 'Electric generator',
@@ -872,7 +870,7 @@ export const translations: Record<string, Translation> = {
     ],
     partnerCtaTitle: 'Want to become a partner?',
     partnerCtaDescription:
-      'Contact us by phone +7 (700) 636-36-31 or send an email to info@caspiancoast.com and we\'ll discuss cooperation details.',
+      'Contact us by phone +7 (700) 636-36-31 or send an email to info@caspiancoast.kz and we\'ll discuss cooperation details.',
     partnerCtaButton: 'Write an Email',
     maintenanceTitle: 'Site Under Maintenance',
     maintenanceMessage: 'Technical work is in progress. Please check back later.',
@@ -1002,7 +1000,7 @@ export const translations: Record<string, Translation> = {
     portfolioStats: [
       { value: '500 000 м²', label: 'построенной площади' },
       { value: '8 лет', label: 'успешной работы на рынке' },
-      { value: '50+', label: 'завершённых проектов' },
+      { value: '15+', label: 'завершённых проектов' },
       { value: '80+', label: 'квалифицированных сотрудников' }
     ],
     portfolioFeatures: [
@@ -1126,7 +1124,6 @@ export const translations: Record<string, Translation> = {
     nameLabel: 'Имя',
     phoneLabel: 'Телефон',
     messageLabel: 'Сообщение',
-    sendRequest: 'Отправить заявку',
     waterReservoir: 'Резервуар для питьевой воды',
     waterReservoirDesc: 'Автономное водоснабжение качественной питьевой водой',
     generator: 'Электрогенератор',
@@ -1430,7 +1427,7 @@ export const translations: Record<string, Translation> = {
     ],
     partnerCtaTitle: 'Хотите стать партнером?',
     partnerCtaDescription:
-      'Свяжитесь с нами по телефону +7 (700) 636-36-31 или отправьте письмо на info@caspiancoast.com, и мы обсудим детали сотрудничества.',
+      'Свяжитесь с нами по телефону +7 (700) 636-36-31 или отправьте письмо на info@caspiancoast.kz, и мы обсудим детали сотрудничества.',
     partnerCtaButton: 'Написать письмо',
     maintenanceTitle: 'Сайт на техническом обслуживании',
     maintenanceMessage: 'Ведутся технические работы. Пожалуйста, зайдите позже.',
@@ -1557,7 +1554,7 @@ export const translations: Record<string, Translation> = {
     portfolioStats: [
       { value: '500 000 м²', label: 'салынған аумақ' },
       { value: '8 жыл', label: 'табысқа толы жұмыс' },
-      { value: '50+', label: 'аяқталған жоба' },
+      { value: '15+', label: 'аяқталған жоба' },
       { value: '80+', label: 'білікті қызметкер' }
     ],
     portfolioFeatures: [
@@ -1681,7 +1678,6 @@ export const translations: Record<string, Translation> = {
     nameLabel: 'Аты',
     phoneLabel: 'Телефон',
     messageLabel: 'Хабарлама',
-    sendRequest: 'Сұраныс жіберу',
     waterReservoir: 'Ауызсу су қоймасы',
     waterReservoirDesc: 'Сапалы ауызсумен автономды сумен қамтамасыз ету',
     generator: 'Электр генераторы',
@@ -1985,7 +1981,7 @@ export const translations: Record<string, Translation> = {
     ],
     partnerCtaTitle: 'Серіктес болғыңыз келе ме?',
     partnerCtaDescription:
-      'Бізбен +7 (700) 636-36-31 телефоны арқылы хабарласыңыз немесе info@caspiancoast.com мекенжайына хат жіберіңіз, біз ынтымақтастықтың егжей-тегжейін талқылаймыз.',
+      'Бізбен +7 (700) 636-36-31 телефоны арқылы хабарласыңыз немесе info@caspiancoast.kz мекенжайына хат жіберіңіз, біз ынтымақтастықтың егжей-тегжейін талқылаймыз.',
     partnerCtaButton: 'Хат жазу',
     maintenanceTitle: 'Сайт жаңартылуда',
     maintenanceMessage: 'Техникалық жұмыстар жүргізілуде. Кейінірек қайтып оралыңыз.',

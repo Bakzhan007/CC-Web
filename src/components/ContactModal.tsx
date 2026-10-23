@@ -35,7 +35,7 @@ ${formData.message}
 Email: ${formData.email}`;
 
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=77006363631&text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, '_blank', 'noopener');
     
     // Reset form and close modal
     setFormData({ name: '', phone: '', email: '', message: '' });

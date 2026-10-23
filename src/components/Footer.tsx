@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import logoLight from '../assets/logo/logo-light-hor.png';
+import logoLight from '../assets/logo/logo-light-hor.webp';
 import WhatsappIcon from './icons/WhatsappIcons';
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   const handleMapClick = () => {
-    window.open('https://maps.google.com/?q=Business+Center+Nesibek-Nur,+16+22/1+Aktau', '_blank');
+    window.open('https://maps.google.com/?q=Business+Center+Nesibek-Nur,+16+22/1+Aktau', '_blank', 'noopener');
   };
 
   const services = [
@@ -29,9 +29,9 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: `${t.servicesTitle} ${t.servicesSubtitle}`, href: '#services' },
+    { name: `${t.servicesTitle} ${t.servicesSubtitle}`, href: '/#why-choose-us' },
     { name: `${t.projectsTitle} ${t.projectsSubtitle}`, href: '/projects' },
-    { name: t.contact, href: '#contact' },
+    { name: t.contact, href: '/#contact' },
     { name: t.footerLinks.forPartner, href: '/partner' },
   ];
 
@@ -58,6 +58,8 @@ const Footer = () => {
               <img
                 src={logoLight}
                 alt="CaspianCoast Logo"
+                width={600}
+                height={176}
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
                 loading="lazy"
               />
@@ -95,9 +97,9 @@ const Footer = () => {
             </h4>            <ul className="space-y-3">
               {services.map((service, idx) => (
                 <li key={idx}>
-                  <a href="#services" className="text-slate-300 hover:text-brand-400 transition-colors">
+                  <Link to="/#why-choose-us" className="text-slate-300 hover:text-brand-400 transition-colors">
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

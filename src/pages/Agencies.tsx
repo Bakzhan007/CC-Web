@@ -4,10 +4,10 @@ import Header from '../components/Header';
 import { Award } from "lucide-react";
 import Footer from '../components/Footer';
 
-import logoTstn from '../assets/logo/tstn.jpg';
+import logoTstn from '../assets/logo/tstn.webp';
 import logoIronPlast from '../assets/logo/iranPlast.jpeg';
-import logoKcm from '../assets/logo/kcmkz.png';
-import logoLAluminstroi from '../assets/logo/ljuminstroj.jpg';
+import logoKcm from '../assets/logo/kcmkz.webp';
+import logoLAluminstroi from '../assets/logo/ljuminstroj.webp';
 import logoOpti from '../assets/logo/opti.jpg';
 
 import agencies3 from '../assets/image/agencies3.webp'

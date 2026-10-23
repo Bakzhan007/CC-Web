@@ -1,59 +1,83 @@
-# Enable compression
+# ===== CaspianCoast SPA — Apache 2.4 (hoster.kz) =====
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+    AddType application/javascript      .js
+    AddType application/manifest+json   .webmanifest
+    AddType application/wasm            .wasm
+    AddType image/webp                  .webp
+    AddType image/avif                  .avif
+    AddType font/woff2                  .woff2
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Канонический домен без www (www.example.kz -> example.kz)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301,NE]
+
+    # HTTPS (после www, чтобы был один редирект): перед заливкой убедитесь, что SSL-сертификат для домена выпущен в панели hoster.kz
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+    # Скрытые файлы и source maps не отдаём (.well-known нужен для выпуска SSL)
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+    RewriteRule \.map$ - [F,L]
+
+    # Отсутствующий чанк из /assets — честный 404, а не index.html под видом JS
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^assets/ - [R=404,L]
+
+    # SPA fallback: все клиентские маршруты (/projects/1, /apartments, ...) отдаёт index.html
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Compression
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/ld+json application/manifest+json
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml image/x-icon application/wasm
 </IfModule>
 
-# Cache static assets
-<IfModule mod_expires.c>
-    ExpiresActive on
-
-    # Images
-    ExpiresByType image/jpg "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/webp "access plus 1 month"
-    ExpiresByType image/svg+xml "access plus 1 month"
-
-    # CSS and JavaScript
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType application/x-javascript "access plus 1 year"
-
-    # Fonts
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType application/font-woff "access plus 1 year"
-    ExpiresByType application/font-woff2 "access plus 1 year"
-
-    # HTML files
-    ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
-
-# Set cache headers
 <IfModule mod_headers.c>
-    # Cache static assets for 1 year
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|woff|woff2)$">
+    # --- Кэш ---
+    # По умолчанию — перепроверять (index.html, sw.js, sw-cleanup.js, favicon и прочие файлы из public/)
+    Header set Cache-Control "no-cache"
+
+    # Файлы Vite в /assets содержат хэш в имени — можно кэшировать навсегда
+    <If "%{REQUEST_URI} =~ m#^/assets/#">
         Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
-    
-    # Don't cache HTML
-    <FilesMatch "\.html$">
-        Header set Cache-Control "public, max-age=0, must-revalidate"
-    </FilesMatch>
+    </If>
+
+    # Картинки без хэша из public/ — сутки
+    <If "%{REQUEST_URI} !~ m#^/assets/# && %{REQUEST_URI} =~ m#\.(ico|jpe?g|png|webp|avif|svg|gif)$#">
+        Header set Cache-Control "public, max-age=86400"
+    </If>
+
+    # --- Безопасность ---
+    Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Header always unset X-XSS-Protection
+    Header always unset X-Powered-By
+
+    # CSP: разрешены только наши файлы и перечисленные сервисы. Проверено на всех страницах.
+    # Подключаете новый внешний сервис (виджет, аналитика, видео) — добавьте его домен в нужную директиву,
+    # иначе браузер его заблокирует (ошибка "Content Security Policy" в консоли).
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://cc-workspace.kz; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://kuula.co https://www.google.com https://maps.google.com https://ipglaz.kz; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
-# Security headers
-<IfModule mod_headers.c>
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
-</IfModule>
+# Запасной вариант, если mod_rewrite выключен
+ErrorDocument 404 /index.html

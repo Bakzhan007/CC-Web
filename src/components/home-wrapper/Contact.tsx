@@ -1,8 +1,26 @@
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import type { FormEvent } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Contact = () => {
   const { t } = useLanguage();
+
+  // Заявка уходит менеджеру в WhatsApp (как в ContactModal) — бэкенда для форм нет
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const get = (key: string) => String(data.get(key) ?? '').trim();
+    const name = [get('firstName'), get('lastName')].filter(Boolean).join(' ');
+    const lines = [`Здравствуйте! Меня зовут ${name}.`];
+    if (get('projectType')) lines.push(`Тип проекта: ${get('projectType')}`);
+    if (get('message')) lines.push(get('message'));
+    lines.push('', 'Контакты:', `Телефон: ${get('phone')}`);
+    if (get('email')) lines.push(`Email: ${get('email')}`);
+    const url = `https://api.whatsapp.com/send/?phone=77006363631&text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank', 'noopener');
+    form.reset();
+  };
 
   const contactInfo = [
     {
@@ -85,58 +103,70 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-slate-900 mb-6">{t.sendMessage}</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="contact-firstName" className="block text-sm font-medium text-slate-700 mb-2">
                     {t.firstName}
                   </label>
                   <input
+                    id="contact-firstName"
+                    name="firstName"
                     type="text"
+                    required
+                    autoComplete="given-name"
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
-                    placeholder="John"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="contact-lastName" className="block text-sm font-medium text-slate-700 mb-2">
                     {t.lastName}
                   </label>
                   <input
+                    id="contact-lastName"
+                    name="lastName"
                     type="text"
+                    autoComplete="family-name"
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
-                    placeholder="Doe"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="contact-email" className="block text-sm font-medium text-slate-700 mb-2">
                   {t.email}
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
-                  placeholder="john.doe@example.com"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="contact-phone" className="block text-sm font-medium text-slate-700 mb-2">
                   {t.phone}
                 </label>
                 <input
+                  id="contact-phone"
+                  name="phone"
                   type="tel"
+                  required
+                  autoComplete="tel"
+                  pattern="[0-9+\-\(\)\s]{10,20}"
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                   placeholder="+7 (707) 0123-45-67"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="contact-projectType" className="block text-sm font-medium text-slate-700 mb-2">
                   {t.projectType}
                 </label>
-                <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors">
-                  <option>{t.selectProjectType}</option>
+                <select id="contact-projectType" name="projectType" defaultValue="" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors">
+                  <option value="" disabled>{t.selectProjectType}</option>
                   <option>{t.projectTypes.commercial}</option>
                   <option>{t.projectTypes.residential}</option>
                   <option>{t.projectTypes.renovation}</option>
@@ -146,10 +176,12 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="contact-message" className="block text-sm font-medium text-slate-700 mb-2">
                   {t.message}
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors resize-none"
                   placeholder={t.messagePlaceholder}

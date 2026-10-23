@@ -4,9 +4,15 @@ import imgIlan from '../assets/image/ilan_tower.webp'
 import imgIlan3 from '../assets/image/i3-d.webp'
 import imgIlan4 from '../assets/image/i4-d.webp'
 import imgIlan5 from '../assets/image/i5-d.webp'
+import imgCaspian from '../assets/image/caspian-coast.webp'
+import imgTaras1 from '../assets/image/t1-d.webp'
+import imgTaras2 from '../assets/image/t2-d.webp'
+import imgTaras3 from '../assets/image/t3-d.webp'
 
 export interface Project {
   id: number
+  // Читаемый адрес страницы: /projects/<slug>. Не менять после публикации — на него ведут рекламные ссылки
+  slug: string
   name: string
   category: string
   location: string
@@ -28,6 +34,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    slug: 'ilan-towers',
     name: 'ЖК Ilan Towers',
     category: 'residential',
     location: 'Aktau',
@@ -47,12 +54,14 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    slug: 'taras',
     name: 'ЖК Taras',
     category: 'residential',
     location: 'Aktau',
     district: '7а мкр.',
     year: '2025',
     image: imgTaras,
+    images: [imgTaras, imgTaras1, imgTaras2, imgTaras3],
     description: 'Комфортный жилой комплекс рядом с набережной.',
     videoUrl: 'https://youtu.be/jzjwXM5ZoIA?si=bp7U0oMw2gXh7yFz',
     area: '120 квартир',
@@ -65,12 +74,13 @@ export const projects: Project[] = [
   },
   {
     id: 3,
+    slug: 'caspian-coast',
     name: 'ЖК Caspian Coast',
     category: 'residential',
     location: 'Aktau',
     district: '3 мкр.',
     year: '2024',
-    image: 'https://storage.googleapis.com/bd-kz-01/buildings-v2/1280x960/8129.jpg',
+    image: imgCaspian,
     description: 'Жилой комплекс с развитой инфраструктурой.',
     videoUrl: 'https://youtu.be/BLBzY1S7xbQ?si=VQKrTtFBnY1omnDO',
     area: '75,000 кв.м',
@@ -82,6 +92,15 @@ export const projects: Project[] = [
     status: 'completed',
   },
 ]
+
+// Проект по параметру из адреса: слаг (/projects/taras) или старый номер (/projects/2)
+export function findProject(param?: string): Project | undefined {
+  if (!param) return undefined
+  const key = param.toLowerCase()
+  return projects.find(p => p.slug === key) || projects.find(p => String(p.id) === key)
+}
+
+export const projectPath = (project: Project) => `/projects/${project.slug}`
 
 // Поиск проекта по имени из каталога (регистронезависимо, с учётом префикса «ЖК»)
 export function findProjectByName(name?: string | null): Project | undefined {

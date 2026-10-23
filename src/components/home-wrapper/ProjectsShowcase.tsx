@@ -3,6 +3,7 @@ import { MapPin, Building, Factory } from 'lucide-react'
 import ilanTower from '../../assets/image/ilan_tower.webp'
 import taras from '../../assets/image/taras.webp'
 import beibitshilik from '../../assets/image/beibitshilik1.webp'
+import imgCaspian from '../../assets/image/caspian-coast.webp'
 
 
 const ProjectsShowcase = () => {
@@ -13,7 +14,7 @@ const ProjectsShowcase = () => {
       name: "Жилой комплекс «Caspian Coast»",
       location: "г. Актау",
       type: "Жилое строительство",
-      image: 'https://storage.googleapis.com/bd-kz-01/buildings-v2/1280x960/8129.jpg',
+      image: imgCaspian,
     },
     {
       name: "Жилой комплекс «Ilan Tower»",

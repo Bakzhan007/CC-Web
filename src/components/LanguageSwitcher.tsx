@@ -1,5 +1,3 @@
-// Уберите ненужный импорт React, TS 17+ с новым JSX-трансформом сам подхватит его
-// import React, { useState, useRef, useEffect } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -17,22 +15,6 @@ const LanguageSwitcher = () => {
   ];
 
   const currentLanguage = languages.find(l => l.code === language) || languages[0];
-
-  useEffect(() => {
-    if (!language) {
-      // Вместо navigator.userLanguage
-      const browserLocale = navigator.language;      // e.g. "ru-RU" или "kk-KZ"
-      const langCode = browserLocale.split('-')[0];  // "ru" или "kk"
-
-      if (langCode === 'kk' || browserLocale.toLowerCase().includes('kz')) {
-        setLanguage('kz');
-      } else if (langCode === 'ru' || browserLocale.toLowerCase().includes('ru')) {
-        setLanguage('ru');
-      } else {
-        setLanguage('en');
-      }
-    }
-  }, [language, setLanguage]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

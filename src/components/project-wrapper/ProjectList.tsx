@@ -3,7 +3,7 @@ import { Building2, MapPin, Layers, Calendar, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { projects, type Project } from '../../data/projects'
+import { projects, projectPath, type Project } from '../../data/projects'
 
 export default function ProjectList() {
   const { t } = useLanguage()
@@ -148,7 +148,7 @@ function FeatureRow({ project, index, statusText, statusColor, t }: {
               <div className="text-2xl font-extrabold text-brand-700">{project.priceRange}</div>
             </div>
             <Link
-              to={`/projects/${project.id}`}
+              to={projectPath(project)}
               state={{ project }}
               className="group/btn inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3 font-medium text-white shadow-lg shadow-brand-600/20 transition-shadow hover:shadow-xl hover:shadow-brand-600/30"
             >

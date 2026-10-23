@@ -16,11 +16,14 @@ const Hero = () => {
       min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image - Optimized for LCP */}
       <img 
-        src="https://images.pexels.com/photos/18862358/pexels-photo-18862358.jpeg"
+        src="/images/hero-1280.webp"
+        srcSet="/images/hero-768.webp 768w, /images/hero-1280.webp 1280w, /images/hero-1920.webp 1920w"
+        sizes="100vw"
+        width={1920}
+        height={1080}
         alt="CaspianCoast Construction - Premium building development"
         className="absolute inset-0 w-full h-full object-cover"
         fetchPriority="high"
-        decoding="sync"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
 

@@ -1,6 +1,10 @@
-import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact, setWasmUrl } from '@lottiefiles/dotlottie-react';
+// WASM-плеер и анимация лежат у нас, а не грузятся с unpkg/jsdelivr/lottie.host во время работы
+import wasmUrl from '@lottiefiles/dotlottie-web/dist/dotlottie-player.wasm?url';
+import animationUrl from '../assets/lottie/maintenance.lottie?url';
+
+setWasmUrl(wasmUrl);
 
 
 function Maintenance() {
@@ -17,7 +21,7 @@ function Maintenance() {
       </p>
             {/* Video animation */}
     <DotLottieReact
-      src="https://lottie.host/3b2d0ef5-3984-4d79-b3c8-8bc9f6f4c5f1/4rooKvFRq2.lottie"
+      src={animationUrl}
       loop
       autoplay
       style={{ width: 300, height: 300 }}

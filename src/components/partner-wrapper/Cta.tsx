@@ -12,7 +12,7 @@ export default function Cta() {
           {t.partnerCtaDescription}
         </p>
         <a
-          href="mailto:info@caspiancoast.com"
+          href="mailto:info@caspiancoast.kz"
           className="inline-block px-6 py-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors"
         >
           {t.partnerCtaButton}
